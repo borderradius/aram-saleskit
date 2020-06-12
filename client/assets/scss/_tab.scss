@@ -1,0 +1,15 @@
+.tab-wrapper {
+  @apply text-xs px-4 py-3 text-gray-800;
+  li {
+    @apply mr-4;
+    &.active {
+      @apply font-bold relative;
+      &:after {
+        @apply absolute w-full bg-gray-900 left-0 text-gray-900;
+        content: '';
+        bottom: -12px;
+        height: 3px;
+      }
+    }
+  }
+}
