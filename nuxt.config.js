@@ -109,12 +109,26 @@ module.exports = {
     extend(config, ctx) {
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
+        config.module.rules.push(
+          {
+            enforce: 'pre',
+            test: /\.(js|vue)$/,
+            loader: 'eslint-loader',
+            exclude: /(node_modules)/
+          },
+          // {
+          //   test: /\.(jpg)$/,
+          //   loader: 'file-loader'
+          // },
+          {
+            test: /\.jpeg$/, // jpeg의 모든 파일
+            loader: 'file-loader', // 파일 로더를 적용한다.
+            options: {
+              // publicPath: './', // prefix를 아웃풋 경로로 지정
+              name: '[name].[ext]?[hash]' // 파일명 형식
+            }
+          }
+        )
       }
     }
   }
