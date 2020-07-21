@@ -2,6 +2,9 @@ module.exports = {
   prefix: '',
   important: false,
   separator: ':',
+  purge: {
+    enabled: false
+  },
   theme: {
     container: {
       center: false
@@ -44,7 +47,8 @@ module.exports = {
         black: '#000',
         white: '#fff',
         'adm-blue': '#494b74',
-        'adm-blue-light': '#90a3ff'
+        'adm-blue-light': '#90a3ff',
+        'main-green': '#6fce28'
       },
       spacing: {
         '12': '2.5rem',

@@ -27,8 +27,8 @@ module.exports = {
   },
   tailwindcss: {
     configPath: '~/tailwind.config.js',
-    cssPath: '~/assets/css/tailwind.css',
-    purgeCSSInDev: false
+    cssPath: '~/assets/css/tailwind.css'
+    // purgeCSSInDev: false
   },
   /*
    ** Global CSS
@@ -101,7 +101,8 @@ module.exports = {
    ** Build configuration
    */
   build: {
-    transpile: ['vee-validate/dist/rules'],
+    extractCSS: true,
+    // transpile: ['vee-validate/dist/rules'],
     /*
      ** You can extend webpack config here
      */
