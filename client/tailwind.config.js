@@ -98,6 +98,6 @@ module.exports = {
     backgroundColor: ['responsive', 'hover', 'focus', 'active'],
     fontSize: ['responsive', 'hover'],
     tableLayout: ['responsive', 'hover', 'focus']
-  }
-  // plugins: [require('@tailwindcss/custom-forms')]
+  },
+  plugins: [require('@tailwindcss/custom-forms')]
 }

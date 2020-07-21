@@ -14,7 +14,6 @@
               name="아이디"
             >
               <div class="login">
-                <!-- <label for="아이디" class="label">아이디</label> -->
                 <input
                   v-model="user.userLoginId"
                   type="text"
@@ -33,7 +32,6 @@
               name="비밀번호"
             >
               <div class="login">
-                <!-- <label for="비밀번호" class="label">비밀번호</label> -->
                 <input
                   v-model="user.userPassword"
                   type="password"
@@ -49,6 +47,32 @@
             <div class="btn-wrap clear-both mt-4">
               <Btn label="들어가기" mode="submit" />
             </div>
+            <div class="flex mt-4">
+              <label class="inline-flex items-center mt-3 mr-4">
+                <input
+                  type="checkbox"
+                  class="form-checkbox h-5 w-5 text-main-green"
+                  checked
+                /><span class="ml-2 text-gray-700">아이디 저장</span>
+              </label>
+              <label class="inline-flex items-center mt-3">
+                <input
+                  type="checkbox"
+                  class="form-checkbox h-5 w-5 text-main-green"
+                  checked
+                /><span class="ml-2 text-gray-700">비밀번호 저장</span>
+              </label>
+            </div>
+            <!-- <div class="btn-wrap clear-both mt-4">
+              <label for="saveId">
+                <input id="saveId" type="checkbox" class="" />
+                아이디 저장
+              </label>
+              <label for="savePw">
+                <input id="savePw" type="checkbox" class="" />
+                비밀번호 저장
+              </label>
+            </div> -->
           </form>
         </ValidationObserver>
       </div>
