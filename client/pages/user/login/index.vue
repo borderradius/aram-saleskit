@@ -2,7 +2,7 @@
   <div class="flex items-center login-page">
     <div class="flex-1 bg-gray-100 h-screen login-left" />
     <div class="flex items-center w-380 h-screen shadow-xl">
-      <div class="px-4 w-full">
+      <div class="px-10 w-full">
         <ValidationObserver v-slot="{ handleSubmit }">
           <h1 class="uppercase text-center text-2xl text-main-green">
             sign in
@@ -19,7 +19,7 @@
                   type="text"
                   name="아이디"
                   class="login_label mb-4 mt-6"
-                  placeholder="아이디를 입력해주세요."
+                  placeholder="ERP아이디 입력"
                 />
                 <span class="validate-error text-sm text-pink-600">{{
                   errors[0]
@@ -37,7 +37,7 @@
                   type="password"
                   name="비밀번호"
                   class="login_label my-4"
-                  placeholder="비밀번호를 입력해주세요."
+                  placeholder="비밀번호 입력"
                 />
                 <span class="validate-error text-sm text-pink-600">{{
                   errors[0]
@@ -50,16 +50,16 @@
             <div class="flex mt-4">
               <label class="inline-flex items-center mt-3 mr-4">
                 <input
+                  v-model="saveId"
                   type="checkbox"
                   class="form-checkbox h-5 w-5 text-main-green"
-                  checked
                 /><span class="ml-2 text-gray-700">아이디 저장</span>
               </label>
               <label class="inline-flex items-center mt-3">
                 <input
+                  v-model="savePw"
                   type="checkbox"
                   class="form-checkbox h-5 w-5 text-main-green"
-                  checked
                 /><span class="ml-2 text-gray-700">비밀번호 저장</span>
               </label>
             </div>
@@ -88,7 +88,9 @@ export default {
       user: {
         userLoginId: '',
         userPassword: ''
-      }
+      },
+      saveId: false,
+      savePw: false
     }
   },
   methods: {
