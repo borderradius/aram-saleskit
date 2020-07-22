@@ -261,7 +261,12 @@ export default {
   },
   methods: {
     rowClick(item) {
-      console.log(item)
+      this.$router.push({
+        name: `${this.$route.name}-id`,
+        params: {
+          id: item.rowNo
+        }
+      })
     }
   }
 }
@@ -271,7 +276,6 @@ export default {
 .search-result-table tbody {
   display: block;
   width: 100%;
-  /* height: 300px; */
   overflow: auto;
 }
 .search-result-table tbody tr,
