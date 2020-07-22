@@ -1,19 +1,19 @@
 <template>
   <div>
-    <Header />
-    <Tab :tab-data="tabData" />
+    <!-- <Header /> -->
+    <!--<Tab :tab-data="tabData" /> -->
     <nuxt />
   </div>
 </template>
 <script>
-import Header from '../components/header'
-import Tab from '../components/tab'
+// import Header from '../components/header'
+// import Tab from '../components/tab'
 
 export default {
-  components: {
-    Header,
-    Tab
-  },
+  // components: {
+  // Header
+  //   Tab
+  // },
   data() {
     return {
       tabData: [
@@ -29,4 +29,12 @@ export default {
 }
 </script>
 
-<style></style>
+<style lang="scss">
+/* .screen-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+} */
+</style>

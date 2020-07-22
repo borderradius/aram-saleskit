@@ -1,7 +1,7 @@
 <template>
   <div class="flex items-center login-page">
-    <div class="flex-1 bg-gray-100 h-screen login-left" />
-    <div class="flex items-center w-380 h-screen shadow-xl">
+    <div class="flex-1 bg-gray-100 h-screen re-height login-left" />
+    <div class="flex items-center w-380 h-screen re-height shadow-xl">
       <div class="px-10 w-full">
         <ValidationObserver v-slot="{ handleSubmit }">
           <h1 class="uppercase text-center text-2xl text-main-green">
@@ -63,16 +63,6 @@
                 /><span class="ml-2 text-gray-700">비밀번호 저장</span>
               </label>
             </div>
-            <!-- <div class="btn-wrap clear-both mt-4">
-              <label for="saveId">
-                <input id="saveId" type="checkbox" class="" />
-                아이디 저장
-              </label>
-              <label for="savePw">
-                <input id="savePw" type="checkbox" class="" />
-                비밀번호 저장
-              </label>
-            </div> -->
           </form>
         </ValidationObserver>
       </div>
@@ -92,6 +82,14 @@ export default {
       saveId: false,
       savePw: false
     }
+  },
+  mounted() {
+    window.addEventListener('resize', () => {
+      const reHeight = document.getElementsByClassName('re-height')
+      for (const item of reHeight) {
+        item.style.height = `${screen.height}px`
+      }
+    })
   },
   methods: {
     login() {

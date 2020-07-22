@@ -13,7 +13,9 @@
       <n-link class="text-center" to="/">Sales Kit</n-link>
     </h1>
     <div>
-      <Btn label="로그인" size="sm" type="register" @btnClick="login" />
+      <!-- <Btn label="로그인" size="sm" type="register" @btnClick="login" /> -->
+      <n-link to="/survey">앙케이트</n-link>
+      <n-link to="/user/login">로그인</n-link>
     </div>
   </div>
 </template>
