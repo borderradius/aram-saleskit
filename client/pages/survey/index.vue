@@ -54,7 +54,7 @@
             >
               <input
                 v-model="searchWord"
-                class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 py-10 rounded-lg text-sm focus:outline-none w-full text-2xl"
+                class="bg-white h-10 px-5 pr-16 py-10 rounded-lg text-sm focus:outline-none w-full text-2xl"
                 type="search"
                 name="search"
                 placeholder="01000000000"
@@ -87,6 +87,36 @@
           </form>
         </ValidationObserver>
       </div>
+      <div class="bg-white rounded-lg mt-2">
+        <table class="table-basic rounded-lg search-result-table">
+          <thead>
+            <tr>
+              <th v-for="(item, index) in tHeader" :key="index">
+                {{ item.title }}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              v-for="(item, index) in tBody"
+              :key="index"
+              @click="rowClick(item)"
+            >
+              <td>{{ item.rowNo }}</td>
+              <td>{{ item.childNm }}</td>
+              <td>{{ item.mobile }}</td>
+              <td>{{ item.birth }}</td>
+              <td>{{ item.age }}</td>
+              <td>{{ item.consultDate }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <n-link
+        to="/survey/start"
+        class="btn button-info w-full block text-center mt-4 text-xl font-extrabold"
+        >앙케이트 시작하기</n-link
+      >
     </div>
   </div>
 </template>
@@ -96,10 +126,158 @@ export default {
   data() {
     return {
       privateAgree: false,
-      searchWord: null
+      searchWord: null,
+      tBody: [
+        {
+          rowNo: 1,
+          childNm: '김자녀',
+          mobile: '010-1234-1234',
+          birth: '1984-05-28',
+          age: '37',
+          consultDate: '2020-05-15'
+        },
+        {
+          rowNo: 1,
+          childNm: '김자녀',
+          mobile: '010-1234-1234',
+          birth: '1984-05-28',
+          age: '37',
+          consultDate: '2020-05-15'
+        },
+        {
+          rowNo: 1,
+          childNm: '김자녀',
+          mobile: '010-1234-1234',
+          birth: '1984-05-28',
+          age: '37',
+          consultDate: '2020-05-15'
+        },
+        {
+          rowNo: 1,
+          childNm: '김자녀',
+          mobile: '010-1234-1234',
+          birth: '1984-05-28',
+          age: '37',
+          consultDate: '2020-05-15'
+        },
+        {
+          rowNo: 5,
+          childNm: '김자녀',
+          mobile: '010-1234-1234',
+          birth: '1984-05-28',
+          age: '37',
+          consultDate: '2020-05-15'
+        },
+        {
+          rowNo: 1,
+          childNm: '김자녀',
+          mobile: '010-1234-1234',
+          birth: '1984-05-28',
+          age: '37',
+          consultDate: '2020-05-15'
+        },
+        {
+          rowNo: 1,
+          childNm: '김자녀',
+          mobile: '010-1234-1234',
+          birth: '1984-05-28',
+          age: '37',
+          consultDate: '2020-05-15'
+        },
+        {
+          rowNo: 1,
+          childNm: '김자녀',
+          mobile: '010-1234-1234',
+          birth: '1984-05-28',
+          age: '37',
+          consultDate: '2020-05-15'
+        },
+        {
+          rowNo: 1,
+          childNm: '김자녀',
+          mobile: '010-1234-1234',
+          birth: '1984-05-28',
+          age: '37',
+          consultDate: '2020-05-15'
+        },
+        {
+          rowNo: 10,
+          childNm: '김자녀',
+          mobile: '010-1234-1234',
+          birth: '1984-05-28',
+          age: '37',
+          consultDate: '2020-05-15'
+        },
+        {
+          rowNo: 1,
+          childNm: '김자녀',
+          mobile: '010-1234-1234',
+          birth: '1984-05-28',
+          age: '37',
+          consultDate: '2020-05-15'
+        },
+        {
+          rowNo: 1,
+          childNm: '김자녀',
+          mobile: '010-1234-1234',
+          birth: '1984-05-28',
+          age: '37',
+          consultDate: '2020-05-15'
+        },
+        {
+          rowNo: 1,
+          childNm: '김자녀',
+          mobile: '010-1234-1234',
+          birth: '1984-05-28',
+          age: '37',
+          consultDate: '2020-05-15'
+        },
+        {
+          rowNo: 1,
+          childNm: '김자녀',
+          mobile: '010-1234-1234',
+          birth: '1984-05-28',
+          age: '37',
+          consultDate: '2020-05-15'
+        },
+        {
+          rowNo: 15,
+          childNm: '김자녀',
+          mobile: '010-1234-1234',
+          birth: '1984-05-28',
+          age: '37',
+          consultDate: '2020-05-15'
+        }
+      ],
+      tHeader: [
+        { title: '#' },
+        { title: '자녀이름' },
+        { title: '휴대폰번호' },
+        { title: '생년월일' },
+        { title: '나이' },
+        { title: '상담일' }
+      ]
+    }
+  },
+  methods: {
+    rowClick(item) {
+      console.log(item)
     }
   }
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.search-result-table tbody {
+  display: block;
+  width: 100%;
+  /* height: 300px; */
+  overflow: auto;
+}
+.search-result-table tbody tr,
+.search-result-table thead tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+</style>

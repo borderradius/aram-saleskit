@@ -1,0 +1,26 @@
+.table-basic {
+  @apply text-left w-full border-collapse;
+  thead {
+    th {
+      @apply py-4 px-6 text-lg border-b font-normal;
+    }
+  }
+  tbody {
+    height: 450px;
+    tr {
+      @apply text-lg;
+      &:hover {
+        @apply bg-gray-100;
+      }
+    }
+    th {
+      @apply py-2 px-2 border bg-gray-100 w-140;
+    }
+    td {
+      @apply py-2 px-2 border cursor-pointer;
+    }
+  }
+  .file-td {
+    padding-bottom: 2rem !important;
+  }
+}
