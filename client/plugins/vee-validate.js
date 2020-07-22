@@ -1,6 +1,26 @@
 import Vue from 'vue'
 import { ValidationProvider, ValidationObserver, extend } from 'vee-validate'
-import { required } from 'vee-validate/dist/rules'
+import { required, numeric } from 'vee-validate/dist/rules'
+
+extend('numeric', {
+  ...numeric,
+  message(field) {
+    return `숫자만 입력가능합니다.`
+  }
+})
+
+/**
+ * 핸드폰번호
+ */
+extend('mobile', {
+  message() {
+    return '올바른 번호를 입력해주세요'
+  },
+  validate(value) {
+    const strongRegex = new RegExp('^(01)[0][0-9]{4}[0-9]{4}$')
+    return strongRegex.test(value)
+  }
+})
 
 extend('required', {
   ...required,
