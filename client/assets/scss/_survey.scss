@@ -1,5 +1,7 @@
 .survey {
   background-color: #ccf39d;
+  min-height: 100vh;
+  @apply py-5p;
   .agree-content {
     overflow: auto;
   }

@@ -1,6 +1,6 @@
 <template>
-  <div class="survey flex items-center justify-center h-screen text-lg">
-    <div class="flex-initial h-4/6 w-4/6">
+  <div class="survey flex items-center justify-center text-lg">
+    <div class="flex-initial h-5/6 w-5/6">
       <h1 class="text-3xl mb-8">어린이 선호도 앙케이트</h1>
       <div class="private-agree-wrap p-4 bg-white rounded-lg">
         <label for="privateAgree" class="block">
