@@ -1,7 +1,7 @@
 <template>
   <div class="flex items-center login-page">
     <div class="flex-1 bg-gray-100 h-screen re-height login-left" />
-    <div class="flex items-center w-380 h-screen re-height shadow-xl">
+    <div class="flex items-center h-screen re-height shadow-xl login-right">
       <div class="px-10 w-full">
         <ValidationObserver v-slot="{ handleSubmit }">
           <h1 class="uppercase text-center text-2xl text-main-green">
@@ -44,11 +44,16 @@
                 }}</span>
               </div>
             </ValidationProvider>
-            <div class="btn-wrap clear-both mt-4">
-              <Btn label="들어가기" mode="submit" />
+            <div class="btn-wrap clear-both mt-4 ">
+              <Btn label="들어가기" mode="submit" class="signin-btn" />
             </div>
             <div class="flex mt-4">
               <label class="inline-flex items-center mt-3 mr-4">
+                <!-- <input
+                  v-model="saveId"
+                  type="checkbox"
+                  class="form-checkbox text-main-green"
+                /><span class="ml-2 text-gray-700">아이디 저장</span> -->
                 <input
                   v-model="saveId"
                   type="checkbox"
@@ -66,6 +71,20 @@
           </form>
         </ValidationObserver>
       </div>
+      <modal name="hello-world">
+        <div class="alert-content">
+          <p class="mt-6">입력하신 아이디 또는 비밀번호가</p>
+          <p>일치하지 않습니다.</p>
+          <br />
+          <p>확인 후 다시 입력바랍니다.</p>
+        </div>
+        <a
+          href="javascript:;"
+          class="w-full btn block absolute bottom-0 text-center modal-close"
+          @click="hide"
+          >확인</a
+        >
+      </modal>
     </div>
   </div>
 </template>
@@ -76,8 +95,8 @@ export default {
   data() {
     return {
       user: {
-        userLoginId: '',
-        userPassword: ''
+        userLoginId: 'asdfsafsd',
+        userPassword: 'sdfsfdsfasd'
       },
       saveId: false,
       savePw: false
@@ -94,6 +113,13 @@ export default {
   methods: {
     login() {
       // TODO: 로그인 api 필요
+      this.show()
+    },
+    show() {
+      this.$modal.show('hello-world')
+    },
+    hide() {
+      this.$modal.hide('hello-world')
     }
   }
 }

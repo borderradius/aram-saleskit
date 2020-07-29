@@ -6,9 +6,9 @@
     }
   }
   tbody {
-    height: 450px;
+    height: 200px;
     tr {
-      @apply text-lg;
+      @apply text-base;
       &:hover {
         @apply bg-gray-100;
       }

@@ -1,8 +1,39 @@
 .survey {
-  background-color: #ccf39d;
+  // background-color: #defcb8;
+  background-color: #fff;
   min-height: 100vh;
-  @apply py-5p;
+  @apply py-3p;
+  h1 {
+    top: 1rem;
+  }
   .agree-content {
     overflow: auto;
+  }
+  .private-agree-wrap {
+    // background-color: #defcb8;
+    border: 1px solid #7fd334;
+  }
+  .title {
+    background: #2acdf3;
+  }
+  .search-wrap {
+    background-color: #defcb8;
+  }
+  .search-btn {
+    background-color: #7fd334;
+    // height: 40px;
+    border: 0;
+  }
+  .search-input {
+    border: 1px solid #7fd334;
+  }
+  .search-result-table {
+    border-collapse: inherit;
+    tbody {
+    }
+    tbody tr td {
+      border-collapse: collapse;
+      border: none;
+    }
   }
 }

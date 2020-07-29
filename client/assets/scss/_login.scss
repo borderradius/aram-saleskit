@@ -1,14 +1,47 @@
 .login-page {
+  // h1 {
+  //   top: 10px;
+  // }
   input[type='text'],
   input[type='password'] {
-    @apply p-4 w-full rounded-full border border-gray-200;
+    @apply w-full text-center border border-gray-300 p-4 rounded-lg;
+    // border-radius: 20px;
+    // border: solid 2px #dddddd;
+    // height: 90px;
+    // line-height: 90px;
+    // font-size: 28px;
     &:focus {
       @apply outline-none shadow-outline;
     }
   }
+  // .form-checkbox {
+  //   width: 30px;
+  //   height: 30px;
+  //   & + span {
+  //     font-size: 24px;
+  //   }
+  // }
+  .modal-close {
+    // font-size: 35px;
+    // height: 108px;
+    // line-height: 108px;
+    // padding: 0;
+  }
+  .alert-content {
+    @apply p-4 text-center text-xl;
+  }
+}
+.signin-btn {
+  @apply w-full rounded-full;
+  // height: 90px;
+  // font-size: 28px;
+  // border-radius: 45px;
 }
 .login-left {
   background-image: url('../image/2063.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+}
+.login-right {
+  width: 38.14%;
 }

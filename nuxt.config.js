@@ -33,7 +33,10 @@ module.exports = {
   /*
    ** Global CSS
    */
-  css: [{ src: '~assets/scss/index.scss', lang: 'scss' }],
+  css: [
+    { src: '~assets/scss/index.scss', lang: 'scss' },
+    { src: '~assets/css/swiper-bundle.css', lang: 'css' }
+  ],
   /*
    ** Plugins to load before mounting the App
    */
@@ -41,7 +44,8 @@ module.exports = {
     { src: '~/plugins/vee-validate.js', ssr: false },
     { src: '~/plugins/mixins.js', ssr: false },
     { src: '~/plugins/fontawesome.js', ssr: false },
-    { src: '~/plugins/GlobalComponents.js', ssr: false }
+    { src: '~/plugins/GlobalComponents.js', ssr: false },
+    { src: '~/plugins/vue-js-modal', ssr: false }
   ],
   /*
    ** Nuxt.js dev-modules
@@ -81,11 +85,11 @@ module.exports = {
       local: {
         tokenType: 'Bearer',
         endpoints: {
-          login: {
-            url: '/auth/login',
-            method: 'post',
-            propertyName: 'result.userToken'
-          },
+          // login: {
+          //   url: '/auth/login',
+          //   method: 'post',
+          //   propertyName: 'result.userToken'
+          // },
           logout: false
           // user: {
           //   url: '/member/selMemInfo',
