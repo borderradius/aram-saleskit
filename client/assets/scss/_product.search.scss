@@ -43,7 +43,11 @@
   .right-content {
     @apply bg-white rounded-tl-lg w-full shadow-2xl -mt-16;
     .search-area {
-      @apply p-8;
+      @apply px-8 py-10;
+      .search-btn {
+        @apply block p-3 text-center text-white rounded-full w-3/5 mx-auto mt-8 text-xl;
+        background-color: #7fd334;
+      }
       .search-form {
         @apply p-4 rounded-lg;
         background-color: #defcb8;
@@ -52,6 +56,7 @@
         $span-w: 70px;
         span {
           width: $span-w;
+          text-align: center;
         }
         input {
           @apply rounded-sm;
@@ -59,12 +64,22 @@
           border: 1px solid #7fd334;
         }
       }
+      .search-form-checkbox {
+        @apply p-4 rounded-lg mt-4;
+        border: 1px solid #7fd334;
+      }
+      .checkbox-wrap {
+        @apply rounded-lg bg-gray-100 p-4;
+      }
+      .checkbox-label {
+        width: 30%;
+        box-sizing: border-box;
+      }
     }
     .content {
       @apply p-8;
       border-top: 8px solid #d4f3ad;
       .product-list {
-        flex-wrap: wrap;
         > li {
           @apply mb-4;
           $width: 47%;
