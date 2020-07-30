@@ -79,6 +79,9 @@
     .content {
       @apply p-8;
       border-top: 8px solid #d4f3ad;
+      &.brosure-content {
+        border-top: none;
+      }
       .product-list {
         > li {
           @apply mb-4;
@@ -90,6 +93,22 @@
           li {
             list-style-type: disc;
             text-indent: 12px;
+          }
+        }
+      }
+      .product-list-brosure {
+        > li {
+          @apply mb-4;
+          $width: 33%;
+          width: $width;
+          margin-bottom: calc((34% - #{$width}) * 1.5);
+          box-sizing: border-box;
+          margin-right: 0.5%;
+          &:nth-child(3n + 0) {
+            margin-right: 0;
+          }
+          a {
+            @apply p-4 text-center;
           }
         }
       }

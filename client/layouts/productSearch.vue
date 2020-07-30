@@ -23,7 +23,7 @@
         <n-link to="/user/signup" class="go-signup">디지털콘텐츠 체험</n-link>
       </div>
       <div class="right-content">
-        <div class="search-area">
+        <div v-if="isSearch" class="search-area">
           <div class="search-form">
             <div class="search-form-input flex items-center">
               <span class="text-gray-700 font-bold mr-4">상품명</span>
@@ -50,24 +50,8 @@
             <button class="search-btn">검색</button>
           </div>
         </div>
-        <div class="content">
+        <div :class="[!isSearch ? 'brosure-content' : '']" class="content">
           <nuxt />
-          <!-- <ul class="flex flex-row flex-wrap justify-between product-list">
-            <li v-for="item in 5" :key="item">
-              <a href="javascript:;">
-                <span class="rank font-bold text-center">{{ item }}</span>
-                <img src="/product-img.png" alt="상품이미지" />
-                <div class="text-wrap pt-4">
-                  <h4 class="font-bold text-lg mb-2">베이비올 영어</h4>
-                  <ul class="pl-2">
-                    <li>전집 36권</li>
-                    <li>의사소통영역(언어) 등</li>
-                    <li>487,000원</li>
-                  </ul>
-                </div>
-              </a>
-            </li>
-          </ul> -->
         </div>
       </div>
     </div>
@@ -97,7 +81,8 @@ export default {
           alt: '브로슈어',
           class: 'second'
         }
-      ]
+      ],
+      isSearch: true
     }
   },
   mounted() {
@@ -112,6 +97,7 @@ export default {
       this.checkNowMenu(index)
       // TODO: 메뉴 클릭 시 해당 추천도서 셋팅
       this.setSearchList({ kind: index })
+      index === 2 ? (this.isSearch = false) : (this.isSearch = true)
     },
     checkNowMenu(index) {
       // leftMenu 클래스, off이미지로 초기화
