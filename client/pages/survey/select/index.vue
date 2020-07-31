@@ -58,10 +58,12 @@ export default {
     doClick() {
       if (this.nowSlidePage === 9) {
         this.isComplete = true
+        const $this = this
         window.setTimeout(function() {
           this.isComplete = false
-          alert('2초뒤 앙케트 리포트 페이지로 이동')
+          $this.$router.push('/survey/result')
         }, 2000)
+        return
       }
       if (this.nowSlidePage !== 9) this.nowSlidePage++
       if (this.nowSlidePage < 10) this.swiper.slideTo(this.nowSlidePage - 1)

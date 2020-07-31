@@ -1,0 +1,204 @@
+.survey-result {
+  @apply pb-8;
+  background-color: #eafbff;
+  .title {
+    top: 1rem;
+    background: #2acdf3;
+  }
+  .report-subject {
+    @apply text-center py-4 bg-white rounded-lg text-2xl font-bold relative;
+    color: #ff575d;
+    box-shadow: 0 0 30px 0 rgba(47, 218, 244, 0.2);
+    small {
+      @apply text-sm font-thin inline-block absolute right-0 bottom-0;
+      right: 3rem;
+      bottom: 1rem;
+      color: #999;
+    }
+  }
+  .report-content {
+    @apply bg-white rounded-lg mt-4 p-8;
+    box-shadow: 0 0 30px 0 rgba(47, 218, 244, 0.2);
+  }
+  .report-content1 {
+    @extend .report-content;
+    li {
+      @apply mb-4 p-4 text-sm;
+      box-sizing: border-box;
+      width: 30%;
+    }
+    .img-wrap {
+      @apply rounded-md relative;
+      padding-bottom: 81%;
+      border: 5px solid #e1e1e1;
+      // background-color: #e1e1e1;
+      overflow: hidden;
+      img {
+        position: absolute;
+        // height: 100%;
+      }
+    }
+    .score {
+      @apply px-3 py-1 rounded-lg;
+      color: #61c11a;
+      border: 1px solid #61c11a;
+    }
+    .best {
+      @apply rounded-lg;
+      background: #ff575d;
+      opacity: 0.8;
+      box-shadow: 0 0 20px 0 rgba(0, 65, 125, 0.2);
+      .img-wrap {
+        border: 5px solid #fff;
+      }
+      .score {
+        color: #ff575d;
+        background: #fff;
+        border: 1px solid #fff;
+      }
+    }
+  }
+  .report-content2 {
+    @extend .report-content;
+    .system-chart {
+    }
+    ul.first {
+      li {
+        @apply rounded-full py-4;
+        border: 1px solid #2acdf3;
+        color: #2acdf3;
+        &:nth-child(2) {
+          @apply mx-4;
+        }
+        &:nth-child(3) {
+          @apply mr-4;
+        }
+      }
+    }
+    .system-on {
+      @apply rounded-full text-white;
+      background-color: #ff797d;
+      border: 1px solid #ff797d;
+    }
+    .system-off {
+      @apply rounded-full;
+      color: #333;
+      background-color: #fff;
+      border: 1px solid #e0e0e0;
+    }
+    ul.second {
+      li {
+        @extend .system-off;
+        &.on {
+          @extend .system-on;
+        }
+        &:nth-child(1) {
+          line-height: 4rem;
+        }
+        &:nth-child(2) {
+          @apply mx-4;
+          line-height: 4rem;
+        }
+        &:nth-child(3) {
+          @apply mr-4;
+          line-height: 4rem;
+        }
+        &:nth-child(4) {
+          background: none;
+          border: none;
+          .system-chart-child {
+            @extend .system-off;
+            @apply py-1 mb-2;
+            &.on {
+              @extend .system-on;
+            }
+            &:last-child {
+              @apply mb-0;
+            }
+          }
+        }
+      }
+    }
+    ul.third {
+      li {
+        @extend .system-off;
+        &.on {
+          @extend .system-on;
+        }
+        &:nth-child(1) {
+          line-height: 4rem;
+        }
+        &:nth-child(2) {
+          @apply mx-4;
+          line-height: 4rem;
+        }
+        &:nth-child(3) {
+          @apply mr-4;
+          background: none;
+          border: none;
+          .system-chart-child {
+            @extend .system-off;
+            @apply py-1 mb-2;
+            &.on {
+              @extend .system-on;
+            }
+            &:last-child {
+              @apply mb-0;
+            }
+          }
+        }
+        &:nth-child(4) {
+          background: none;
+          border: none;
+          .system-chart-child {
+            @extend .system-off;
+            @apply py-1 mb-2;
+            &.on {
+              @extend .system-on;
+            }
+            &:last-child {
+              @apply mb-0;
+            }
+          }
+        }
+      }
+    }
+    ul.fifth {
+      li {
+        @extend .system-off;
+        &.on {
+          @extend .system-on;
+        }
+        &:nth-child(1) {
+          @apply mr-4;
+          background: none;
+          border: none;
+          .system-chart-child {
+            @extend .system-off;
+            @apply py-1 mb-2;
+            &.on {
+              @extend .system-on;
+            }
+            &:last-child {
+              @apply mb-0;
+            }
+          }
+        }
+        &:nth-child(2) {
+          @apply mr-4;
+          line-height: 4rem;
+        }
+        &:nth-child(3) {
+          @apply mr-4;
+          line-height: 4rem;
+        }
+        &:nth-child(4) {
+          line-height: 4rem;
+        }
+      }
+    }
+  }
+  .report-content3 {
+    @extend .report-content;
+  }
+}

@@ -43,6 +43,12 @@
   background-repeat: no-repeat;
   background-position: center center;
 }
+.go-back {
+  @extend .go-home;
+  bottom: 6rem;
+  background-image: url('../image/go-back.png');
+  background-size: 40%;
+}
 
 .bookclub-logo {
   @apply absolute;

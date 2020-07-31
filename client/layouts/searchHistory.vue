@@ -28,6 +28,8 @@
       </div>
     </div>
     <n-link class="go-home" to="/">home</n-link>
+    <a href="javascript:;" class="go-back" @click="goBack">back</a>
+    <!-- <n-link class="go-home" to="/">home</n-link> -->
   </div>
 </template>
 
@@ -54,6 +56,9 @@ export default {
     li[0].classList.add('active')
   },
   methods: {
+    goBack() {
+      this.$router.go(-1)
+    },
     // ...mapActions({
     //   setRecommendList: 'setRecommendList'
     // }),
