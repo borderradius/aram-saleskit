@@ -119,8 +119,104 @@
           </ul>
         </div>
       </div>
-      <div class="report-content2 mt-4">
+      <div class="report-content3 mt-4">
         <h2 class="mb-4">3. 추천 결과</h2>
+        <div class="recommend-result pb-10">
+          <div class="allbook-recommend-result">
+            <div class="recommend-title flex justify-between p-4 items-center">
+              <span class="text-md">
+                <img
+                  src="/allbook-off-ico.png"
+                  alt="전집아이콘"
+                  class="inline-block -mt-1 mr-2"
+                />
+                전집 &amp; 디지털 콘텐츠</span
+              >
+              <a
+                href="javascript:;"
+                class="all-view-btn text-white rounded-full px-4 py-2 text-sm"
+                @click="goAllView"
+              >
+                모두보기
+                <font-awesome-icon
+                  :icon="['fas', 'chevron-right']"
+                  class="chevron-right ml-1"
+                />
+              </a>
+            </div>
+            <ul class="flex p-4">
+              <li>
+                <div class="img-wrap relative">
+                  <img src="/rank-bg.png" alt="랭킹" class="absolute ranking" />
+                  <img
+                    src="/sk_a_1.png"
+                    alt="콘텐츠이미지"
+                    class="rounded-lg"
+                  />
+                </div>
+                <h4 class="mt-2">아람 베이비올 영어</h4>
+              </li>
+              <li class="mx-4">
+                <div class="img-wrap relative">
+                  <img src="/rank-bg.png" alt="랭킹" class="absolute ranking" />
+                  <img
+                    src="/sk_a_1.png"
+                    alt="콘텐츠이미지"
+                    class="rounded-lg"
+                  />
+                </div>
+                <h4 class="mt-2">뮤 널서리라임</h4>
+              </li>
+              <li>
+                <div class="img-wrap relative">
+                  <img
+                    src="/rank-third-bg.png"
+                    alt="랭킹"
+                    class="absolute ranking"
+                  />
+                  <img
+                    src="/sk_a_1.png"
+                    alt="콘텐츠이미지"
+                    class="rounded-lg"
+                  />
+                </div>
+                <h4 class="mt-2">자연이랑</h4>
+              </li>
+            </ul>
+          </div>
+          <div class="allbook-recommend-result mt-4">
+            <div class="recommend-title flex justify-between p-4 items-center">
+              <span class="text-md">
+                <img
+                  src="/smallbook-off-ico.png"
+                  alt="소전집아이콘"
+                  class="inline-block -mt-1 mr-2"
+                />
+                소전집</span
+              >
+              <a
+                href="javascript:;"
+                class="all-view-btn text-white rounded-full px-4 py-2 text-sm"
+                @click="goAllView"
+              >
+                모두보기
+                <font-awesome-icon
+                  :icon="['fas', 'chevron-right']"
+                  class="chevron-right ml-1"
+                />
+              </a>
+            </div>
+            <p class="p-8 text-center">업데이트 예정입니다.</p>
+          </div>
+          <div class="flex justify-between mt-16">
+            <n-link class="btn rounded-full flex-1 text-center mr-10" to="/"
+              >아람 북클럽 회원가입</n-link
+            >
+            <n-link class="btn rounded-full flex-1 text-center" to="/"
+              >확인</n-link
+            >
+          </div>
+        </div>
       </div>
     </div>
     <n-link class="go-home" to="/">home</n-link>
@@ -129,7 +225,15 @@
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    goAllView() {
+      this.$router.push({
+        name: 'consult-allView'
+      })
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped></style>

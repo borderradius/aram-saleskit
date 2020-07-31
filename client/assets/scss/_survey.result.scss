@@ -8,7 +8,7 @@
   .report-subject {
     @apply text-center py-4 bg-white rounded-lg text-2xl font-bold relative;
     color: #ff575d;
-    box-shadow: 0 0 30px 0 rgba(47, 218, 244, 0.2);
+    box-shadow: 0 0 10px 0 rgba(47, 218, 244, 0.2);
     small {
       @apply text-sm font-thin inline-block absolute right-0 bottom-0;
       right: 3rem;
@@ -18,7 +18,7 @@
   }
   .report-content {
     @apply bg-white rounded-lg mt-4 p-8;
-    box-shadow: 0 0 30px 0 rgba(47, 218, 244, 0.2);
+    box-shadow: 0 0 10px 0 rgba(47, 218, 244, 0.2);
   }
   .report-content1 {
     @extend .report-content;
@@ -47,7 +47,7 @@
       @apply rounded-lg;
       background: #ff575d;
       opacity: 0.8;
-      box-shadow: 0 0 20px 0 rgba(0, 65, 125, 0.2);
+      box-shadow: 0 0 10px 0 rgba(0, 65, 125, 0.2);
       .img-wrap {
         border: 5px solid #fff;
       }
@@ -200,5 +200,28 @@
   }
   .report-content3 {
     @extend .report-content;
+    .recommend-result {
+      @extend .wrap-common;
+      .recommend-title {
+        border-bottom: 1px solid #d4f3ad;
+        img {
+          width: 30px;
+        }
+        .all-view-btn {
+          background-color: #7fd334;
+        }
+      }
+      .img-wrap {
+        .ranking {
+          top: -6px;
+          left: -6px;
+          width: 50px;
+        }
+      }
+      .allbook-recommend-result {
+        @apply rounded-lg;
+        border: 1px solid #d4f3ad;
+      }
+    }
   }
 }

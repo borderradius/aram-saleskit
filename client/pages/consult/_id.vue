@@ -23,7 +23,7 @@
         </ul>
       </div>
     </div>
-    <div class="survey-result">
+    <div class="survey-result-wrap">
       <h2>2. 앙케이트 결과 <small>(참여일 : 2020-05-10)</small></h2>
       <ul class="flex flex-row flex-wrap justify-between">
         <li class="best">
@@ -95,8 +95,8 @@
             전집 &amp; 디지털 콘텐츠</span
           >
           <button
-            href="javascript:;"
             class="all-view-btn text-white rounded-full px-4 py-2 text-sm"
+            @click="goAllView"
           >
             모두보기
             <font-awesome-icon
@@ -144,8 +144,8 @@
             소전집</span
           >
           <button
-            href="javascript:;"
             class="all-view-btn text-white rounded-full px-4 py-2 text-sm"
+            @click="goAllView"
           >
             모두보기
             <font-awesome-icon
@@ -293,6 +293,13 @@ export default {
   layout: 'searchHistory',
   mounted() {
     console.log(this.$route.params.id)
+  },
+  methods: {
+    goAllView() {
+      this.$router.push({
+        name: 'consult-allView'
+      })
+    }
   }
 }
 </script>
