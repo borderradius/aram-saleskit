@@ -54,7 +54,10 @@ module.exports = {
   /*
    ** Nuxt.js modules
    */
-  modules: ['@nuxtjs/axios', '@nuxtjs/auth', 'nuxt-mq'],
+  modules: ['@nuxtjs/axios', '@nuxtjs/auth', 'nuxt-mq', '@nuxtjs/moment'],
+  moment: {
+    locales: ['ko']
+  },
   mq: {
     defaultBreakpoint: 'desktop',
     breakpoints: {

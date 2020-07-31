@@ -1,0 +1,106 @@
+.search-history {
+  @apply w-screen min-h-screen overflow-x-hidden;
+  background-color: rgba(126, 211, 52, 0.5);
+  .logo {
+    @apply inline-block ml-8 mt-8;
+    background: url('../image/bookclub-logo.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100px;
+    height: 50px;
+  }
+  .left-menu {
+    @apply pt-4 pr-4;
+    width: 300px;
+    background-color: #d4f3ad;
+    min-height: calc(100vh - 89px);
+    li {
+      @apply mb-4;
+      &.active {
+        @apply bg-white rounded-r-full;
+        a {
+          color: #fe8286;
+        }
+      }
+      a {
+        @apply block p-4 text-sm relative;
+        color: #60a81f;
+        img {
+          @apply w-8 inline-block;
+          &.first {
+            margin-top: -4px;
+            margin-right: 6px;
+          }
+          &.second {
+            margin-top: -4px;
+            margin-right: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+  .right-content {
+    @apply bg-white rounded-tl-lg w-full shadow-2xl -mt-16;
+
+    // .title {
+    //   @apply text-center py-8;
+    //   img {
+    //     width: 36px;
+    //     vertical-align: top;
+    //   }
+    //   strong {
+    //     color: #7fd334;
+    //     font-size: 1.8rem;
+    //   }
+    //   p {
+    //     @apply px-1;
+    //     font-size: 1.2rem;
+    //   }
+    // }
+    .content {
+      // @apply p-4;
+      // border-top: 8px solid #d4f3ad;
+      .product-list {
+        flex-wrap: wrap;
+        > li {
+          @apply mb-4;
+          $width: 47%;
+          width: $width;
+          margin-bottom: calc((50% - #{$width}) * 1.5);
+        }
+        .text-wrap {
+          li {
+            list-style-type: disc;
+            text-indent: 12px;
+          }
+        }
+      }
+      a {
+        @apply rounded-lg border border-gray-400 block relative p-8;
+        .rank {
+          @apply inline-block absolute;
+          line-height: 62px;
+          width: 40px;
+          height: 70px;
+          top: -30px;
+          left: -20px;
+          background-image: url('/rank-bg.png');
+          background-repeat: no-repeat;
+          background-size: 100%;
+          background-position: center center;
+        }
+        // .img-wrap {
+        img {
+          @apply rounded-lg;
+        }
+        // }
+      }
+    }
+  }
+
+  .go-signup {
+    @apply inline-block text-center text-white rounded-full p-4 w-full ml-4;
+    width: calc(100% - 1rem);
+    background-color: #ff575d;
+  }
+}

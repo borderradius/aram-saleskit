@@ -1,0 +1,120 @@
+.survey-detail {
+  .wrap-common {
+    @apply p-8;
+    border-bottom: 8px solid #d4f3ad;
+    h2 {
+      @apply mb-4;
+      small {
+        color: #999;
+      }
+    }
+  }
+  .customer-info {
+    @extend .wrap-common;
+    .table {
+      @apply text-sm rounded-lg;
+      border: 1px solid #e1e1e1;
+    }
+    .thead {
+      @apply p-4;
+      background: #f5f5f5;
+      color: #666;
+      li {
+        &:nth-child(1) {
+          width: 60px;
+        }
+        &:nth-child(2) {
+          width: 100px;
+        }
+        &:nth-child(3) {
+          width: 120px;
+        }
+        &:nth-child(4) {
+          width: 120px;
+        }
+        &:nth-child(5) {
+          width: 60px;
+        }
+        &:nth-child(6) {
+          width: 60px;
+        }
+        &:nth-child(7) {
+          width: 100px;
+        }
+      }
+    }
+    .tbody {
+      @apply p-4;
+      color: #333;
+      li {
+        &:nth-child(1) {
+          width: 60px;
+        }
+        &:nth-child(2) {
+          width: 100px;
+        }
+        &:nth-child(3) {
+          width: 120px;
+        }
+        &:nth-child(4) {
+          width: 120px;
+        }
+        &:nth-child(5) {
+          width: 60px;
+        }
+        &:nth-child(6) {
+          width: 60px;
+        }
+        &:nth-child(7) {
+          width: 100px;
+        }
+      }
+    }
+  }
+  .survey-result {
+    @extend .wrap-common;
+    ul {
+    }
+    li {
+      @apply mb-4 p-4;
+      box-sizing: border-box;
+      width: 30%;
+    }
+    .img-wrap {
+      @apply rounded-md relative;
+      padding-bottom: 83%;
+      border: 5px solid #e1e1e1;
+      // background-color: #e1e1e1;
+      overflow: hidden;
+      img {
+        position: absolute;
+        // height: 100%;
+      }
+    }
+    .score {
+      @apply px-4 py-1 rounded-full;
+      color: #61c11a;
+      border: 1px solid #61c11a;
+    }
+    .best {
+      @apply rounded-lg;
+      background: #ff575d;
+      opacity: 0.8;
+      box-shadow: 0 0 20px 0 rgba(0, 65, 125, 0.2);
+      .img-wrap {
+        border: 5px solid #fff;
+      }
+      .score {
+        color: #ff575d;
+        background: #fff;
+        border: 1px solid #fff;
+      }
+    }
+  }
+  .recommend-result {
+    @extend .wrap-common;
+  }
+  .payment-info {
+    @apply p-8;
+  }
+}

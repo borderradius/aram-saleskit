@@ -1,0 +1,76 @@
+/* purgecss start ignore */
+.consult {
+  .search-area {
+    @apply w-full p-8;
+    .datepicker-input {
+      @apply inline-block border rounded-md w-100;
+    }
+    .search-btn {
+      @apply block p-3 text-center text-white rounded-full w-3/5 mx-auto mt-8 text-xl;
+      background-color: #7fd334;
+    }
+    table {
+      @apply rounded-lg;
+      border: 1px solid #d4f3ad;
+      width: 100%;
+      border-collapse: inherit;
+    }
+    thead {
+      @apply rounded-lg;
+      background-color: #d4f3ad;
+      border-collapse: inherit;
+      th {
+        @apply py-2 text-gray-600;
+        &:nth-child(1) {
+          @apply rounded-tl-lg;
+          width: 110px;
+        }
+        &:nth-child(2) {
+          width: 140px;
+        }
+        &:nth-child(3) {
+          @apply rounded-tr-lg;
+        }
+      }
+    }
+    tbody {
+      td {
+        @apply p-2 text-gray-600;
+        // &:nth-child(2) {
+        //   @apply relative;
+        //   &:before {
+        //     content: '';
+        //     display: block;
+        //     position: absolute;
+        //     right: -1px;
+        //     top: 4px;
+        //     width: 1px;
+        //     height: 32px;
+        //     background: #d4f3ad;
+        //   }
+        //   &:after {
+        //     content: '';
+        //     display: block;
+        //     position: absolute;
+        //     left: -1px;
+        //     top: 4px;
+        //     width: 1px;
+        //     height: 32px;
+        //     background: #d4f3ad;
+        //   }
+        // }
+      }
+    }
+  }
+  .product-list {
+    border-top: 8px solid #d4f3ad;
+    .search-result-table {
+      border-collapse: inherit;
+      tbody tr td {
+        border-collapse: collapse;
+        border: none;
+      }
+    }
+  }
+}
+/* purgecss end ignore */

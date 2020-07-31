@@ -1,5 +1,6 @@
 <template>
-  <div class="container1 flex">
+  <div class="container1 flex relative">
+    <n-link to="/consult">상담이력 바로가기</n-link>
     <div class="flex item-centers justify-between card-wrapper">
       <n-link to="/survey" class="card flex-1">
         <p>어린이 선호도 앙케이트</p>

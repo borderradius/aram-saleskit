@@ -17,6 +17,7 @@
     "@fortawesome/vue-fontawesome": "^0.1.9",
     "@nuxtjs/auth": "^4.9.1",
     "@nuxtjs/axios": "^5.3.6",
+    "@nuxtjs/moment": "^1.6.1",
     "cross-env": "^5.2.0",
     "express": "^4.16.4",
     "file-loader": "^6.0.0",
@@ -27,7 +28,8 @@
     "vue-awesome-swiper": "^4.1.1",
     "vue-js-modal": "^2.0.0-rc.6",
     "vue-lottie": "^0.2.1",
-    "vue-ripple-directive": "^2.0.1"
+    "vue-ripple-directive": "^2.0.1",
+    "vuejs-datepicker": "^1.6.2"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^2.0.0",
