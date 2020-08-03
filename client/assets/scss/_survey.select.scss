@@ -15,10 +15,10 @@
   .select-img {
     @apply bg-white rounded-lg shadow-lg relative;
     width: 47%;
-    padding-top: 47%;
+    padding-top: 40%;
   }
   .img-select-inner {
-    @apply absolute right-0 bottom-0 rounded-lg bg-red-400;
+    @apply absolute right-0 bottom-0 rounded-lg bg-red-400 overflow-hidden;
     width: calc(100% - 1.4rem);
     height: calc(100% - 1.4rem);
     top: 0.7rem;

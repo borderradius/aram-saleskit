@@ -45,6 +45,7 @@
       </div>
     </div>
     <n-link class="go-home" to="/">home</n-link>
+    <a href="javascript:;" class="go-back" @click="goBack">back</a>
   </div>
 </template>
 
@@ -74,13 +75,20 @@ export default {
     }
   },
   mounted() {
-    const li = document.getElementsByClassName('leftMenu')
-    li[0].classList.add('active')
+    const type = this.$route.params.type || 'allbook'
+    if (type === 'allbook') {
+      this.checkNowMenu(0)
+    } else if (type === 'smallbook') {
+      this.checkNowMenu(1)
+    }
   },
   methods: {
     ...mapActions({
       setRecommendList: 'setRecommendList'
     }),
+    goBack() {
+      this.$router.go(-1)
+    },
     toggleMenuActive(index) {
       this.checkNowMenu(index)
       // TODO: 메뉴 클릭 시 해당 추천도서 셋팅

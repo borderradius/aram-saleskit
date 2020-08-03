@@ -12,10 +12,14 @@
           <SwiperSlide v-for="item in 9" :key="item">
             <div class="img-select-wrap flex items-center justify-between">
               <div class="img-select-left">
-                <div class="img-select-inner" @click="doClick">{{ item }}</div>
+                <div class="img-select-inner" @click="doClick">
+                  <img src="/sk_a_1.png" alt="선택이미지" />
+                </div>
               </div>
               <div class="img-select-right">
-                <div class="img-select-inner" @click="doClick" />
+                <div class="img-select-inner" @click="doClick">
+                  <img src="/sk_a_2.png" alt="선택이미지" />
+                </div>
               </div>
             </div>
           </SwiperSlide>

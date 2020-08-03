@@ -135,7 +135,7 @@
               <a
                 href="javascript:;"
                 class="all-view-btn text-white rounded-full px-4 py-2 text-sm"
-                @click="goAllView"
+                @click="goAllView('allbook')"
               >
                 모두보기
                 <font-awesome-icon
@@ -197,7 +197,7 @@
               <a
                 href="javascript:;"
                 class="all-view-btn text-white rounded-full px-4 py-2 text-sm"
-                @click="goAllView"
+                @click="goAllView('smallbook')"
               >
                 모두보기
                 <font-awesome-icon
@@ -227,9 +227,12 @@
 <script>
 export default {
   methods: {
-    goAllView() {
+    goAllView(type) {
       this.$router.push({
-        name: 'consult-allView'
+        name: 'product-recommend',
+        params: {
+          type
+        }
       })
     }
   }

@@ -12,7 +12,7 @@
             <li>487,000원</li>
           </ul>
         </div>
-        {{ recommendList }}
+        <!-- {{ recommendList }} -->
       </a>
     </li>
   </ul>
