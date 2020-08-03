@@ -7,7 +7,7 @@
         어린이 선호도 앙케이트
       </h1>
       <div class="private-agree-wrap p-2 bg-white rounded mt-24">
-        <label for="privateAgree" class="block">
+        <label for="privateAgree" class="flex items-center">
           <input
             id="privateAgree"
             v-model="privateAgree"
@@ -56,14 +56,14 @@
             class="flex items-center justify-between"
             @submit.prevent="handleSubmit(login)"
           >
-            <span class="text-gray-700 flex px-10 w-2/6"
-              >앙케이트 참여 상담 &dot; 내역</span
+            <span class="text-gray-700 flex-auto px-10 search-label"
+              >앙케이트 참여 상담 &middot; 내역</span
             >
             <ValidationProvider
               v-slot="{ errors }"
               rules="numeric|mobile"
               name="검색어"
-              class="flex w-4/6"
+              class="flex-auto w-4/6"
             >
               <div class="flex w-full">
                 <input
@@ -79,24 +79,6 @@
                   class="search-btn border text-center search-btn text-white px-5 h-10 inline-block"
                 >
                   검색
-                  <!-- <svg
-                  id="Capa_1"
-                  class="text-gray-600 h-8 w-8 fill-current"
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
-                  version="1.1"
-                  x="0px"
-                  y="0px"
-                  viewBox="0 0 56.966 56.966"
-                  style="enable-background:new 0 0 56.966 56.966;"
-                  xml:space="preserve"
-                  width="512px"
-                  height="512px"
-                >
-                  <path
-                    d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"
-                  />
-                </svg> -->
                 </button>
               </div>
               <span class="validate-error text-sm text-pink-600">{{
@@ -112,7 +94,25 @@
             고객님의 휴대폰 번호를 입력 후, 검색 버튼을 눌러주세요.
           </p>
         </div>
-        <table
+        <div v-if="tBody.length" class="table w-full">
+          <ul class="thead flex">
+            <li class="flex-auto">#</li>
+            <li class="flex-auto">자녀이름</li>
+            <li class="flex">전화번호</li>
+            <li class="flex">생년월일</li>
+            <li class="flex">나이</li>
+            <li class="flex">상담일자</li>
+          </ul>
+          <ul v-for="item in 5" :key="item" class="tbody flex">
+            <li class="flex-auto">99</li>
+            <li class="flex-auto">이아람</li>
+            <li class="flex">010-1234-1234</li>
+            <li class="flex">2012-12-12</li>
+            <li class="flex">만 8세</li>
+            <li class="flex">2020-05-15</li>
+          </ul>
+        </div>
+        <!-- <table
           v-if="tBody.length"
           class="table-basic search-result-table border rounded-lg"
         >
@@ -138,7 +138,7 @@
               <td>{{ item.consultDate }}</td>
             </tr>
           </tbody>
-        </table>
+        </table> -->
       </div>
       <n-link
         to="/survey/start"

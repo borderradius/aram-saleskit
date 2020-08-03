@@ -75,7 +75,7 @@ module.exports = {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    // baseURL: process.env.API_URL || 'https://api.utoring.co/'
+    baseURL: process.env.API_URL || 'https://sales-api.arambookclub.com'
   },
   auth: {
     // scopeKey: 'roles',

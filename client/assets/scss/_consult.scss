@@ -1,15 +1,93 @@
 /* purgecss start ignore */
 .consult {
+  .table {
+    @apply text-sm rounded-lg mt-4;
+    border: 1px solid #e1e1e1;
+  }
+  .thead {
+    @apply p-4 rounded-tl-lg rounded-tr-lg;
+    background: #f5f5f5;
+    color: #666;
+    li {
+      &:nth-child(1) {
+        width: 60px;
+      }
+      &:nth-child(2) {
+        width: 100px;
+      }
+      &:nth-child(3) {
+        width: 160px;
+      }
+      &:nth-child(4) {
+        width: 140px;
+      }
+      &:nth-child(5) {
+        width: 60px;
+      }
+      &:nth-child(6) {
+        width: 80px;
+      }
+      &:nth-child(7) {
+        width: 100px;
+      }
+    }
+  }
+  .tbody {
+    @apply p-4;
+    color: #333;
+    border-bottom: 3px solid #efefef;
+    &:last-child {
+      border-bottom: none;
+    }
+    li {
+      &:nth-child(1) {
+        width: 60px;
+      }
+      &:nth-child(2) {
+        width: 100px;
+      }
+      &:nth-child(3) {
+        width: 160px;
+      }
+      &:nth-child(4) {
+        width: 140px;
+      }
+      &:nth-child(5) {
+        width: 60px;
+      }
+      &:nth-child(6) {
+        width: 80px;
+      }
+      &:nth-child(7) {
+        width: 100px;
+      }
+    }
+  }
   .search-area {
     @apply w-full p-8;
+    .thead,
+    .tbody {
+      li {
+        @apply text-center;
+      }
+      li:nth-child(1) {
+        width: 120px;
+      }
+      li:nth-child(2) {
+        width: 120px;
+      }
+    }
+    .thead {
+      background-color: #d4f3ad;
+    }
     .datepicker-input {
-      @apply inline-block border rounded-md w-100;
+      @apply inline-block border rounded-md w-140 py-2 text-center;
     }
     .search-btn {
       @apply block p-3 text-center text-white rounded-full w-3/5 mx-auto mt-8 text-xl;
       background-color: #7fd334;
     }
-    table {
+    .datepicker-input table {
       @apply rounded-lg;
       border: 1px solid #d4f3ad;
       width: 100%;
@@ -36,29 +114,6 @@
     tbody {
       td {
         @apply p-2 text-gray-600;
-        // &:nth-child(2) {
-        //   @apply relative;
-        //   &:before {
-        //     content: '';
-        //     display: block;
-        //     position: absolute;
-        //     right: -1px;
-        //     top: 4px;
-        //     width: 1px;
-        //     height: 32px;
-        //     background: #d4f3ad;
-        //   }
-        //   &:after {
-        //     content: '';
-        //     display: block;
-        //     position: absolute;
-        //     left: -1px;
-        //     top: 4px;
-        //     width: 1px;
-        //     height: 32px;
-        //     background: #d4f3ad;
-        //   }
-        // }
       }
     }
   }

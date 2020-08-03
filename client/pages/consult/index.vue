@@ -1,68 +1,71 @@
 <template>
   <div class="consult">
     <div class="search-area">
-      <table>
-        <thead>
-          <tr>
-            <th>자녀이름</th>
-            <th>전화번호</th>
-            <th>상담기간</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <input type="text" class="w-full text-center border rounded-md" />
-            </td>
-            <td>
-              <input type="text" class="w-full text-center border rounded-md" />
-            </td>
-            <td class="text-center">
-              <Datepicker
-                class="inline-block"
-                :language="ko"
-                :format="dateFormatter"
-                input-class="datepicker-input"
-              />
-              ~
-              <Datepicker
-                class="inline-block"
-                :language="ko"
-                :format="dateFormatter"
-                input-class="datepicker-input"
-              />
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table w-full">
+        <ul class="thead flex">
+          <li class="">자녀이름</li>
+          <li class="">전화번호</li>
+          <li class="flex-auto">상담기간</li>
+        </ul>
+        <ul class="tbody flex">
+          <li class="px-1">
+            <input
+              type="text"
+              class="w-full text-center border rounded-md py-2"
+            />
+          </li>
+          <li class="px-1">
+            <input
+              type="text"
+              class="w-full text-center border rounded-md py-2"
+            />
+          </li>
+          <li class="flex-auto">
+            <Datepicker
+              class="inline-block mr-2"
+              :language="ko"
+              :format="dateFormatter"
+              :height="40"
+              input-class="datepicker-input"
+            />
+            ~
+            <Datepicker
+              class="inline-block ml-2"
+              :language="ko"
+              :format="dateFormatter"
+              input-class="datepicker-input"
+            />
+          </li>
+        </ul>
+      </div>
       <button class="search-btn">찾기</button>
     </div>
     <div v-if="tBody.length" class="product-list p-8">
-      <table class="table-basic search-result-table border rounded-lg">
-        <thead class="bg-gray-200">
-          <tr>
-            <th v-for="(item, index) in tHeader" :key="index">
-              {{ item.title }}
-            </th>
-          </tr>
-        </thead>
-        <tbody class="bg-gray-200 text-sm">
-          <tr
-            v-for="(item, index) in tBody"
-            :key="index"
-            class="bg-white mb-1"
-            @click="rowClick(item)"
-          >
-            <td>{{ item.rowNo }}</td>
-            <td>{{ item.childNm }}</td>
-            <td>{{ item.mobile }}</td>
-            <td>{{ item.birth }}</td>
-            <td>{{ item.age }}</td>
-            <td>{{ item.payment }}</td>
-            <td>{{ item.consultDate }}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table w-full">
+        <ul class="thead flex">
+          <li class="flex-auto">#</li>
+          <li class="flex-auto">자녀이름</li>
+          <li class="flex">전화번호</li>
+          <li class="flex">생년월일</li>
+          <li class="flex">나이</li>
+          <li class="flex">구매</li>
+          <li class="flex">상담일자</li>
+        </ul>
+        <ul
+          v-for="item in tBody"
+          :key="item"
+          class="tbody flex"
+          @click="rowClick(item)"
+        >
+          <li class="flex-auto">99</li>
+          <li class="flex-auto">이아람</li>
+          <li class="flex">010-1234-1234</li>
+          <li class="flex">2012-12-12</li>
+          <li class="flex">만 8세</li>
+          <li class="flex">O</li>
+          <li class="flex">2020-05-15</li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>

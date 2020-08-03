@@ -7,6 +7,7 @@
     top: 1rem;
   }
   .agree-content {
+    @apply text-xs;
     overflow: auto;
   }
   .private-agree-wrap {
@@ -15,6 +16,9 @@
   }
   .title {
     background: #2acdf3;
+  }
+  .search-label {
+    width: 290px;
   }
   .search-wrap {
     background-color: #defcb8;
@@ -34,6 +38,69 @@
     tbody tr td {
       border-collapse: collapse;
       border: none;
+    }
+  }
+  .table {
+    @apply text-sm rounded-lg mt-4;
+    border: 1px solid #e1e1e1;
+  }
+  .thead {
+    @apply p-4 rounded-tl-lg rounded-tr-lg;
+    background: #f5f5f5;
+    color: #666;
+    li {
+      &:nth-child(1) {
+        width: 60px;
+      }
+      &:nth-child(2) {
+        width: 100px;
+      }
+      &:nth-child(3) {
+        width: 160px;
+      }
+      &:nth-child(4) {
+        width: 140px;
+      }
+      &:nth-child(5) {
+        width: 60px;
+      }
+      &:nth-child(6) {
+        width: 120px;
+      }
+      // &:nth-child(7) {
+      //   width: 140px;
+      // }
+    }
+  }
+  .tbody {
+    @apply p-4;
+    color: #333;
+    border-bottom: 3px solid #efefef;
+    &:last-child {
+      border-bottom: none;
+    }
+    li {
+      &:nth-child(1) {
+        width: 60px;
+      }
+      &:nth-child(2) {
+        width: 100px;
+      }
+      &:nth-child(3) {
+        width: 160px;
+      }
+      &:nth-child(4) {
+        width: 140px;
+      }
+      &:nth-child(5) {
+        width: 60px;
+      }
+      &:nth-child(6) {
+        width: 120px;
+      }
+      // &:nth-child(7) {
+      //   width: 100px;
+      // }
     }
   }
 }
