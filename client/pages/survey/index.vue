@@ -212,13 +212,22 @@ export default {
     async goSurveyStart() {
       const { valid } = await this.$refs.provider.validate()
       const orgmId = await this.$refs.orgmId.validate()
+      if (!valid) {
+        alert('전화번호를 올바르게 입력해주세요')
+        return
+      }
+      if (!orgmId.valid) {
+        alert('상담자를 선택해주세요')
+        return
+      }
       if (valid && orgmId.valid) {
         this.$router.push({
           name: 'survey-start',
-          params: { mblTelNum: this.mblTelNum }
+          params: {
+            mblTelNum: this.mblTelNum,
+            orgmId: this.orgmId
+          }
         })
-      } else {
-        alert('전화번호를 입력해주세요.')
       }
     },
     rowClick(params) {

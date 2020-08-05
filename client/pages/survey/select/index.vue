@@ -9,16 +9,38 @@
       <div>
         <p class="sub-title">두 그림 중 좋아하는 것을 고르세요.</p>
         <Swiper ref="mySwiper" :options="swiperOptions">
-          <SwiperSlide v-for="item in 9" :key="item">
+          <SwiperSlide v-for="item in slideData" :key="item.cnslPoolSeqno">
             <div class="img-select-wrap flex items-center justify-between">
               <div class="img-select-left">
-                <div class="img-select-inner" @click="doClick">
-                  <img src="/sk_a_1.png" alt="선택이미지" />
+                <div
+                  class="img-select-inner"
+                  @click="
+                    doClick(
+                      item.cnslPoolSeqno,
+                      item.answerList[0].cnslQstAnsrEduCd
+                    )
+                  "
+                >
+                  <img
+                    :src="item.answerList[0].cnslQstAnsrImage"
+                    alt="선택이미지"
+                  />
                 </div>
               </div>
               <div class="img-select-right">
-                <div class="img-select-inner" @click="doClick">
-                  <img src="/sk_a_2.png" alt="선택이미지" />
+                <div
+                  class="img-select-inner"
+                  @click="
+                    doClick(
+                      item.cnslPoolSeqno,
+                      item.answerList[1].cnslQstAnsrEduCd
+                    )
+                  "
+                >
+                  <img
+                    :src="item.answerList[1].cnslQstAnsrImage"
+                    alt="선택이미지"
+                  />
                 </div>
               </div>
             </div>
@@ -51,7 +73,9 @@ export default {
       swiperOptions: {
         allowTouchMove: false
       },
-      isComplete: false
+      isComplete: false,
+      slideData: [],
+      counselTestPaper: []
     }
   },
   computed: {
@@ -60,15 +84,16 @@ export default {
     }
   },
   async mounted() {
-    console.warn(this.$route.params)
-    // TODO: 상담지 api call
     try {
-      const params = Object.assign(this.$route.params)
+      const params = this._.cloneDeep(this.$route.params)
       delete params.staff
       const { result } = await this.$axios.$get('/counsel/testpaper', {
         params
       })
       console.log(result)
+      this.slideData = result.counselTestPaper
+      this.slideData.cstpMngrSeqno = result.cstpMngrSeqno
+      this.slideData.agerCoursCd = result.agerCoursCd
     } catch (e) {
       console.log(e)
     }
@@ -77,21 +102,42 @@ export default {
     goBack() {
       this.$router.go(-1)
     },
-    async doClick() {
+    /**
+     * ? 상담결과 저장후 상세값 리턴함.
+     * ? 리턴값을 라우팅하면서 넘김
+     * ? 그러면 넘어가는 페이지에서 상세정보api 호출할 필요 없음.
+     */
+    goResult(params) {
+      setTimeout(() => {
+        this.isComplete = false
+        this.$router.push({
+          name: 'survey-result',
+          params
+        })
+      }, 2000)
+    },
+    async doClick(cnslPoolSeqno, choicedAnswerEduCd) {
+      // 클릭할 때 마다 counselTestPaper에 데이터 푸쉬
+      this.counselTestPaper.push({
+        cnslPoolSeqno,
+        choicedAnswerEduCd
+      })
       if (this.nowSlidePage === 9) {
+        const params = this.$route.params
+        params.cstpMngrSeqno = this.slideData.cstpMngrSeqno
+        params.agerCoursCd = this.slideData.agerCoursCd
+        params.counselTestPaper = this.counselTestPaper
         // TODO: 앙케이트 저장 api call
         try {
-          await this.$axios.post()
+          this.isComplete = true
+          const { result } = await this.$axios.$post(
+            '/counsel/testpaper/content',
+            params
+          )
+          await this.goResult(result)
         } catch (e) {
           console.log(e)
         }
-        this.isComplete = true
-        const $this = this
-        window.setTimeout(function() {
-          this.isComplete = false
-          $this.$router.push('/survey/result')
-        }, 2000)
-        return
       }
       if (this.nowSlidePage !== 9) this.nowSlidePage++
       if (this.nowSlidePage < 10) this.swiper.slideTo(this.nowSlidePage - 1)

@@ -102,7 +102,6 @@ export default {
     return {
       searchWord: '',
       consult: {
-        staff: '',
         chldNm: '구충모',
         chldBthYmd: '19840528'
       }
@@ -118,6 +117,7 @@ export default {
     goConsult() {
       const params = {
         mblTelNum: this.$route.params.mblTelNum,
+        orgmId: this.$route.params.orgmId,
         ...this.consult
       }
 

@@ -319,8 +319,6 @@ export default {
      */
     getCnslResult(arr) {
       const list = Object.assign(arr)
-      // console.log(arr)
-      // console.log(list)
       // 스코어 중 가장 큰 수를 구하고
       const scoreList = list.map((item) => item.asctEduCoursChoNcnt)
       const bigScore = Math.max.apply(null, scoreList)
@@ -330,7 +328,6 @@ export default {
           ? (list[index].isBest = true)
           : (list[index].isBest = false)
       }
-      // console.warn(list)
       return list
     },
     goSurveySelect() {
