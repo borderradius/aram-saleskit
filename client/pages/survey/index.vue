@@ -51,27 +51,60 @@
       <div
         class="p-2 relative mx-auto text-gray-600 search-wrap rounded-lg mt-4"
       >
+        <form class="flex items-center justify-between pr-8">
+          <span class="text-gray-700 flex-auto px-10 search-label">상담자</span>
+          <ValidationProvider
+            ref="orgmId"
+            v-slot="{ errors }"
+            rules="required"
+            name="상담자"
+            class="flex-auto w-4/6"
+          >
+            <div class="flex w-full">
+              <select
+                v-model="orgmId"
+                name="상담자"
+                class="bg-white h-full p-1 text-sm focus:outline-none text-lg inline-block rounded-lg w-full"
+              >
+                <option value="">상담자를 선택</option>
+                <option
+                  v-for="item in orgmList"
+                  :key="item.orgmId"
+                  :value="item.orgmId"
+                  >{{ item.orgmNm }}</option
+                >
+              </select>
+            </div>
+            <span class="validate-error text-sm text-pink-600">{{
+              errors[0]
+            }}</span>
+          </ValidationProvider>
+        </form>
+      </div>
+      <div
+        class="p-2 relative mx-auto text-gray-600 search-wrap rounded-lg mt-4"
+      >
         <ValidationObserver v-slot="{ handleSubmit }">
           <form
             class="flex items-center justify-between"
-            @submit.prevent="handleSubmit(login)"
+            @submit.prevent="handleSubmit(getConsultList)"
           >
             <span class="text-gray-700 flex-auto px-10 search-label"
               >앙케이트 참여 상담 &middot; 내역</span
             >
             <ValidationProvider
+              ref="provider"
               v-slot="{ errors }"
-              rules="numeric|mobile"
+              rules="numeric|mobile|required"
               name="검색어"
               class="flex-auto w-4/6"
             >
               <div class="flex w-full">
                 <input
-                  v-model="searchWord"
+                  v-model="mblTelNum"
                   class="bg-white h-10 px-5 text-sm focus:outline-none text-2xl inline-block search-input w-4/5"
                   type="search"
                   name="search"
-                  placeholder="01000000000"
                 />
 
                 <button
@@ -88,10 +121,10 @@
           </form>
         </ValidationObserver>
       </div>
-      <div class="bg-white mt-2">
+      <div class="bg-white mt-4">
         <div v-if="!tBody.length" class="border border-1 h-5p py-20 rounded-lg">
           <p class="text-gray-600 text-center">
-            고객님의 휴대폰 번호를 입력 후, 검색 버튼을 눌러주세요.
+            {{ noDataSentence }}
           </p>
         </div>
         <div v-if="tBody.length" class="table w-full">
@@ -103,48 +136,32 @@
             <li class="flex">나이</li>
             <li class="flex">상담일자</li>
           </ul>
-          <ul v-for="item in 5" :key="item" class="tbody flex">
-            <li class="flex-auto">99</li>
-            <li class="flex-auto">이아람</li>
-            <li class="flex">010-1234-1234</li>
-            <li class="flex">2012-12-12</li>
-            <li class="flex">만 8세</li>
-            <li class="flex">2020-05-15</li>
+          <ul
+            v-for="(item, index) in tBody"
+            :key="index"
+            class="tbody flex"
+            @click="rowClick(item)"
+          >
+            <li class="flex-auto">{{ item.cnslNo }}</li>
+            <li class="flex-auto">{{ item.chldNm }}</li>
+            <li class="flex">{{ item.mblTelNum }}</li>
+            <li class="flex">{{ item.chldBthYmd }}</li>
+            <li class="flex">{{ item.ageNm }}</li>
+            <li class="flex">{{ item.cnslDttm }}</li>
           </ul>
         </div>
-        <!-- <table
-          v-if="tBody.length"
-          class="table-basic search-result-table border rounded-lg"
-        >
-          <thead class="bg-gray-200">
-            <tr>
-              <th v-for="(item, index) in tHeader" :key="index">
-                {{ item.title }}
-              </th>
-            </tr>
-          </thead>
-          <tbody class="bg-gray-200 text-sm">
-            <tr
-              v-for="(item, index) in tBody"
-              :key="index"
-              class="bg-white mb-1"
-              @click="rowClick(item)"
-            >
-              <td>{{ item.rowNo }}</td>
-              <td>{{ item.childNm }}</td>
-              <td>{{ item.mobile }}</td>
-              <td>{{ item.birth }}</td>
-              <td>{{ item.age }}</td>
-              <td>{{ item.consultDate }}</td>
-            </tr>
-          </tbody>
-        </table> -->
       </div>
-      <n-link
+      <button
+        class="btn button-info w-4/6 block text-center mt-8 text-xl font-extrabold m-auto rounded-full"
+        @click="goSurveyStart"
+      >
+        앙케이트 시작하기
+      </button>
+      <!-- <n-link
         to="/survey/start"
         class="btn button-info w-4/6 block text-center mt-8 text-xl font-extrabold m-auto rounded-full"
         >앙케이트 시작하기</n-link
-      >
+      > -->
       <n-link class="go-home" to="/">home</n-link>
       <span class="bookclub-logo">북클럽 이미지</span>
     </div>
@@ -156,129 +173,10 @@ export default {
   data() {
     return {
       privateAgree: false,
-      searchWord: null,
-      tBody: [
-        {
-          rowNo: 1,
-          childNm: '김자녀',
-          mobile: '010-1234-1234',
-          birth: '1984-05-28',
-          age: '37',
-          consultDate: '2020-05-15'
-        },
-        {
-          rowNo: 1,
-          childNm: '김자녀',
-          mobile: '010-1234-1234',
-          birth: '1984-05-28',
-          age: '37',
-          consultDate: '2020-05-15'
-        },
-        {
-          rowNo: 1,
-          childNm: '김자녀',
-          mobile: '010-1234-1234',
-          birth: '1984-05-28',
-          age: '37',
-          consultDate: '2020-05-15'
-        },
-        {
-          rowNo: 1,
-          childNm: '김자녀',
-          mobile: '010-1234-1234',
-          birth: '1984-05-28',
-          age: '37',
-          consultDate: '2020-05-15'
-        },
-        {
-          rowNo: 5,
-          childNm: '김자녀',
-          mobile: '010-1234-1234',
-          birth: '1984-05-28',
-          age: '37',
-          consultDate: '2020-05-15'
-        },
-        {
-          rowNo: 1,
-          childNm: '김자녀',
-          mobile: '010-1234-1234',
-          birth: '1984-05-28',
-          age: '37',
-          consultDate: '2020-05-15'
-        },
-        {
-          rowNo: 1,
-          childNm: '김자녀',
-          mobile: '010-1234-1234',
-          birth: '1984-05-28',
-          age: '37',
-          consultDate: '2020-05-15'
-        },
-        {
-          rowNo: 1,
-          childNm: '김자녀',
-          mobile: '010-1234-1234',
-          birth: '1984-05-28',
-          age: '37',
-          consultDate: '2020-05-15'
-        },
-        {
-          rowNo: 1,
-          childNm: '김자녀',
-          mobile: '010-1234-1234',
-          birth: '1984-05-28',
-          age: '37',
-          consultDate: '2020-05-15'
-        },
-        {
-          rowNo: 10,
-          childNm: '김자녀',
-          mobile: '010-1234-1234',
-          birth: '1984-05-28',
-          age: '37',
-          consultDate: '2020-05-15'
-        },
-        {
-          rowNo: 1,
-          childNm: '김자녀',
-          mobile: '010-1234-1234',
-          birth: '1984-05-28',
-          age: '37',
-          consultDate: '2020-05-15'
-        },
-        {
-          rowNo: 1,
-          childNm: '김자녀',
-          mobile: '010-1234-1234',
-          birth: '1984-05-28',
-          age: '37',
-          consultDate: '2020-05-15'
-        },
-        {
-          rowNo: 1,
-          childNm: '김자녀',
-          mobile: '010-1234-1234',
-          birth: '1984-05-28',
-          age: '37',
-          consultDate: '2020-05-15'
-        },
-        {
-          rowNo: 1,
-          childNm: '김자녀',
-          mobile: '010-1234-1234',
-          birth: '1984-05-28',
-          age: '37',
-          consultDate: '2020-05-15'
-        },
-        {
-          rowNo: 15,
-          childNm: '김자녀',
-          mobile: '010-1234-1234',
-          birth: '1984-05-28',
-          age: '37',
-          consultDate: '2020-05-15'
-        }
-      ],
+      mblTelNum: '01000000000',
+      orgmId: '',
+      orgmList: [],
+      tBody: [],
       tHeader: [
         { title: '#' },
         { title: '자녀이름' },
@@ -286,17 +184,71 @@ export default {
         { title: '생년월일' },
         { title: '나이' },
         { title: '상담일' }
-      ]
+      ],
+      noDataSentence: '고객님의 휴대폰 번호를 입력 후, 검색 버튼을 눌러주세요.'
     }
   },
+  async mounted() {
+    // const a = [1, 2, 3, { a: 'a' }]
+    // const b = this._.cloneDeep(a)
+    // console.log(b)
+    this.orgmList = await this.getOrgm()
+  },
   methods: {
-    rowClick(item) {
-      this.$router.push({
-        name: `${this.$route.name}-id`,
-        params: {
-          id: item.rowNo
+    /**
+     * 상담자 리스트 가져오기
+     */
+    async getOrgm() {
+      try {
+        const { result } = await this.$axios.$get('/auth/orgm')
+        return result
+      } catch (e) {
+        console.log(e)
+      }
+    },
+    /**
+     * 앙케이트 전 자식이름, 생년월일 입력페이지 이동
+     */
+    async goSurveyStart() {
+      const { valid } = await this.$refs.provider.validate()
+      const orgmId = await this.$refs.orgmId.validate()
+      if (valid && orgmId.valid) {
+        this.$router.push({
+          name: 'survey-start',
+          params: { mblTelNum: this.mblTelNum }
+        })
+      } else {
+        alert('전화번호를 입력해주세요.')
+      }
+    },
+    rowClick(params) {
+      const item = {
+        orgmId: this.orgmId,
+        ...params
+      }
+      if (this.orgmId) {
+        this.$router.push({
+          name: 'survey-result-detail',
+          params: {
+            item
+          }
+        })
+      } else {
+        alert('상담자를 선택해주세요.')
+      }
+    },
+    async getConsultList() {
+      try {
+        const { result } = await this.$axios.$get(
+          `/recipient/${this.mblTelNum}/counsel`
+        )
+        this.tBody = result
+        if (!result.length) {
+          this.noDataSentence = '검색하신 핸드폰으로 상담했던 이력이 없습니다.'
         }
-      })
+      } catch (e) {
+        console.log(e)
+      }
     }
   }
 }

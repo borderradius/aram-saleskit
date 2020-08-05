@@ -13,7 +13,20 @@
       <div class="report-content1">
         <h2 class="mb-4">1. 우리아이 선호 영역</h2>
         <ul class="flex flex-row flex-wrap justify-between">
-          <li class="best">
+          <li
+            v-for="item in detail.cnslResult"
+            :key="item.asctEduCoursNm"
+            :class="[item.isBest ? 'best' : '']"
+          >
+            <div class="img-wrap">
+              <img :src="item.ansrImgUrl" :alt="item.asctEduCoursNm" />
+            </div>
+            <div class="text-wrap flex justify-between items-center mt-2">
+              <span>{{ item.asctEduCoursNm }}</span>
+              <span class="score">{{ item.asctEduCoursChoNcnt }}점</span>
+            </div>
+          </li>
+          <!-- <li class="best">
             <div class="img-wrap">
               <img src="/sk_a_1.png" alt="앙케이트이미지" />
             </div>
@@ -66,7 +79,7 @@
               <span>VI. 자연 탐구 영역</span>
               <span class="score">1점</span>
             </div>
-          </li>
+          </li> -->
         </ul>
       </div>
       <div class="report-content2 mt-4 pb-2">
@@ -145,7 +158,21 @@
               </a>
             </div>
             <ul class="flex p-4">
-              <li>
+              <li
+                v-for="item in detail.rcmdProdList.rglrSrsRcmdProdList"
+                :key="item.prodId"
+              >
+                <div class="img-wrap relative">
+                  <!-- <img src="/rank-bg.png" alt="랭킹" class="absolute ranking" /> -->
+                  <img
+                    :src="item.thnlUrl"
+                    :alt="item.prodNm"
+                    class="rounded-lg"
+                  />
+                </div>
+                <h4 class="mt-2">{{ item.prodNm }}</h4>
+              </li>
+              <!-- <li>
                 <div class="img-wrap relative">
                   <img src="/rank-bg.png" alt="랭킹" class="absolute ranking" />
                   <img
@@ -181,7 +208,7 @@
                   />
                 </div>
                 <h4 class="mt-2">자연이랑</h4>
-              </li>
+              </li> -->
             </ul>
           </div>
           <div class="allbook-recommend-result mt-4">
@@ -206,15 +233,39 @@
                 />
               </a>
             </div>
-            <p class="p-8 text-center">업데이트 예정입니다.</p>
+            <ul class="flex p-4">
+              <li
+                v-for="item in detail.rcmdProdList.mnSrsRcmdProdList"
+                :key="item.prodId"
+              >
+                <div class="img-wrap relative">
+                  <img
+                    :src="item.thnlUrl"
+                    :alt="item.prodNm"
+                    class="rounded-lg"
+                  />
+                </div>
+                <h4 class="mt-2">{{ item.prodNm }}</h4>
+              </li>
+            </ul>
+            <!-- <p class="p-8 text-center">업데이트 예정입니다.</p> -->
           </div>
           <div class="flex justify-between mt-16">
-            <n-link class="btn rounded-full flex-1 text-center mr-10" to="/"
+            <button
+              class="btn rounded-full flex-1 text-center mr-10"
+              @click="goSurveySelect"
+            >
+              앙케이트 다시하기
+            </button>
+            <button class="btn rounded-full flex-1 text-center">
+              기존 결과로 상담받기
+            </button>
+            <!-- <n-link class="btn rounded-full flex-1 text-center mr-10" to="/"
               >아람 북클럽 회원가입</n-link
             >
             <n-link class="btn rounded-full flex-1 text-center" to="/"
               >확인</n-link
-            >
+            > -->
           </div>
         </div>
       </div>
@@ -227,15 +278,67 @@
 
 <script>
 export default {
+  data() {
+    return {
+      detail: {
+        rcmdProdList: {
+          rglrSrsRcmdProdList: []
+        }
+      },
+      cnslResult: []
+    }
+  },
+  // computed: {
+  //   cptdCnslResult() {
+  //     const list = this.detail.cnslResult
+  //     console.log(list)
+  //     // 스코어 중 가장 큰 수를 구하고
+  //     const bigScore = list.map((item) => item.asctEduCoursChoNcnt)
+  //     console.log(bigScore)
+  //     // 큰 스코어랑 일치하면 랭크 true 줌.
+  //     return ''
+  //   }
+  // },
   async mounted() {
-    const { mblTelNum, cnslPtclSeqno } = this.$route.params.item
+    const { mblTelNum, cnslPtclSeqno, orgmId } = this.$route.params.item
+    console.log(mblTelNum, cnslPtclSeqno, orgmId)
     try {
-      await this.$axios.$get(`/recipient/${mblTelNum}/counsel/${cnslPtclSeqno}`)
+      const { result } = await this.$axios.$get(
+        `/recipient/${mblTelNum}/counsel/${cnslPtclSeqno}`
+      )
+      this.detail = this._.cloneDeep(result)
+      this.detail.cnslResult = this.getCnslResult(result.cnslResult)
     } catch (e) {
       console.log(e)
     }
+    // this.getCnslResult()
   },
   methods: {
+    /**
+     * 랭크값 추가하기
+     */
+    getCnslResult(arr) {
+      const list = Object.assign(arr)
+      // console.log(arr)
+      // console.log(list)
+      // 스코어 중 가장 큰 수를 구하고
+      const scoreList = list.map((item) => item.asctEduCoursChoNcnt)
+      const bigScore = Math.max.apply(null, scoreList)
+      // 큰 스코어랑 일치하면 랭크 true 줌.
+      for (const [index, item] of list.entries()) {
+        item.asctEduCoursChoNcnt === bigScore
+          ? (list[index].isBest = true)
+          : (list[index].isBest = false)
+      }
+      // console.warn(list)
+      return list
+    },
+    goSurveySelect() {
+      console.log('앙케이트 화면으로 이동')
+      this.$router.push('/survey/select', {
+        params
+      })
+    },
     goAllView(type) {
       this.$router.push({
         name: 'product-recommend',

@@ -45,7 +45,8 @@ module.exports = {
     { src: '~/plugins/mixins.js', ssr: false },
     { src: '~/plugins/fontawesome.js', ssr: false },
     { src: '~/plugins/GlobalComponents.js', ssr: false },
-    { src: '~/plugins/vue-js-modal', ssr: false }
+    { src: '~/plugins/vue-js-modal', ssr: false },
+    { src: '~/plugins/lodash', ssr: false }
   ],
   /*
    ** Nuxt.js dev-modules
@@ -88,12 +89,13 @@ module.exports = {
       local: {
         tokenType: 'Bearer',
         endpoints: {
-          // login: {
-          //   url: '/auth/login',
-          //   method: 'post',
-          //   propertyName: 'result.userToken'
-          // },
-          logout: false
+          login: {
+            url: '/auth/login',
+            method: 'post',
+            propertyName: 'result.orgmToken'
+          },
+          logout: false,
+          user: false
           // user: {
           //   url: '/member/selMemInfo',
           //   method: 'get',

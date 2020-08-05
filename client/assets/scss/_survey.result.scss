@@ -221,6 +221,12 @@
       .allbook-recommend-result {
         @apply rounded-lg;
         border: 1px solid #d4f3ad;
+        li {
+          width: 30%;
+          &:nth-child(2) {
+            margin: 0 5%;
+          }
+        }
       }
     }
   }

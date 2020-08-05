@@ -45,11 +45,11 @@
         <ul class="thead flex">
           <li class="flex-auto">#</li>
           <li class="flex-auto">자녀이름</li>
-          <li class="flex">전화번호</li>
-          <li class="flex">생년월일</li>
-          <li class="flex">나이</li>
-          <li class="flex">구매</li>
-          <li class="flex">상담일자</li>
+          <li class="">전화번호</li>
+          <li class="">생년월일</li>
+          <li class="">나이</li>
+          <li class="">구매</li>
+          <li class="">상담일자</li>
         </ul>
         <ul
           v-for="item in tBody"
@@ -59,11 +59,11 @@
         >
           <li class="flex-auto">99</li>
           <li class="flex-auto">이아람</li>
-          <li class="flex">010-1234-1234</li>
-          <li class="flex">2012-12-12</li>
-          <li class="flex">만 8세</li>
-          <li class="flex">O</li>
-          <li class="flex">2020-05-15</li>
+          <li class="">010-1234-1234</li>
+          <li class="">2012-12-12</li>
+          <li class="">만 8세</li>
+          <li class="">O</li>
+          <li class="">2020-05-15</li>
         </ul>
       </div>
     </div>

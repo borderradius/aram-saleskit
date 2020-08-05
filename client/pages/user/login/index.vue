@@ -15,7 +15,7 @@
             >
               <div class="login">
                 <input
-                  v-model="user.userLoginId"
+                  v-model="user.orgLoginId"
                   type="text"
                   name="아이디"
                   class="login_label mb-4 mt-6"
@@ -33,7 +33,7 @@
             >
               <div class="login">
                 <input
-                  v-model="user.userPassword"
+                  v-model="user.orgPassword"
                   type="password"
                   name="비밀번호"
                   class="login_label my-4"
@@ -71,7 +71,7 @@
           </form>
         </ValidationObserver>
       </div>
-      <modal name="hello-world">
+      <modal name="account-not-match">
         <div class="alert-content">
           <p class="mt-6">입력하신 아이디 또는 비밀번호가</p>
           <p>일치하지 않습니다.</p>
@@ -95,8 +95,8 @@ export default {
   data() {
     return {
       user: {
-        userLoginId: 'asdfsafsd',
-        userPassword: 'sdfsfdsfasd'
+        orgLoginId: 'asdfsafsd',
+        orgPassword: 'sdfsfdsfasd'
       },
       saveId: false,
       savePw: false
@@ -111,15 +111,20 @@ export default {
     })
   },
   methods: {
-    login() {
-      // TODO: 로그인 api 필요
-      this.show()
+    async login() {
+      try {
+        await this.$store.dispatch('user/login', this.user)
+        this.$router.push('/')
+      } catch (e) {
+        console.log(e)
+        this.show()
+      }
     },
     show() {
-      this.$modal.show('hello-world')
+      this.$modal.show('account-not-match')
     },
     hide() {
-      this.$modal.hide('hello-world')
+      this.$modal.hide('account-not-match')
     }
   }
 }

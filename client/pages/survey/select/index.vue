@@ -27,6 +27,7 @@
         <div class="pagination">{{ nowSlidePage }} / 9</div>
       </div>
     </div>
+    <a href="javascript:;" class="go-back" @click="goBack">back</a>
     <n-link class="go-home" to="/">home</n-link>
     <span class="bookclub-logo">북클럽 이미지</span>
     <n-link class="go-main" to="/">다음에 하기</n-link>
@@ -58,9 +59,32 @@ export default {
       return this.$refs.mySwiper.$swiper
     }
   },
+  async mounted() {
+    console.warn(this.$route.params)
+    // TODO: 상담지 api call
+    try {
+      const params = Object.assign(this.$route.params)
+      delete params.staff
+      const { result } = await this.$axios.$get('/counsel/testpaper', {
+        params
+      })
+      console.log(result)
+    } catch (e) {
+      console.log(e)
+    }
+  },
   methods: {
-    doClick() {
+    goBack() {
+      this.$router.go(-1)
+    },
+    async doClick() {
       if (this.nowSlidePage === 9) {
+        // TODO: 앙케이트 저장 api call
+        try {
+          await this.$axios.post()
+        } catch (e) {
+          console.log(e)
+        }
         this.isComplete = true
         const $this = this
         window.setTimeout(function() {
