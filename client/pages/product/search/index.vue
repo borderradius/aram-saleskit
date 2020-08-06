@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul
-      v-if="searchList !== 'brosure'"
+      v-if="searchType !== 'brosure'"
       class="flex flex-row flex-wrap justify-between product-list"
     >
       <li v-for="item in searchList" :key="item.brchSeqno">
@@ -21,14 +21,17 @@
     </ul>
     <ul v-else class="flex flex-row flex-wrap product-list-brosure">
       <li v-for="item in searchList" :key="item.brchSeqno" class="flex">
-        <a href="javascript:;">
-          <img src="/product-img.png" alt="상품이미지" />
+        <a href="javascript:;" @click="popImage(item.brchFilePathNm)">
+          <img :src="item.brchFilePathNm" :alt="item.brchNm" />
           <div class="text-wrap pt-4">
-            <h4 class="font-bold text-lg mb-2">베이비올 영어</h4>
+            <h4 class="font-bold text-lg mb-2">{{ item.brchNm }}</h4>
           </div>
         </a>
       </li>
     </ul>
+    <modal name="brosure-image" width="90%" height="auto">
+      <img :src="brosureImgUrl" alt="브로슈어이미지" />
+    </modal>
   </div>
 </template>
 
@@ -37,11 +40,29 @@ import { mapState } from 'vuex'
 
 export default {
   layout: 'productSearch',
+  data() {
+    return {
+      brosureImgUrl: ''
+    }
+  },
   computed: {
     ...mapState({
       searchList: (state) => state.searchList,
       searchType: (state) => state.searchType
     })
+  },
+  methods: {
+    popImage(imgUrl) {
+      // console.log(imgUrl)
+      this.show()
+      this.brosureImgUrl = imgUrl
+    },
+    show() {
+      this.$modal.show('brosure-image')
+    },
+    hide() {
+      this.$modal.hide('brosure-image')
+    }
   }
 }
 </script>
