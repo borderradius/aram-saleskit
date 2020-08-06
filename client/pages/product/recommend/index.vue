@@ -27,6 +27,9 @@ export default {
     ...mapState({
       recommendList: (state) => state.recommendList
     })
+  },
+  mounted() {
+    console.warn(this.$route.params)
   }
 }
 </script>

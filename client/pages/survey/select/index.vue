@@ -86,7 +86,6 @@ export default {
   async mounted() {
     try {
       const params = this._.cloneDeep(this.$route.params)
-      delete params.staff
       const { result } = await this.$axios.$get('/counsel/testpaper', {
         params
       })

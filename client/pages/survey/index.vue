@@ -147,7 +147,7 @@
             <li class="flex">{{ item.mblTelNum }}</li>
             <li class="flex">{{ item.chldBthYmd }}</li>
             <li class="flex">{{ item.ageNm }}</li>
-            <li class="flex">{{ item.cnslDttm }}</li>
+            <li class="flex">{{ item.cnslDttm | dateformat }}</li>
           </ul>
         </div>
       </div>
@@ -170,6 +170,11 @@
 
 <script>
 export default {
+  filters: {
+    dateformat(value) {
+      return value.substring(0, 10)
+    }
+  },
   data() {
     return {
       privateAgree: false,
@@ -239,7 +244,7 @@ export default {
         this.$router.push({
           name: 'survey-result-detail',
           params: {
-            item
+            ...item
           }
         })
       } else {

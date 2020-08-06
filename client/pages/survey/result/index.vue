@@ -8,7 +8,9 @@
     <div class="flex-initial h-5/6 w-4/5 mt-24">
       <p class="report-subject">
         앙케이트 결과 REPORT
-        <small>이아람 / 2020-07-01</small>
+        <small
+          >{{ detail.chldNm }} / {{ detail.chldBthYmd | birthFormat }}</small
+        >
       </p>
       <div class="report-content1">
         <h2 class="mb-4">1. 우리아이 선호 영역</h2>
@@ -200,8 +202,11 @@
             <p v-else class="p-8 text-center">업데이트 예정입니다.</p>
           </div>
           <div class="flex justify-between mt-16">
-            <n-link class="btn rounded-full flex-1 text-center mr-10" to="/"
-              >아람 북클럽 회원가입</n-link
+            <a
+              href="https://arambookclub.com/join/step01"
+              target="_blank"
+              class="btn rounded-full flex-1 text-center mr-10"
+              >아람 북클럽 회원가입</a
             >
             <n-link class="btn rounded-full flex-1 text-center" to="/"
               >확인</n-link
@@ -212,12 +217,24 @@
     </div>
     <n-link class="go-home" to="/">home</n-link>
     <span class="bookclub-logo">북클럽 이미지</span>
-    <a href="javascript:;" class="go-back" @click="goBack">back</a>
+    <!-- <a href="javascript:;" class="go-back" @click="goBack">back</a> -->
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
+  filters: {
+    birthFormat(value) {
+      if (value) {
+        const str1 = value.substring(0, 4)
+        const str2 = value.substring(4, 6)
+        const str3 = value.substring(6, 8)
+        return `${str1}-${str2}-${str3}`
+      }
+    }
+  },
   data() {
     return {
       detail: {
@@ -229,18 +246,14 @@ export default {
     }
   },
   mounted() {
-    // console.warn(this.$route.params)
     this.detail = this._.cloneDeep(this.$route.params)
     this.detail.cnslResult = this.getCnslResult(this.$route.params.cnslResult)
-    // const { mblTelNum, cnslPtclSeqno } = this.$route.params
-
-    // try {
-    //   await this.$axios.$get(`/recipient/${mblTelNum}/counsel/${cnslPtclSeqno}`)
-    // } catch (e) {
-    //   console.log(e)
-    // }
+    // 라우터 파라미터값이 없을경우 - 추천페이지에서 넘어온 것임
   },
   methods: {
+    ...mapActions({
+      setSurveyResult: 'setSurveyResult'
+    }),
     /**
      * 랭크값 추가하기
      */
@@ -261,7 +274,8 @@ export default {
       this.$router.push({
         name: 'product-recommend',
         params: {
-          type
+          type,
+          surveyResult: this.$route.params
         }
       })
     },

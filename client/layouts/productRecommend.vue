@@ -20,7 +20,13 @@
             </a>
           </li>
         </ul>
-        <n-link to="/user/signup" class="go-signup">아람북클럽 회원가입</n-link>
+        <a
+          href="https://arambookclub.com/join/step01"
+          class="go-signup"
+          target="_blank"
+          >아람북클럽 회원가입</a
+        >
+        <!-- <n-link to="/user/signup" class="go-signup">아람북클럽 회원가입</n-link> -->
       </div>
       <div class="right-content">
         <div class="title">
@@ -75,6 +81,10 @@ export default {
     }
   },
   mounted() {
+    console.warn(
+      '앙케이트 결과 페이지에서 받아온 데이터: ',
+      this.$route.params.surveyResult
+    )
     const type = this.$route.params.type || 'allbook'
     if (type === 'allbook') {
       this.checkNowMenu(0)
@@ -87,7 +97,13 @@ export default {
       setRecommendList: 'setRecommendList'
     }),
     goBack() {
-      this.$router.go(-1)
+      // this.$router.go(-1)
+      this.$router.push({
+        name: 'survey-result',
+        params: {
+          ...this.$route.params.surveyResult
+        }
+      })
     },
     toggleMenuActive(index) {
       this.checkNowMenu(index)

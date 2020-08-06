@@ -300,8 +300,9 @@ export default {
   //   }
   // },
   async mounted() {
-    const { mblTelNum, cnslPtclSeqno, orgmId } = this.$route.params.item
-    console.log(mblTelNum, cnslPtclSeqno, orgmId)
+    const { mblTelNum, cnslPtclSeqno } = this.$route.params
+    // console.warn('기존 상담내역 상세 파라미터 : ', this.$route.params)
+    // console.log(mblTelNum, cnslPtclSeqno, orgmId)
     try {
       const { result } = await this.$axios.$get(
         `/recipient/${mblTelNum}/counsel/${cnslPtclSeqno}`
@@ -332,8 +333,18 @@ export default {
     },
     goSurveySelect() {
       console.log('앙케이트 화면으로 이동')
-      this.$router.push('/survey/select', {
-        params
+      // this.$router.push('/survey/select', {
+      //   params
+      // })
+      const { orgmId, mblTelNum, chldNm, chldBthYmd } = this.$route.params
+      this.$router.push({
+        name: 'survey-select',
+        params: {
+          orgmId,
+          mblTelNum,
+          chldNm,
+          chldBthYmd
+        }
       })
     },
     goAllView(type) {
