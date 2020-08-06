@@ -257,7 +257,15 @@
             >
               앙케이트 다시하기
             </button>
-            <button class="btn rounded-full flex-1 text-center">
+            <!-- <n-link
+              class="btn rounded-full flex-1 text-center"
+              to="/survey/recommend"
+              >기존 결과로 상담받기</n-link
+            > -->
+            <button
+              class="btn rounded-full flex-1 text-center"
+              @click="goAllView('allbook')"
+            >
               기존 결과로 상담받기
             </button>
             <!-- <n-link class="btn rounded-full flex-1 text-center mr-10" to="/"

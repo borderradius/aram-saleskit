@@ -62,10 +62,15 @@ export default {
     // ...mapActions({
     //   setRecommendList: 'setRecommendList'
     // }),
-    toggleMenuActive(index) {
+    async toggleMenuActive(index) {
       this.checkNowMenu(index)
       // TODO: 메뉴 클릭 시 해당 추천도서 셋팅
       // this.setRecommendList({ kine: index })
+      // TODO: 로그아웃
+      if (index === 1) {
+        await this.$store.dispatch('user/logout')
+        this.$router.push('/user/login')
+      }
     },
     checkNowMenu(index) {
       // leftMenu 클래스, off이미지로 초기화

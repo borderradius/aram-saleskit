@@ -52,7 +52,7 @@
           <li class="">상담일자</li>
         </ul>
         <ul
-          v-for="item in tBody"
+          v-for="item in 9"
           :key="item"
           class="tbody flex"
           @click="rowClick(item)"

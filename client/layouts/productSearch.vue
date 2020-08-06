@@ -20,7 +20,7 @@
             </a>
           </li>
         </ul>
-        <n-link to="/user/signup" class="go-signup">디지털콘텐츠 체험</n-link>
+        <n-link to="/" class="go-signup">디지털콘텐츠 체험</n-link>
       </div>
       <div class="right-content">
         <div v-if="isSearch" class="search-area">
@@ -61,8 +61,8 @@
 
 <script>
 import { mapActions } from 'vuex'
+
 export default {
-  layout: 'productSearch',
   data() {
     return {
       menuList: [
@@ -85,9 +85,10 @@ export default {
       isSearch: true
     }
   },
-  mounted() {
+  async mounted() {
     const li = document.getElementsByClassName('leftMenu')
     li[0].classList.add('active')
+    await this.setSearchList('allbook')
   },
   methods: {
     ...mapActions({
@@ -96,7 +97,19 @@ export default {
     toggleMenuActive(index) {
       this.checkNowMenu(index)
       // TODO: 메뉴 클릭 시 해당 추천도서 셋팅
-      this.setSearchList({ kind: index })
+      let type = ''
+      switch (index) {
+        case 0:
+          type = 'allbook'
+          break
+        case 1:
+          type = 'smallbook'
+          break
+        default:
+          type = 'brosure'
+          break
+      }
+      this.setSearchList(type)
       index === 2 ? (this.isSearch = false) : (this.isSearch = true)
     },
     checkNowMenu(index) {

@@ -1,12 +1,12 @@
 <template>
   <div>
     <ul
-      v-if="searchList.kind !== 2"
+      v-if="searchList !== 'brosure'"
       class="flex flex-row flex-wrap justify-between product-list"
     >
-      <li v-for="item in 5" :key="item">
+      <li v-for="item in searchList" :key="item.brchSeqno">
         <a href="javascript:;">
-          <span class="rank font-bold text-center">{{ item }}</span>
+          <span class="rank font-bold text-center">{{ item.brchNo }}</span>
           <img src="/product-img.png" alt="상품이미지" />
           <div class="text-wrap pt-4">
             <h4 class="font-bold text-lg mb-2">베이비올 영어</h4>
@@ -15,16 +15,12 @@
               <li>의사소통영역(언어) 등</li>
               <li>487,000원</li>
             </ul>
-            {{ searchList }}
           </div>
         </a>
       </li>
     </ul>
-    <ul
-      v-if="searchList.kind === 2"
-      class="flex flex-row flex-wrap product-list-brosure"
-    >
-      <li v-for="item in 5" :key="item" class="flex">
+    <ul v-else class="flex flex-row flex-wrap product-list-brosure">
+      <li v-for="item in searchList" :key="item.brchSeqno" class="flex">
         <a href="javascript:;">
           <img src="/product-img.png" alt="상품이미지" />
           <div class="text-wrap pt-4">
@@ -43,7 +39,8 @@ export default {
   layout: 'productSearch',
   computed: {
     ...mapState({
-      searchList: (state) => state.searchList
+      searchList: (state) => state.searchList,
+      searchType: (state) => state.searchType
     })
   }
 }

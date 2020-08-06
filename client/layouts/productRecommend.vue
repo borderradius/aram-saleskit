@@ -81,16 +81,13 @@ export default {
     }
   },
   mounted() {
-    console.warn(
-      '앙케이트 결과 페이지에서 받아온 데이터: ',
-      this.$route.params.surveyResult
-    )
     const type = this.$route.params.type || 'allbook'
     if (type === 'allbook') {
       this.checkNowMenu(0)
     } else if (type === 'smallbook') {
       this.checkNowMenu(1)
     }
+    this.setRecommendList(type)
   },
   methods: {
     ...mapActions({
@@ -106,9 +103,11 @@ export default {
       })
     },
     toggleMenuActive(index) {
+      // console.log(index)
+      const type = index ? 'smallbook' : 'allbook'
       this.checkNowMenu(index)
       // TODO: 메뉴 클릭 시 해당 추천도서 셋팅
-      this.setRecommendList({ kine: index })
+      this.setRecommendList(type)
     },
     checkNowMenu(index) {
       // leftMenu 클래스, off이미지로 초기화
