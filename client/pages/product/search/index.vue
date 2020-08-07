@@ -6,7 +6,7 @@
     >
       <li v-for="item in searchList" :key="item.brchSeqno">
         <a href="javascript:;">
-          <span class="rank font-bold text-center">{{ item.brchNo }}</span>
+          <!-- <span class="rank font-bold text-center">{{ item.brchNo }}</span> -->
           <img src="/product-img.png" alt="상품이미지" />
           <div class="text-wrap pt-4">
             <h4 class="font-bold text-lg mb-2">베이비올 영어</h4>
