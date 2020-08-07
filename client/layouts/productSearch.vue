@@ -27,21 +27,25 @@
           <div class="search-form">
             <div class="search-form-input flex items-center">
               <span class="text-gray-700 font-bold mr-4">상품명</span>
-              <input v-model="searchParam.word" type="search" class="p-2" />
+              <input
+                v-model="searchParam.searchProdNm"
+                type="search"
+                class="p-2"
+              />
             </div>
           </div>
           <div class="search-form-checkbox">
             <h4 class="text-gray-700 font-bold mb-4">학습영역</h4>
             <div class="checkbox-wrap flex flex-row flex-wrap justify-between">
               <label
-                v-for="item in sturyAreaList"
+                v-for="item in searchLrngAraList"
                 :key="item.value"
                 :for="item.value"
                 class="checkbox-label my-2 text-center"
               >
                 <input
                   :id="item.value"
-                  v-model="searchParam.studyArea"
+                  v-model="tempStudyArea"
                   :value="item.value"
                   type="checkbox"
                   class="form-checkbox h-5 w-5 text-main-green -mt-1"
@@ -68,10 +72,10 @@ export default {
   data() {
     return {
       searchParam: {
-        studyArea: []
+        searchLrngAraList: []
       },
       tempStudyArea: [],
-      sturyAreaList: [
+      searchLrngAraList: [
         {
           label: '의사소통 영역',
           value: 'AC0101'
@@ -114,38 +118,41 @@ export default {
           class: 'second'
         }
       ],
-      isSearch: true
+      isSearch: true,
+      type: 'allbook'
     }
   },
   async mounted() {
     const li = document.getElementsByClassName('leftMenu')
     li[0].classList.add('active')
-    await this.setSearchList('allbook')
+    await this.setSearchList({ type: 'allbook', search: this.searchParam })
   },
   methods: {
     ...mapActions({
       setSearchList: 'setSearchList'
     }),
-    goSearch() {
-      // TODO: 검색 api 연동
-      console.log(this.searchParam.studyArea.join(','))
+    async goSearch() {
+      this.searchParam.searchLrngAraList = this.tempStudyArea.join(',')
+      try {
+        await this.setSearchList({ type: this.type, search: this.searchParam })
+      } catch (e) {
+        console.log(e)
+      }
     },
     toggleMenuActive(index) {
       this.checkNowMenu(index)
-      // TODO: 메뉴 클릭 시 해당 추천도서 셋팅
-      let type = ''
       switch (index) {
         case 0:
-          type = 'allbook'
+          this.type = 'allbook'
           break
         case 1:
-          type = 'smallbook'
+          this.type = 'smallbook'
           break
         default:
-          type = 'brosure'
+          this.type = 'brosure'
           break
       }
-      this.setSearchList(type)
+      this.setSearchList({ type: this.type, search: this.searchParam })
       index === 2 ? (this.isSearch = false) : (this.isSearch = true)
     },
     checkNowMenu(index) {

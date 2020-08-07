@@ -12,7 +12,6 @@ export const mutations = {
 
 export const actions = {
   setSurveyResult({ commit }, params = {}) {
-    // TODO: 앙케이트 결과 저장하기
     commit('SET_SURVEY_RESULT', params)
   }
 }

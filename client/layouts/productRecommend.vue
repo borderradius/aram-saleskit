@@ -117,7 +117,6 @@ export default {
       const { cnslPtclSeqno } = this.$route.params.surveyDetail
       const type = index ? 'smallbook' : 'allbook'
       this.checkNowMenu(index)
-      // TODO: 메뉴 클릭 시 해당 추천도서 셋팅
       this.setRecommendList({ type, cnslPtclSeqno })
     },
     checkNowMenu(index) {

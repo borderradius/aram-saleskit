@@ -126,7 +126,6 @@ export default {
         params.cstpMngrSeqno = this.slideData.cstpMngrSeqno
         params.agerCoursCd = this.slideData.agerCoursCd
         params.counselTestPaper = this.counselTestPaper
-        // TODO: 앙케이트 저장 api call
         try {
           this.isComplete = true
           const { result } = await this.$axios.$post(

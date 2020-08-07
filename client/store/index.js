@@ -19,14 +19,14 @@ export const mutations = {
 }
 
 export const actions = {
-  async setSearchList({ commit }, type = '') {
-    // TODO: 전집, 소전집에 따른 검색 데이터 가져오기
+  async setSearchList({ commit }, params = {}) {
+    const { type, search } = params
     let apiUrl
     if (type === 'allbook') apiUrl = '/prod/regularseries'
     if (type === 'smallbook') apiUrl = '/prod/miniseries'
     if (type === 'brosure') apiUrl = '/prod/brochure'
     try {
-      const { result } = await this.$axios.$get(apiUrl)
+      const { result } = await this.$axios.$get(apiUrl, { params: search })
       commit('SET_SEARCH_LIST', result)
       commit('SET_SEARCH_TYPE', type)
     } catch (e) {
@@ -34,7 +34,6 @@ export const actions = {
     }
   },
   async setRecommendList({ commit }, params = {}) {
-    // TODO: 전집, 소전집에 따른 추천 데이터 가져오기
     try {
       const apiUrl =
         params.type === 'allbook'
