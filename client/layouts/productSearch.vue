@@ -27,27 +27,29 @@
           <div class="search-form">
             <div class="search-form-input flex items-center">
               <span class="text-gray-700 font-bold mr-4">상품명</span>
-              <input type="text" class="p-2" />
+              <input v-model="searchParam.word" type="search" class="p-2" />
             </div>
           </div>
           <div class="search-form-checkbox">
             <h4 class="text-gray-700 font-bold mb-4">학습영역</h4>
             <div class="checkbox-wrap flex flex-row flex-wrap justify-between">
               <label
-                v-for="item in 6"
-                :key="item"
-                :for="`searchCheck${item}`"
+                v-for="item in sturyAreaList"
+                :key="item.value"
+                :for="item.value"
                 class="checkbox-label my-2 text-center"
               >
                 <input
-                  :id="`searchCheck${item}`"
+                  :id="item.value"
+                  v-model="searchParam.studyArea"
+                  :value="item.value"
                   type="checkbox"
                   class="form-checkbox h-5 w-5 text-main-green -mt-1"
                 />
-                <span class="ml-2 text-gray-700">{{ item }}의사소통 영역</span>
+                <span class="ml-2 text-gray-700">{{ item.label }}</span>
               </label>
             </div>
-            <button class="search-btn">검색</button>
+            <button class="search-btn" @click="goSearch">검색</button>
           </div>
         </div>
         <div :class="[!isSearch ? 'brosure-content' : '']" class="content">
@@ -65,6 +67,36 @@ import { mapActions } from 'vuex'
 export default {
   data() {
     return {
+      searchParam: {
+        studyArea: []
+      },
+      tempStudyArea: [],
+      sturyAreaList: [
+        {
+          label: '의사소통 영역',
+          value: 'AC0101'
+        },
+        {
+          label: '자연탐구 영역',
+          value: 'AC0102'
+        },
+        {
+          label: '사회관계 영역',
+          value: 'AC0103'
+        },
+        {
+          label: '예술경험 영역',
+          value: 'AC0104'
+        },
+        {
+          label: '기본생활 영역',
+          value: 'AC0105'
+        },
+        {
+          label: '신체운동 영역',
+          value: 'AC0106'
+        }
+      ],
       menuList: [
         {
           src: '/allbook-on-ico.png',
@@ -94,6 +126,10 @@ export default {
     ...mapActions({
       setSearchList: 'setSearchList'
     }),
+    goSearch() {
+      // TODO: 검색 api 연동
+      console.log(this.searchParam.studyArea.join(','))
+    },
     toggleMenuActive(index) {
       this.checkNowMenu(index)
       // TODO: 메뉴 클릭 시 해당 추천도서 셋팅

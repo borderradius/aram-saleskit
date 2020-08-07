@@ -81,33 +81,44 @@ export default {
     }
   },
   mounted() {
+    const { cnslPtclSeqno } = this.$route.params.surveyDetail
+    console.warn('cnslPtclSeqno', cnslPtclSeqno)
     const type = this.$route.params.type || 'allbook'
     if (type === 'allbook') {
       this.checkNowMenu(0)
     } else if (type === 'smallbook') {
       this.checkNowMenu(1)
     }
-    this.setRecommendList(type)
+    this.setRecommendList({ type, cnslPtclSeqno })
   },
   methods: {
     ...mapActions({
       setRecommendList: 'setRecommendList'
     }),
     goBack() {
-      // this.$router.go(-1)
-      this.$router.push({
-        name: 'survey-result',
-        params: {
-          ...this.$route.params.surveyResult
-        }
-      })
+      if (this.$route.params.surveyResult) {
+        this.$router.push({
+          name: 'survey-result',
+          params: {
+            ...this.$route.params.surveyResult
+          }
+        })
+      }
+      if (this.$route.params.surveyDetail) {
+        this.$router.push({
+          name: 'survey-result-detail',
+          params: {
+            ...this.$route.params.surveyDetail
+          }
+        })
+      }
     },
     toggleMenuActive(index) {
-      // console.log(index)
+      const { cnslPtclSeqno } = this.$route.params.surveyDetail
       const type = index ? 'smallbook' : 'allbook'
       this.checkNowMenu(index)
       // TODO: 메뉴 클릭 시 해당 추천도서 셋팅
-      this.setRecommendList(type)
+      this.setRecommendList({ type, cnslPtclSeqno })
     },
     checkNowMenu(index) {
       // leftMenu 클래스, off이미지로 초기화

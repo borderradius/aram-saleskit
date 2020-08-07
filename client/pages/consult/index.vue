@@ -191,9 +191,9 @@ export default {
     },
     rowClick(item) {
       this.$router.push({
-        name: `${this.$route.name}-id`,
+        name: 'consult-id',
         params: {
-          id: item.rowNo
+          id: item
         }
       })
     }

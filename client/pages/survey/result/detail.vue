@@ -264,7 +264,7 @@
             > -->
             <button
               class="btn rounded-full flex-1 text-center"
-              @click="goAllView('allbook')"
+              @click="goConsult"
             >
               기존 결과로 상담받기
             </button>
@@ -323,6 +323,18 @@ export default {
     // this.getCnslResult()
   },
   methods: {
+    async goConsult() {
+      try {
+        const { mblTelNum, cnslPtclSeqno, orgmId } = this.$route.params
+        await this.$axios.put(
+          `/recipient/${mblTelNum}/counsel/${cnslPtclSeqno}`,
+          { orgmId }
+        )
+        this.goAllView('allbook')
+      } catch (e) {
+        console.log(e)
+      }
+    },
     /**
      * 랭크값 추가하기
      */
@@ -359,7 +371,8 @@ export default {
       this.$router.push({
         name: 'product-recommend',
         params: {
-          type
+          type,
+          surveyDetail: this.$route.params
         }
       })
     },

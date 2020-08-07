@@ -29,11 +29,13 @@ export const actions = {
       console.log(e)
     }
   },
-  async setRecommendList({ commit }, type = '') {
+  async setRecommendList({ commit }, params = {}) {
     // TODO: 전집, 소전집에 따른 추천 데이터 가져오기
     try {
       const apiUrl =
-        type === 'allbook' ? '/prod/regularseries' : '/prod/miniseries'
+        params.type === 'allbook'
+          ? `/recipient/counsel/${params.cnslPtclSeqno}/recommandprod/regularseries`
+          : `/recipient/counsel/${params.cnslPtclSeqno}/recommandprod/miniseries`
       const { result } = await this.$axios.$get(apiUrl)
       commit('SET_RECOMMEND_LIST', result)
     } catch (e) {
