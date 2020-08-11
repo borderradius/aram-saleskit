@@ -290,6 +290,7 @@
 
 <script>
 export default {
+  name: 'ConsultId',
   layout: 'searchHistory',
   mounted() {
     console.log(this.$route.params.id)
@@ -297,7 +298,8 @@ export default {
   methods: {
     goAllView() {
       this.$router.push({
-        name: 'consult-allView'
+        name: 'consult-allView',
+        params: this.$route.params
       })
     }
   }

@@ -5,7 +5,10 @@
       class="flex flex-row flex-wrap justify-between product-list"
     >
       <li v-for="item in searchList" :key="item.brchSeqno">
-        <a href="javascript:;">
+        <a
+          :href="`https://arambookclub.com/detail/smart/${item.prodId}`"
+          target="_blank"
+        >
           <!-- <span class="rank font-bold text-center">{{ item.brchNo }}</span> -->
           <img src="/product-img.png" alt="상품이미지" />
           <div class="text-wrap pt-4">

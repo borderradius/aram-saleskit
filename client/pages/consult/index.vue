@@ -75,6 +75,7 @@ import Datepicker from 'vuejs-datepicker'
 import { ko } from 'vuejs-datepicker/dist/locale'
 
 export default {
+  name: 'ConsultIndex',
   layout: 'searchHistory',
   components: {
     Datepicker

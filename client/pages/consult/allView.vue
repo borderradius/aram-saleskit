@@ -42,6 +42,16 @@ export default {
       }
       event.target.classList.add('active')
       // TODO: 탭 클릭 시 해당 데이터들 가져오는 api 연동해야함.
+      console.warn(this.$route.params)
+      // let apiUrl = ''
+      // let type = ''
+      // for (const [index, tab] of tabList.entries()) {
+
+      //   let isActive = tab.classList.value.indexOf('active') > 0
+      //   if(isActive) {
+
+      //   }
+      // }
     }
   }
 }

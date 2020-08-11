@@ -1,6 +1,8 @@
 <template>
   <div class="flex items-center login-page">
-    <div class="flex-1 bg-gray-100 h-screen re-height login-left" />
+    <div class="bg-gray-100 h-screen re-height login-left">
+      <!-- <img src="/login_img.jpg" alt="배경이미지" /> -->
+    </div>
     <div class="flex items-center h-screen re-height shadow-xl login-right">
       <div class="px-10 w-full">
         <ValidationObserver v-slot="{ handleSubmit }">
