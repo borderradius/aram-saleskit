@@ -27,8 +27,13 @@
         </div>
       </div>
     </div>
-    <n-link class="go-home" to="/">home</n-link>
-    <a href="javascript:;" class="go-back" @click="goBack">back</a>
+    <n-link class="go-home" to="/">
+      <img src="/go-home1.png" alt="메인으로가기 아이콘" />
+    </n-link>
+
+    <a href="javascript:;" class="go-back" @click="goBack">
+      <img src="/go-back.png" alt="뒤로가기 아이콘" />
+    </a>
     <!-- <n-link class="go-home" to="/">home</n-link> -->
   </div>
 </template>

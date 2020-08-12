@@ -1,30 +1,58 @@
 .container1 {
-  @apply bg-gray-700 min-h-screen w-full overflow-x-hidden;
+  @apply min-h-screen w-full overflow-x-hidden;
+  background-color: #a6d873;
   .card-wrapper {
-    @apply w-5/6 m-auto;
-    height: 400px;
+    @apply m-auto;
+    width: 90%;
+    height: 500px;
   }
   .card {
-    @apply rounded-lg bg-red-400;
+    @apply rounded-lg;
+    .bg-img {
+      @apply h-full w-full;
+    }
+    .title-img {
+      @apply absolute left-0 top-0;
+      height: 60px;
+      top: 3rem;
+      left: -0.5rem;
+    }
     &:first-child {
-      @apply p-8 text-white text-center;
-      background-color: #438dff;
-      h3 {
-        @apply font-black text-xl mt-2 mb-8;
-      }
-      span {
-        @apply px-10 py-2 rounded-full bg-white;
-        color: #438dff;
-      }
+      // @apply p-8 text-white text-center;
+      // background-color: #438dff;
+      // h3 {
+      //   @apply font-black text-xl mt-2 mb-8;
+      // }
+      // span {
+      //   @apply px-10 py-2 rounded-full bg-white;
+      //   color: #438dff;
+      // }
     }
     &:last-child {
-      @apply p-8 text-white text-center;
-      span {
-        @apply px-10 py-2 rounded-full;
-        background-color: #fb472f;
-      }
-      background-color: #fdb30e;
+      // @apply p-8 text-white text-center;
+      // span {
+      //   @apply px-10 py-2 rounded-full;
+      //   background-color: #fb472f;
+      // }
+      // background-color: #fdb30e;
     }
+  }
+  .go-history {
+    @apply absolute shadow-md;
+    right: 2rem;
+    top: 2rem;
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+    line-height: 64px;
+  }
+}
+.logo {
+  @apply absolute;
+  left: 2rem;
+  top: 2rem;
+  img {
+    width: 140px;
   }
 }
 .go-home {
@@ -35,20 +63,29 @@
   width: 64px;
   height: 64px;
   line-height: 64px;
-  text-indent: -9999px;
-  overflow: hidden;
-  background-image: url('../image/home.png');
-  background-color: #7ed234;
-  background-size: 50%;
-  background-repeat: no-repeat;
-  background-position: center center;
+  // text-indent: -9999px;
+  // overflow: hidden;
+  // background-image: url('../image/home.png');
+  // background-color: #7ed234;
+  // background-size: 50%;
+  // background-repeat: no-repeat;
+  // background-position: center center;
 }
 .go-back {
-  @extend .go-home;
+  @apply fixed shadow-md;
+  left: 1rem;
   bottom: 6rem;
-  background-image: url('../image/go-back.png');
-  background-size: 40%;
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  line-height: 64px;
 }
+// .go-back {
+//   @extend .go-home;
+//   bottom: 6rem;
+//   background-image: url('../image/go-back.png');
+//   background-size: 40%;
+// }
 
 .bookclub-logo {
   @apply absolute;

@@ -162,7 +162,9 @@
         class="btn button-info w-4/6 block text-center mt-8 text-xl font-extrabold m-auto rounded-full"
         >앙케이트 시작하기</n-link
       > -->
-      <n-link class="go-home" to="/">home</n-link>
+      <n-link class="go-home" to="/">
+        <img src="/go-home1.png" alt="메인으로가기 아이콘" />
+      </n-link>
       <span class="bookclub-logo">북클럽 이미지</span>
     </div>
   </div>

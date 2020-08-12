@@ -49,8 +49,13 @@
         <div class="pagination">{{ nowSlidePage }} / 9</div>
       </div>
     </div>
-    <a href="javascript:;" class="go-back" @click="goBack">back</a>
-    <n-link class="go-home" to="/">home</n-link>
+    <a href="javascript:;" class="go-back" @click="goBack">
+      <img src="/go-back.png" alt="뒤로가기 아이콘" />
+    </a>
+    <!-- <a href="javascript:;" class="go-back" @click="goBack">back</a> -->
+    <n-link class="go-home" to="/">
+      <img src="/go-home1.png" alt="메인으로가기 아이콘" />
+    </n-link>
     <span class="bookclub-logo">북클럽 이미지</span>
     <n-link class="go-main" to="/">다음에 하기</n-link>
     <Loading v-if="isComplete" />

@@ -215,7 +215,9 @@
         </div>
       </div>
     </div>
-    <n-link class="go-home" to="/">home</n-link>
+    <n-link class="go-home" to="/">
+      <img src="/go-home1.png" alt="메인으로가기 아이콘" />
+    </n-link>
     <span class="bookclub-logo">북클럽 이미지</span>
     <!-- <a href="javascript:;" class="go-back" @click="goBack">back</a> -->
   </div>
