@@ -86,7 +86,13 @@ export default {
     }
   },
   mounted() {
-    const { cnslPtclSeqno } = this.$route.params.surveyDetail
+    let cnslPtclSeqno
+    if (this.$route.params.surveyDetail) {
+      cnslPtclSeqno = this.$route.params.surveyDetail.cnslPtclSeqno
+    }
+    if (this.$route.params.surveyResult) {
+      cnslPtclSeqno = this.$route.params.surveyResult.cnslPtclSeqno
+    }
     console.warn('cnslPtclSeqno', cnslPtclSeqno)
     const type = this.$route.params.type || 'allbook'
     if (type === 'allbook') {
@@ -119,7 +125,13 @@ export default {
       }
     },
     toggleMenuActive(index) {
-      const { cnslPtclSeqno } = this.$route.params.surveyDetail
+      let cnslPtclSeqno
+      if (this.$route.params.surveyDetail) {
+        cnslPtclSeqno = this.$route.params.surveyDetail.cnslPtclSeqno
+      }
+      if (this.$route.params.surveyResult) {
+        cnslPtclSeqno = this.$route.params.surveyResult.cnslPtclSeqno
+      }
       const type = index ? 'smallbook' : 'allbook'
       this.checkNowMenu(index)
       this.setRecommendList({ type, cnslPtclSeqno })

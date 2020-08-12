@@ -1,10 +1,11 @@
 .survey-select-wrap {
   @apply py-3p;
   min-height: 100vh;
-  background-color: #cbedff;
+  background-color: #32bcad;
   .title {
     top: 1rem;
-    background: #2acdf3;
+    background: #fff;
+    color: #32bcad;
   }
   .sub-title {
     @apply bg-white p-4 text-xl text-center rounded-full w-5/6 mx-auto;
@@ -32,12 +33,12 @@
   }
   .pagination {
     @apply bg-white py-4 rounded-full w-120 mx-auto text-center;
-    color: #6dcacf;
+    color: #32bcad;
   }
   .go-main {
     @extend .pagination;
     @apply fixed text-white text-sm;
-    background-color: #6dcacf;
+    background-color: #309a8e;
     right: 1rem;
     bottom: 1rem;
     // width: 140px;

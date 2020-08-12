@@ -1,9 +1,7 @@
 <template>
   <div class="survey-select-wrap flex items-center justify-center text-lg">
-    <div class="flex-initial h-5/6 w-4/5">
-      <h1
-        class="text-2xl absolute left-0 p-3 px-6 rounded-r-full title text-white"
-      >
+    <div class="flex-initial h-5/6 w-5/6">
+      <h1 class="text-2xl absolute left-0 p-3 px-6 rounded-r-full title">
         어린이 선호도 앙케이트
       </h1>
       <div>
