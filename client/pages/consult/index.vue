@@ -10,26 +10,30 @@
         <ul class="tbody flex">
           <li class="px-1">
             <input
+              v-model="searchParam.searchChldNm"
               type="text"
               class="w-full text-center border rounded-md py-2"
             />
           </li>
           <li class="px-1">
             <input
+              v-model="searchParam.searchTelNum"
               type="text"
               class="w-full text-center border rounded-md py-2"
             />
           </li>
           <li class="flex-auto">
             <Datepicker
+              v-model="searchParam.searchStrDate"
               class="inline-block mr-2"
               :language="ko"
-              :format="dateFormatter"
               :height="40"
+              format="yyyy-MM-dd"
               input-class="datepicker-input"
             />
             ~
             <Datepicker
+              v-model="searchParam.searchEndDate"
               class="inline-block ml-2"
               :language="ko"
               :format="dateFormatter"
@@ -38,7 +42,7 @@
           </li>
         </ul>
       </div>
-      <button class="search-btn">찾기</button>
+      <button class="search-btn" @click="getData">찾기</button>
     </div>
     <div v-if="tBody.length" class="product-list p-8">
       <div class="table w-full">
@@ -83,98 +87,8 @@ export default {
   data() {
     return {
       ko,
-      tBody: [
-        {
-          rowNo: 1,
-          childNm: '김자녀',
-          mobile: '010-1234-1234',
-          birth: '1984-05-28',
-          age: '37',
-          payment: 'O',
-          consultDate: '2020-05-15'
-        },
-        {
-          rowNo: 1,
-          childNm: '김자녀',
-          mobile: '010-1234-1234',
-          birth: '1984-05-28',
-          age: '37',
-          payment: 'O',
-          consultDate: '2020-05-15'
-        },
-        {
-          rowNo: 1,
-          childNm: '김자녀',
-          mobile: '010-1234-1234',
-          birth: '1984-05-28',
-          age: '37',
-          payment: 'O',
-          consultDate: '2020-05-15'
-        },
-        {
-          rowNo: 1,
-          childNm: '김자녀',
-          mobile: '010-1234-1234',
-          birth: '1984-05-28',
-          age: '37',
-          payment: 'O',
-          consultDate: '2020-05-15'
-        },
-        {
-          rowNo: 5,
-          childNm: '김자녀',
-          mobile: '010-1234-1234',
-          birth: '1984-05-28',
-          age: '37',
-          payment: 'O',
-          consultDate: '2020-05-15'
-        },
-        {
-          rowNo: 1,
-          childNm: '김자녀',
-          mobile: '010-1234-1234',
-          birth: '1984-05-28',
-          age: '37',
-          payment: 'O',
-          consultDate: '2020-05-15'
-        },
-        {
-          rowNo: 1,
-          childNm: '김자녀',
-          mobile: '010-1234-1234',
-          birth: '1984-05-28',
-          age: '37',
-          payment: 'O',
-          consultDate: '2020-05-15'
-        },
-        {
-          rowNo: 1,
-          childNm: '김자녀',
-          mobile: '010-1234-1234',
-          birth: '1984-05-28',
-          age: '37',
-          payment: 'O',
-          consultDate: '2020-05-15'
-        },
-        {
-          rowNo: 1,
-          childNm: '김자녀',
-          mobile: '010-1234-1234',
-          birth: '1984-05-28',
-          age: '37',
-          payment: 'O',
-          consultDate: '2020-05-15'
-        },
-        {
-          rowNo: 10,
-          childNm: '김자녀',
-          mobile: '010-1234-1234',
-          birth: '1984-05-28',
-          age: '37',
-          payment: 'O',
-          consultDate: '2020-05-15'
-        }
-      ],
+      searchParam: {},
+      tBody: [],
       tHeader: [
         { title: '#' },
         { title: '자녀이름' },
@@ -197,6 +111,33 @@ export default {
           id: item
         }
       })
+    },
+    async getData() {
+      // Date -> String 변경
+      this.transDate()
+      try {
+        const { result } = await this.$axios.$get('/recipient/counsel/list', {
+          params: { ...this.searchParam }
+        })
+        this.tBody = result
+      } catch (e) {
+        console.log(e)
+      }
+    },
+    /**
+     * * 상담기간 날짜 문자열로 변경
+     */
+    transDate() {
+      if (this.searchParam.searchStrDate) {
+        this.searchParam.searchStrDate = this.dateFormatter(
+          this.searchParam.searchStrDate
+        )
+      }
+      if (this.searchParam.searchEndDate) {
+        this.searchParam.searchEndDate = this.dateFormatter(
+          this.searchParam.searchEndDate
+        )
+      }
     }
   }
 }
