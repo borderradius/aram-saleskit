@@ -108,6 +108,18 @@ extend('minmax', {
   params: ['min', 'max']
 })
 
+extend('birth', {
+  message(field) {
+    return `${field} 제대로 입력해주세요`
+  },
+  validate(value) {
+    const birthRegex = new RegExp(
+      /^[1-2][0-9]{3}-(0[1-9]|1[0-2])-(0[1-9]|[1,2][0-9]|3[0,1])$/
+    )
+    return birthRegex.test(value)
+  }
+})
+
 Vue.component('ValidationProvider', ValidationProvider)
 Vue.component('ValidationObserver', ValidationObserver)
 

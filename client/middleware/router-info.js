@@ -1,6 +1,7 @@
 export default ({ store, route, redirect }) => {
   const isLoggedIn = store.state.auth.loggedIn
 
+  // console.warn('isLoggedin ? ', isLoggedIn)
   /**
    * * 로그인 안되어있을때 로그인페이지로 이동
    */

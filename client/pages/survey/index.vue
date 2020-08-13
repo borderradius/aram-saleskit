@@ -2,12 +2,12 @@
   <div class="survey flex items-center justify-center text-lg">
     <div class="flex-initial h-5/6 w-4/5">
       <h1
-        class="text-2xl absolute left-0 p-3 px-6 rounded-r-full title text-white"
+        class="text-xl absolute left-0 p-1 px-6 rounded-r-full title text-white"
       >
         어린이 선호도 앙케이트
       </h1>
-      <div class="private-agree-wrap p-2 bg-white rounded mt-24">
-        <label for="privateAgree" class="flex items-center">
+      <div class="private-agree-wrap flex p-2 bg-white rounded mt-24">
+        <label for="privateAgree" class="flex mr-4 items-center">
           <input
             id="privateAgree"
             v-model="privateAgree"
@@ -17,36 +17,12 @@
             >개인정보 수집 및 마케팅 정보 활용 동의서</span
           >
         </label>
-        <div
-          v-if="privateAgree"
-          class="agree-content w-full h-100 mt-2 text-gray-600 bg-gray-100 p-2 rounded-sm"
-        >
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum
-          molestias quia dolor odit sint, fuga ut repellat quod neque non libero
-          eaque aperiam obcaecati officia deleniti quibusdam quasi laborum
-          impedit? Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-          Dolorum molestias quia dolor odit sint, fuga ut repellat quod neque
-          non libero eaque aperiam obcaecati officia deleniti quibusdam quasi
-          laborum impedit? Lorem ipsum dolor sit, amet consectetur adipisicing
-          elit. Dolorum molestias quia dolor odit sint, fuga ut repellat quod
-          neque non libero eaque aperiam obcaecati officia deleniti quibusdam
-          quasi laborum impedit? Lorem ipsum dolor sit, amet consectetur
-          adipisicing elit. Dolorum molestias quia dolor odit sint, fuga ut
-          repellat quod neque non libero eaque aperiam obcaecati officia
-          deleniti quibusdam quasi laborum impedit? Lorem ipsum dolor sit, amet
-          consectetur adipisicing elit. Dolorum molestias quia dolor odit sint,
-          fuga ut repellat quod neque non libero eaque aperiam obcaecati officia
-          deleniti quibusdam quasi laborum impedit? Lorem ipsum dolor sit, amet
-          consectetur adipisicing elit. Dolorum molestias quia dolor odit sint,
-          fuga ut repellat quod neque non libero eaque aperiam obcaecati officia
-          deleniti quibusdam quasi laborum impedit? Lorem ipsum dolor sit, amet
-          consectetur adipisicing elit. Dolorum molestias quia dolor odit sint,
-          fuga ut repellat quod neque non libero eaque aperiam obcaecati officia
-          deleniti quibusdam quasi laborum impedit? Lorem ipsum dolor sit, amet
-          consectetur adipisicing elit. Dolorum molestias quia dolor odit sint,
-          fuga ut repellat quod neque non libero eaque aperiam obcaecati officia
-          deleniti quibusdam quasi laborum impedit?
-        </div>
+        <button class="flex text-xs text-gray-500" @click="show">
+          [ 약관내용 상세보기 ]
+        </button>
+        <!-- <a href="javascript:;" class="flex text-xs text-gray-500"
+          ></a
+        > -->
       </div>
       <div
         class="p-2 relative mx-auto text-gray-600 search-wrap rounded-lg mt-4"
@@ -105,6 +81,7 @@
                   class="bg-white h-10 px-5 text-sm focus:outline-none text-2xl inline-block search-input w-4/5"
                   type="search"
                   name="search"
+                  placeholder="전화번호를 입력해주세요."
                 />
 
                 <button
@@ -167,6 +144,14 @@
       </n-link>
       <span class="bookclub-logo">북클럽 이미지</span>
     </div>
+    <modal name="agree" width="100%" height="auto" scrollable>
+      <div class="agree-wrap">
+        <img src="/private-agree.jpg" alt="약관내용 이미지" />
+        <button class="agree-close" @click="hide">
+          <img src="/btn_close.png" alt="약관팝업창 닫기버튼" />
+        </button>
+      </div>
+    </modal>
   </div>
 </template>
 
@@ -180,7 +165,7 @@ export default {
   data() {
     return {
       privateAgree: false,
-      mblTelNum: '01000000000',
+      mblTelNum: '',
       orgmId: '',
       orgmList: [],
       tBody: [],
@@ -265,6 +250,12 @@ export default {
       } catch (e) {
         console.log(e)
       }
+    },
+    show() {
+      this.$modal.show('agree')
+    },
+    hide() {
+      this.$modal.hide('agree')
     }
   }
 }

@@ -2,7 +2,7 @@
   <div class="survey flex items-center justify-center text-lg">
     <div class="flex-initial h-5/6 w-4/5">
       <h1
-        class="text-2xl absolute left-0 p-3 px-6 rounded-r-full title text-white"
+        class="text-xl absolute left-0 p-1 px-6 rounded-r-full title text-white"
       >
         어린이 선호도 앙케이트
       </h1>
@@ -10,8 +10,8 @@
         <p class="text-xl mb-8">
           선호도를 알고 싶은 자녀의 이름과 생년월일을 입력해주세요.
         </p>
-        <ValidationObserver v-slot="{ handleSubmit }">
-          <form class="" @submit.prevent="handleSubmit(login)">
+        <ValidationObserver v-slot="{ handleSubmit, invalid }">
+          <form class="" @submit.prevent="handleSubmit(goConsult)">
             <!-- <ValidationProvider
               v-slot="{ errors }"
               rules="required"
@@ -57,7 +57,7 @@
             </ValidationProvider>
             <ValidationProvider
               v-slot="{ errors }"
-              rules="required"
+              rules="required|birth"
               name="생년월일"
               class="w-full"
             >
@@ -75,15 +75,16 @@
                 errors[0]
               }}</span>
             </ValidationProvider>
+            <button
+              :class="[invalid ? 'disabled' : '']"
+              class="btn button-info w-3/6 block text-center mt-20 text-xl font-extrabold m-auto rounded-full"
+            >
+              <!-- @click="goConsult" -->
+              다음
+            </button>
           </form>
         </ValidationObserver>
       </div>
-      <button
-        class="btn button-info w-3/6 block text-center mt-20 text-xl font-extrabold m-auto rounded-full"
-        @click="goConsult"
-      >
-        다음
-      </button>
       <!-- <n-link
         to="/survey/select"
         class="btn button-info w-3/6 block text-center mt-20 text-xl font-extrabold m-auto rounded-full"
@@ -107,8 +108,8 @@ export default {
     return {
       searchWord: '',
       consult: {
-        chldNm: '구충모',
-        chldBthYmd: '19840528'
+        chldNm: '',
+        chldBthYmd: ''
       }
     }
   },

@@ -118,7 +118,8 @@ export default {
         await this.$store.dispatch('user/login', this.user)
         this.$router.push('/')
       } catch (e) {
-        console.log(e)
+        // console.log(e)
+        alert(e)
         this.show()
       }
     },

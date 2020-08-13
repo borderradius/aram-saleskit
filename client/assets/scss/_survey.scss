@@ -6,6 +6,17 @@
   h1 {
     top: 1rem;
   }
+  .agree-wrap {
+    overflow: scroll;
+  }
+  .agree-close {
+    position: absolute;
+    top: 2rem;
+    right: 0;
+    img {
+      width: 80px;
+    }
+  }
   .agree-content {
     @apply text-xs;
     overflow: auto;
@@ -13,6 +24,9 @@
   .private-agree-wrap {
     // background-color: #defcb8;
     border: 1px solid #7fd334;
+    a {
+      margin-top: 2px;
+    }
   }
   .title {
     background: #2acdf3;

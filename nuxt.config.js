@@ -76,6 +76,7 @@ module.exports = {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
+    // baseURL: process.env.API_URL || 'http://192.168.4.107:9092'
     baseURL: process.env.API_URL || 'https://sales-api.arambookclub.com'
   },
   auth: {
