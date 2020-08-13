@@ -205,11 +205,15 @@ export default {
       const { valid } = await this.$refs.provider.validate()
       const orgmId = await this.$refs.orgmId.validate()
       if (!valid) {
-        alert('전화번호를 올바르게 입력해주세요')
+        alert('전화번호를 올바르게 입력해주세요.')
         return
       }
       if (!orgmId.valid) {
-        alert('상담자를 선택해주세요')
+        alert('상담자를 선택해주세요.')
+        return
+      }
+      if (!this.privateAgree) {
+        alert('개인정보 수집 및 마케팅 정보활용을 동의해주세요.')
         return
       }
       if (valid && orgmId.valid) {

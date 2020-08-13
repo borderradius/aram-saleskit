@@ -68,7 +68,7 @@
                   class="bg-white h-10 px-5 text-sm focus:outline-none text-xl inline-block"
                   type="text"
                   name="birth"
-                  placeholder="YYYY-MM-DD"
+                  placeholder="예) 19800605"
                 />
               </div>
               <span class="validate-error text-sm text-pink-600">{{

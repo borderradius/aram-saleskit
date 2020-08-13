@@ -46,7 +46,8 @@ module.exports = {
     { src: '~/plugins/fontawesome.js', ssr: false },
     { src: '~/plugins/GlobalComponents.js', ssr: false },
     { src: '~/plugins/vue-js-modal', ssr: false },
-    { src: '~/plugins/lodash', ssr: false }
+    { src: '~/plugins/lodash', ssr: false },
+    { src: '~/plugins/animate', ssr: false }
   ],
   /*
    ** Nuxt.js dev-modules
