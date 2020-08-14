@@ -12,29 +12,6 @@
         </p>
         <ValidationObserver v-slot="{ handleSubmit, invalid }">
           <form class="" @submit.prevent="handleSubmit(goConsult)">
-            <!-- <ValidationProvider
-              v-slot="{ errors }"
-              rules="required"
-              name="상담자"
-              class="w-full"
-            >
-              <div class="start-form-wrap flex justify-center">
-                <span class="label-title">상담자</span>
-                <select
-                  v-model="consult.staff"
-                  name="상담자"
-                  class="bg-white h-full px-5 text-sm focus:outline-none text-xl inline-block"
-                >
-                  <option value="">상담자를 선택</option>
-                  <option v-for="item in 3" :key="item" :value="item"
-                    >대리점직원{{ item }}</option
-                  >
-                </select>
-              </div>
-              <span class="validate-error text-sm text-pink-600">{{
-                errors[0]
-              }}</span>
-            </ValidationProvider> -->
             <ValidationProvider
               v-slot="{ errors }"
               rules="required"
@@ -79,17 +56,11 @@
               :class="[invalid ? 'disabled' : '']"
               class="btn button-info w-3/6 block text-center mt-20 text-xl font-extrabold m-auto rounded-full"
             >
-              <!-- @click="goConsult" -->
               다음
             </button>
           </form>
         </ValidationObserver>
       </div>
-      <!-- <n-link
-        to="/survey/select"
-        class="btn button-info w-3/6 block text-center mt-20 text-xl font-extrabold m-auto rounded-full"
-        >다음</n-link
-      > -->
     </div>
     <n-link class="go-home" to="/">
       <img src="/go-home1.png" alt="메인으로가기 아이콘" />
@@ -98,7 +69,6 @@
     <a href="javascript:;" class="go-back" @click="goBack">
       <img src="/go-back.png" alt="뒤로가기 아이콘" />
     </a>
-    <!-- <a href="javascript:;" class="go-back" @click="goBack">back</a> -->
   </div>
 </template>
 
@@ -113,9 +83,6 @@ export default {
       }
     }
   },
-  // mounted() {
-  //   console.log(this.$route.params)
-  // },
   methods: {
     goBack() {
       this.$router.go(-1)

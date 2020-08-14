@@ -49,13 +49,8 @@
             <div class="btn-wrap clear-both mt-4 ">
               <Btn label="들어가기" mode="submit" class="signin-btn" />
             </div>
-            <div class="flex mt-4">
+            <div class="flex mt-4 justify-center">
               <label class="inline-flex items-center mt-3 mr-4">
-                <!-- <input
-                  v-model="saveId"
-                  type="checkbox"
-                  class="form-checkbox text-main-green"
-                /><span class="ml-2 text-gray-700">아이디 저장</span> -->
                 <input
                   v-model="saveId"
                   type="checkbox"

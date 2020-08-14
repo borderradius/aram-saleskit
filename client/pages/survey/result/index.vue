@@ -1,11 +1,11 @@
 <template>
   <div class="survey-result min-h-screen flex justify-center">
     <h1
-      class="text-2xl absolute left-0 p-3 px-6 rounded-r-full title text-white"
+      class="text-xl absolute left-0 p-1 px-6 rounded-r-full title text-white"
     >
       어린이 선호도 앙케이트
     </h1>
-    <div class="flex-initial h-5/6 w-4/5 mt-24">
+    <div class="flex-initial h-5/6 w-4/5 mt-18">
       <p class="report-subject">
         앙케이트 결과 REPORT
         <small
@@ -13,7 +13,7 @@
         >
       </p>
       <div class="report-content1">
-        <h2 class="mb-4">1. 우리아이 선호 영역</h2>
+        <h2 class="mb-4 font-extrabold">1. 우리아이 선호 영역</h2>
         <ul class="flex flex-row flex-wrap justify-between">
           <li
             v-for="item in detail.cnslResult"
@@ -31,7 +31,7 @@
         </ul>
       </div>
       <div class="report-content2 mt-4 pb-2">
-        <h2 class="mb-4">2. 학습 계통도</h2>
+        <h2 class="mb-4 font-extrabold">2. 학습 계통도</h2>
         <div class="system-chart">
           <ul class="first flex">
             <li class="flex-1 text-center">표준보육과정<br />(0세~2세)</li>
@@ -40,9 +40,9 @@
             <li class="flex-1 text-center">초등교과<br />(고학년)</li>
           </ul>
           <ul class="second flex mt-6">
-            <li class="flex-1 text-center">의사소통</li>
-            <li class="flex-1 text-center">의사소통</li>
-            <li class="flex-1 text-center">국어</li>
+            <li class="flex-1 text-center on">의사소통</li>
+            <li class="flex-1 text-center on">의사소통</li>
+            <li class="flex-1 text-center on">국어</li>
             <li class="flex-1 text-center">
               <div class="system-chart-child on">영어</div>
               <div class="system-chart-child">국어</div>
@@ -81,7 +81,7 @@
         </div>
       </div>
       <div class="report-content3 mt-4">
-        <h2 class="mb-4">3. 추천 결과</h2>
+        <h2 class="mb-4 font-extrabold">3. 추천 결과</h2>
         <div class="recommend-result pb-10">
           <div class="allbook-recommend-result">
             <div class="recommend-title flex justify-between p-4 items-center">

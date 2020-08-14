@@ -1,7 +1,7 @@
 <template>
   <div class="fixed w-screen h-screen top-0 left-0 bg-white z-999 ">
     <div class="absolute text-center">
-      <Lottie :options="defaultOptions" :height="500" :width="600" />
+      <Lottie :options="defaultOptions" :height="350" :width="450" />
       <div class="w-400 m-auto">
         <h1 class="text-3xl font-semibold text-gray-800">
           결과를 분석중입니다!
@@ -35,6 +35,6 @@ export default {
   left: 50%;
   top: 50%;
   margin-left: -300px;
-  margin-top: -300px;
+  margin-top: -250px;
 }
 </style>

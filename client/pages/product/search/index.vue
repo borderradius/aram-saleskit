@@ -4,13 +4,12 @@
       v-if="searchType !== 'brosure'"
       class="flex flex-row flex-wrap justify-between product-list"
     >
-      <li v-for="item in searchList" :key="item.brchSeqno">
+      <li v-for="item in searchList" :key="item.prodId">
         <a
           :href="`https://arambookclub.com/detail/smart/${item.prodId}`"
           target="_blank"
         >
-          <!-- <span class="rank font-bold text-center">{{ item.brchNo }}</span> -->
-          <img src="/product-img.png" alt="상품이미지" />
+          <img :src="item.thnlUrl" :alt="item.prodNm" />
           <div class="text-wrap pt-4">
             <h4 class="font-bold text-lg mb-2">{{ item.prodNm }}</h4>
             <ul class="pl-2">
@@ -56,7 +55,6 @@ export default {
   },
   methods: {
     popImage(imgUrl) {
-      // console.log(imgUrl)
       this.show()
       this.brosureImgUrl = imgUrl
     },

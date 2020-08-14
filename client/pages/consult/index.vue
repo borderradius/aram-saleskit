@@ -52,22 +52,22 @@
           <li class="">전화번호</li>
           <li class="">생년월일</li>
           <li class="">나이</li>
-          <li class="">구매</li>
+          <!-- <li class="">구매</li> -->
           <li class="">상담일자</li>
         </ul>
         <ul
-          v-for="item in 9"
-          :key="item"
+          v-for="item in tBody"
+          :key="item.cnslDttm"
           class="tbody flex"
           @click="rowClick(item)"
         >
-          <li class="flex-auto">99</li>
-          <li class="flex-auto">이아람</li>
-          <li class="">010-1234-1234</li>
-          <li class="">2012-12-12</li>
-          <li class="">만 8세</li>
-          <li class="">O</li>
-          <li class="">2020-05-15</li>
+          <li class="flex-auto">{{ item.rowNo }}</li>
+          <li class="flex-auto">{{ item.chldNm }}</li>
+          <li class="">{{ item.mblTelNum }}</li>
+          <li class="">{{ item.chldBthYmd }}</li>
+          <li class="">{{ item.ageNm }}</li>
+          <!-- <li class="">O</li> -->
+          <li class="">{{ dateFormatter(item.cnslDttm) }}</li>
         </ul>
       </div>
     </div>
@@ -119,6 +119,7 @@ export default {
         const { result } = await this.$axios.$get('/recipient/counsel/list', {
           params: { ...this.searchParam }
         })
+        console.warn(result)
         this.tBody = result
       } catch (e) {
         console.log(e)
