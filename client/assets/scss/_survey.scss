@@ -1,7 +1,7 @@
 .survey {
   // background-color: #defcb8;
   background-color: #fff;
-  min-height: 100vh;
+  // height: 100vh;
   @apply py-3p;
   h1 {
     top: 1rem;
@@ -44,6 +44,10 @@
   }
   .search-input {
     border: 1px solid #7fd334;
+    &::placeholder {
+      @apply text-xl;
+      color: #999;
+    }
   }
   .search-result-table {
     border-collapse: inherit;
@@ -116,5 +120,16 @@
       //   width: 100px;
       // }
     }
+  }
+  .no-data {
+    color: #999;
+  }
+  .button-info-start {
+    // @apply absoulte;
+    position: absolute;
+    width: 400px;
+    bottom: 1rem;
+    left: 50%;
+    margin-left: -200px;
   }
 }

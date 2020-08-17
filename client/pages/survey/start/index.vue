@@ -1,6 +1,6 @@
 <template>
-  <div class="survey flex items-center justify-center text-lg">
-    <div class="flex-initial h-5/6 w-4/5">
+  <div class="survey flex items-center justify-center text-lg h-screen">
+    <div class="flex items-center justify-center h-5/6 w-4/5">
       <h1
         class="text-xl absolute left-0 p-1 px-6 rounded-r-full title text-white"
       >
@@ -22,7 +22,7 @@
                 <span class="label-title">이름</span>
                 <input
                   v-model="consult.chldNm"
-                  class="bg-white h-10 px-5 text-sm focus:outline-none text-xl inline-block"
+                  class="bg-white h-10 px-5 focus:outline-none text-xl inline-block"
                   type="text"
                   name="name"
                   placeholder="자녀의 이름을 입력해주세요."
@@ -42,10 +42,10 @@
                 <span class="label-title">생년월일</span>
                 <input
                   v-model="consult.chldBthYmd"
-                  class="bg-white h-10 px-5 text-sm focus:outline-none text-xl inline-block"
+                  class="bg-white h-10 px-5 focus:outline-none text-xl inline-block"
                   type="text"
                   name="birth"
-                  placeholder="예) 19800605"
+                  placeholder="예) 19940101"
                 />
               </div>
               <span class="validate-error text-sm text-pink-600">{{
@@ -54,7 +54,7 @@
             </ValidationProvider>
             <button
               :class="[invalid ? 'disabled' : '']"
-              class="btn button-info w-3/6 block text-center mt-20 text-xl font-extrabold m-auto rounded-full"
+              class="btn button-info-start block text-center text-xl font-extrabold rounded-full"
             >
               다음
             </button>

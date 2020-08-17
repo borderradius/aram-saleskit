@@ -20,9 +20,6 @@
         <button class="flex text-xs text-gray-500" @click="show">
           [ 약관내용 상세보기 ]
         </button>
-        <!-- <a href="javascript:;" class="flex text-xs text-gray-500"
-          ></a
-        > -->
       </div>
       <div
         class="p-2 relative mx-auto text-gray-600 search-wrap rounded-lg mt-4"
@@ -42,7 +39,7 @@
                 name="상담자"
                 class="bg-white h-full p-1 text-sm focus:outline-none text-lg inline-block rounded-lg w-full"
               >
-                <option value="">상담자를 선택</option>
+                <option value="">상담자를 선택해주세요.</option>
                 <option
                   v-for="item in orgmList"
                   :key="item.orgmId"
@@ -78,7 +75,7 @@
               <div class="flex w-full">
                 <input
                   v-model="mblTelNum"
-                  class="bg-white h-10 px-5 text-sm focus:outline-none text-2xl inline-block search-input w-4/5"
+                  class="bg-white h-10 px-5 focus:outline-none inline-block search-input w-4/5"
                   type="search"
                   name="search"
                   placeholder="전화번호를 입력해주세요."
@@ -100,7 +97,7 @@
       </div>
       <div class="bg-white mt-4">
         <div v-if="!tBody.length" class="border border-1 h-5p py-20 rounded-lg">
-          <p class="text-gray-600 text-center">
+          <p class="text-gray-600 text-center no-data">
             {{ noDataSentence }}
           </p>
         </div>
@@ -134,11 +131,6 @@
       >
         앙케이트 시작하기
       </button>
-      <!-- <n-link
-        to="/survey/start"
-        class="btn button-info w-4/6 block text-center mt-8 text-xl font-extrabold m-auto rounded-full"
-        >앙케이트 시작하기</n-link
-      > -->
       <n-link class="go-home" to="/">
         <img src="/go-home1.png" alt="메인으로가기 아이콘" />
       </n-link>

@@ -10,7 +10,7 @@
     color: #666;
     li {
       &:nth-child(1) {
-        width: 60px;
+        width: 100px;
       }
       &:nth-child(2) {
         width: 100px;
@@ -22,10 +22,10 @@
         width: 140px;
       }
       &:nth-child(5) {
-        width: 60px;
+        width: 120px;
       }
       &:nth-child(6) {
-        width: 100px;
+        width: 120px;
       }
       // &:nth-child(7) {
       //   width: 100px;
@@ -41,7 +41,7 @@
     }
     li {
       &:nth-child(1) {
-        width: 60px;
+        width: 100px;
       }
       &:nth-child(2) {
         width: 100px;
@@ -53,10 +53,10 @@
         width: 140px;
       }
       &:nth-child(5) {
-        width: 60px;
+        width: 120px;
       }
       &:nth-child(6) {
-        width: 100px;
+        width: 120px;
       }
       // &:nth-child(7) {
       //   width: 100px;

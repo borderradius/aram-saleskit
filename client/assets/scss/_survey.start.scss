@@ -3,13 +3,39 @@
   background-color: #7fd334;
 }
 .start-form-wrap {
-  @apply m-auto mt-4;
+  @apply m-auto my-8;
   width: 70%;
   height: 60px;
   line-height: 60px;
   input {
-    @apply h-full rounded-r-lg text-center w-1/2;
+    @apply h-full rounded-r-lg text-center;
+    width: 320px;
     border: 1px solid #7fd334;
     border-left: none;
+    &::placeholder {
+      color: #999;
+    }
   }
 }
+
+// {
+//   arr1: [
+//     {
+//       label: '의사소통'
+//       isOn: false
+//     },
+//     {
+//       label: '의사소통'
+//       isOn: false
+//     },
+//     {
+//       label: '의사소통'
+//       isOn: false
+//     },
+//     {
+//       label: '의사소통'
+//       isOn: false
+//     }
+//   ],
+
+// }

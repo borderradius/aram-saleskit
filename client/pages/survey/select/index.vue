@@ -77,7 +77,7 @@ export default {
       nowSlidePage: 1,
       swiperOptions: {
         allowTouchMove: false,
-        speed: 2000
+        speed: 500
       },
       isComplete: false,
       slideData: [],
@@ -152,4 +152,16 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+/* .swiper {
+  width: 300px;
+  padding: 50px; */
+/* background-color: $module-bg; */
+
+/* .swiper-slide {
+    background-position: 50%;
+    background-size: cover;
+    width: 100%;
+  } */
+/* } */
+</style>

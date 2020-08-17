@@ -52,15 +52,15 @@
             </li>
           </ul>
           <ul class="third flex mt-6">
-            <li class="flex-1 text-center">자연탐구</li>
-            <li class="flex-1 text-center">자연탐구</li>
+            <li class="flex-1 text-center item3">자연탐구</li>
+            <li class="flex-1 text-center item3">자연탐구</li>
             <li class="flex-1 text-center">
-              <div class="system-chart-child">슬기로운 생활</div>
-              <div class="system-chart-child">바른생활</div>
+              <div class="system-chart-child item3">슬기로운 생활</div>
+              <div class="system-chart-child item3">바른생활</div>
             </li>
             <li class="flex-1 text-center">
-              <div class="system-chart-child">사회</div>
-              <div class="system-chart-child">도덕</div>
+              <div class="system-chart-child item3">사회</div>
+              <div class="system-chart-child item3">도덕</div>
             </li>
           </ul>
           <ul class="second flex mt-6">
@@ -277,6 +277,14 @@ export default {
       console.log(e)
     }
     // this.getCnslResult()
+    const items3 = document.getElementsByClassName('item3')
+    // console.log(items)
+    // for (const [index, a] of items.entries()) {
+    //   console.log(a, index)
+    // }
+    for (let i = 0; i < items3.length; i++) {
+      console.log(items3[i])
+    }
   },
   methods: {
     async goConsult() {

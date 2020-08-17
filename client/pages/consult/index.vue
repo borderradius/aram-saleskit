@@ -47,7 +47,7 @@
     <div v-if="tBody.length" class="product-list p-8">
       <div class="table w-full">
         <ul class="thead flex">
-          <li class="flex-auto">#</li>
+          <li class="">#</li>
           <li class="flex-auto">자녀이름</li>
           <li class="">전화번호</li>
           <li class="">생년월일</li>
@@ -61,7 +61,7 @@
           class="tbody flex"
           @click="rowClick(item)"
         >
-          <li class="flex-auto">{{ item.rowNo }}</li>
+          <li class="">{{ item.rowNo }}</li>
           <li class="flex-auto">{{ item.chldNm }}</li>
           <li class="">{{ item.mblTelNum }}</li>
           <li class="">{{ item.chldBthYmd }}</li>
