@@ -22,9 +22,9 @@
         </button>
       </div>
       <div
-        class="p-2 relative mx-auto text-gray-600 search-wrap rounded-lg mt-4"
+        class="p-2 relative mx-auto text-gray-600 search-wrap rounded-lg mt-4 pr-8"
       >
-        <form class="flex items-center justify-between pr-8">
+        <form class="flex items-center justify-between">
           <span class="text-gray-700 flex-auto px-10 search-label">상담자</span>
           <ValidationProvider
             ref="orgmId"
@@ -33,7 +33,7 @@
             name="상담자"
             class="flex-auto w-4/6"
           >
-            <div class="flex w-full">
+            <!-- <div class="flex w-full">
               <select
                 v-model="orgmId"
                 name="상담자"
@@ -47,6 +47,34 @@
                   >{{ item.orgmNm }}</option
                 >
               </select>
+            </div> -->
+            <div class="flex w-full">
+              <select
+                v-model="orgmId"
+                name="상담자"
+                class="bg-white h-10 px-5 focus:outline-none inline-block search-input select w-full"
+              >
+                <option value="">상담자를 선택해주세요.</option>
+                <option
+                  v-for="item in orgmList"
+                  :key="item.orgmId"
+                  :value="item.orgmId"
+                  >{{ item.orgmNm }}</option
+                >
+              </select>
+              <!-- <input
+                v-model="mblTelNum"
+                class="bg-white h-10 px-5 focus:outline-none inline-block search-input w-4/5"
+                type="search"
+                name="search"
+                placeholder="."
+              /> -->
+
+              <!-- <span
+                class="search-btn border text-center search-btn text-white px-5 h-10 inline-block"
+              >
+                검색
+              </span> -->
             </div>
             <span class="validate-error text-sm text-pink-600">{{
               errors[0]
@@ -55,7 +83,7 @@
         </form>
       </div>
       <div
-        class="p-2 relative mx-auto text-gray-600 search-wrap rounded-lg mt-4"
+        class="p-2 relative mx-auto text-gray-600 search-wrap rounded-lg mt-4 pr-8"
       >
         <ValidationObserver v-slot="{ handleSubmit }">
           <form
@@ -83,7 +111,7 @@
 
                 <button
                   type="submit"
-                  class="search-btn border text-center search-btn text-white px-5 h-10 inline-block"
+                  class="search-btn border text-center search-btn text-white h-10 inline-block w-100"
                 >
                   검색
                 </button>
