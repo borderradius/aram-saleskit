@@ -52,18 +52,31 @@
             </li>
           </ul>
           <ul class="third flex mt-6">
-            <li class="flex-1 text-center item3">자연탐구</li>
-            <li class="flex-1 text-center item3">자연탐구</li>
+            <li class="flex-1 text-center">자연탐구</li>
+            <li class="flex-1 text-center">자연탐구</li>
+            <li class="flex-1 text-center">수학</li>
             <li class="flex-1 text-center">
-              <div class="system-chart-child item3">슬기로운 생활</div>
-              <div class="system-chart-child item3">바른생활</div>
+              <div class="system-chart-child">수학</div>
+              <div class="system-chart-child">과학</div>
             </li>
-            <li class="flex-1 text-center">
+            <!-- <li class="flex-1 text-center">
               <div class="system-chart-child item3">사회</div>
               <div class="system-chart-child item3">도덕</div>
+            </li> -->
+          </ul>
+          <ul class="fourth flex mt-6">
+            <li class="flex-1 text-center">사회관계</li>
+            <li class="flex-1 text-center">사회관계</li>
+            <li class="flex-1 text-center">
+              <div class="system-chart-child">슬기로운 생활</div>
+              <div class="system-chart-child">바른생활</div>
+            </li>
+            <li class="flex-1 text-center">
+              <div class="system-chart-child">사회</div>
+              <div class="system-chart-child">도덕</div>
             </li>
           </ul>
-          <ul class="second flex mt-6">
+          <ul class="fifth flex mt-6">
             <li class="flex-1 text-center">예술경험</li>
             <li class="flex-1 text-center">예술경험</li>
             <li class="flex-1 text-center">즐거운 생활</li>
@@ -72,7 +85,7 @@
               <div class="system-chart-child">음악</div>
             </li>
           </ul>
-          <ul class="fifth flex mt-6">
+          <ul class="sixth flex mt-6">
             <li class="flex-1 text-center">
               <div class="system-chart-child">기본생활</div>
               <div class="system-chart-child">신체운동</div>

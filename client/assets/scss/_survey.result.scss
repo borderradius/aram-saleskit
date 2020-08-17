@@ -76,9 +76,19 @@
       }
     }
     .system-on {
-      @apply rounded-full text-white;
+      @apply rounded-full text-white relative;
       background-color: #ff797d;
       border: 1px solid #ff797d;
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        right: -20px;
+        background-color: #ff797d;
+        height: 4px;
+        width: 30px;
+        top: 2.2rem;
+      }
     }
     .system-off {
       @apply rounded-full;
@@ -102,6 +112,57 @@
         &:nth-child(3) {
           @apply mr-4;
           line-height: 4rem;
+          &.on {
+            &::after {
+              display: none;
+            }
+          }
+        }
+        &:nth-child(4) {
+          background: none;
+          border: none;
+          .system-chart-child {
+            @extend .system-off;
+            @apply py-1 mb-2;
+            &.on {
+              @extend .system-on;
+              &::after {
+                display: none;
+              }
+              &::before {
+                content: '';
+                display: block;
+                position: absolute;
+                left: -30px;
+                background-color: #ff797d;
+                height: 4px;
+                width: 40px;
+                top: 1rem;
+              }
+            }
+            &:last-child {
+              @apply mb-0;
+            }
+          }
+        }
+      }
+    }
+    ul.third {
+      li {
+        @extend .system-off;
+        &.on {
+          @extend .system-on;
+        }
+        &:nth-child(1) {
+          line-height: 4rem;
+        }
+        &:nth-child(2) {
+          @apply mx-4;
+          line-height: 4rem;
+        }
+        &:nth-child(3) {
+          @apply mx-4;
+          line-height: 4rem;
         }
         &:nth-child(4) {
           background: none;
@@ -119,7 +180,7 @@
         }
       }
     }
-    ul.third {
+    ul.fourth {
       li {
         @extend .system-off;
         &.on {
@@ -164,6 +225,40 @@
       }
     }
     ul.fifth {
+      li {
+        @extend .system-off;
+        &.on {
+          @extend .system-on;
+        }
+        &:nth-child(1) {
+          line-height: 4rem;
+        }
+        &:nth-child(2) {
+          @apply mx-4;
+          line-height: 4rem;
+        }
+        &:nth-child(3) {
+          @apply mx-4;
+          line-height: 4rem;
+        }
+        &:nth-child(4) {
+          background: none;
+          border: none;
+          .system-chart-child {
+            @extend .system-off;
+            @apply py-1 mb-2;
+            &.on {
+              @extend .system-on;
+            }
+            &:last-child {
+              @apply mb-0;
+            }
+          }
+        }
+      }
+    }
+
+    ul.sixth {
       li {
         @extend .system-off;
         &.on {
