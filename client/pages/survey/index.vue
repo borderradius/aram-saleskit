@@ -111,7 +111,7 @@
 
                 <button
                   type="submit"
-                  class="search-btn border text-center search-btn text-white h-10 inline-block w-100"
+                  class="search-btn border text-center search-btn text-white h-10 inline-block w-180"
                 >
                   검색
                 </button>

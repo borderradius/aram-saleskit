@@ -109,11 +109,11 @@ export default {
           alt: '전집 & 디지털콘텐츠',
           class: 'first'
         },
-        {
-          src: '/smallbook-off-ico.png',
-          alt: '소전집',
-          class: 'second'
-        },
+        // {
+        //   src: '/smallbook-off-ico.png',
+        //   alt: '소전집',
+        //   class: 'second'
+        // },
         {
           src: '/brosure-off-ico.png',
           alt: '브로슈어',
@@ -165,11 +165,11 @@ export default {
           alt: '전집 & 디지털콘텐츠',
           class: 'first'
         },
-        {
-          src: '/smallbook-off-ico.png',
-          alt: '소전집',
-          class: 'second'
-        },
+        // {
+        //   src: '/smallbook-off-ico.png',
+        //   alt: '소전집',
+        //   class: 'second'
+        // },
         {
           src: '/brosure-off-ico.png',
           alt: '브로슈어',

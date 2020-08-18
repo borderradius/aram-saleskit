@@ -26,6 +26,9 @@
                     alt="선택이미지"
                   />
                 </div>
+                <span class="absolute w-full text-center pt-2 text-white">{{
+                  item.answerList[0].cnslQstAnsrEduNm
+                }}</span>
               </div>
               <div v-animate-css.click="'rubberBand'" class="img-select-right">
                 <div
@@ -42,6 +45,9 @@
                     alt="선택이미지"
                   />
                 </div>
+                <span class="absolute w-full text-center pt-2 text-white">
+                  {{ item.answerList[1].cnslQstAnsrEduNm }}</span
+                >
               </div>
             </div>
           </SwiperSlide>
