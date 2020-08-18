@@ -71,12 +71,12 @@ export default {
           src: '/allbook-on-ico.png',
           alt: '전집 & 디지털콘텐츠',
           class: 'first'
-        },
-        {
-          src: '/smallbook-off-ico.png',
-          alt: '소전집',
-          class: 'second'
         }
+        // {
+        //   src: '/smallbook-off-ico.png',
+        //   alt: '소전집',
+        //   class: 'second'
+        // }
         // {
         //   src: '/book-off-ico.png',
         //   alt: '도서',
@@ -143,12 +143,12 @@ export default {
           src: '/allbook-off-ico.png',
           alt: '전집 & 디지털콘텐츠',
           class: 'first'
-        },
-        {
-          src: '/smallbook-off-ico.png',
-          alt: '소전집',
-          class: 'second'
         }
+        // {
+        //   src: '/smallbook-off-ico.png',
+        //   alt: '소전집',
+        //   class: 'second'
+        // }
         // {
         //   src: '/book-off-ico.png',
         //   alt: '도서',

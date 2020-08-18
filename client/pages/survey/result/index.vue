@@ -51,6 +51,15 @@
           <ul class="third flex mt-6">
             <li class="flex-1 text-center">자연탐구</li>
             <li class="flex-1 text-center">자연탐구</li>
+            <li class="flex-1 text-center">수학</li>
+            <li class="flex-1 text-center">
+              <div class="system-chart-child">수학</div>
+              <div class="system-chart-child">과학</div>
+            </li>
+          </ul>
+          <ul class="fourth flex mt-6">
+            <li class="flex-1 text-center">사회관계</li>
+            <li class="flex-1 text-center">사회관계</li>
             <li class="flex-1 text-center">
               <div class="system-chart-child">슬기로운 생활</div>
               <div class="system-chart-child">바른생활</div>
@@ -60,7 +69,7 @@
               <div class="system-chart-child">도덕</div>
             </li>
           </ul>
-          <ul class="second flex mt-6">
+          <ul class="fifth flex mt-6">
             <li class="flex-1 text-center">예술경험</li>
             <li class="flex-1 text-center">예술경험</li>
             <li class="flex-1 text-center">즐거운 생활</li>
@@ -69,7 +78,7 @@
               <div class="system-chart-child">음악</div>
             </li>
           </ul>
-          <ul class="fifth flex mt-6">
+          <ul class="sixth flex mt-6">
             <li class="flex-1 text-center">
               <div class="system-chart-child">기본생활</div>
               <div class="system-chart-child">신체운동</div>
@@ -159,7 +168,7 @@
               </li> -->
             </ul>
           </div>
-          <div class="allbook-recommend-result mt-4">
+          <!-- <div class="allbook-recommend-result mt-4">
             <div class="recommend-title flex justify-between p-4 items-center">
               <span class="text-md">
                 <img
@@ -200,7 +209,7 @@
               </li>
             </ul>
             <p v-else class="p-8 text-center">업데이트 예정입니다.</p>
-          </div>
+          </div> -->
           <div class="flex justify-between mt-16">
             <a
               href="https://arambookclub.com/join/step01"

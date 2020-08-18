@@ -59,10 +59,6 @@
               <div class="system-chart-child">수학</div>
               <div class="system-chart-child">과학</div>
             </li>
-            <!-- <li class="flex-1 text-center">
-              <div class="system-chart-child item3">사회</div>
-              <div class="system-chart-child item3">도덕</div>
-            </li> -->
           </ul>
           <ul class="fourth flex mt-6">
             <li class="flex-1 text-center">사회관계</li>
@@ -175,7 +171,7 @@
               </li> -->
             </ul>
           </div>
-          <div class="allbook-recommend-result mt-4">
+          <!-- <div class="allbook-recommend-result mt-4">
             <div class="recommend-title flex justify-between p-4 items-center">
               <span class="text-md">
                 <img
@@ -212,8 +208,7 @@
                 <h4 class="mt-2">{{ item.prodNm }}</h4>
               </li>
             </ul>
-            <!-- <p class="p-8 text-center">업데이트 예정입니다.</p> -->
-          </div>
+          </div> -->
           <div class="flex justify-between mt-16">
             <button
               class="btn rounded-full flex-1 text-center mr-10"
