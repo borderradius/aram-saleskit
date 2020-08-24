@@ -56,7 +56,33 @@ module.exports = {
   /*
    ** Nuxt.js modules
    */
-  modules: ['@nuxtjs/axios', '@nuxtjs/auth', 'nuxt-mq', '@nuxtjs/moment'],
+  modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/auth',
+    'nuxt-mq',
+    '@nuxtjs/moment',
+    '@nuxtjs/pwa'
+  ],
+  /**
+   * * PWA 설정
+   */
+  // manifest: {
+  //   name: '아람 세일즈킷',
+  //   short_name: '아람세일즈킷',
+  //   start_url: '/',
+  //   display: 'standalone',
+  //   background_color: '#000'
+  // },
+  // workbox: {
+  //   offline: false,
+  //   runtimeCaching: [
+  //     {
+  //       urlPattern: '/*',
+  //       handler: 'networkFirst',
+  //       method: 'GET'
+  //     }
+  //   ]
+  // },
   moment: {
     locales: ['ko']
   },
