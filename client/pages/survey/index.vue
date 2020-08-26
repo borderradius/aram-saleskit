@@ -2,7 +2,7 @@
   <div class="survey flex items-center justify-center text-lg">
     <div class="flex-initial h-5/6 w-4/5">
       <h1
-        class="text-xl absolute left-0 p-1 px-6 rounded-r-full title text-white"
+        class="text-xl absolute left-0 px-6 py-2 rounded-r-full title text-white"
       >
         어린이 선호도 앙케이트
       </h1>
@@ -17,7 +17,7 @@
             >개인정보 수집 및 마케팅 정보 활용 동의서</span
           >
         </label>
-        <button class="flex text-xs text-gray-500" @click="show">
+        <button class="flex text-xs text-gray-500 mt-1" @click="show">
           [ 약관내용 상세보기 ]
         </button>
       </div>
@@ -124,7 +124,10 @@
         </ValidationObserver>
       </div>
       <div class="bg-white mt-4">
-        <div v-if="!tBody.length" class="border border-1 h-5p py-20 rounded-lg">
+        <div
+          v-if="!tBody.length"
+          class="border border-1 h-5p py-10 rounded-lg no-data-wrap"
+        >
           <p class="text-gray-600 text-center no-data">
             {{ noDataSentence }}
           </p>
@@ -162,7 +165,8 @@
       <n-link class="go-home" to="/">
         <img src="/go-home1.png" alt="메인으로가기 아이콘" />
       </n-link>
-      <span class="bookclub-logo">북클럽 이미지</span>
+      <img src="/bi_blue.png" class="bookclub-logo2" />
+      <!-- <span class="bookclub-logo inline-block">북클럽 이미지</span> -->
     </div>
     <modal name="agree" width="100%" height="auto" scrollable>
       <div class="agree-wrap">

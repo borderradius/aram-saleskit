@@ -23,7 +23,7 @@
         }
       }
       a {
-        @apply block p-4 text-sm relative;
+        @apply flex p-4 text-sm relative;
         color: #60a81f;
         img {
           @apply w-8 inline-block;

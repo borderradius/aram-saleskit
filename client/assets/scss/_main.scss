@@ -6,7 +6,7 @@
     left: 1rem;
     top: 1rem;
     img {
-      width: 80px;
+      width: 100px;
     }
   }
   .card-wrapper {
@@ -108,4 +108,10 @@
   &.result {
     background-image: url('../image/bi_blue.png');
   }
+}
+.bookclub-logo2 {
+  @apply absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 80px;
 }

@@ -147,15 +147,15 @@ export default {
         case 0:
           this.type = 'allbook'
           break
-        case 1:
-          this.type = 'smallbook'
-          break
+        // case 1:
+        //   this.type = 'smallbook'
+        //   break
         default:
           this.type = 'brosure'
           break
       }
       this.setSearchList({ type: this.type, search: this.searchParam })
-      index === 2 ? (this.isSearch = false) : (this.isSearch = true)
+      index === 1 ? (this.isSearch = false) : (this.isSearch = true)
     },
     checkNowMenu(index) {
       // leftMenu 클래스, off이미지로 초기화
@@ -183,8 +183,8 @@ export default {
 
       li[index].classList.add('active')
       if (index === 0) this.menuList[index].src = '/allbook-on-ico.png'
-      if (index === 1) this.menuList[index].src = '/smallbook-on-ico.png'
-      if (index === 2) this.menuList[index].src = '/brosure-on-ico.png'
+      // if (index === 1) this.menuList[index].src = '/smallbook-on-ico.png'
+      if (index === 1) this.menuList[index].src = '/brosure-on-ico.png'
     }
   }
 }

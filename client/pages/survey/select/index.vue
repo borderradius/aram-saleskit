@@ -1,7 +1,7 @@
 <template>
   <div class="survey-select-wrap flex items-center justify-center text-lg">
     <div class="flex-initial h-5/6 w-5/6">
-      <h1 class="text-xl absolute left-0 p-1 px-6 rounded-r-full title">
+      <h1 class="text-xl absolute left-0 py-2 px-6 rounded-r-full title">
         어린이 선호도 앙케이트
       </h1>
       <div>
@@ -57,12 +57,13 @@
     </div>
     <!-- <a href="javascript:;" class="go-back" @click="goBack">
       <img src="/go-back.png" alt="뒤로가기 아이콘" />
-    </a> -->
+    </a> --><img src="/bi_blue.png" class="bookclub-logo2" />
     <!-- <a href="javascript:;" class="go-back" @click="goBack">back</a> -->
     <n-link class="go-home" to="/">
       <img src="/go-home2.png" alt="메인으로가기 아이콘" />
     </n-link>
-    <span class="bookclub-logo">북클럽 이미지</span>
+    <!-- <span class="bookclub-logo">북클럽 이미지</span> -->
+    <img src="/main-logo.png" class="bookclub-logo2" />
     <n-link class="go-main" to="/">다음에 하기</n-link>
     <Loading v-if="isComplete" />
   </div>

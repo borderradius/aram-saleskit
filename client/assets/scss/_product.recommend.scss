@@ -23,7 +23,7 @@
         }
       }
       a {
-        @apply block p-4 text-sm relative;
+        @apply flex p-4 text-sm relative;
         color: #60a81f;
         img {
           @apply w-8 inline-block;
@@ -66,6 +66,8 @@
           $width: 47%;
           width: $width;
           margin-bottom: calc((50% - #{$width}) * 1.5);
+          border: 1px solid #dcdcdc;
+          border-radius: 1rem;
         }
         .text-wrap {
           li {

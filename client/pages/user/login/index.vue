@@ -9,7 +9,7 @@
     <div class="flex items-center h-screen re-height shadow-xl login-right">
       <div class="px-10 w-full">
         <ValidationObserver v-slot="{ handleSubmit }">
-          <h1 class="uppercase text-center text-2xl text-main-green">
+          <h1 class="uppercase text-center text-2xl text-main-green font-bold">
             sign in
           </h1>
           <form @submit.prevent="handleSubmit(login)">

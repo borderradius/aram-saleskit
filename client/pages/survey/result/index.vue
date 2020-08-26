@@ -1,7 +1,7 @@
 <template>
   <div class="survey-result min-h-screen flex justify-center">
     <h1
-      class="text-xl absolute left-0 p-1 px-6 rounded-r-full title text-white"
+      class="text-xl absolute left-0 py-2 px-6 rounded-r-full title text-white"
     >
       어린이 선호도 앙케이트
     </h1>
@@ -31,7 +31,7 @@
         </ul>
       </div>
       <div class="report-content2 mt-4 pb-2">
-        <h2 class="mb-4 font-extrabold">2. 학습 계통도</h2>
+        <h2 class="mb-6 font-extrabold">2. 학습 계통도</h2>
         <!-- <div class="system-chart">
           <ul class="first flex">
             <li class="flex-1 text-center">표준보육과정<br />(0세~2세)</li>
@@ -198,7 +198,7 @@
         </div>
       </div>
       <div class="report-content3 mt-4">
-        <h2 class="mb-4 font-extrabold">3. 추천 결과</h2>
+        <h2 class="mb-6 font-extrabold">3. 추천 결과</h2>
         <div class="recommend-result pb-10">
           <div class="allbook-recommend-result">
             <div class="recommend-title flex justify-between p-4 items-center">
@@ -335,7 +335,8 @@
     <n-link class="go-home" to="/">
       <img src="/go-home1.png" alt="메인으로가기 아이콘" />
     </n-link>
-    <span class="bookclub-logo result">북클럽 이미지</span>
+    <img src="/bi_blue.png" class="bookclub-logo2" />
+    <!-- <span class="bookclub-logo result">북클럽 이미지</span> -->
     <!-- <a href="javascript:;" class="go-back" @click="goBack">back</a> -->
   </div>
 </template>
