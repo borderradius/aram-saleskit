@@ -67,6 +67,8 @@
           $width: 47%;
           width: $width;
           margin-bottom: calc((50% - #{$width}) * 1.5);
+          border: 1px solid #dcdcdc;
+          border-radius: 0.8rem;
         }
         .text-wrap {
           li {
