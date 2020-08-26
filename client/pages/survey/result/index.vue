@@ -32,7 +32,7 @@
       </div>
       <div class="report-content2 mt-4 pb-2">
         <h2 class="mb-4 font-extrabold">2. 학습 계통도</h2>
-        <div class="system-chart">
+        <!-- <div class="system-chart">
           <ul class="first flex">
             <li class="flex-1 text-center">표준보육과정<br />(0세~2세)</li>
             <li class="flex-1 text-center">누리과정<br />(3세~5세)</li>
@@ -86,6 +86,114 @@
             <li class="flex-1 text-center">신체운동 및 건강</li>
             <li class="flex-1 text-center">안전</li>
             <li class="flex-1 text-center">체육</li>
+          </ul>
+        </div> -->
+        <div class="system-chart2 flex justify-between">
+          <ul class="system-chart-title">
+            <li class="flex items-center text-center">
+              <div class="w-full text-center">
+                표준보육과정<br />(0세 ~ 2세)
+              </div>
+            </li>
+            <li class="flex items-center text-center">
+              <div class="w-full text-center">누리과정<br />(3세 ~ 5세)</div>
+            </li>
+            <li class="flex items-center text-center">
+              <div class="w-full text-center">초등교과<br />(저학년)</div>
+            </li>
+            <li class="flex items-center text-center">
+              <div class="w-full text-center">초등교과<br />(고학년)</div>
+            </li>
+          </ul>
+          <ul class="system-chart-list row1">
+            <li
+              v-for="item in systemChart1"
+              :key="item.label"
+              :class="[
+                item.size === 'half' ? 'half' : '',
+                item.isOn ? 'on' : '',
+                item.isLeft ? 'go-left' : '',
+                item.isRight ? 'go-right' : '',
+                item.isStraight ? 'go-straight' : ''
+              ]"
+              class="flex items-center"
+            >
+              <div class="text-center w-full">
+                {{ item.label }}
+              </div>
+            </li>
+          </ul>
+          <ul class="system-chart-list row1">
+            <li
+              v-for="item in systemChart2"
+              :key="item.label"
+              :class="[
+                item.size === 'half' ? 'half' : '',
+                item.isOn ? 'on' : '',
+                item.isLeft ? 'go-left' : '',
+                item.isRight ? 'go-right' : '',
+                item.isStraight ? 'go-straight' : ''
+              ]"
+              class="flex items-center"
+            >
+              <div class="text-center w-full">
+                {{ item.label }}
+              </div>
+            </li>
+          </ul>
+          <ul class="system-chart-list row3">
+            <li
+              v-for="item in systemChart3"
+              :key="item.label"
+              :class="[
+                item.size === 'half' ? 'half' : '',
+                item.isOn ? 'on' : '',
+                item.isLeft ? 'go-left' : '',
+                item.isRight ? 'go-right' : '',
+                item.isStraight ? 'go-straight' : ''
+              ]"
+              class="flex items-center"
+            >
+              <div class="text-center w-full">
+                {{ item.label }}
+              </div>
+            </li>
+          </ul>
+          <ul class="system-chart-list row1">
+            <li
+              v-for="item in systemChart4"
+              :key="item.label"
+              :class="[
+                item.size === 'half' ? 'half' : '',
+                item.isOn ? 'on' : '',
+                item.isLeft ? 'go-left' : '',
+                item.isRight ? 'go-right' : '',
+                item.isStraight ? 'go-straight' : ''
+              ]"
+              class="flex items-center"
+            >
+              <div class="text-center w-full">
+                {{ item.label }}
+              </div>
+            </li>
+          </ul>
+          <ul class="system-chart-list row5">
+            <li
+              v-for="item in systemChart5"
+              :key="item.label"
+              :class="[
+                item.size === 'half' ? 'half' : '',
+                item.isOn ? 'on' : '',
+                item.isLeft ? 'go-left' : '',
+                item.isRight ? 'go-right' : '',
+                item.isStraight ? 'go-straight' : ''
+              ]"
+              class="flex items-center"
+            >
+              <div class="text-center w-full">
+                {{ item.label }}
+              </div>
+            </li>
           </ul>
         </div>
       </div>
@@ -253,7 +361,225 @@ export default {
           rglrSrsRcmdProdList: [],
           mnSrsRcmdProdList: []
         }
-      }
+      },
+      systemChart1: [
+        {
+          label: '의사소통',
+          isOn: true,
+          size: 'full',
+          isLeft: false,
+          isRight: false,
+          isStraight: false
+        },
+        {
+          label: '의사소통',
+          isOn: true,
+          size: 'full',
+          isLeft: false,
+          isRight: false,
+          isStraight: false
+        },
+        {
+          label: '국어',
+          isOn: true,
+          size: 'full',
+          isLeft: false,
+          isRight: false,
+          isStraight: false
+        },
+        {
+          label: '국어',
+          isOn: false,
+          size: 'half',
+          isLeft: false,
+          isRight: true,
+          isStraight: false
+        },
+        {
+          label: '영어',
+          isOn: true,
+          size: 'half',
+          isLeft: true,
+          isRight: false,
+          isStraight: false
+        }
+      ],
+      systemChart2: [
+        {
+          label: '자연탐구',
+          isOn: true,
+          size: 'full',
+          isLeft: false,
+          isRight: false,
+          isStraight: false
+        },
+        {
+          label: '자연탐구',
+          isOn: true,
+          size: 'full',
+          isLeft: false,
+          isRight: false,
+          isStraight: false
+        },
+        {
+          label: '수학',
+          isOn: true,
+          size: 'full',
+          isLeft: false,
+          isRight: false,
+          isStraight: false
+        },
+        {
+          label: '수학',
+          isOn: true,
+          size: 'half',
+          isLeft: false,
+          isRight: true,
+          isStraight: false
+        },
+        {
+          label: '과학',
+          isOn: false,
+          size: 'half',
+          isLeft: true,
+          isRight: false,
+          isStraight: false
+        }
+      ],
+      systemChart3: [
+        {
+          label: '사회관계',
+          isOn: true,
+          size: 'full',
+          isLeft: false,
+          isRight: false,
+          isStraight: false
+        },
+        {
+          label: '사회관계',
+          isOn: true,
+          size: 'full',
+          isLeft: false,
+          isRight: false,
+          isStraight: false
+        },
+        {
+          label: '슬기로운생활',
+          isOn: false,
+          size: 'half',
+          isLeft: false,
+          isRight: true,
+          isStraight: false
+        },
+        {
+          label: '바른생활',
+          isOn: true,
+          size: 'half',
+          isLeft: true,
+          isRight: false,
+          isStraight: false
+        },
+        {
+          label: '사회',
+          isOn: false,
+          size: 'half',
+          isLeft: false,
+          isRight: false,
+          isStraight: true
+        },
+        {
+          label: '도덕',
+          isOn: true,
+          size: 'half',
+          isLeft: false,
+          isRight: false,
+          isStraight: true
+        }
+      ],
+      systemChart4: [
+        {
+          label: '예술경험',
+          isOn: true,
+          size: 'full',
+          isLeft: false,
+          isRight: false,
+          isStraight: false
+        },
+        {
+          label: '예술경험',
+          isOn: true,
+          size: 'full',
+          isLeft: false,
+          isRight: false,
+          isStraight: false
+        },
+        {
+          label: '즐거운 생활',
+          isOn: true,
+          size: 'full',
+          isLeft: false,
+          isRight: false,
+          isStraight: false
+        },
+        {
+          label: '미술',
+          isOn: true,
+          size: 'half',
+          isLeft: false,
+          isRight: true,
+          isStraight: false
+        },
+        {
+          label: '음악',
+          isOn: false,
+          size: 'half',
+          isLeft: true,
+          isRight: false,
+          isStraight: false
+        }
+      ],
+      systemChart5: [
+        {
+          label: '기본생활',
+          isOn: true,
+          size: 'half',
+          isLeft: false,
+          isRight: false,
+          isStraight: false
+        },
+        {
+          label: '신체운동',
+          isOn: false,
+          size: 'half',
+          isLeft: false,
+          isRight: false,
+          isStraight: false
+        },
+        {
+          label: '신체운동 및 건강',
+          isOn: true,
+          size: 'full',
+          isLeft: true,
+          isRight: false,
+          isStraight: false
+        },
+        {
+          label: '안전',
+          isOn: true,
+          size: 'full',
+          isLeft: false,
+          isRight: false,
+          isStraight: false
+        },
+        {
+          label: '체육',
+          isOn: true,
+          size: 'full',
+          isLeft: false,
+          isRight: false,
+          isStraight: false
+        }
+      ]
     }
   },
   mounted() {

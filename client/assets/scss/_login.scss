@@ -1,7 +1,12 @@
 .login-page {
-  // h1 {
-  //   top: 10px;
-  // }
+  .logo {
+    @apply absolute;
+    left: 1rem;
+    top: 1rem;
+    img {
+      width: 80px;
+    }
+  }
   input[type='text'],
   input[type='password'] {
     @apply w-full text-center border border-gray-300 p-4 rounded-lg;

@@ -78,17 +78,17 @@
     .system-on {
       @apply rounded-full text-white relative;
       background-color: #ff797d;
-      border: 1px solid #ff797d;
-      &::after {
-        content: '';
-        display: block;
-        position: absolute;
-        right: -20px;
-        background-color: #ff797d;
-        height: 4px;
-        width: 30px;
-        top: 2.2rem;
-      }
+      border: 2px solid #ff797d;
+      // &::after {
+      //   content: '';
+      //   display: block;
+      //   position: absolute;
+      //   right: -20px;
+      //   background-color: #ff797d;
+      //   height: 4px;
+      //   width: 30px;
+      //   top: 2.2rem;
+      // }
     }
     .system-off {
       @apply rounded-full;
@@ -325,4 +325,150 @@
       }
     }
   }
+  // system chart 2
+  .system-chart2 {
+    .system-chart-title {
+      clear: both;
+      overflow: hidden;
+      li {
+        width: 80px;
+        border-radius: 50%;
+        background: #e0e0e0;
+        font-size: 0.6rem;
+        border: 2px solid #e0e0e0;
+        text-align: center;
+        color: #666;
+        height: 80px;
+        margin-bottom: 1rem;
+        padding: 0 10px;
+      }
+    }
+    .system-chart-list {
+      clear: both;
+      overflow: hidden;
+      width: 15%;
+      li {
+        width: 100%;
+        float: left;
+        font-size: 0.9rem;
+        border: 2px solid #e0e0e0;
+        text-align: center;
+        border-radius: 40px;
+        height: 80px;
+        margin-bottom: 1rem;
+        padding: 0 10px;
+        &.on {
+          @extend .system-on;
+          &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 50%;
+            margin-left: -2px;
+            background-color: #ff797d;
+            height: 40px;
+            width: 4px;
+            bottom: -2rem;
+          }
+        }
+        &.on.go-left::after {
+          content: '';
+          display: block;
+          position: absolute;
+          left: 50%;
+          margin-left: -2px;
+          background-color: #ff797d;
+          height: 40px;
+          width: 4px;
+          top: -40px;
+          transform-origin: bottom;
+          transform: rotate(-45deg);
+        }
+        &.on.go-right::after {
+          content: '';
+          display: block;
+          position: absolute;
+          left: 50%;
+          margin-left: -2px;
+          background-color: #ff797d;
+          height: 40px;
+          width: 4px;
+          top: -40px;
+          transform-origin: bottom;
+          transform: rotate(45deg);
+        }
+        &.on.go-straight::after {
+          content: '';
+          display: block;
+          position: absolute;
+          left: 50%;
+          margin-left: -2px;
+          background-color: #ff797d;
+          height: 40px;
+          width: 4px;
+          top: -40px;
+        }
+      }
+      &.row1 {
+        li:nth-child(3),
+        li:nth-child(4),
+        li:nth-child(5) {
+          &.on {
+            &::before {
+              display: none;
+            }
+          }
+        }
+        li:nth-child(5) {
+          margin-left: 8%;
+        }
+      }
+      &.row3 {
+        li:nth-child(2),
+        li:nth-child(3),
+        li:nth-child(4),
+        li:nth-child(5),
+        li:nth-child(6) {
+          &.on {
+            &::before {
+              display: none;
+            }
+          }
+        }
+        li:nth-child(4),
+        li:nth-child(6) {
+          margin-left: 8%;
+        }
+      }
+      &.row5 {
+        li:nth-child(1),
+        li:nth-child(2),
+        // li:nth-child(3),
+        // li:nth-child(4),
+        li:nth-child(5) {
+          &.on {
+            &::before {
+              display: none;
+            }
+          }
+        }
+        li:nth-child(2) {
+          margin-left: 8%;
+        }
+      }
+      .half {
+        box-sizing: border-box;
+        width: 46%;
+        // margin-left: 0;
+        // &:nth-last-child(1) {
+        //   margin-left: 8%;
+        // }
+      }
+    }
+  }
+  // .chart-item {
+  //   background: red;
+  //   span {
+  //   }
+  // }
 }
