@@ -149,5 +149,12 @@
       @apply p-4;
       color: #333;
     }
+    dt {
+      padding: 0.8rem 0;
+    }
+    dd {
+      padding: 0.8rem 1rem 0 0.8rem;
+      text-align: left;
+    }
   }
 }
