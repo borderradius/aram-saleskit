@@ -1,7 +1,16 @@
-export default ({ store, route, redirect }) => {
+export default (context) => {
+  const { store, route, redirect } = context
+
   const isLoggedIn = store.state.auth.loggedIn
 
-  // console.warn('isLoggedin ? ', isLoggedIn)
+  /**
+   * * 가로모드 체크
+   */
+  const isLandscape = window.matchMedia('(orientation: landscape)').matches
+  if (!isLandscape) {
+    alert('해당 웹사이트는 가로모드에 최적화 되어있습니다.')
+  }
+
   /**
    * * 로그인 안되어있을때 로그인페이지로 이동
    */
