@@ -66,6 +66,9 @@
       li {
         @apply text-center;
         input {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
           width: 120px;
         }
       }
@@ -86,6 +89,9 @@
       }
     }
     .datepicker-input {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
       @apply inline-block border rounded-md w-140 py-2 text-center float-left;
     }
     .search-btn {

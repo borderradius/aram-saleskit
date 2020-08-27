@@ -9,6 +9,9 @@
   }
   input[type='text'],
   input[type='password'] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     @apply w-full text-center border border-gray-300 p-4 rounded-lg;
     // border-radius: 20px;
     // border: solid 2px #dddddd;

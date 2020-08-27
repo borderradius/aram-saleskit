@@ -29,7 +29,7 @@
               <span class="text-gray-700 font-bold mr-4">상품명</span>
               <input
                 v-model="searchParam.searchProdNm"
-                type="search"
+                type="text"
                 class="p-2"
               />
             </div>

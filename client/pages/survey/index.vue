@@ -52,7 +52,7 @@
               <select
                 v-model="orgmId"
                 name="상담자"
-                class="bg-white h-10 px-5 focus:outline-none inline-block search-input select w-full"
+                class="bg-white h-10 px-5 focus:outline-none inline-block search-select select w-full"
               >
                 <option value="">상담자를 선택해주세요.</option>
                 <option
@@ -103,8 +103,8 @@
               <div class="flex w-full">
                 <input
                   v-model="mblTelNum"
-                  class="bg-white h-10 px-5 focus:outline-none inline-block search-input w-4/5"
-                  type="search"
+                  class="bg-white px-5 focus:outline-none search-input w-4/5"
+                  type="text"
                   name="search"
                   placeholder="전화번호를 입력해주세요."
                 />

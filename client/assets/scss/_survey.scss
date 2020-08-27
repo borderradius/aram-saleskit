@@ -42,18 +42,36 @@
     // height: 40px;
     border: 0;
   }
-  .search-input {
+  .search-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
     border: 1px solid #7fd334;
     background-color: #fff;
-    &.select {
-      background-repeat: no-repeat;
-      background-position: 98% center;
-      background-image: url('/cheveron-bottom.png');
-      background-size: 18px;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-    }
+    background-repeat: no-repeat;
+    background-position: 98% center;
+    background-image: url('/cheveron-bottom.png');
+    background-size: 18px;
+  }
+  .search-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0 !important;
+    border: 1px solid #7fd334;
+    background-color: #fff;
+    // border-top-left-radius: 0;
+    // border-bottom-left-radius: 0;
+    // &.select {
+    //   background-repeat: no-repeat;
+    //   background-position: 98% center;
+    //   background-image: url('/cheveron-bottom.png');
+    //   background-size: 18px;
+    //   -webkit-appearance: none;
+    //   -moz-appearance: none;
+    //   appearance: none;
+    // }
     // background: url('/uploads/media/default/0001/02/f7b4d3d2ba3fe1d8518e6e63d7740e1e73921abf.png')
     //   96% / 15% no-repeat;
     &::placeholder {

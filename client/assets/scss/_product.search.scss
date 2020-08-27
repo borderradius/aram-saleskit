@@ -28,12 +28,12 @@
         img {
           @apply w-8 inline-block;
           &.first {
-            margin-top: -4px;
+            // margin-top: -4px;
             margin-right: 4px;
             margin-left: 2px;
           }
           &.second {
-            margin-top: -4px;
+            // margin-top: -4px;
             margin-right: 0.5rem;
           }
         }
@@ -59,6 +59,9 @@
           text-align: left;
         }
         input {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
           @apply rounded-sm;
           width: calc(100% - #{$span-w});
           border: 1px solid #7fd334;

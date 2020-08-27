@@ -22,7 +22,7 @@
                 <span class="label-title">이름</span>
                 <input
                   v-model="consult.chldNm"
-                  class="bg-white h-10 px-5 focus:outline-none text-xl inline-block"
+                  class="focus:outline-none"
                   type="text"
                   name="name"
                   placeholder="자녀의 이름을 입력해주세요."
@@ -42,7 +42,7 @@
                 <span class="label-title">생년월일</span>
                 <input
                   v-model="consult.chldBthYmd"
-                  class="bg-white h-10 px-5 focus:outline-none text-xl inline-block"
+                  class="focus:outline-none"
                   type="text"
                   name="birth"
                   placeholder="예) 19940101"
