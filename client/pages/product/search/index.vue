@@ -31,7 +31,7 @@
         </a>
       </li>
     </ul>
-    <modal name="brosure-image" width="90%" height="auto">
+    <modal name="brosure-image" width="90%" height="auto" scrollable>
       <img :src="brosureImgUrl" alt="브로슈어이미지" />
     </modal>
   </div>
