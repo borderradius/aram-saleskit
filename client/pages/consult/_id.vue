@@ -264,21 +264,21 @@
             <li class="flex-1">
               <dl class="flex flex-row flex-wrap justify-between">
                 <dt class="w-1/2">상품가 (a)</dt>
-                <dd class="w-1/2 text-right pr-4">100,000</dd>
+                <dd class="w-1/2">100,000</dd>
                 <dt class="w-1/2">포인트 (b)</dt>
-                <dd class="w-1/2 text-right pr-4">50,000</dd>
+                <dd class="w-1/2">50,000</dd>
                 <dt class="w-1/2">실결제가 (a-b)</dt>
-                <dd class="w-1/2 text-right pr-4">90,000</dd>
+                <dd class="w-1/2">90,000</dd>
               </dl>
             </li>
             <li class="flex-1">
               <dl class="flex flex-row flex-wrap justify-between">
                 <dt class="w-1/2">상품가 (a)</dt>
-                <dd class="w-1/2 text-right pr-4">-</dd>
+                <dd class="w-1/2">-</dd>
                 <dt class="w-1/2">포인트 (b)</dt>
-                <dd class="w-1/2 text-right pr-4">-</dd>
+                <dd class="w-1/2">-</dd>
                 <dt class="w-1/2">실결제가 (a-b)</dt>
-                <dd class="w-1/2 text-right pr-4">-</dd>
+                <dd class="w-1/2">-</dd>
               </dl>
             </li>
           </ul>
