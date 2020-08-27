@@ -8,37 +8,43 @@
           <li class="flex-auto">상담기간</li>
         </ul>
         <ul class="tbody flex">
-          <li class="px-1">
+          <li>
             <input
               v-model="searchParam.searchChldNm"
               type="text"
-              class="w-full text-center border rounded-md py-2"
+              class="w-full text-center border rounded-md py-2 float-left"
             />
           </li>
-          <li class="px-1">
+          <li>
             <input
               v-model="searchParam.searchTelNum"
               type="text"
-              class="w-full text-center border rounded-md py-2"
+              class="w-full text-center border rounded-md py-2 float-left"
             />
           </li>
-          <li class="flex-auto">
+          <li class="flex justify-start items-center">
             <Datepicker
               v-model="searchParam.searchStrDate"
-              class="inline-block mr-2"
+              class="mr-2"
               :language="ko"
               :height="40"
               format="yyyy-MM-dd"
               input-class="datepicker-input"
             />
+            <img
+              class="date-icon mr-2"
+              src="/btn_calendar.png"
+              alt="날짜아이콘"
+            />
             ~
             <Datepicker
               v-model="searchParam.searchEndDate"
-              class="inline-block ml-2"
+              class="mx-2"
               :language="ko"
               :format="dateFormatter"
               input-class="datepicker-input"
             />
+            <img class="date-icon" src="/btn_calendar.png" alt="날짜아이콘" />
           </li>
         </ul>
       </div>

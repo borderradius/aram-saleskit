@@ -1,12 +1,13 @@
-.label-title {
-  @apply inline-block h-full w-100 text-white rounded-l-lg;
-  background-color: #7fd334;
-}
 .start-form-wrap {
   @apply m-auto my-8;
   width: 70%;
   height: 60px;
   line-height: 60px;
+  .label-title {
+    @apply inline-block h-full text-white rounded-l-lg;
+    background-color: #7fd334;
+    width: 120px;
+  }
   input {
     @apply h-full rounded-r-lg text-center;
     width: 320px;
@@ -17,25 +18,3 @@
     }
   }
 }
-
-// {
-//   arr1: [
-//     {
-//       label: '의사소통'
-//       isOn: false
-//     },
-//     {
-//       label: '의사소통'
-//       isOn: false
-//     },
-//     {
-//       label: '의사소통'
-//       isOn: false
-//     },
-//     {
-//       label: '의사소통'
-//       isOn: false
-//     }
-//   ],
-
-// }

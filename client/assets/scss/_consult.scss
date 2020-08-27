@@ -9,26 +9,24 @@
     background: #f5f5f5;
     color: #666;
     li {
-      &:nth-child(1) {
-        width: 100px;
-      }
-      &:nth-child(2) {
-        width: 100px;
-      }
-      &:nth-child(3) {
-        width: 140px;
-      }
-      &:nth-child(4) {
-        width: 140px;
-      }
-      &:nth-child(5) {
-        width: 120px;
-      }
-      &:nth-child(6) {
-        width: 120px;
-      }
-      // &:nth-child(7) {
+      width: 16.67%;
+      // &:nth-child(1) {
       //   width: 100px;
+      // }
+      // &:nth-child(2) {
+      //   width: 100px;
+      // }
+      // &:nth-child(3) {
+      //   width: 140px;
+      // }
+      // &:nth-child(4) {
+      //   width: 140px;
+      // }
+      // &:nth-child(5) {
+      //   width: 120px;
+      // }
+      // &:nth-child(6) {
+      //   width: 120px;
       // }
     }
   }
@@ -40,26 +38,24 @@
       border-bottom: none;
     }
     li {
-      &:nth-child(1) {
-        width: 100px;
-      }
-      &:nth-child(2) {
-        width: 100px;
-      }
-      &:nth-child(3) {
-        width: 140px;
-      }
-      &:nth-child(4) {
-        width: 140px;
-      }
-      &:nth-child(5) {
-        width: 120px;
-      }
-      &:nth-child(6) {
-        width: 120px;
-      }
-      // &:nth-child(7) {
+      width: 16.67%;
+      // &:nth-child(1) {
       //   width: 100px;
+      // }
+      // &:nth-child(2) {
+      //   width: 100px;
+      // }
+      // &:nth-child(3) {
+      //   width: 140px;
+      // }
+      // &:nth-child(4) {
+      //   width: 140px;
+      // }
+      // &:nth-child(5) {
+      //   width: 120px;
+      // }
+      // &:nth-child(6) {
+      //   width: 120px;
       // }
     }
   }
@@ -69,19 +65,28 @@
     .tbody {
       li {
         @apply text-center;
+        input {
+          width: 120px;
+        }
       }
       li:nth-child(1) {
-        width: 120px;
+        width: 25%;
       }
       li:nth-child(2) {
-        width: 120px;
+        width: 25%;
+      }
+      li:nth-child(3) {
+        width: 50%;
       }
     }
     .thead {
       background-color: #d4f3ad;
+      li {
+        text-align: left;
+      }
     }
     .datepicker-input {
-      @apply inline-block border rounded-md w-140 py-2 text-center;
+      @apply inline-block border rounded-md w-140 py-2 text-center float-left;
     }
     .search-btn {
       @apply block p-3 text-center text-white rounded-full w-3/5 mx-auto mt-8 text-xl;
@@ -92,6 +97,9 @@
       border: 1px solid #d4f3ad;
       width: 100%;
       border-collapse: inherit;
+    }
+    .date-icon {
+      width: 30px;
     }
     thead {
       @apply rounded-lg;
