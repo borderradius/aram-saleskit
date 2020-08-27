@@ -30,13 +30,26 @@
     <n-link to="/consult" class="go-history">
       <img src="/go-history.png" alt="상담이력 아이콘" />
     </n-link>
+    <button class="btn inline-block absolute bottom-0" @click="fullScreen">
+      fullscreen
+    </button>
     <!-- <n-link to="/survey" class="btn btn-info">앙케이트시작</n-link>
     <n-link to="/user/login" class="btn btn-info">로그인</n-link> -->
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  // mounted() {
+  //   console.log(document.body)
+  // },
+  methods: {
+    fullScreen() {
+      console.log(document.body)
+      // document.body.requestFullscreen()
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped></style>
