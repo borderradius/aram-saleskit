@@ -66,6 +66,7 @@
     <img src="/main-logo.png" class="bookclub-logo2" />
     <n-link class="go-main" to="/">다음에 하기</n-link>
     <Loading v-if="isComplete" />
+    <audio src="/file_example_MP3_700KB.mp3" autoplay />
   </div>
 </template>
 
@@ -129,6 +130,7 @@ export default {
       }, 2000)
     },
     async doClick(cnslPoolSeqno, choicedAnswerEduCd) {
+      this.clickSound()
       // 클릭할 때 마다 counselTestPaper에 데이터 푸쉬
       this.counselTestPaper.push({
         cnslPoolSeqno,
@@ -154,6 +156,10 @@ export default {
       window.setTimeout(() => {
         if (this.nowSlidePage < 10) this.swiper.slideTo(this.nowSlidePage - 1)
       }, 500)
+    },
+    clickSound() {
+      const audio = new Audio('/ddiyong2.mp3')
+      audio.play()
     }
   }
 }
