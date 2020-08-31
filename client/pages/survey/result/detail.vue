@@ -240,11 +240,11 @@
         <div class="recommend-result pb-10">
           <div class="allbook-recommend-result">
             <div class="recommend-title flex justify-between p-4 items-center">
-              <span class="text-md">
+              <span class="text-md flex items-center">
                 <img
                   src="/allbook-off-ico.png"
                   alt="전집아이콘"
-                  class="inline-block -mt-1 mr-2"
+                  class="inline-block mr-2"
                 />
                 전집 &amp; 디지털 콘텐츠</span
               >
@@ -712,7 +712,7 @@ export default {
       })
     },
     goBack() {
-      this.$router.go(-1)
+      this.$router.push('/survey')
     }
   }
 }

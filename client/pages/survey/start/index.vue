@@ -1,6 +1,6 @@
 <template>
   <div class="survey flex items-center justify-center text-lg h-screen">
-    <div class="flex items-center justify-center h-5/6 w-4/5">
+    <div class="flex items-center justify-center h-5/6 w-3/5">
       <h1
         class="text-xl absolute left-0 py-2 px-6 rounded-r-full title text-white"
       >
@@ -19,7 +19,7 @@
               class="w-full"
             >
               <div class="start-form-wrap flex justify-center">
-                <span class="label-title">이름</span>
+                <div class="label-title">이름</div>
                 <input
                   v-model="consult.chldNm"
                   class="focus:outline-none"
@@ -39,7 +39,7 @@
               class="w-full"
             >
               <div class="start-form-wrap flex justify-center">
-                <span class="label-title">생년월일</span>
+                <div class="label-title">생년월일</div>
                 <input
                   v-model="consult.chldBthYmd"
                   class="focus:outline-none"

@@ -6,14 +6,14 @@
   .label-title {
     @apply h-full text-white rounded-l-lg;
     background-color: #7fd334;
-    width: 120px;
+    width: 16rem;
   }
   input {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     @apply h-full rounded-r-lg text-center bg-white px-5 text-xl;
-    width: 320px;
+    // width: 320px;
     border: 1px solid #7fd334;
     border-left: none;
     border-top-left-radius: 0;
