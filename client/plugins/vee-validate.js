@@ -14,7 +14,7 @@ extend('numeric', {
  */
 extend('mobile', {
   message() {
-    return '올바른 번호를 입력해주세요'
+    return '번호를 확인해주세요. 예)01012341234'
   },
   validate(value) {
     const strongRegex = new RegExp('^(01)[0][0-9]{4}[0-9]{4}$')
@@ -28,6 +28,18 @@ extend('required', {
   message(field) {
     // const rs = await window.$nuxt.$axios.get('contacts')
     // console.log(rs)
+    if (field === '상담자') {
+      return `${field}를 선택해주세요.`
+    }
+    if (field === '검색어') {
+      return `휴대폰 번호를 입력해주세요.`
+    }
+    if (field === '이름' || field === '생년월일') {
+      return `${field}은 필수입니다.`
+    }
+    // if (field === '생년월일') {
+    //   return `${field}은 필수입니다.`
+    // }
     return `${field}은(는) 필수입니다.`
   }
 })
@@ -110,7 +122,7 @@ extend('minmax', {
 
 extend('birth', {
   message(field) {
-    return `${field} 제대로 입력해주세요`
+    return `${field}을 확인해주세요. 예)20170101`
   },
   validate(value) {
     const birthRegex = new RegExp(

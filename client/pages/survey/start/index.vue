@@ -8,7 +8,7 @@
       </h1>
       <div class="text-center">
         <p class="text-xl mb-8">
-          선호도를 알고 싶은 자녀의 이름과 생년월일을 입력해주세요.
+          자녀의 이름과 생년월일을 입력해주세요.
         </p>
         <ValidationObserver v-slot="{ handleSubmit, invalid }">
           <form class="" @submit.prevent="handleSubmit(goConsult)">

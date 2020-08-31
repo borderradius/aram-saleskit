@@ -33,7 +33,8 @@
     @extend .select-img;
   }
   .pagination {
-    @apply bg-white py-4 rounded-full w-120 mx-auto text-center font-extrabold absolute;
+    @apply bg-white py-4 rounded-full w-120 mx-auto text-center font-extrabold;
+    position: fixed;
     color: #32bcad;
     bottom: 1rem;
     left: 50%;

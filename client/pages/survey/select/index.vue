@@ -9,12 +9,12 @@
           두 그림 중 좋아하는 것을 고르세요.
         </p>
         <Swiper ref="mySwiper" :options="swiperOptions">
-          <SwiperSlide v-for="item in slideData" :key="item.cnslPoolSeqno">
+          <SwiperSlide v-for="(item, index) in slideData" :key="index">
             <div class="img-select-wrap flex items-center justify-between">
               <div v-animate-css.click="'rubberBand'" class="img-select-left">
                 <div
                   class="img-select-inner"
-                  @click="
+                  @click.once="
                     doClick(
                       item.cnslPoolSeqno,
                       item.answerList[0].cnslQstAnsrEduCd
@@ -33,7 +33,7 @@
               <div v-animate-css.click="'rubberBand'" class="img-select-right">
                 <div
                   class="img-select-inner"
-                  @click="
+                  @click.once="
                     doClick(
                       item.cnslPoolSeqno,
                       item.answerList[1].cnslQstAnsrEduCd
@@ -142,12 +142,23 @@ export default {
         params.agerCoursCd = this.slideData.agerCoursCd
         params.counselTestPaper = this.counselTestPaper
         try {
-          this.isComplete = true
+          // this.isComplete = true
           const { result } = await this.$axios.$post(
             '/counsel/testpaper/content',
             params
           )
-          await this.goResult(result)
+          setTimeout(() => {
+            this.isComplete = true
+            this.goResult(result)
+            // console.log('9일때 settime out ')
+            // this.isComplete = true
+            // this.goResult(result)
+            // this.isComplete = false
+            // this.$router.push({
+            //   name: 'survey-result',
+            //   params: result
+            // })
+          }, 1000)
         } catch (e) {
           console.log(e)
         }

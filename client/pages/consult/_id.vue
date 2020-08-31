@@ -13,20 +13,35 @@
           <li class="flex">상담일자</li>
         </ul>
         <ul class="tbody flex">
-          <li class="flex-auto">99</li>
-          <li class="flex-auto">이아람</li>
-          <li class="flex">010-1234-1234</li>
-          <li class="flex">2012-12-12</li>
-          <li class="flex">만 8세</li>
-          <li class="flex">O</li>
-          <li class="flex">2020-05-15</li>
+          <li class="flex-auto">{{ detail.cnslPtclSeqno }}</li>
+          <li class="flex-auto">{{ detail.chldNm }}</li>
+          <li class="flex">{{ detail.mblTelNum }}</li>
+          <li class="flex">{{ detail.chldBthYmd }}</li>
+          <li class="flex">???</li>
+          <li class="flex">???</li>
+          <li class="flex">{{ detail.cnslDate }}</li>
         </ul>
       </div>
     </div>
     <div class="survey-result-wrap">
-      <h2>2. 앙케이트 결과 <small>(참여일 : 2020-05-10)</small></h2>
+      <h2>
+        2. 앙케이트 결과 <small>(참여일 : {{ detail.cnslDate }})</small>
+      </h2>
       <ul class="flex flex-row flex-wrap justify-between">
-        <li class="best">
+        <li
+          v-for="item in detail.cnslResult"
+          :key="item.asctEduCoursNm"
+          :class="[item.isBest ? 'best' : '']"
+        >
+          <div class="img-wrap">
+            <img :src="item.ansrImgUrl" :alt="item.asctEduCoursNm" />
+          </div>
+          <div class="text-wrap flex justify-between items-center mt-2">
+            <span>{{ item.asctEduCoursNm }}</span>
+            <span class="score">{{ item.asctEduCoursChoNcnt }}점</span>
+          </div>
+        </li>
+        <!-- <li class="best">
           <div class="img-wrap">
             <img src="/sk_a_1.png" alt="앙케이트이미지" />
           </div>
@@ -79,18 +94,18 @@
             <span>VI. 자연 탐구 영역</span>
             <span class="score">1점</span>
           </div>
-        </li>
+        </li> -->
       </ul>
     </div>
     <div class="recommend-result">
       <h2>3. 추천 결과</h2>
       <div class="allbook-recommend-result">
         <div class="title flex justify-between p-4 items-center">
-          <span class="text-md">
+          <span class="text-md flex items-center">
             <img
               src="/allbook-off-ico.png"
               alt="전집아이콘"
-              class="inline-block -mt-1 mr-2"
+              class="inline-block mr-2"
             />
             전집 &amp; 디지털 콘텐츠</span
           >
@@ -106,7 +121,19 @@
           </button>
         </div>
         <ul class="flex p-4">
-          <li>
+          <li
+            v-for="(item, index) in detail.rcmdProdList.rglrSrsRcmdProdList"
+            :key="item.prodId"
+            :class="[index === '1' ? 'mx-4' : '']"
+            class="w-1/3 px-2"
+          >
+            <div class="img-wrap relative">
+              <img src="/rank-bg.png" alt="랭킹" class="absolute ranking" />
+              <img :src="item.thnlUrl" :alt="item.prodNm" class="rounded-lg" />
+            </div>
+            <h4 class="mt-2">{{ item.prodNm }}</h4>
+          </li>
+          <!-- <li>
             <div class="img-wrap relative">
               <img src="/rank-bg.png" alt="랭킹" class="absolute ranking" />
               <img src="/sk_a_1.png" alt="콘텐츠이미지" class="rounded-lg" />
@@ -130,10 +157,10 @@
               <img src="/sk_a_1.png" alt="콘텐츠이미지" class="rounded-lg" />
             </div>
             <h4 class="mt-2">자연이랑</h4>
-          </li>
+          </li> -->
         </ul>
       </div>
-      <div class="allbook-recommend-result mt-4">
+      <!-- <div class="allbook-recommend-result mt-4">
         <div class="title flex justify-between p-4 items-center">
           <span class="text-md">
             <img
@@ -155,34 +182,7 @@
           </button>
         </div>
         <p class="p-8 text-center">업데이트 예정입니다.</p>
-        <!-- <ul class="flex p-4">
-          <li>
-            <div class="img-wrap relative">
-              <img src="/rank-bg.png" alt="랭킹" class="absolute ranking" />
-              <img src="/sk_a_1.png" alt="콘텐츠이미지" class="rounded-lg" />
-            </div>
-            <h4 class="mt-2">아람 베이비올 영어</h4>
-          </li>
-          <li class="mx-4">
-            <div class="img-wrap relative">
-              <img src="/rank-bg.png" alt="랭킹" class="absolute ranking" />
-              <img src="/sk_a_1.png" alt="콘텐츠이미지" class="rounded-lg" />
-            </div>
-            <h4 class="mt-2">뮤 널서리라임</h4>
-          </li>
-          <li>
-            <div class="img-wrap relative">
-              <img
-                src="/rank-third-bg.png"
-                alt="랭킹"
-                class="absolute ranking"
-              />
-              <img src="/sk_a_1.png" alt="콘텐츠이미지" class="rounded-lg" />
-            </div>
-            <h4 class="mt-2">자연이랑</h4>
-          </li>
-        </ul> -->
-      </div>
+      </div> -->
     </div>
     <div class="payment-info">
       <h2>4. 구매 정보</h2>
@@ -292,8 +292,32 @@
 export default {
   name: 'ConsultId',
   layout: 'searchHistory',
-  mounted() {
-    console.log(this.$route.params.id)
+  data() {
+    return {
+      detail: {
+        rcmdProdList: {
+          rglrSrsRcmdProdList: []
+        },
+        cnslResult: []
+      }
+    }
+  },
+  async mounted() {
+    /**
+     * * 상세정보 가져오기.
+     */
+    const { mblTelNum, cnslPtclSeqno } = this.$route.params.id
+    const telNum = mblTelNum.replace(/-/g, '')
+    try {
+      const { result } = await this.$axios.$get(
+        `/recipient/${telNum}/counsel/${cnslPtclSeqno}`
+      )
+      console.warn(result)
+      this.detail = this._.cloneDeep(result)
+      this.detail.cnslResult = this.getCnslResult(result.cnslResult)
+    } catch (e) {
+      console.log(e)
+    }
   },
   methods: {
     goAllView() {
@@ -301,6 +325,22 @@ export default {
         name: 'consult-allView',
         params: this.$route.params
       })
+    },
+    /**
+     * 랭크값 추가하기
+     */
+    getCnslResult(arr) {
+      const list = Object.assign(arr)
+      // 스코어 중 가장 큰 수를 구하고
+      const scoreList = list.map((item) => item.asctEduCoursChoNcnt)
+      const bigScore = Math.max.apply(null, scoreList)
+      // 큰 스코어랑 일치하면 랭크 true 줌.
+      for (const [index, item] of list.entries()) {
+        item.asctEduCoursChoNcnt === bigScore
+          ? (list[index].isBest = true)
+          : (list[index].isBest = false)
+      }
+      return list
     }
   }
 }

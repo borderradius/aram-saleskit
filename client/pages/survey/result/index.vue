@@ -107,8 +107,8 @@
           </ul>
           <ul class="system-chart-list row1">
             <li
-              v-for="item in systemChart1"
-              :key="item.label"
+              v-for="(item, index) in systemChart1"
+              :key="index"
               :class="[
                 item.size === 'half' ? 'half' : '',
                 item.isOn ? 'on' : '',
@@ -125,8 +125,8 @@
           </ul>
           <ul class="system-chart-list row1">
             <li
-              v-for="item in systemChart2"
-              :key="item.label"
+              v-for="(item, index) in systemChart2"
+              :key="index"
               :class="[
                 item.size === 'half' ? 'half' : '',
                 item.isOn ? 'on' : '',
@@ -143,8 +143,8 @@
           </ul>
           <ul class="system-chart-list row3">
             <li
-              v-for="item in systemChart3"
-              :key="item.label"
+              v-for="(item, index) in systemChart3"
+              :key="index"
               :class="[
                 item.size === 'half' ? 'half' : '',
                 item.isOn ? 'on' : '',
@@ -161,8 +161,8 @@
           </ul>
           <ul class="system-chart-list row1">
             <li
-              v-for="item in systemChart4"
-              :key="item.label"
+              v-for="(item, index) in systemChart4"
+              :key="index"
               :class="[
                 item.size === 'half' ? 'half' : '',
                 item.isOn ? 'on' : '',
@@ -179,8 +179,8 @@
           </ul>
           <ul class="system-chart-list row5">
             <li
-              v-for="item in systemChart5"
-              :key="item.label"
+              v-for="(item, index) in systemChart5"
+              :key="index"
               :class="[
                 item.size === 'half' ? 'half' : '',
                 item.isOn ? 'on' : '',
@@ -202,11 +202,11 @@
         <div class="recommend-result pb-10">
           <div class="allbook-recommend-result">
             <div class="recommend-title flex justify-between p-4 items-center">
-              <span class="text-md">
+              <span class="text-md flex items-center">
                 <img
                   src="/allbook-off-ico.png"
                   alt="전집아이콘"
-                  class="inline-block -mt-1 mr-2"
+                  class="inline-block mr-2"
                 />
                 전집 &amp; 디지털 콘텐츠</span
               >
@@ -523,7 +523,7 @@ export default {
           isStraight: false
         },
         {
-          label: '미술',
+          label: '음악',
           isOn: true,
           size: 'half',
           isLeft: false,
@@ -531,7 +531,7 @@ export default {
           isStraight: false
         },
         {
-          label: '음악',
+          label: '미술',
           isOn: false,
           size: 'half',
           isLeft: true,

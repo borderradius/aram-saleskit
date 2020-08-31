@@ -1,6 +1,7 @@
 .search-history {
   @apply w-screen min-h-screen overflow-x-hidden;
-  background-color: rgba(126, 211, 52, 0.5);
+  // background-color: rgba(126, 211, 52, 0.5);
+  background-color: #a6d873;
   .logo {
     @apply inline-block ml-8 mt-8;
     background: url('../image/bookclub-logo.png');

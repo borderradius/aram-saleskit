@@ -106,7 +106,7 @@
                   class="bg-white px-5 focus:outline-none search-input w-4/5"
                   type="text"
                   name="search"
-                  placeholder="전화번호를 입력해주세요."
+                  placeholder="휴대폰 번호를 입력해주세요."
                 />
 
                 <button
@@ -229,15 +229,15 @@ export default {
       const { valid } = await this.$refs.provider.validate()
       const orgmId = await this.$refs.orgmId.validate()
       if (!valid) {
-        alert('전화번호를 올바르게 입력해주세요.')
+        // alert('휴대폰 번호를 입력해주세요.')
         return
       }
       if (!orgmId.valid) {
-        alert('상담자를 선택해주세요.')
+        // alert('상담자를 선택해주세요.')
         return
       }
       if (!this.privateAgree) {
-        alert('개인정보 수집 및 마케팅 정보활용을 동의해주세요.')
+        // alert('개인정보 수집 및 마케팅 정보활용을 동의해주세요.')
         return
       }
       if (valid && orgmId.valid) {
@@ -263,7 +263,7 @@ export default {
           }
         })
       } else {
-        alert('상담자를 선택해주세요.')
+        // alert('상담자를 선택해주세요.')
       }
     },
     async getConsultList() {
@@ -273,7 +273,8 @@ export default {
         )
         this.tBody = result
         if (!result.length) {
-          this.noDataSentence = '검색하신 핸드폰으로 상담했던 이력이 없습니다.'
+          this.noDataSentence =
+            '검색하신 휴대폰 번호로 상담했던 이력이 없습니다.'
         }
       } catch (e) {
         console.log(e)

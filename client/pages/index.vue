@@ -30,8 +30,8 @@
     <n-link to="/consult" class="go-history">
       <img src="/go-history.png" alt="상담이력 아이콘" />
     </n-link>
-    <button class="btn inline-block absolute bottom-0" @click="fullScreen">
-      fullscreen
+    <button class="btn-fullscreen" @click="fullScreen">
+      전체화면
     </button>
     <!-- <n-link to="/survey" class="btn btn-info">앙케이트시작</n-link>
     <n-link to="/user/login" class="btn btn-info">로그인</n-link> -->
@@ -40,16 +40,39 @@
 
 <script>
 export default {
-  // mounted() {
-  //   console.log(document.body)
-  // },
+  mounted() {
+    // 셋타임, 넥스트틱, app.vue
+    // this.$nextTick(() => {
+    //   this.fullScreen()
+    // })
+    // setTimeout(() => {
+    //   this.fullScreen()
+    // }, 2000)
+  },
   methods: {
     fullScreen() {
-      console.log(document.body)
-      // document.body.requestFullscreen()
+      const elem = document.documentElement
+      const options = {
+        navigationUI: 'hide'
+      }
+      if (elem.requestFullscreen) elem.requestFullscreen(options)
     }
   }
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.btn-fullscreen {
+  position: absolute;
+  width: 90px;
+  height: 62px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  top: 1rem;
+  right: 6rem;
+  display: block;
+  border-radius: 0.8rem;
+  border: 3px solid #fff;
+  color: #fff;
+}
+</style>

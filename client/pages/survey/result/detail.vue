@@ -105,8 +105,8 @@
           </ul>
           <ul class="system-chart-list row1">
             <li
-              v-for="item in systemChart1"
-              :key="item.label"
+              v-for="(item, index) in systemChart1"
+              :key="index"
               :class="[
                 item.size === 'half' ? 'half' : '',
                 item.isOn ? 'on' : '',
@@ -123,8 +123,8 @@
           </ul>
           <ul class="system-chart-list row1">
             <li
-              v-for="item in systemChart2"
-              :key="item.label"
+              v-for="(item, index) in systemChart2"
+              :key="index"
               :class="[
                 item.size === 'half' ? 'half' : '',
                 item.isOn ? 'on' : '',
@@ -141,8 +141,8 @@
           </ul>
           <ul class="system-chart-list row3">
             <li
-              v-for="item in systemChart3"
-              :key="item.label"
+              v-for="(item, index) in systemChart3"
+              :key="index"
               :class="[
                 item.size === 'half' ? 'half' : '',
                 item.isOn ? 'on' : '',
@@ -159,8 +159,8 @@
           </ul>
           <ul class="system-chart-list row1">
             <li
-              v-for="item in systemChart4"
-              :key="item.label"
+              v-for="(item, index) in systemChart4"
+              :key="index"
               :class="[
                 item.size === 'half' ? 'half' : '',
                 item.isOn ? 'on' : '',
@@ -177,8 +177,8 @@
           </ul>
           <ul class="system-chart-list row5">
             <li
-              v-for="item in systemChart5"
-              :key="item.label"
+              v-for="(item, index) in systemChart5"
+              :key="index"
               :class="[
                 item.size === 'half' ? 'half' : '',
                 item.isOn ? 'on' : '',
@@ -266,7 +266,6 @@
                 :key="item.prodId"
               >
                 <div class="img-wrap relative">
-                  <!-- <img src="/rank-bg.png" alt="랭킹" class="absolute ranking" /> -->
                   <img
                     :src="item.thnlUrl"
                     :alt="item.prodNm"
@@ -563,7 +562,7 @@ export default {
           isStraight: false
         },
         {
-          label: '미술',
+          label: '음악',
           isOn: true,
           size: 'half',
           isLeft: false,
@@ -571,7 +570,7 @@ export default {
           isStraight: false
         },
         {
-          label: '음악',
+          label: '미술',
           isOn: false,
           size: 'half',
           isLeft: true,

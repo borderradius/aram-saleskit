@@ -19,9 +19,9 @@
           <div class="text-wrap pt-4">
             <h4 class="font-bold text-lg mb-2">베이비올 영어</h4>
             <ul class="pl-2">
-              <li>전집 36권</li>
-              <li>의사소통영역(언어) 등</li>
-              <li>487,000원</li>
+              <li class="py-1">전집 36권</li>
+              <li class="py-1">의사소통영역(언어) 등</li>
+              <li class="py-1">487,000원</li>
             </ul>
           </div>
           <!-- {{ recommendList }} -->
