@@ -14,10 +14,11 @@
               <div v-animate-css.click="'rubberBand'" class="img-select-left">
                 <div
                   class="img-select-inner"
-                  @click.once="
+                  @click="
                     doClick(
                       item.cnslPoolSeqno,
-                      item.answerList[0].cnslQstAnsrEduCd
+                      item.answerList[0].cnslQstAnsrEduCd,
+                      index
                     )
                   "
                 >
@@ -33,10 +34,11 @@
               <div v-animate-css.click="'rubberBand'" class="img-select-right">
                 <div
                   class="img-select-inner"
-                  @click.once="
+                  @click="
                     doClick(
                       item.cnslPoolSeqno,
-                      item.answerList[1].cnslQstAnsrEduCd
+                      item.answerList[1].cnslQstAnsrEduCd,
+                      index
                     )
                   "
                 >
@@ -55,16 +57,19 @@
         <div class="pagination">{{ nowSlidePage }} / 9</div>
       </div>
     </div>
-    <!-- <a href="javascript:;" class="go-back" @click="goBack">
-      <img src="/go-back.png" alt="뒤로가기 아이콘" />
-    </a> --><img src="/bi_blue.png" class="bookclub-logo2" />
-    <!-- <a href="javascript:;" class="go-back" @click="goBack">back</a> -->
+    <img src="/bi_blue.png" class="bookclub-logo2" />
     <n-link class="go-home" to="/">
       <img src="/go-home2.png" alt="메인으로가기 아이콘" />
     </n-link>
-    <!-- <span class="bookclub-logo">북클럽 이미지</span> -->
     <img src="/main-logo.png" class="bookclub-logo2" />
-    <n-link class="go-main" to="/">다음에 하기</n-link>
+    <button
+      v-if="nowSlidePage > 1"
+      class="go-main focus:outline-none"
+      @click="goPrev"
+    >
+      <img src="/icon_back.png" alt="이전 아이콘" />
+      이전
+    </button>
     <Loading v-if="isComplete" />
     <audio src="/file_example_MP3_700KB.mp3" autoplay />
   </div>
@@ -129,20 +134,23 @@ export default {
         })
       }, 2000)
     },
-    async doClick(cnslPoolSeqno, choicedAnswerEduCd) {
+    async doClick(cnslPoolSeqno, choicedAnswerEduCd, slideIndex) {
       this.clickSound()
       // 클릭할 때 마다 counselTestPaper에 데이터 푸쉬
-      this.counselTestPaper.push({
+      this.counselTestPaper[slideIndex] = {
         cnslPoolSeqno,
         choicedAnswerEduCd
-      })
+      }
+      // this.counselTestPaper.push({
+      //   cnslPoolSeqno,
+      //   choicedAnswerEduCd
+      // })
       if (this.nowSlidePage === 9) {
         const params = this.$route.params
         params.cstpMngrSeqno = this.slideData.cstpMngrSeqno
         params.agerCoursCd = this.slideData.agerCoursCd
         params.counselTestPaper = this.counselTestPaper
         try {
-          // this.isComplete = true
           const { result } = await this.$axios.$post(
             '/counsel/testpaper/content',
             params
@@ -150,14 +158,6 @@ export default {
           setTimeout(() => {
             this.isComplete = true
             this.goResult(result)
-            // console.log('9일때 settime out ')
-            // this.isComplete = true
-            // this.goResult(result)
-            // this.isComplete = false
-            // this.$router.push({
-            //   name: 'survey-result',
-            //   params: result
-            // })
           }, 1000)
         } catch (e) {
           console.log(e)
@@ -167,6 +167,10 @@ export default {
       window.setTimeout(() => {
         if (this.nowSlidePage < 10) this.swiper.slideTo(this.nowSlidePage - 1)
       }, 500)
+    },
+    goPrev() {
+      this.nowSlidePage--
+      this.swiper.slideTo(this.nowSlidePage - 1)
     },
     clickSound() {
       const audio = new Audio('/ddiyong2.mp3')

@@ -2,7 +2,7 @@
   // background-color: #defcb8;
   background-color: #fff;
   // height: 100vh;
-  @apply py-3p;
+  // @apply py-3p;
   h1 {
     top: 1rem;
   }
@@ -35,7 +35,17 @@
     width: 290px;
   }
   .search-wrap {
+    color: #333;
+    &.counselor {
+      background-color: #e5f8ff;
+    }
     background-color: #defcb8;
+    .agree-wrap {
+      button {
+        color: #555;
+        font-size: 1rem;
+      }
+    }
   }
   .search-btn {
     background-color: #7fd334;
@@ -47,7 +57,7 @@
     -moz-appearance: none;
     appearance: none;
     border-radius: 0;
-    border: 1px solid #7fd334;
+    border: 1px solid #2acef4;
     background-color: #fff;
     background-repeat: no-repeat;
     background-position: 98% center;

@@ -9,7 +9,9 @@
           :href="`https://arambookclub.com/detail/smart/${item.prodId}`"
           target="_blank"
         >
-          <img :src="item.thnlUrl" :alt="item.prodNm" />
+          <div class="img--wrap overflow-hidden flex items-center">
+            <img :src="item.thnlUrl" :alt="item.prodNm" />
+          </div>
           <div class="text-wrap pt-4">
             <h4 class="font-bold text-lg mb-2">{{ item.prodNm }}</h4>
             <ul class="pl-2">

@@ -3,7 +3,9 @@
     <li v-for="item in recommendList" :key="item.prodId">
       <a href="javascript:;">
         <span class="rank font-bold text-center">{{ item.rcmdRank }}</span>
-        <img :src="item.thnlUrl" alt="상품이미지" />
+        <div class="img--wrap overflow-hidden flex items-center">
+          <img :src="item.thnlUrl" alt="상품이미지" />
+        </div>
         <div class="text-wrap pt-4">
           <h4 class="font-bold text-lg mb-2">{{ item.prodNm }}</h4>
           <ul class="pl-2">

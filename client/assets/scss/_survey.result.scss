@@ -307,6 +307,8 @@
         }
       }
       .img-wrap {
+        @apply overflow-hidden relative rounded-lg flex items-center bg-gray-200;
+        height: 12rem;
         .ranking {
           top: -6px;
           left: -6px;

@@ -1,6 +1,6 @@
 <template>
   <div class="survey flex items-center justify-center text-lg h-screen">
-    <div class="flex items-center justify-center h-5/6 w-3/5">
+    <div class="flex items-center justify-center h-full w-3/5">
       <h1
         class="text-xl absolute left-0 py-2 px-6 rounded-r-full title text-white"
       >

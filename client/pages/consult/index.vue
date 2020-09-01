@@ -48,7 +48,9 @@
           </li>
         </ul>
       </div>
-      <button class="search-btn" @click="getData">찾기</button>
+      <button class="search-btn focus:outline-none" @click="getData(1)">
+        찾기
+      </button>
     </div>
     <div v-if="tBody.length" class="product-list p-8">
       <div class="table w-full">
@@ -76,6 +78,12 @@
           <li class="">{{ dateFormatter(item.cnslDttm) }}</li>
         </ul>
       </div>
+      <Pagination
+        :limit-page-count="page.totalPage"
+        :size="10"
+        :now-page="page.nowPage"
+        @paginationClick="getData"
+      />
     </div>
   </div>
 </template>
@@ -93,6 +101,7 @@ export default {
   data() {
     return {
       ko,
+      page: {},
       searchParam: {},
       tBody: [],
       tHeader: [
@@ -118,15 +127,23 @@ export default {
         }
       })
     },
-    async getData() {
+    async getData(pageNum) {
+      console.log(pageNum)
+      if (pageNum) {
+        this.searchParam.nowPage = pageNum
+      }
       // Date -> String 변경
       this.transDate()
       try {
-        const { result } = await this.$axios.$get('/recipient/counsel/list', {
-          params: { ...this.searchParam }
-        })
+        const { result, page } = await this.$axios.$get(
+          '/recipient/counsel/list',
+          {
+            params: { ...this.searchParam }
+          }
+        )
         console.warn(result)
         this.tBody = result
+        this.page = page
       } catch (e) {
         console.log(e)
       }

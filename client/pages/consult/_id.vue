@@ -9,7 +9,7 @@
           <li class="flex">전화번호</li>
           <li class="flex">생년월일</li>
           <li class="flex">나이</li>
-          <li class="flex">구매</li>
+          <!-- <li class="flex">구매</li> -->
           <li class="flex">상담일자</li>
         </ul>
         <ul class="tbody flex">
@@ -17,8 +17,8 @@
           <li class="flex-auto">{{ detail.chldNm }}</li>
           <li class="flex">{{ detail.mblTelNum }}</li>
           <li class="flex">{{ detail.chldBthYmd }}</li>
-          <li class="flex">???</li>
-          <li class="flex">???</li>
+          <li class="flex">{{ detail.chldAgeNm }}</li>
+          <!-- <li class="flex">???</li> -->
           <li class="flex">{{ detail.cnslDate }}</li>
         </ul>
       </div>
@@ -125,11 +125,11 @@
             v-for="(item, index) in detail.rcmdProdList.rglrSrsRcmdProdList"
             :key="item.prodId"
             :class="[index === '1' ? 'mx-4' : '']"
-            class="w-1/3 px-2"
+            class="w-1/3 px-2 relative"
           >
-            <div class="img-wrap relative">
-              <img src="/rank-bg.png" alt="랭킹" class="absolute ranking" />
-              <img :src="item.thnlUrl" :alt="item.prodNm" class="rounded-lg" />
+            <img src="/rank-bg.png" alt="랭킹" class="absolute ranking" />
+            <div class="img-wrap flex items-center">
+              <img :src="item.thnlUrl" :alt="item.prodNm" />
             </div>
             <h4 class="mt-2">{{ item.prodNm }}</h4>
           </li>
@@ -187,24 +187,32 @@
     <div class="payment-info">
       <h2>4. 구매 정보</h2>
       <div class="allbook-recommend-result mt-4">
-        <div class="table w-full">
+        <div v-if="!detail.purchaseList.length">
+          구매정보가 없습니다.
+        </div>
+        <div
+          v-for="(item, index) in detail.purchaseList"
+          v-else
+          :key="index"
+          class="table w-full mb-4"
+        >
           <ul class="thead flex rounded-tl-lg rounded-tr-lg">
             <li class="flex-1">구매일</li>
             <li class="flex-1">전화번호</li>
             <li class="flex-1">판매자</li>
           </ul>
           <ul class="tbody flex">
-            <li class="flex-1">2020-06-30</li>
-            <li class="flex-1">010-1234-1234</li>
-            <li class="flex-1">이아람(ERP-ID)</li>
+            <li class="flex-1">{{ item.ordDttm }}</li>
+            <li class="flex-1">{{ item.mblTelNum }}</li>
+            <li class="flex-1">{{ item.orgmNm }}</li>
           </ul>
           <ul class="thead flex">
             <li class="flex-auto">제품명</li>
             <li class="flex w-1/3">구분</li>
           </ul>
           <ul class="tbody flex">
-            <li class="flex-auto">베이비올 영어 디지털 콘텐츠</li>
-            <li class="flex w-1/3">디지털 콘텐츠</li>
+            <li class="flex-auto">{{ item.prodNm }}</li>
+            <li class="flex w-1/3">{{ item.prodCtgrNm }}</li>
           </ul>
           <ul class="thead flex">
             <li class="flex-1">결제방법</li>
@@ -212,30 +220,36 @@
             <li class="flex-1">배송비</li>
           </ul>
           <ul class="tbody flex">
-            <li class="flex-1">복합결제</li>
+            <li class="flex-1">{{ item.prodSetlMthdCdNm }}</li>
             <li class="flex-1">
               <dl class="flex flex-row flex-wrap justify-between">
                 <dt class="w-1/2">상품가 (a)</dt>
-                <dd class="w-1/2 text-right pr-4">100,000</dd>
+                <dd class="w-1/2 text-right pr-4">{{ item.ordProdUprc }}</dd>
                 <dt class="w-1/2">포인트 (b)</dt>
-                <dd class="w-1/2 text-right pr-4">50,000</dd>
+                <dd class="w-1/2 text-right pr-4">{{ item.pointUseAmt }}</dd>
                 <dt class="w-1/2">실결제가 (a-b)</dt>
-                <dd class="w-1/2 text-right pr-4">90,000</dd>
+                <dd class="w-1/2 text-right pr-4">
+                  {{ item.pointXcptProdUprc }}
+                </dd>
               </dl>
             </li>
             <li class="flex-1">
               <dl class="flex flex-row flex-wrap justify-between">
                 <dt class="w-1/2">상품가 (a)</dt>
-                <dd class="w-1/2 text-right pr-4">-</dd>
+                <dd class="w-1/2 text-right pr-4">{{ item.dlvfUprcAmt }}</dd>
                 <dt class="w-1/2">포인트 (b)</dt>
-                <dd class="w-1/2 text-right pr-4">-</dd>
+                <dd class="w-1/2 text-right pr-4">
+                  {{ item.dlvfPointUseAmt }}
+                </dd>
                 <dt class="w-1/2">실결제가 (a-b)</dt>
-                <dd class="w-1/2 text-right pr-4">-</dd>
+                <dd class="w-1/2 text-right pr-4">
+                  {{ item.pointXcptDlvfAmt }}
+                </dd>
               </dl>
             </li>
           </ul>
         </div>
-        <div class="table w-full mt-4">
+        <!-- <div class="table w-full mt-4">
           <ul class="thead flex rounded-tl-lg rounded-tr-lg">
             <li class="flex-1">구매일</li>
             <li class="flex-1">전화번호</li>
@@ -282,7 +296,7 @@
               </dl>
             </li>
           </ul>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -298,7 +312,8 @@ export default {
         rcmdProdList: {
           rglrSrsRcmdProdList: []
         },
-        cnslResult: []
+        cnslResult: [],
+        purchaseList: []
       }
     }
   },

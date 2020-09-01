@@ -70,6 +70,13 @@
           border: 1px solid #dcdcdc;
           border-radius: 1rem;
         }
+        .img--wrap {
+          @apply bg-gray-200 overflow-hidden rounded-lg;
+          height: 16rem;
+          img {
+            object-fit: cover;
+          }
+        }
         .text-wrap {
           li {
             list-style-type: disc;
@@ -92,9 +99,9 @@
           background-position: center center;
         }
         // .img-wrap {
-        img {
-          @apply rounded-lg;
-        }
+        // img {
+        //   @apply rounded-lg;
+        // }
         // }
       }
     }

@@ -6,7 +6,7 @@
       >
         어린이 선호도 앙케이트
       </h1>
-      <!-- <div class="private-agree-wrap flex p-2 bg-white rounded mt-24">
+      <div class="private-agree-wrap flex p-2 bg-white rounded mt-24">
         <label for="privateAgree" class="flex mr-4 items-center">
           <input
             id="privateAgree"
@@ -20,12 +20,12 @@
         <button class="flex text-xs text-gray-500 mt-1" @click="show">
           [ 약관내용 상세보기 ]
         </button>
-      </div> -->
+      </div>
       <div
-        class="p-2 relative mx-auto text-gray-600 search-wrap rounded-lg mt-24 mb-10 pr-8 counselor"
+        class="p-2 relative mx-auto text-gray-600 search-wrap rounded-lg mt-4 pr-8"
       >
         <form class="flex items-center justify-between">
-          <span class="flex-auto px-10 search-label">상담자</span>
+          <span class="text-gray-700 flex-auto px-10 search-label">상담자</span>
           <ValidationProvider
             ref="orgmId"
             v-slot="{ errors }"
@@ -82,28 +82,15 @@
           </ValidationProvider>
         </form>
       </div>
-      <div class="p-2 relative mx-auto search-wrap rounded-lg mt-4 pr-8">
-        <div class="flex px-10 h-10 items-center agree-wrap">
-          <label for="privateAgree" class="flex mr-4 items-center">
-            <input
-              id="privateAgree"
-              v-model="privateAgree"
-              type="checkbox"
-              class="form-checkbox h-5 w-5 text-main-green"
-            /><span class="ml-2">개인정보 수집 및 마케팅 정보 활용 동의서</span>
-          </label>
-          <button class="flex agree" @click="show">
-            [ 약관내용 상세보기 ]
-          </button>
-        </div>
-      </div>
-      <div class="p-2 relative mx-auto search-wrap rounded-lg mt-4 pr-8">
+      <div
+        class="p-2 relative mx-auto text-gray-600 search-wrap rounded-lg mt-4 pr-8"
+      >
         <ValidationObserver v-slot="{ handleSubmit }">
           <form
             class="flex items-center justify-between"
             @submit.prevent="handleSubmit(getConsultList)"
           >
-            <span class="flex-auto px-10 search-label"
+            <span class="text-gray-700 flex-auto px-10 search-label"
               >앙케이트 참여 상담 &middot; 내역</span
             >
             <ValidationProvider
@@ -181,26 +168,13 @@
       <img src="/bi_blue.png" class="bookclub-logo2" />
       <!-- <span class="bookclub-logo inline-block">북클럽 이미지</span> -->
     </div>
-    <modal name="agree" width="100%" height="auto" scrollable @click="show">
+    <modal name="agree" width="100%" height="auto" scrollable>
       <div class="agree-wrap">
         <img src="/private-agree.jpg" alt="약관내용 이미지" />
         <button class="agree-close" @click="hide">
           <img src="/btn_close.png" alt="약관팝업창 닫기버튼" />
         </button>
       </div>
-    </modal>
-    <modal name="alert">
-      <div class="flex items-center justify-center text-center h-full -mt-4">
-        <p>
-          {{ alertMessage }}
-        </p>
-      </div>
-      <a
-        href="javascript:;"
-        class="w-full btn block absolute bottom-0 text-center modal-close"
-        @click="hideAlert"
-        >확인</a
-      >
     </modal>
   </div>
 </template>
@@ -227,8 +201,7 @@ export default {
         { title: '나이' },
         { title: '상담일' }
       ],
-      noDataSentence: '고객님의 휴대폰 번호를 입력 후, 검색 버튼을 눌러주세요.',
-      alertMessage: ''
+      noDataSentence: '고객님의 휴대폰 번호를 입력 후, 검색 버튼을 눌러주세요.'
     }
   },
   async mounted() {
@@ -256,15 +229,15 @@ export default {
       const { valid } = await this.$refs.provider.validate()
       const orgmId = await this.$refs.orgmId.validate()
       if (!valid) {
-        this.showAlert('휴대폰 번호를 입력해주세요.')
+        // alert('휴대폰 번호를 입력해주세요.')
         return
       }
       if (!orgmId.valid) {
-        this.showAlert('상담자를 선택해주세요.')
+        // alert('상담자를 선택해주세요.')
         return
       }
       if (!this.privateAgree) {
-        this.showAlert('개인정보 수집 및 마케팅 정보활용을 동의해주세요.')
+        // alert('개인정보 수집 및 마케팅 정보활용을 동의해주세요.')
         return
       }
       if (valid && orgmId.valid) {
@@ -277,7 +250,6 @@ export default {
         })
       }
     },
-
     rowClick(params) {
       const item = {
         orgmId: this.orgmId,
@@ -309,18 +281,10 @@ export default {
       }
     },
     show() {
-      // console.warn(e.target.className.includes('agree'))
       this.$modal.show('agree')
     },
     hide() {
       this.$modal.hide('agree')
-    },
-    showAlert(alertMessage) {
-      this.alertMessage = alertMessage
-      this.$modal.show('alert')
-    },
-    hideAlert() {
-      this.$modal.hide('alert')
     }
   }
 }

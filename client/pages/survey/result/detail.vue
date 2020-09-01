@@ -265,12 +265,8 @@
                 v-for="item in detail.rcmdProdList.rglrSrsRcmdProdList"
                 :key="item.prodId"
               >
-                <div class="img-wrap relative">
-                  <img
-                    :src="item.thnlUrl"
-                    :alt="item.prodNm"
-                    class="rounded-lg"
-                  />
+                <div class="img-wrap">
+                  <img :src="item.thnlUrl" :alt="item.prodNm" />
                 </div>
                 <h4 class="mt-2">{{ item.prodNm }}</h4>
               </li>

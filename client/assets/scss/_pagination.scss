@@ -1,0 +1,17 @@
+.pagination-wrap {
+  a {
+    @apply mx-1 px-3 py-2 bg-gray-200 text-gray-700 rounded-md cursor-pointer;
+    padding: 1rem !important;
+    &:not(.nowPage, .disable) {
+      &:hover {
+        @apply bg-gray-700 text-gray-200;
+      }
+    }
+    &.nowPage {
+      @apply bg-gray-700 text-gray-200;
+    }
+    &.disable {
+      @apply bg-gray-200 text-gray-500 cursor-default;
+    }
+  }
+}

@@ -41,11 +41,14 @@
     margin-left: -60px;
   }
   .go-main {
-    // @extend .pagination;
-    @apply fixed text-white py-4 rounded-full w-120 mx-auto text-center;
+    @apply fixed flex items-center justify-center text-white py-4 rounded-full mx-auto text-center;
     background-color: #309a8e;
     right: 1rem !important;
     bottom: 1rem;
-    // width: 140px;
+    width: 110px;
+    img {
+      height: 24px;
+      margin-right: 15px;
+    }
   }
 }

@@ -53,7 +53,9 @@
                 <span class="ml-2 text-gray-700">{{ item.label }}</span>
               </label>
             </div>
-            <button class="search-btn" @click="goSearch">검색</button>
+            <button class="search-btn focus:outline-none" @click="goSearch">
+              검색
+            </button>
           </div>
         </div>
         <div :class="[!isSearch ? 'brosure-content' : '']" class="content">

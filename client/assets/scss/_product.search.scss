@@ -94,6 +94,14 @@
           margin-bottom: calc((50% - #{$width}) * 1.5);
           border: 1px solid #dcdcdc;
           border-radius: 0.8rem;
+          .img--wrap {
+            @apply bg-gray-200 rounded-lg;
+            height: 16rem;
+            // background: #000;
+          }
+          img {
+            object-fit: cover;
+          }
         }
         .text-wrap {
           li {
@@ -136,9 +144,9 @@
           background-position: center center;
         }
         // .img-wrap {
-        img {
-          @apply rounded-lg;
-        }
+        // img {
+        //   @apply rounded-lg;
+        // }
         // }
       }
     }
