@@ -4,9 +4,11 @@
   .title {
     top: 1rem;
     background: #2acdf3;
+    font-family: 'NanumSquareRound';
+    font-weight: bold;
   }
   .report-subject {
-    @apply text-center py-4 bg-white rounded-lg text-2xl font-bold relative;
+    @apply text-center py-4 bg-white rounded-lg text-2xl relative .font-medium;
     color: #ff575d;
     box-shadow: 0 0 10px 0 rgba(47, 218, 244, 0.2);
     small {

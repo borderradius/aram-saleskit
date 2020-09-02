@@ -57,7 +57,7 @@ extend('password', {
     return `${field}는 영문+숫자 조합으로 8~24자로 적어주세요`
   },
   validate: (value) => {
-    const strongRegex = new RegExp(/^[A-Za-z0-9-_!]{8,24}$/)
+    const strongRegex = new RegExp(/^[A-Za-z0-9-_!]{4,24}$/)
     return strongRegex.test(value)
   }
 })
