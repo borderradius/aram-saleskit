@@ -103,7 +103,7 @@
                   alt="전집아이콘"
                   class="inline-block -mt-1 mr-2"
                 />
-                전집 &amp; 디지털 콘텐츠</span
+                전집 &amp; 디지털콘텐츠</span
               >
               <a
                 href="javascript:;"

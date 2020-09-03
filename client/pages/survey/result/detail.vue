@@ -246,7 +246,7 @@
                   alt="전집아이콘"
                   class="inline-block mr-2"
                 />
-                전집 &amp; 디지털 콘텐츠</span
+                전집 &amp; 디지털콘텐츠</span
               >
               <a
                 href="javascript:;"
@@ -264,7 +264,10 @@
               <li
                 v-for="item in detail.rcmdProdList.rglrSrsRcmdProdList"
                 :key="item.prodId"
+                class="relative"
               >
+                <img src="/rank-bg.png" alt="랭킹" class="ranking" />
+                <span class="ranking-num">{{ item.rcmdRank }}</span>
                 <div class="img-wrap">
                   <img :src="item.thnlUrl" :alt="item.prodNm" />
                 </div>

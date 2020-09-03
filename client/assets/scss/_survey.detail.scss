@@ -133,6 +133,11 @@
       left: -6px;
       width: 50px;
     }
+    .ranking-num {
+      @apply absolute font-bold;
+      left: 14px;
+      top: 10px;
+    }
     .img-wrap {
       @apply bg-gray-200 rounded-lg overflow-hidden;
       height: 12rem;

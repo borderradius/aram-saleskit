@@ -107,7 +107,7 @@
               alt="전집아이콘"
               class="inline-block mr-2"
             />
-            전집 &amp; 디지털 콘텐츠</span
+            전집 &amp; 디지털콘텐츠</span
           >
           <button
             class="all-view-btn text-white rounded-full px-4 py-2 text-sm"
@@ -128,6 +128,7 @@
             class="w-1/3 px-2 relative"
           >
             <img src="/rank-bg.png" alt="랭킹" class="absolute ranking" />
+            <span class="ranking-num">{{ item.rcmdRank }}</span>
             <div class="img-wrap flex items-center">
               <img :src="item.thnlUrl" :alt="item.prodNm" />
             </div>
@@ -322,12 +323,13 @@ export default {
      * * 상세정보 가져오기.
      */
     const { mblTelNum, cnslPtclSeqno } = this.$route.params.id
+    console.warn(mblTelNum)
     const telNum = mblTelNum.replace(/-/g, '')
     try {
       const { result } = await this.$axios.$get(
         `/recipient/${telNum}/counsel/${cnslPtclSeqno}`
       )
-      console.warn(result)
+      // console.warn(result)
       this.detail = this._.cloneDeep(result)
       this.detail.cnslResult = this.getCnslResult(result.cnslResult)
     } catch (e) {
@@ -338,7 +340,10 @@ export default {
     goAllView() {
       this.$router.push({
         name: 'consult-allView',
-        params: this.$route.params
+        params: {
+          from: 'consultDetail',
+          ...this.$route.params.id
+        }
       })
     },
     /**

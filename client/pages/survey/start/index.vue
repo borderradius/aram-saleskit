@@ -45,7 +45,7 @@
                   class="focus:outline-none"
                   type="text"
                   name="birth"
-                  placeholder="예) 19940101"
+                  placeholder="예) 20180101"
                 />
               </div>
               <span class="validate-error text-sm text-pink-600">{{

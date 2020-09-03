@@ -62,7 +62,17 @@ export default {
   },
   methods: {
     goBack() {
-      this.$router.go(-1)
+      console.log(this.$route.params)
+      if (this.$route.params.from === 'consultDetail') {
+        this.$router.push({
+          name: 'consult-id',
+          params: {
+            id: this.$route.params
+          }
+        })
+      } else {
+        this.$router.go(-1)
+      }
     },
     // ...mapActions({
     //   setRecommendList: 'setRecommendList'

@@ -291,7 +291,7 @@ export default {
           }
         })
       } else {
-        // alert('상담자를 선택해주세요.')
+        this.showAlert('상담자를 선택해주세요.')
       }
     },
     async getConsultList() {

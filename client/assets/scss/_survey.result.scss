@@ -311,11 +311,19 @@
       .img-wrap {
         @apply overflow-hidden relative rounded-lg flex items-center bg-gray-200;
         height: 12rem;
-        .ranking {
-          top: -6px;
-          left: -6px;
-          width: 50px;
-        }
+      }
+      .ranking {
+        position: absolute;
+        z-index: 100;
+        top: -6px;
+        left: -6px;
+        width: 50px;
+      }
+      .ranking-num {
+        @apply absolute font-bold;
+        z-index: 101;
+        top: 9px;
+        left: 14px;
       }
       .allbook-recommend-result {
         @apply rounded-lg;
