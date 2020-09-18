@@ -95,8 +95,10 @@ export default {
   data() {
     return {
       user: {
-        orgLoginId: 'point02',
-        orgPassword: '0000'
+        orgLoginId: '',
+        orgPassword: ''
+        // orgLoginId: 'point02',
+        // orgPassword: '0000'
       },
       saveId: false,
       savePw: false

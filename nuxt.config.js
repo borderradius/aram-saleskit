@@ -5,7 +5,7 @@ module.exports = {
    ** Headers of the page
    */
   head: {
-    title: process.env.npm_package_name || '',
+    title: '아람 세일즈킷',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -15,7 +15,7 @@ module.exports = {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon/favicon.ico' }]
   },
   /*
    ** Customize the progress-bar color
@@ -47,7 +47,8 @@ module.exports = {
     { src: '~/plugins/GlobalComponents.js', ssr: false },
     { src: '~/plugins/vue-js-modal', ssr: false },
     { src: '~/plugins/lodash', ssr: false },
-    { src: '~/plugins/animate', ssr: false }
+    { src: '~/plugins/animate', ssr: false },
+    { src: '~/plugins/apexcharts', ssr: false }
   ],
   /*
    ** Nuxt.js dev-modules

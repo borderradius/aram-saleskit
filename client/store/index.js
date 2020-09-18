@@ -2,7 +2,8 @@ export const state = () => {
   return {
     searchType: 'allbook',
     searchList: [],
-    recommendList: []
+    recommendList: [],
+    isFull: false
   }
 }
 
@@ -15,6 +16,21 @@ export const mutations = {
   },
   SET_RECOMMEND_LIST(state, payload) {
     state.recommendList = payload
+  },
+  SET_FULLSCREEN(state, payload) {
+    // console.log('뮤테이션 : ', payload)
+    state.isFull = payload
+    // if (!payload) {
+    //   state.isFull = payload
+    // } else {
+    //   state.isFull = !state.isFull
+    // }
+    // console.log(state.isFull)
+    // if (!payload) {
+    //   state.isFull = payload
+    // } else {
+    //   state.isFull = true
+    // }
   }
 }
 
@@ -34,15 +50,42 @@ export const actions = {
     }
   },
   async setRecommendList({ commit }, params = {}) {
-    try {
-      const apiUrl =
-        params.type === 'allbook'
-          ? `/recipient/counsel/${params.cnslPtclSeqno}/recommandprod/regularseries`
-          : `/recipient/counsel/${params.cnslPtclSeqno}/recommandprod/miniseries`
-      const { result } = await this.$axios.$get(apiUrl)
-      commit('SET_RECOMMEND_LIST', result)
-    } catch (e) {
-      console.log(e)
+    if (params.type === 'allbook') {
+      try {
+        const { result } = await this.$axios.$get('/counsel/rcmdProdList', {
+          params: {
+            chldId: params.chldId,
+            cnslPtclSeqno: params.cnslPtclSeqno,
+            cstpMngrSeqno: params.cstpMngrSeqno
+          }
+        })
+        commit('SET_RECOMMEND_LIST', result)
+      } catch (e) {
+        console.log(e)
+      }
+    } else {
+      try {
+        const { result } = await this.$axios.$get(
+          `/recipient/counsel/${params.cnslPtclSeqno}/recommandprod/miniseries`
+        )
+        commit('SET_RECOMMEND_LIST', result)
+      } catch (e) {
+        console.log(e)
+      }
     }
+    // try {
+    //   const apiUrl =
+    //     params.type === 'allbook'
+    //       ? `/recipient/counsel/${params.cnslPtclSeqno}/recommandprod/regularseries`
+    //       : `/recipient/counsel/${params.cnslPtclSeqno}/recommandprod/miniseries`
+    //   const { result } = await this.$axios.$get(apiUrl)
+    //   commit('SET_RECOMMEND_LIST', result)
+    // } catch (e) {
+    //   console.log(e)
+    // }
+  },
+  setFullScreen({ commit }, isFull = false) {
+    console.log('액션 실행됌')
+    commit('SET_FULLSCREEN', isFull)
   }
 }

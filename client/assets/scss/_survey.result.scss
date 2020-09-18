@@ -1,4 +1,21 @@
 .survey-result {
+  @keyframes shine {
+    10% {
+      opacity: 1;
+      top: -30%;
+      left: -30%;
+      transition-property: left, top, opacity;
+      transition-duration: 0.7s, 0.7s, 0.15s;
+      transition-timing-function: ease;
+    }
+    100% {
+      opacity: 0;
+      top: -30%;
+      left: -30%;
+      transition-property: left, top, opacity;
+    }
+  }
+
   @apply pb-8;
   background-color: #eafbff;
   .title {
@@ -343,11 +360,11 @@
       clear: both;
       overflow: hidden;
       li {
-        width: 80px;
-        border-radius: 50%;
-        background: #e0e0e0;
-        font-size: 0.6rem;
-        border: 2px solid #e0e0e0;
+        width: 100px;
+        // border-radius: 50%;
+        // background: #e0e0e0;
+        font-size: 0.8rem;
+        // border: 2px solid #e0e0e0;
         text-align: center;
         color: #666;
         height: 80px;
@@ -483,4 +500,77 @@
   //   span {
   //   }
   // }
+  .system-chart-menu {
+    @apply flex flex-col items-center;
+    li {
+      @apply py-4;
+      width: 110px;
+      margin-bottom: 2rem;
+      // border: 2px solid #fff;
+      box-sizing: border-box;
+      // height: 80px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      small {
+        display: block;
+        font-size: 0.9rem;
+      }
+      &:first-child {
+        color: #97ca3f;
+      }
+      &:nth-child(2) {
+        color: #3cc6d3;
+      }
+      &:nth-child(3) {
+        color: #3e7ad0;
+      }
+      &:last-child {
+        color: #50699f;
+      }
+    }
+  }
+  .list-box {
+    margin-bottom: 2rem;
+    li {
+      @apply py-6 text-center;
+      box-sizing: border-box;
+      margin-right: 10px;
+      color: #fff;
+      position: relative;
+      &:last-child {
+        margin-right: 0;
+      }
+      // &.on {
+      //   box-shadow: 0 0 0 4px #ff6446;
+      // }
+    }
+    &.first-row {
+      li {
+        width: 16.67%;
+        background: #97ca3f;
+      }
+    }
+    &.second-row {
+      li {
+        width: 20%;
+        background: #3cc6d3;
+      }
+    }
+    &.third-row {
+      li {
+        width: 16.67%;
+        background: #3e7ad0;
+        &:first-child {
+          margin-right: 3rem;
+        }
+      }
+    }
+    &.fourth-row {
+      li {
+        width: 11.11%;
+        background: #50699f;
+      }
+    }
+  }
 }

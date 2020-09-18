@@ -1,6 +1,7 @@
 <template>
   <div>
     <nuxt />
+    <!-- <FullScreen /> -->
   </div>
 </template>
 

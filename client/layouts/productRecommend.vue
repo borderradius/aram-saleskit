@@ -57,6 +57,7 @@
     <a href="javascript:;" class="go-back" @click="goBack">
       <img src="/go-back.png" alt="뒤로가기 아이콘" />
     </a>
+    <FullScreen />
   </div>
 </template>
 
@@ -86,21 +87,24 @@ export default {
     }
   },
   mounted() {
-    let cnslPtclSeqno
+    let cnslPtclSeqno, chldId, cstpMngrSeqno
+
     if (this.$route.params.surveyDetail) {
       cnslPtclSeqno = this.$route.params.surveyDetail.cnslPtclSeqno
     }
     if (this.$route.params.surveyResult) {
-      cnslPtclSeqno = this.$route.params.surveyResult.cnslPtclSeqno
+      cnslPtclSeqno = this.$route.params.surveyResult.apiResult.cnslPtclSeqno
+      chldId = this.$route.params.surveyResult.apiParams.chldId
+      cstpMngrSeqno = this.$route.params.surveyResult.apiParams.cstpMngrSeqno
     }
-    console.warn('cnslPtclSeqno', cnslPtclSeqno)
+    // console.warn('cnslPtclSeqno', cnslPtclSeqno)
     const type = this.$route.params.type || 'allbook'
     if (type === 'allbook') {
       this.checkNowMenu(0)
     } else if (type === 'smallbook') {
       this.checkNowMenu(1)
     }
-    this.setRecommendList({ type, cnslPtclSeqno })
+    this.setRecommendList({ type, cnslPtclSeqno, chldId, cstpMngrSeqno })
   },
   methods: {
     ...mapActions({

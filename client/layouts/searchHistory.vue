@@ -35,6 +35,7 @@
     </a>
     <!-- <a href="javascript:;" class="go-back" @click="goBack">back</a> -->
     <!-- <n-link class="go-home" to="/">home</n-link> -->
+    <FullScreen />
   </div>
 </template>
 

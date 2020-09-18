@@ -2,6 +2,9 @@
   @apply py-3p;
   min-height: 100vh;
   background-color: #32bcad;
+  &.result1 {
+    background: #c3eef8;
+  }
   .title {
     top: 1rem;
     background: #fff;
@@ -9,14 +12,33 @@
     font-family: 'NanumSquareRound';
     font-weight: bold;
   }
+  .img-title {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translate(-50%, -5px);
+    border-radius: 2rem;
+    font-family: 'NanumSquareRound';
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 0.75rem 1.25rem;
+    // border: 1px solid #333;
+    // color: #fff;
+  }
   .sub-title {
     // @apply bg-white p-3 text-xl text-center rounded-full w-5/6 mx-auto font-bold;
     @apply text-3xl text-center font-bold text-white;
     font-family: 'NanumSquareRound';
     font-weight: bold;
+    img {
+      width: 47%;
+    }
   }
   .img-select-wrap {
     @apply mt-3 mx-auto p-8;
+    &.result {
+      @apply pt-0;
+    }
   }
   .select-img {
     @apply bg-white rounded-lg shadow-lg relative;

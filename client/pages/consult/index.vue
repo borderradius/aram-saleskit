@@ -30,12 +30,13 @@
               :height="40"
               format="yyyy-MM-dd"
               input-class="datepicker-input"
-            />
-            <img
-              class="date-icon mr-2"
-              src="/btn_calendar.png"
-              alt="날짜아이콘"
-            />
+            >
+              <img
+                class="date-icon mr-2"
+                src="/btn_calendar.png"
+                alt="날짜아이콘"
+              />
+            </Datepicker>
             ~
             <Datepicker
               v-model="searchParam.searchEndDate"

@@ -23,8 +23,8 @@
         <n-link to="/" class="go-signup">디지털콘텐츠 체험</n-link>
       </div>
       <div class="right-content">
-        <div class="search-area">
-          <div v-if="isSearch" class="search-form">
+        <div v-if="isSearch" class="search-area">
+          <div class="search-form">
             <div class="search-form-input flex items-center">
               <span class="text-gray-700 font-bold mr-4">상품명</span>
               <input
@@ -34,30 +34,7 @@
               />
             </div>
           </div>
-          <div v-if="!isSearch" class="search-form-checkbox">
-            <h4 class="text-gray-700 font-bold mb-4">구매가격</h4>
-            <div class="checkbox-wrap flex flex-row flex-wrap justify-between">
-              <label
-                v-for="item in purchasePriceList"
-                :key="item.value"
-                :for="item.value"
-                class="checkbox-label brosure my-2 text-left"
-              >
-                <input
-                  :id="item.value"
-                  v-model="tempPurchasePrice"
-                  :value="item.value"
-                  type="checkbox"
-                  class="form-checkbox h-5 w-5 text-main-green -mt-1"
-                />
-                <span class="ml-2 text-gray-700">{{ item.label }}</span>
-              </label>
-            </div>
-            <button class="search-btn focus:outline-none" @click="goSearch">
-              검색
-            </button>
-          </div>
-          <div v-if="isSearch" class="search-form-checkbox">
+          <div class="search-form-checkbox">
             <h4 class="text-gray-700 font-bold mb-4">학습연령</h4>
             <div class="checkbox-wrap flex flex-row flex-wrap justify-between">
               <label
@@ -122,25 +99,6 @@ export default {
       },
       tempStudyArea: [],
       tempStudyAge: [],
-      tempPurchasePrice: [],
-      purchasePriceList: [
-        {
-          label: '40만원 초과',
-          value: '40'
-        },
-        {
-          label: '30~40만원',
-          value: '3040'
-        },
-        {
-          label: '26~29만원',
-          value: '2629'
-        },
-        {
-          label: '20~25만원',
-          value: '2025'
-        }
-      ],
       searchAgeList: [
         {
           label: '표준보육(0세~2세)',

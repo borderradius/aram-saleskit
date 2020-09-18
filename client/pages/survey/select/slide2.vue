@@ -12,46 +12,23 @@
           <SwiperSlide v-for="(item, index) in 5" :key="index">
             <div class="img-select-wrap flex items-center justify-between">
               <div v-animate-css.click="'rubberBand'" class="img-select-left">
-                <transition name="selected">
-                  <div class="img-select-inner">
+                <div class="img-select-inner">
+                  <div
+                    v-for="(item2, index2) in slideData1[index]"
+                    :key="index2"
+                  >
                     <div
-                      v-for="(item2, index2) in slideData1[index]"
-                      :key="index2"
+                      v-if="!index2"
+                      @click="goNext(index, index2, item2.index)"
                     >
-                      <div
-                        v-if="!index2"
-                        @click="goNext(index, index2, item2.index)"
-                      >
-                        <img :src="item2.imgSrc" alt="선택이미지" />
-                        <span class="img-title shadow-xl">{{
-                          item2.label
-                        }}</span>
-                      </div>
+                      <img :src="item2.imgSrc" alt="선택이미지" />
+                      <span class="img-title shadow-xl">{{ item2.label }}</span>
                     </div>
                   </div>
-                </transition>
-                <!-- <div
-                  class="img-select-inner"
-                  @click="
-                    doClick(
-                      item.cnslPoolSeqno,
-                      item.answerList[0].cnslQstAnsrEduCd,
-                      index
-                    )
-                  "
-                >
-                  <img
-                    :src="item.answerList[0].cnslQstAnsrImage"
-                    alt="선택이미지"
-                  />
                 </div>
-                <span class="absolute w-full text-center pt-2 text-white">{{
-                  item.answerList[0].cnslQstAnsrEduNm
-                }}</span> -->
               </div>
               <div v-animate-css.click="'rubberBand'" class="img-select-right">
                 <div class="img-select-inner">
-                  <!-- <img :src="slideData1[index].imgSrc" alt="선택이미지" /> -->
                   <div
                     v-for="(item3, index3) in slideData1[index]"
                     :key="index3"
@@ -65,24 +42,6 @@
                     </div>
                   </div>
                 </div>
-                <!-- <div
-                  class="img-select-inner"
-                  @click="
-                    doClick(
-                      item.cnslPoolSeqno,
-                      item.answerList[1].cnslQstAnsrEduCd,
-                      index
-                    )
-                  "
-                >
-                  <img
-                    :src="item.answerList[1].cnslQstAnsrImage"
-                    alt="선택이미지"
-                  />
-                </div>
-                <span class="absolute w-full text-center pt-2 text-white">
-                  {{ item.answerList[1].cnslQstAnsrEduNm }}</span
-                > -->
               </div>
             </div>
           </SwiperSlide>
@@ -90,7 +49,7 @@
         <div class="pagination">{{ nowSlidePage }} / 5</div>
       </div>
     </div>
-    <!-- <img src="/bi_blue.png" class="bookclub-logo2" /> -->
+    <img src="/bi_blue.png" class="bookclub-logo2" />
     <n-link class="go-home" to="/">
       <img src="/go-home2.png" alt="메인으로가기 아이콘" />
     </n-link>
@@ -104,7 +63,6 @@
       이전
     </button>
     <audio src="/saleskit_bgm.mp3" autoplay />
-    <!-- <img src="/common_splash.json" alt="" style="width:100px;height: 100px;" /> -->
     <Loading v-if="isComplete" />
   </div>
 </template>
@@ -121,7 +79,6 @@ export default {
   },
   data() {
     return {
-      imglabel1: '',
       nowSlidePage: 1,
       swiperOptions: {
         allowTouchMove: false,
@@ -265,7 +222,9 @@ export default {
         }
       ],
       postData: [],
-      postListData: []
+      postListData: [],
+      chldId: '',
+      cnslPtclSeqno: ''
     }
   },
   computed: {
@@ -274,6 +233,21 @@ export default {
     }
   },
   mounted() {
+    // console.log('slide2 --- ', this.$route.params.exceptIndex)
+    const exceptIndex = this.$route.params.firstSelect[0].index
+    // const exceptIndex = 0
+    console.warn('넘어온 데이터 제외해야함 : ', this.$route.params.firstSelect)
+    this.allSlideData.splice(exceptIndex, 1)
+    console.log('제외되었나? : ', this.allSlideData)
+    // console.log(this.$route.params.apiResult)
+    this.chldId = this.$route.params.apiResult.chldId
+    this.cnslPtclSeqno = this.$route.params.apiResult.cnslPtclSeqno
+
+    // console.log(this.allSlideData)
+    // console.log(this.allSlideData.filter((item) => item.index !== exceptIndex))
+    // for (const item of this.allSlideData) {
+
+    // }
     // try {
     //   // const params = this._.cloneDeep(this.$route.params)
     //   const params = {
@@ -294,6 +268,7 @@ export default {
     //   console.log(e)
     // }
     this.getRandomData()
+    this.$route.params.firstSelect[0].click = false
   },
   methods: {
     goBack() {
@@ -304,17 +279,17 @@ export default {
      * ? 리턴값을 라우팅하면서 넘김
      * ? 그러면 넘어가는 페이지에서 상세정보api 호출할 필요 없음.
      */
-    goResult(params, apiResult, apiParams) {
+    goResult(params) {
       // params.pop()
       // console.log(params)
       setTimeout(() => {
         this.isComplete = false
         this.$router.push({
-          name: 'survey-select-result1',
+          name: 'survey-select-result2',
           params: {
-            lists: params,
-            apiResult,
-            apiParams
+            lastSelect: params,
+            apiResult: this.$route.params.apiResult,
+            apiParams: this.$route.params.apiParams
           }
         })
       }, 2000)
@@ -371,7 +346,6 @@ export default {
     },
     async goNext(index1, index2, selectedIndex) {
       this.clickSound()
-      // console.log(index1)
       // postListData에 데이터 넣기
       // 클릭된거는 값 true로 바꿔주고 postListData에 넣기.
       this.slideData1[index1][index2].click = true
@@ -384,70 +358,71 @@ export default {
         }
       }
       // 시퀀스값 추가
-      postListParam.cstpPoolNo = `CQ-00100${index1 + 1}`
+      // 마지막것만 cq-003001 로 주면 됌.
+      index1 === 4
+        ? (postListParam.cstpPoolNo = 'CQ-003001')
+        : (postListParam.cstpPoolNo = `CQ-00200${index1 + 1}`)
       // post에 보낼 데이터 준비
       this.postListData.push(postListParam)
-      console.warn('준비된 데이터 : ', this.postListData)
 
       // API 호출
       if (this.nowSlidePage === 5 && this.slideData1.length === 5) {
         // POST 호출에 필요한 데이터 준비 - 차수, 네임 등등
-        // const routeParams = this._.cloneDeep(this.$route.params)
         let apiResult = {}
-        const routeParams = this.$route.params
-        const params = {
-          cstpMngrSeqno: 1,
-          mblTelNum: routeParams.mblTelNum,
-          chldBthYmd: routeParams.chldBthYmd, // 1차일때만
-          chldNm: routeParams.chldNm, // 1차일떄만
-          cnslTestStepCode: 'CQ-001000',
-          orgmId: routeParams.orgmId,
-          counselTestPaper: this.postListData
-        }
+        const apiParams = this.$route.params.apiParams
+        apiParams.cstpMngrSeqno = 1
+        apiParams.cnslTestStepCode = 'CQ-002000'
+        apiParams.counselTestPaper = this.postListData
+        apiParams.chldId = this.$route.params.apiResult.chldId
+        apiParams.cnslPtclSeqno = this.$route.params.apiResult.cnslPtclSeqno
+        apiParams.nextStepYn =
+          this.slideData1[index1][index2].children.length > 1 ? 'Y' : 'N' // 교과과정에 따른 Y, N 값 추가
         try {
           const { result } = await this.$axios.$post(
             '/counsel/insCounselResult',
-            params
+            apiParams
           )
           apiResult = result
-          // console.log('1차 앙케이트 저장 후 결과값 : ', result)
         } catch (e) {
           console.log(e)
         }
-
-        // POST API 호출
         setTimeout(() => {
           this.isComplete = true
-          this.goResult(this.slideData1, apiResult, params)
+          this.goResult(
+            this.slideData1[this.nowSlidePage - 1][index2],
+            apiResult
+          )
         }, 2000)
       }
       if (this.nowSlidePage < 5) {
-        // 다음 슬라이드로 이동 : 시작
-        // if (this.nowSlidePage !== 5) {
         this.nowSlidePage++
-        // 첫 슬라이드에 사용할 랜덤데이터 뽑기
-        index1++
-        this.getRandomData(index1, selectedIndex)
-        // }
+        if (this.nowSlidePage === 5) {
+          const { firstSelect } = this.$route.params
+          // firstSelect.click = false
+          const secondSelect = this.slideData1[this.nowSlidePage - 2].filter(
+            (item) => item.click
+          )
+          firstSelect[0].click = false
+          secondSelect[0].click = false
+          const param = [secondSelect[0], firstSelect[0]]
+
+          this.slideData1.push(param)
+        } else {
+          // 첫 슬라이드에 사용할 랜덤데이터 뽑기
+          this.getRandomData(index1 + 1, selectedIndex)
+        }
         window.setTimeout(() => {
           if (this.nowSlidePage < 6) this.swiper.slideTo(this.nowSlidePage - 1)
         }, 500)
-        // 다음 슬라이드로 이동 : 끝
-
-        // 선택된 데이터는 click true로 변경해주기.
-        // this.slideData1[index1][index2].click = true
-        // console.warn(this.slideData1)
       }
     },
     listRandomNumber() {
-      return Math.floor(Math.random() * 6)
+      return Math.floor(Math.random() * 5)
     },
     imageRandomNumber(imgCount) {
       return Math.floor(Math.random() * imgCount)
     },
     getRandomData(index = 0, selectedIndex) {
-      // console.log(`${index}, ${selectedIndex}`)
-      // 최초 1번 랜덤2개 뽑기.
       if (index === 0) {
         const arrObj = []
         const firstItem = {
@@ -469,10 +444,11 @@ export default {
         secondItem.imgSrc = this.allSlideData[1].imgSrc[0]
         // Number(this.imageRandomNumber(this.allSlideData[1].imgSrc.length))
         secondItem.children = this.allSlideData[1].children
+
         arrObj.push(firstItem)
         arrObj.push(secondItem)
         this.slideData1.push(arrObj)
-        // console.log(this.slideData1)
+        console.log(this.slideData1)
       } else {
         // 최초 아닐경우
         const arrObj = []
@@ -502,15 +478,16 @@ export default {
           )
         ]
         secondItem.children = this.allSlideData[index + 1].children
+
         arrObj.push(firstItem)
         arrObj.push(secondItem)
         this.slideData1.push(arrObj)
-        // console.log(this.slideData1)
+        console.log(this.slideData1)
       }
-
-      // 서로 다른 랜덤한 번호 뽑기
+      // // 서로 다른 랜덤한 번호 뽑기
       // let listRandomNumber1 = ''
       // let listRandomNumber2 = ''
+      // // if (this.slideData1.length <= 1) {
       // listRandomNumber1 =
       //   this.slideData1.length === 0 ? this.listRandomNumber() : selectedIndex
       // listRandomNumber2 = this.listRandomNumber()
@@ -520,7 +497,7 @@ export default {
 
       // console.warn(listRandomNumber1, listRandomNumber2)
 
-      // 전체배열에 넣을 슬라이드 1개 배열 만들기.
+      // // 전체배열에 넣을 슬라이드 1개 배열 만들기.
       // const arrObj = []
       // const firstItem = {
       //   code: this.allSlideData[listRandomNumber1].code,

@@ -563,7 +563,5 @@ button.swiper-pagination-bullet {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
-.vdp-datepicker__calendar {
-  right: 0;
-}
+
 /* purgecss end ignore */

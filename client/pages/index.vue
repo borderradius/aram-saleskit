@@ -17,11 +17,11 @@
         class="card flex-initial w-2/5 ml-10 relative"
       >
         <img
-          src="/main-select2-title.png"
+          src="/main-select2-title2.png"
           alt="타이틀이미지"
           class="title-img"
         />
-        <img class="bg-img" src="/main-select2.png" alt="아람책더보기" />
+        <img class="bg-img" src="/main-select2.png" alt="아람전집보기" />
       </n-link>
     </div>
     <h1 class="logo">
@@ -30,9 +30,9 @@
     <n-link to="/consult" class="go-history">
       <img src="/go-history.png" alt="상담이력 아이콘" />
     </n-link>
-    <button class="btn-fullscreen" @click="fullScreen">
+    <!-- <button class="btn-fullscreen" @click="fullScreen">
       전체화면
-    </button>
+    </button> -->
     <!-- <n-link to="/survey" class="btn btn-info">앙케이트시작</n-link>
     <n-link to="/user/login" class="btn btn-info">로그인</n-link> -->
   </div>
@@ -48,15 +48,22 @@ export default {
     // setTimeout(() => {
     //   this.fullScreen()
     // }, 2000)
+    // console.log(document.full);
+    // document.addEventListener('fullscreenchange', (event) => {
+    //   console.log('풀스크린이다아아', event)
+    // })
+    // window.isFull = false
+    // console.log(isFull)
   },
   methods: {
-    fullScreen() {
-      const elem = document.documentElement
-      const options = {
-        navigationUI: 'hide'
-      }
-      if (elem.requestFullscreen) elem.requestFullscreen(options)
-    }
+    // fullScreen() {
+    //   const elem = document.documentElement
+    //   // alert(elem.)
+    //   const options = {
+    //     navigationUI: 'hide'
+    //   }
+    //   if (elem.requestFullscreen) elem.requestFullscreen(options)
+    // }
   }
 }
 </script>

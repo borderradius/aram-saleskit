@@ -2,6 +2,7 @@ export default (context) => {
   const { store, route, redirect } = context
 
   const isLoggedIn = store.state.auth.loggedIn
+  console.warn('미들웨어다!!!! - 여기에서 토큰체크해서 상했으면 새로 받아올 것')
 
   /**
    * * 가로모드 체크

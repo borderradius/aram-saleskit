@@ -23,9 +23,6 @@
                         @click="goNext(index, index2, item2.index)"
                       >
                         <img :src="item2.imgSrc" alt="선택이미지" />
-                        <span class="img-title shadow-xl">{{
-                          item2.label
-                        }}</span>
                       </div>
                     </div>
                   </div>
@@ -61,7 +58,6 @@
                       @click="goNext(index, index3, item3.index)"
                     >
                       <img :src="item3.imgSrc" alt="선택이미지" />
-                      <span class="img-title shadow-xl">{{ item3.label }}</span>
                     </div>
                   </div>
                 </div>
@@ -90,7 +86,7 @@
         <div class="pagination">{{ nowSlidePage }} / 5</div>
       </div>
     </div>
-    <!-- <img src="/bi_blue.png" class="bookclub-logo2" /> -->
+    <img src="/bi_blue.png" class="bookclub-logo2" />
     <n-link class="go-home" to="/">
       <img src="/go-home2.png" alt="메인으로가기 아이콘" />
     </n-link>
@@ -103,7 +99,7 @@
       <img src="/icon_back.png" alt="이전 아이콘" />
       이전
     </button>
-    <audio src="/saleskit_bgm.mp3" autoplay />
+    <audio src="/file_example_MP3_700KB.mp3" autoplay />
     <!-- <img src="/common_splash.json" alt="" style="width:100px;height: 100px;" /> -->
     <Loading v-if="isComplete" />
   </div>
@@ -121,7 +117,6 @@ export default {
   },
   data() {
     return {
-      imglabel1: '',
       nowSlidePage: 1,
       swiperOptions: {
         allowTouchMove: false,
@@ -138,63 +133,38 @@ export default {
           label: '의사소통',
           children: [
             {
-              label: '국어',
-              code: 'AC0401',
-              imgSrc: 'https://contents.arambookclub.com/counsel/ac04/sk_c1.jpg'
+              name: '국어',
+              code: 'BC0101',
+              imgSrc: 'dflskjfkdlsj'
             },
             {
-              label: '영어',
-              code: 'AC0402',
-              imgSrc: 'https://contents.arambookclub.com/counsel/ac04/sk_c2.jpg'
+              name: '영어',
+              code: 'BC0101',
+              imgSrc: 'dflskjfkdlsj'
             }
           ],
           imgSrc: [
             'https://contents.arambookclub.com/counsel/ac01/ac0101/sk_c_1.jpg',
             'https://contents.arambookclub.com/counsel/ac01/ac0101/sk_c_2.jpg',
             'https://contents.arambookclub.com/counsel/ac01/ac0101/sk_c_3.jpg',
-            'https://contents.arambookclub.com/counsel/ac01/ac0101/sk_c_4.jpg'
-            // 'https://contents.arambookclub.com/counsel/ac01/ac0101/sk_c_5.jpg'
+            'https://contents.arambookclub.com/counsel/ac01/ac0101/sk_c_4.jpg',
+            'https://contents.arambookclub.com/counsel/ac01/ac0101/sk_c_5.jpg'
           ]
         },
         {
           code: 'AC0102',
-          sequence: 'CQ-001001',
           label: '자연탐구',
-          children: [
-            {
-              label: '수학',
-              code: 'AC0403',
-              imgSrc: 'https://contents.arambookclub.com/counsel/ac04/sk_f1.jpg'
-            },
-            {
-              label: '과학',
-              code: 'AC0404',
-              imgSrc: 'https://contents.arambookclub.com/counsel/ac04/sk_f2.jpg'
-            }
-          ],
           imgSrc: [
             'https://contents.arambookclub.com/counsel/ac01/ac0102/sk_f_1.jpg',
             'https://contents.arambookclub.com/counsel/ac01/ac0102/sk_f_2.jpg',
             'https://contents.arambookclub.com/counsel/ac01/ac0102/sk_f_3.jpg',
-            'https://contents.arambookclub.com/counsel/ac01/ac0102/sk_f_4.jpg'
-            // 'https://contents.arambookclub.com/counsel/ac01/ac0102/sk_f_5.jpg'
+            'https://contents.arambookclub.com/counsel/ac01/ac0102/sk_f_4.jpg',
+            'https://contents.arambookclub.com/counsel/ac01/ac0102/sk_f_5.jpg'
           ]
         },
         {
           code: 'AC0103',
           label: '사회관계',
-          children: [
-            {
-              label: '사회',
-              code: 'AC0405',
-              imgSrc: 'https://contents.arambookclub.com/counsel/ac04/sk_d1.jpg'
-            },
-            {
-              label: '도덕',
-              code: 'AC0406',
-              imgSrc: 'https://contents.arambookclub.com/counsel/ac04/sk_d2.jpg'
-            }
-          ],
           imgSrc: [
             'https://contents.arambookclub.com/counsel/ac01/ac0103/sk_d_1.jpg',
             'https://contents.arambookclub.com/counsel/ac01/ac0103/sk_d_2.jpg',
@@ -205,23 +175,6 @@ export default {
         {
           code: 'AC0104',
           label: '예술경험',
-          children: [
-            {
-              label: '음악',
-              code: 'AC0407',
-              imgSrc: 'https://contents.arambookclub.com/counsel/ac04/sk_e1.jpg'
-            },
-            {
-              label: '미술',
-              code: 'AC0408',
-              imgSrc: 'https://contents.arambookclub.com/counsel/ac04/sk_e2.jpg'
-            },
-            {
-              label: '체육',
-              code: 'AC0409',
-              imgSrc: 'https://contents.arambookclub.com/counsel/ac04/sk_e3.jpg'
-            }
-          ],
           imgSrc: [
             'https://contents.arambookclub.com/counsel/ac01/ac0104/sk_e_1.jpg',
             'https://contents.arambookclub.com/counsel/ac01/ac0104/sk_e_2.jpg',
@@ -232,13 +185,6 @@ export default {
         {
           code: 'AC0105',
           label: '기본생활',
-          children: [
-            {
-              label: '체육',
-              code: 'AC0409',
-              imgSrc: 'https://contents.arambookclub.com/counsel/ac04/sk_e2.jpg'
-            }
-          ],
           imgSrc: [
             'https://contents.arambookclub.com/counsel/ac01/ac0105/sk_a_1.jpg',
             'https://contents.arambookclub.com/counsel/ac01/ac0105/sk_a_2.jpg',
@@ -249,13 +195,6 @@ export default {
         {
           code: 'AC0106',
           label: '신체운동',
-          children: [
-            {
-              label: '체육',
-              code: 'AC0409',
-              imgSrc: 'https://contents.arambookclub.com/counsel/ac04/sk_e2.jpg'
-            }
-          ],
           imgSrc: [
             'https://contents.arambookclub.com/counsel/ac01/ac0106/sk_b_1.jpg',
             'https://contents.arambookclub.com/counsel/ac01/ac0106/sk_b_2.jpg',
@@ -304,17 +243,15 @@ export default {
      * ? 리턴값을 라우팅하면서 넘김
      * ? 그러면 넘어가는 페이지에서 상세정보api 호출할 필요 없음.
      */
-    goResult(params, apiResult, apiParams) {
+    goResult(params) {
       // params.pop()
       // console.log(params)
       setTimeout(() => {
         this.isComplete = false
         this.$router.push({
-          name: 'survey-select-result1',
+          name: 'slide-result1',
           params: {
-            lists: params,
-            apiResult,
-            apiParams
+            lists: params
           }
         })
       }, 2000)
@@ -356,22 +293,12 @@ export default {
     goPrev() {
       this.nowSlidePage--
       this.swiper.slideTo(this.nowSlidePage - 1)
-      this.postListData.splice(this.nowSlidePage - 1, 1)
-      window.setTimeout(() => {
-        this.slideData1[this.nowSlidePage - 1][0].click = false
-        this.slideData1[this.nowSlidePage - 1][1].click = false
-        this.slideData1.pop()
-      }, 500)
-      console.warn('삭제후 전송할 데이터 : ', this.postListData)
-      console.warn('슬라이드 데이터 :', this.slideData1)
     },
     clickSound() {
-      const audio = new Audio('/saleskit_sfx.mp3')
+      const audio = new Audio('/ddiyong2.mp3')
       audio.play()
     },
     async goNext(index1, index2, selectedIndex) {
-      this.clickSound()
-      // console.log(index1)
       // postListData에 데이터 넣기
       // 클릭된거는 값 true로 바꿔주고 postListData에 넣기.
       this.slideData1[index1][index2].click = true
@@ -387,14 +314,13 @@ export default {
       postListParam.cstpPoolNo = `CQ-00100${index1 + 1}`
       // post에 보낼 데이터 준비
       this.postListData.push(postListParam)
-      console.warn('준비된 데이터 : ', this.postListData)
 
       // API 호출
       if (this.nowSlidePage === 5 && this.slideData1.length === 5) {
         // POST 호출에 필요한 데이터 준비 - 차수, 네임 등등
         // const routeParams = this._.cloneDeep(this.$route.params)
-        let apiResult = {}
         const routeParams = this.$route.params
+        console.warn('routeParams: ', routeParams)
         const params = {
           cstpMngrSeqno: 1,
           mblTelNum: routeParams.mblTelNum,
@@ -409,8 +335,7 @@ export default {
             '/counsel/insCounselResult',
             params
           )
-          apiResult = result
-          // console.log('1차 앙케이트 저장 후 결과값 : ', result)
+          console.log('1차 앙케이트 저장 후 결과값 : ', result)
         } catch (e) {
           console.log(e)
         }
@@ -418,15 +343,14 @@ export default {
         // POST API 호출
         setTimeout(() => {
           this.isComplete = true
-          this.goResult(this.slideData1, apiResult, params)
-        }, 2000)
+          this.goResult(this.slideData1)
+        }, 1000)
       }
       if (this.nowSlidePage < 5) {
         // 다음 슬라이드로 이동 : 시작
         // if (this.nowSlidePage !== 5) {
         this.nowSlidePage++
         // 첫 슬라이드에 사용할 랜덤데이터 뽑기
-        index1++
         this.getRandomData(index1, selectedIndex)
         // }
         window.setTimeout(() => {
@@ -446,114 +370,53 @@ export default {
       return Math.floor(Math.random() * imgCount)
     },
     getRandomData(index = 0, selectedIndex) {
-      // console.log(`${index}, ${selectedIndex}`)
-      // 최초 1번 랜덤2개 뽑기.
-      if (index === 0) {
-        const arrObj = []
-        const firstItem = {
-          code: this.allSlideData[0].code,
-          label: this.allSlideData[0].label,
-          click: false,
-          index: 0
-        }
-        const secondItem = {
-          code: this.allSlideData[1].code,
-          label: this.allSlideData[1].label,
-          click: false,
-          index: 1
-        }
-        firstItem.imgSrc = this.allSlideData[0].imgSrc[0]
-        // Number(this.imageRandomNumber(this.allSlideData[0].imgSrc.length))
-        firstItem.children = this.allSlideData[0].children
-
-        secondItem.imgSrc = this.allSlideData[1].imgSrc[0]
-        // Number(this.imageRandomNumber(this.allSlideData[1].imgSrc.length))
-        secondItem.children = this.allSlideData[1].children
-        arrObj.push(firstItem)
-        arrObj.push(secondItem)
-        this.slideData1.push(arrObj)
-        // console.log(this.slideData1)
-      } else {
-        // 최초 아닐경우
-        const arrObj = []
-        const firstItem = {
-          code: this.allSlideData[selectedIndex].code,
-          label: this.allSlideData[selectedIndex].label,
-          click: false,
-          index: selectedIndex
-        }
-        const secondItem = {
-          code: this.allSlideData[index + 1].code,
-          label: this.allSlideData[index + 1].label,
-          click: false,
-          index: index + 1
-        }
-        firstItem.imgSrc = this.allSlideData[selectedIndex].imgSrc[
-          Number(
-            this.imageRandomNumber(
-              this.allSlideData[selectedIndex].imgSrc.length
-            )
-          )
-        ]
-        firstItem.children = this.allSlideData[selectedIndex].children
-        secondItem.imgSrc = this.allSlideData[index + 1].imgSrc[
-          Number(
-            this.imageRandomNumber(this.allSlideData[index + 1].imgSrc.length)
-          )
-        ]
-        secondItem.children = this.allSlideData[index + 1].children
-        arrObj.push(firstItem)
-        arrObj.push(secondItem)
-        this.slideData1.push(arrObj)
-        // console.log(this.slideData1)
+      // 서로 다른 랜덤한 번호 뽑기
+      let listRandomNumber1 = ''
+      let listRandomNumber2 = ''
+      // if (this.slideData1.length <= 1) {
+      listRandomNumber1 =
+        this.slideData1.length === 0 ? this.listRandomNumber() : selectedIndex
+      listRandomNumber2 = this.listRandomNumber()
+      if (listRandomNumber1 === listRandomNumber2) {
+        listRandomNumber2 = this.listRandomNumber()
       }
 
-      // 서로 다른 랜덤한 번호 뽑기
-      // let listRandomNumber1 = ''
-      // let listRandomNumber2 = ''
-      // listRandomNumber1 =
-      //   this.slideData1.length === 0 ? this.listRandomNumber() : selectedIndex
-      // listRandomNumber2 = this.listRandomNumber()
-      // if (listRandomNumber1 === listRandomNumber2) {
-      //   listRandomNumber2 = this.listRandomNumber()
-      // }
-
-      // console.warn(listRandomNumber1, listRandomNumber2)
+      console.warn(listRandomNumber1, listRandomNumber2)
 
       // 전체배열에 넣을 슬라이드 1개 배열 만들기.
-      // const arrObj = []
-      // const firstItem = {
-      //   code: this.allSlideData[listRandomNumber1].code,
-      //   label: this.allSlideData[listRandomNumber1].label,
-      //   click: false,
-      //   index: listRandomNumber1
-      // }
-      // const secondItem = {
-      //   code: this.allSlideData[listRandomNumber2].code,
-      //   label: this.allSlideData[listRandomNumber2].label,
-      //   click: false,
-      //   index: listRandomNumber2
-      // }
+      const arrObj = []
+      const firstItem = {
+        code: this.allSlideData[listRandomNumber1].code,
+        label: this.allSlideData[listRandomNumber1].label,
+        click: false,
+        index: listRandomNumber1
+      }
+      const secondItem = {
+        code: this.allSlideData[listRandomNumber2].code,
+        label: this.allSlideData[listRandomNumber2].label,
+        click: false,
+        index: listRandomNumber2
+      }
 
-      // firstItem.imgSrc = this.allSlideData[listRandomNumber1].imgSrc[
-      //   Number(
-      //     this.imageRandomNumber(
-      //       this.allSlideData[listRandomNumber1].imgSrc.length
-      //     )
-      //   )
-      // ]
+      firstItem.imgSrc = this.allSlideData[listRandomNumber1].imgSrc[
+        Number(
+          this.imageRandomNumber(
+            this.allSlideData[listRandomNumber1].imgSrc.length
+          )
+        )
+      ]
 
-      // secondItem.imgSrc = this.allSlideData[listRandomNumber2].imgSrc[
-      //   Number(
-      //     this.imageRandomNumber(
-      //       this.allSlideData[listRandomNumber2].imgSrc.length
-      //     )
-      //   )
-      // ]
+      secondItem.imgSrc = this.allSlideData[listRandomNumber2].imgSrc[
+        Number(
+          this.imageRandomNumber(
+            this.allSlideData[listRandomNumber2].imgSrc.length
+          )
+        )
+      ]
 
-      // arrObj.push(firstItem)
-      // arrObj.push(secondItem)
-      // this.slideData1.push(arrObj)
+      arrObj.push(firstItem)
+      arrObj.push(secondItem)
+      this.slideData1.push(arrObj)
     }
   }
 }

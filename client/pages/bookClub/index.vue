@@ -4,7 +4,7 @@
     <ul>
       <li>
         <n-link class="btn" to="/bookClub/digital"
-          >전집 &amp; 디지털 상품</n-link
+          >전집 &amp; 디지털콘텐츠</n-link
         >
       </li>
       <li>

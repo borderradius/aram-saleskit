@@ -78,6 +78,9 @@
       .checkbox-label {
         width: 30%;
         box-sizing: border-box;
+        &.brosure {
+          width: 25%;
+        }
       }
     }
     .content {

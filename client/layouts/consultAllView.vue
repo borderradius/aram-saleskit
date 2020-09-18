@@ -35,6 +35,7 @@
       <img src="/go-back.png" alt="뒤로가기 아이콘" />
     </a>
     <!-- <n-link class="go-home" to="/">home</n-link> -->
+    <FullScreen />
   </div>
 </template>
 
