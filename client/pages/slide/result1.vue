@@ -27,25 +27,24 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   data() {
     return {
       lastItem: [{ imgSrc: '' }]
-      // chldId: '',
-      // cnslPtclSeqno: ''
     }
+  },
+  computed: {
+    ...mapState({
+      childInfo: (state) => state.select.childInfo
+    })
   },
   mounted() {
     const listsTemp = this.$route.params.lists
-    // this.chldId = this.$route.params.apiResult.chldId
-    // this.cnslPtclSeqno = this.$route.params.apiResult.cnslPtclSeqno
-    // console.warn(listsTemp)
     let lastItemTemp = listsTemp[listsTemp.length - 1]
-    // console.warn(lastItemTemp)
     lastItemTemp = lastItemTemp.filter((item) => item.click)
-    // console.warn(lastItemTemp)
-
     this.lastItem = lastItemTemp
+    console.warn('childInfo ::: ', this.childInfo)
   },
   methods: {
     goSecondPhase() {

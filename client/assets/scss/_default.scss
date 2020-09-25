@@ -14,3 +14,9 @@ body {
   // font-family: 'Jost', 'Noto Sans KR', sans-serif;
   font-family: 'Noto Sans KR', 'NanumSquareRound', sans-serif;
 }
+
+@media (orientation: portrait) {
+  .show-warn-page {
+    display: block;
+  }
+}

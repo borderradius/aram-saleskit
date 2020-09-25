@@ -132,6 +132,18 @@ extend('birth', {
   }
 })
 
+extend('countAgeFull', {
+  message(field) {
+    return `0세부터 만12세까지 입력가능합니다.`
+  },
+  validate(value) {
+    const moment = window.$nuxt.$moment
+    const isYear = moment().diff(value, 'year') < 13
+    const isBefore = !moment().isBefore(value)
+    return isYear && isBefore
+  }
+})
+
 // extend('birth', {
 //   message(field) {
 //     return `${field} 제대로 입력해주세요`

@@ -8,7 +8,7 @@
     <div class="flex-initial h-5/6 w-4/5 mt-18">
       <p class="report-subject">
         앙케이트 결과 REPORT
-        <small>이아람 / 2020-09-17</small>
+        <small>{{ detail.chldNm }} / {{ detail.cnslDate }}</small>
       </p>
       <div class="report-content1">
         <h2 class="mb-4 font-extrabold">1. 우리아이 선호 영역</h2>
@@ -23,21 +23,13 @@
         <div>
           <table class="detail-table">
             <tbody>
-              <tr class="highlight">
-                <th>최종 선호</th>
-                <td>자연 탐구</td>
-              </tr>
-              <tr>
-                <th>우선 선호</th>
-                <td>자연 탐구</td>
-              </tr>
-              <tr>
-                <th>최다 선호</th>
-                <td>자연 탐구</td>
-              </tr>
-              <tr>
-                <th>비 선호</th>
-                <td>사회관계, 신체운동</td>
+              <tr
+                v-for="(item, index) in detail.cnslChoicedInfo"
+                :key="index"
+                :class="[index === 0 ? 'highlight' : '']"
+              >
+                <th>{{ item.pfrcEduNm }}</th>
+                <td>{{ item.asctEduCoursNm }}</td>
               </tr>
             </tbody>
           </table>
@@ -79,207 +71,14 @@
       </div>
       <div class="report-content2 mt-4 pb-2">
         <h2 class="mb-4 font-extrabold">2. 학습 계통도</h2>
-        <systemChartComp
+        <!-- <SystemChartComp
           :data="[systemChart1, systemChart2, systemChart3, systemChart4]"
+          :priority-data="detail.cnslChoicedInfo"
+        /> -->
+        <SystemChartComp
+          :data="[standardList, nuriList, lowerGradeList, seniorList]"
+          :priority-data="detail.cnslChoicedInfo"
         />
-
-        <div v-if="false" class="system-chart2 flex justify-between gtd">
-          <ul class="system-chart-menu">
-            <li>
-              <div>표준보육과정 <small>(0세 ~ 2세)</small></div>
-            </li>
-            <li>누리과정<small>(3세 ~ 5세)</small></li>
-            <li>초등교과<small>(저학년)</small></li>
-            <li>초등교과<small>(고학년)</small></li>
-          </ul>
-          <div class="w-full">
-            <ul class="w-full flex justify-between list-box first-row">
-              <li
-                v-for="(item, index) in systemChart1"
-                :key="index"
-                :class="[item.isOn ? 'on' : '']"
-              >
-                {{ item.label }}
-              </li>
-            </ul>
-            <ul class="w-full flex justify-between list-box second-row">
-              <li
-                v-for="(item, index) in systemChart2"
-                :key="index"
-                :class="[item.isOn ? 'on' : '']"
-              >
-                {{ item.label }}
-              </li>
-            </ul>
-            <ul class="w-full flex justify-between list-box third-row">
-              <li
-                v-for="(item, index) in systemChart3"
-                :key="index"
-                :class="[item.isOn ? 'on' : '']"
-              >
-                {{ item.label }}
-              </li>
-            </ul>
-            <ul class="w-full flex justify-between list-box fourth-row">
-              <li
-                v-for="(item, index) in systemChart4"
-                :key="index"
-                :class="[item.isOn ? 'on' : '']"
-              >
-                {{ item.label }}
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div v-if="false" class="system-chart2 flex justify-between">
-          <ul class="system-chart-title">
-            <li class="flex items-center text-center">
-              <div class="w-full text-center">
-                표준보육과정<br />(0세 ~ 2세)
-              </div>
-            </li>
-            <li class="flex items-center text-center">
-              <div class="w-full text-center">누리과정<br />(3세 ~ 5세)</div>
-            </li>
-            <li class="flex items-center text-center">
-              <div class="w-full text-center">초등교과<br />(저학년)</div>
-            </li>
-            <li class="flex items-center text-center">
-              <div class="w-full text-center">초등교과<br />(고학년)</div>
-            </li>
-          </ul>
-          <ul class="system-chart-list row1">
-            <li
-              v-for="(item, index) in systemChart1"
-              :key="index"
-              :class="[
-                item.size === 'half' ? 'half' : '',
-                item.isOn ? 'on' : '',
-                item.isLeft ? 'go-left' : '',
-                item.isRight ? 'go-right' : '',
-                item.isStraight ? 'go-straight' : ''
-              ]"
-              class="flex items-center"
-            >
-              <div class="text-center w-full">
-                {{ item.label }}
-              </div>
-            </li>
-          </ul>
-          <ul class="system-chart-list row1">
-            <li
-              v-for="(item, index) in systemChart2"
-              :key="index"
-              :class="[
-                item.size === 'half' ? 'half' : '',
-                item.isOn ? 'on' : '',
-                item.isLeft ? 'go-left' : '',
-                item.isRight ? 'go-right' : '',
-                item.isStraight ? 'go-straight' : ''
-              ]"
-              class="flex items-center"
-            >
-              <div class="text-center w-full">
-                {{ item.label }}
-              </div>
-            </li>
-          </ul>
-          <ul class="system-chart-list row3">
-            <li
-              v-for="(item, index) in systemChart3"
-              :key="index"
-              :class="[
-                item.size === 'half' ? 'half' : '',
-                item.isOn ? 'on' : '',
-                item.isLeft ? 'go-left' : '',
-                item.isRight ? 'go-right' : '',
-                item.isStraight ? 'go-straight' : ''
-              ]"
-              class="flex items-center"
-            >
-              <div class="text-center w-full">
-                {{ item.label }}
-              </div>
-            </li>
-          </ul>
-          <ul class="system-chart-list row1">
-            <li
-              v-for="(item, index) in systemChart4"
-              :key="index"
-              :class="[
-                item.size === 'half' ? 'half' : '',
-                item.isOn ? 'on' : '',
-                item.isLeft ? 'go-left' : '',
-                item.isRight ? 'go-right' : '',
-                item.isStraight ? 'go-straight' : ''
-              ]"
-              class="flex items-center"
-            >
-              <div class="text-center w-full">
-                {{ item.label }}
-              </div>
-            </li>
-          </ul>
-          <ul class="system-chart-list row5">
-            <li
-              v-for="(item, index) in systemChart5"
-              :key="index"
-              :class="[
-                item.size === 'half' ? 'half' : '',
-                item.isOn ? 'on' : '',
-                item.isLeft ? 'go-left' : '',
-                item.isRight ? 'go-right' : '',
-                item.isStraight ? 'go-straight' : ''
-              ]"
-              class="flex items-center"
-            >
-              <div class="text-center w-full">
-                {{ item.label }}
-              </div>
-            </li>
-          </ul>
-          <!-- <div class="flex">
-            <ul class="flex justify-between items">
-              <li
-                v-for="item in systemChart"
-                :key="item.label"
-                :class="[item.isOn ? 'on' : '']"
-                class="chart-item"
-              >
-                <span>
-                  {{ item.label }}
-                </span>
-              </li>
-            </ul>
-          </div> -->
-          <!-- <ul>
-            <li class="flex">
-              <span class="flex">표준보육과정<br />(0세 ~ 2세)</span>
-              <ul class="flex justify-between">
-                <li
-                  v-for="item in systemChart"
-                  :key="item.label"
-                  :class="[item.isOn ? 'on' : '']"
-                  class="chart-item flex"
-                >
-                  <span>
-                    {{ item.label }}
-                  </span>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <span>누리과정<br />(3세 ~ 5세)</span>
-            </li>
-            <li>
-              <span>초등교과<br />(저학년)</span>
-            </li>
-            <li>
-              <span>초등교과<br />(고학년)</span>
-            </li>
-          </ul> -->
-        </div>
       </div>
       <div class="report-content3 mt-4">
         <h2 class="mb-4 font-extrabold">3. 추천 결과</h2>
@@ -308,7 +107,7 @@
             </div>
             <ul class="flex p-4">
               <li
-                v-for="item in detail.rcmdProdList.rglrSrsRcmdProdList"
+                v-for="item in detail.rcmdProdList.prfdRcmdList"
                 :key="item.prodId"
                 class="relative"
               >
@@ -424,10 +223,10 @@
 </template>
 
 <script>
-import systemChartComp from '@/components/systemChart'
+import SystemChartComp from '@/components/systemChart'
 export default {
   components: {
-    systemChartComp
+    SystemChartComp
   },
   data() {
     return {
@@ -455,7 +254,7 @@ export default {
         },
         xaxis: {
           categories: [
-            '의사소통',
+            ['의사소통', '국어,영어'],
             '자연탐구',
             '사회관계',
             '예술경험',
@@ -472,7 +271,8 @@ export default {
       ],
       detail: {
         rcmdProdList: {
-          rglrSrsRcmdProdList: []
+          rglrSrsRcmdProdList: [],
+          prfdRcmdList: []
         },
         cnslResult: []
       },
@@ -480,158 +280,177 @@ export default {
       systemChart1: [
         {
           label: '의사소통',
-          isOn: true
+          isOn: true,
+          isPriority: false
         },
         {
           label: '자연탐구',
-          isOn: false
+          isOn: false,
+          isPriority: false
         },
         {
           label: '사회관계',
           isOn: false,
-          size: 'full'
+          isPriority: true
         },
         {
           label: '예술경험',
           isOn: false,
-          size: 'half'
+          isPriority: false
         },
         {
           label: '기본 생활',
           isOn: false,
-          size: 'half'
+          isPriority: false
         },
         {
           label: '신체 운동',
           isOn: false,
-          size: 'half'
+          isPriority: false
         }
       ],
       systemChart2: [
         {
           label: '의사소통',
-          isOn: false,
-          size: 'full'
+          isOn: true,
+          isLeft: false,
+          isRight: true
         },
         {
           label: '자연탐구',
           isOn: false,
-          size: 'full'
+          isLeft: false,
+          isRight: true
         },
         {
           label: '사회관계',
-          isOn: true,
-          size: 'full'
+          isOn: false,
+          isLeft: false,
+          isRight: true
         },
         {
           label: '예술경험',
           isOn: false,
-          size: 'half'
+          isLeft: false,
+          isRight: false
         },
         {
           label: '신체운동 및 건강',
           isOn: false,
-          size: 'half'
+          isLeft: false,
+          isRight: false
         }
       ],
       systemChart3: [
         {
           label: '국어',
-          isOn: false,
-          size: 'full'
+          isOn: true,
+          isLeft: false,
+          isRight: false
         },
         {
           label: '수학',
-          isOn: false,
-          size: 'full'
+          isOn: true,
+          isLeft: false,
+          isRight: false
         },
         {
           label: '슬기로운생활',
-          isOn: false,
-          size: 'half'
+          isOn: true,
+          isLeft: false,
+          isRight: true
         },
         {
           label: '바른생활',
-          isOn: false,
-          size: 'half'
+          isOn: true,
+          isLeft: false,
+          isRight: false
         },
         {
           label: '즐거운생활',
           isOn: true,
-          size: 'half'
+          isLeft: false,
+          isRight: false
         },
         {
           label: '안전',
-          isOn: false,
-          size: 'half'
+          isOn: true,
+          isLeft: false,
+          isRight: false
         }
       ],
       systemChart4: [
         {
           label: '국어',
-          isOn: false,
-          size: 'full'
+          isOn: true
         },
         {
           label: '영어',
-          isOn: false,
-          size: 'full'
+          isOn: false
         },
         {
           label: '수학',
-          isOn: false,
-          size: 'full'
+          isOn: false
         },
         {
           label: '과학',
-          isOn: true,
-          size: 'half'
+          isOn: false
         },
         {
           label: '사회',
-          isOn: false,
-          size: 'half'
+          isOn: false
         },
         {
           label: '도덕',
-          isOn: false,
-          size: 'half'
+          isOn: false
         },
         {
           label: '미술',
-          isOn: false,
-          size: 'half'
+          isOn: false
         },
         {
           label: '음악',
-          isOn: false,
-          size: 'half'
+          isOn: false
         },
         {
           label: '체육',
-          isOn: false,
-          size: 'half'
+          isOn: false
         }
-      ]
+      ],
+      standardList: [],
+      nuriList: [],
+      lowerGradeList: [],
+      seniorList: []
     }
   },
   async mounted() {
     const {
-      // mblTelNum,
+      mblTelNum,
       cnslPtclSeqno,
-      chldId,
+      rectChldId,
       cstpMngrSeqno
     } = this.$route.params
-    console.warn(`${cnslPtclSeqno}, ${chldId}, ${cstpMngrSeqno}`)
+    // console.warn(
+    //   `${cnslPtclSeqno}, ${rectChldId}, ${cstpMngrSeqno}, ${mblTelNum}`
+    // )
     try {
-      const { result } = await this.$axios.$get('/counsel/cnslResult', {
-        params: {
-          chldId,
-          cnslPtclSeqno,
-          cstpMngrSeqno
+      const { result } = await this.$axios.$get(
+        `/recipient/${mblTelNum}/counsel/${cnslPtclSeqno}`,
+        {
+          params: {
+            rectChldId,
+            cstpMngrSeqno
+          }
         }
+      )
+      // console.warn(result)
+      this.$nextTick(() => {
+        this.detail = result
+        this.standardList = result.standardList
+        this.nuriList = result.nuriList
+        this.lowerGradeList = result.lowerGradeList
+        this.seniorList = result.seniorList
       })
-      console.warn(result)
     } catch (e) {
       console.log(e)
     }

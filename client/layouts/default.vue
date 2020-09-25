@@ -2,6 +2,7 @@
   <div>
     <nuxt />
     <FullScreen />
+    <Portrait />
   </div>
 </template>
 <script>

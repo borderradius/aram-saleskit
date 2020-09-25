@@ -34,7 +34,7 @@
             </ValidationProvider>
             <ValidationProvider
               v-slot="{ errors }"
-              rules="required|birth"
+              rules="required|birth|countAgeFull"
               name="생년월일"
               class="w-full"
             >
@@ -43,7 +43,7 @@
                 <input
                   v-model="consult.chldBthYmd"
                   class="focus:outline-none"
-                  type="text"
+                  type="number"
                   name="birth"
                   placeholder="예) 20180101"
                 />

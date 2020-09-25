@@ -3,11 +3,27 @@
     <div class="search-area">
       <div class="table w-full">
         <ul class="thead flex">
+          <li class="">조직원</li>
           <li class="">자녀이름</li>
           <li class="">전화번호</li>
           <li class="flex-auto">상담기간</li>
         </ul>
         <ul class="tbody flex">
+          <li>
+            <select
+              id=""
+              name=""
+              class="w-120 text-center border rounded-md float-left"
+            >
+              <option value="">전체</option>
+              <option
+                v-for="item in orgmList"
+                :key="item.orgmId"
+                :value="item.orgmId"
+                >{{ item.orgmNm }}</option
+              >
+            </select>
+          </li>
           <li>
             <input
               v-model="searchParam.searchChldNm"
@@ -18,7 +34,7 @@
           <li>
             <input
               v-model="searchParam.searchTelNum"
-              type="text"
+              type="number"
               class="w-full text-center border rounded-md py-2 float-left"
             />
           </li>
@@ -57,9 +73,10 @@
       <div class="table w-full">
         <ul class="thead flex">
           <li class="">#</li>
+          <li class="flex-auto">조직원</li>
           <li class="flex-auto">자녀이름</li>
           <li class="">전화번호</li>
-          <li class="">생년월일</li>
+          <!-- <li class="">생년월일</li> -->
           <li class="">나이</li>
           <!-- <li class="">구매</li> -->
           <li class="">상담일자</li>
@@ -92,6 +109,7 @@
 <script>
 import Datepicker from 'vuejs-datepicker'
 import { ko } from 'vuejs-datepicker/dist/locale'
+import { mapState } from 'vuex'
 
 export default {
   name: 'ConsultIndex',
@@ -114,9 +132,29 @@ export default {
         { title: '구매' },
         { title: '상담일' }
       ]
+      // orgmList: []
     }
   },
+  // async mounted() {
+  //   this.orgmList = await this.getOrgm()
+  // },
+  computed: {
+    ...mapState({
+      orgmList: (state) => state.common.orgmList
+    })
+  },
   methods: {
+    /**
+     * 상담자 리스트 가져오기
+     */
+    // async getOrgm() {
+    //   try {
+    //     const { result } = await this.$axios.$get('/auth/orgm')
+    //     return result
+    //   } catch (e) {
+    //     console.log(e)
+    //   }
+    // },
     dateFormatter(date) {
       return date === '' ? '' : this.$moment(date).format('YYYY-MM-DD')
     },

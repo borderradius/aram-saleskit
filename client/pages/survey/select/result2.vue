@@ -58,21 +58,21 @@ export default {
      */
     goResultPhase() {
       this.$router.push({
-        name: 'survey-result',
-        params: {
-          apiResult: this.$route.params.apiResult,
-          apiParams: this.$route.params.apiParams
-        }
+        name: 'survey-result'
+        // params: {
+        // apiResult: this.$route.params.apiResult,
+        // apiParams: this.$route.params.apiParams
+        // }
       })
     },
     goThirdPhase() {
       this.$router.push({
         name: 'survey-select-slide3',
         params: {
-          apiResult: this.$route.params.apiResult,
+          // apiResult: this.$route.params.apiResult,
           children: this.lastItem.children,
-          eduCode: this.lastItem.code,
-          apiParams: this.$route.params.apiParams
+          eduCode: this.lastItem.code
+          // apiParams: this.$route.params.apiParams
         }
       })
     }

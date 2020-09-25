@@ -3,6 +3,7 @@
     <!-- <n-link to="/consult" class="absolute btn btn-info bottom-0"
       >상담이력 바로가기</n-link
     > -->
+    <!-- <keep-alive></keep-alive> -->
     <div class="flex item-centers justify-between card-wrapper">
       <n-link to="/survey" class="card flex-1 relative">
         <img
@@ -30,6 +31,7 @@
     <n-link to="/consult" class="go-history">
       <img src="/go-history.png" alt="상담이력 아이콘" />
     </n-link>
+
     <!-- <button class="btn-fullscreen" @click="fullScreen">
       전체화면
     </button> -->
@@ -41,6 +43,9 @@
 <script>
 export default {
   mounted() {
+    // 공통 데이터 초기화
+    this.$store.dispatch('common/setOrgmList')
+
     // 셋타임, 넥스트틱, app.vue
     // this.$nextTick(() => {
     //   this.fullScreen()

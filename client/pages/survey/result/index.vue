@@ -70,7 +70,7 @@
       </div>
       <div class="report-content2 mt-4 pb-2">
         <h2 class="mb-6 font-extrabold">2. 학습 계통도</h2>
-        <systemChartComp
+        <SystemChartComp
           :data="[systemChart1, systemChart2, systemChart3, systemChart4]"
         />
         <div v-if="false" class="system-chart2 flex justify-between gtd">
@@ -375,12 +375,12 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-import systemChartComp from '@/components/systemChart'
+import { mapState, mapActions } from 'vuex'
+import SystemChartComp from '@/components/systemChart'
 
 export default {
   components: {
-    systemChartComp
+    SystemChartComp
   },
   filters: {
     birthFormat(value) {
@@ -427,12 +427,7 @@ export default {
           ]
         }
       },
-      series: [
-        // {
-        //   name: '선호영역',
-        //   data: [1, 1, 1, 1, 1, 1]
-        // }
-      ],
+      series: [],
       detail: {
         rcmdProdList: {
           rglrSrsRcmdProdList: [],
@@ -450,11 +445,13 @@ export default {
       chldBthYmd: ''
     }
   },
+  computed: {
+    ...mapState({
+      childInfo: (state) => state.select.childInfo
+    })
+  },
   async mounted() {
-    const { apiParams, apiResult } = this.$route.params
-    const { chldId, cstpMngrSeqno } = apiParams
-    const { cnslPtclSeqno } = apiResult
-    console.warn(chldId, cstpMngrSeqno, cnslPtclSeqno)
+    const { chldId, cstpMngrSeqno, cnslPtclSeqno } = this.childInfo
     try {
       const { result } = await this.$axios.$get('/counsel/cnslResult', {
         params: {
@@ -469,18 +466,6 @@ export default {
       this.systemChart3 = result.lowerGradeList
       this.systemChart4 = result.seniorList
 
-      // const temp1 = result.cnslChoicedInfo[2]
-      // const temp2 = result.cnslChoicedInfo[0]
-      // const temp3 = result.cnslChoicedInfo[1]
-      // const temp4 = result.cnslChoicedInfo[3]
-
-      // const temp = []
-      // temp.push(temp1)
-      // temp.push(temp2)
-      // temp.push(temp3)
-      // temp.push(temp4)
-
-      // this.cnslChoicedInfo = temp
       this.cnslChoicedInfo = result.cnslChoicedInfo
       this.prfdRcmdList = result.rcmdProdList.prfdRcmdList
       this.chldNm = result.chldNm
@@ -492,9 +477,6 @@ export default {
     } catch (e) {
       console.log(e)
     }
-    // this.detail = this._.cloneDeep(this.$route.params)
-    // this.detail.cnslResult = this.getCnslResult(this.$route.params.cnslResult)
-    // 라우터 파라미터값이 없을경우 - 추천페이지에서 넘어온 것임
   },
   methods: {
     ...mapActions({

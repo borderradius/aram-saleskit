@@ -36,6 +36,7 @@
     </a>
     <!-- <n-link class="go-home" to="/">home</n-link> -->
     <FullScreen />
+    <Portrait />
   </div>
 </template>
 

@@ -108,6 +108,7 @@
       <img src="/go-home1.png" alt="메인으로가기 아이콘" />
     </n-link>
     <FullScreen />
+    <Portrait />
   </div>
 </template>
 

@@ -73,19 +73,38 @@
         }
       }
       li:nth-child(1) {
-        width: 25%;
+        width: 20%;
       }
       li:nth-child(2) {
-        width: 25%;
+        width: 20%;
       }
       li:nth-child(3) {
-        width: 50%;
+        width: 20%;
+      }
+      li:nth-child(4) {
+        width: 30%;
       }
     }
     .thead {
       background-color: #d4f3ad;
       li {
         text-align: left;
+        &:first-child {
+          select {
+            // padding: 1rem 0;
+            height: 100%;
+          }
+        }
+      }
+    }
+    .tbody {
+      li {
+        &:first-child {
+          select {
+            // padding: 1rem 0;
+            height: 100%;
+          }
+        }
       }
     }
     .datepicker-input {

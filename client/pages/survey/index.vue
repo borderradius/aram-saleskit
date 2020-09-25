@@ -117,7 +117,7 @@
                 <input
                   v-model="mblTelNum"
                   class="bg-white px-5 focus:outline-none search-input w-4/5"
-                  type="text"
+                  type="number"
                   name="search"
                   placeholder="휴대폰 번호를 입력해주세요."
                 />
@@ -179,7 +179,6 @@
         <img src="/go-home1.png" alt="메인으로가기 아이콘" />
       </n-link>
       <img src="/bi_blue.png" class="bookclub-logo2" />
-      <!-- <span class="bookclub-logo inline-block">북클럽 이미지</span> -->
     </div>
     <modal name="agree" width="100%" height="auto" scrollable @click="show">
       <div class="agree-wrap">
@@ -206,6 +205,8 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
+
 export default {
   filters: {
     dateformat(value) {
@@ -217,7 +218,6 @@ export default {
       privateAgree: false,
       mblTelNum: '',
       orgmId: '',
-      orgmList: [],
       tBody: [],
       tHeader: [
         { title: '#' },
@@ -231,24 +231,15 @@ export default {
       alertMessage: ''
     }
   },
-  async mounted() {
-    // const a = [1, 2, 3, { a: 'a' }]
-    // const b = this._.cloneDeep(a)
-    // console.log(b)
-    this.orgmList = await this.getOrgm()
+  computed: {
+    ...mapState({
+      orgmList: (state) => state.common.orgmList
+    })
   },
   methods: {
-    /**
-     * 상담자 리스트 가져오기
-     */
-    async getOrgm() {
-      try {
-        const { result } = await this.$axios.$get('/auth/orgm')
-        return result
-      } catch (e) {
-        console.log(e)
-      }
-    },
+    ...mapActions({
+      setOrgmList: 'common/setOrgmList'
+    }),
     /**
      * 앙케이트 전 자식이름, 생년월일 입력페이지 이동
      */
