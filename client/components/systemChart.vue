@@ -13,10 +13,14 @@
         <li
           v-for="(item, index) in data1"
           :key="index"
-          :class="[item.isOn ? 'on' : '', item.isPriority ? 'isPriority' : '']"
+          :class="[
+            item.isOn ? 'on' : '',
+            item.isPriority ? 'isPriority' : '',
+            item.isLast ? 'isLast' : ''
+          ]"
         >
           <div class="rect-label-wrap">
-            <span v-if="item.isOn" class="rect-label">최종</span>
+            <span v-if="item.isLast" class="rect-label">최종</span>
             <span v-if="item.isPriority" class="rect-label">우선</span>
           </div>
           {{ item.label }}
@@ -29,9 +33,15 @@
           :class="[
             item.isOn ? 'on' : '',
             item.isLeft ? 'isLeft' : '',
-            item.isRight ? 'isRight' : ''
+            item.isRight ? 'isRight' : '',
+            item.isPriority ? 'isPriority' : '',
+            item.isLast ? 'isLast' : ''
           ]"
         >
+          <div class="rect-label-wrap">
+            <span v-if="item.isLast" class="rect-label">최종</span>
+            <span v-if="item.isPriority" class="rect-label">우선</span>
+          </div>
           {{ item.label }}
         </li>
       </ul>
@@ -42,9 +52,15 @@
           :class="[
             item.isOn ? 'on' : '',
             item.isLeft ? 'isLeft' : '',
-            item.isRight ? 'isRight' : ''
+            item.isRight ? 'isRight' : '',
+            item.isPriority ? 'isPriority' : '',
+            item.isLast ? 'isLast' : ''
           ]"
         >
+          <div class="rect-label-wrap">
+            <span v-if="item.isLast" class="rect-label">최종</span>
+            <span v-if="item.isPriority" class="rect-label">우선</span>
+          </div>
           {{ item.label }}
         </li>
       </ul>
@@ -52,8 +68,16 @@
         <li
           v-for="(item, index) in data[3]"
           :key="index"
-          :class="[item.isOn ? 'on' : '']"
+          :class="[
+            item.isOn ? 'on' : '',
+            item.isPriority ? 'isPriority' : '',
+            item.isLast ? 'isLast' : ''
+          ]"
         >
+          <div class="rect-label-wrap">
+            <span v-if="item.isLast" class="rect-label">최종</span>
+            <span v-if="item.isPriority" class="rect-label">우선</span>
+          </div>
           {{ item.label }}
         </li>
       </ul>
@@ -244,13 +268,26 @@ export default {
             return `${startPointX},${startPointY} ${startPointX},100 ${startPointX},80 ${startPointX *
               2 +
               10},80 ${startPointX * 2 + 10}, 200`
+            // } else if (idx === 1) {
+            //   return `${startPointX},${startPointY} ${startPointX},100 ${startPointX},80 ${startPointX *
+            //     3 -
+            //     27.5},80 ${startPointX * 3 - 27.5},100 ${startPointX *
+            //     3},100 ${startPointX * 3},80 ${startPointX * 4},80 ${startPointX *
+            //     4},60 ${startPointX * 4},80 ${startPointX * 5},80 ${startPointX *
+            //     5},100`
+            // } else if (idx === 3 || idx === 4) {
+            //   return `${startPointX + 20},${startPointY} ${startPointX + 20},100`
+            // }
           } else if (idx === 1) {
             return `${startPointX},${startPointY} ${startPointX},100 ${startPointX},80 ${startPointX *
               3 -
-              27.5},80 ${startPointX * 3 - 27.5},100 ${startPointX *
-              3},100 ${startPointX * 3},80 ${startPointX * 4},80 ${startPointX *
-              4},60 ${startPointX * 4},80 ${startPointX * 5},80 ${startPointX *
-              5},100`
+              27.5},80 ${startPointX * 3 - 27.5},100`
+          } else if (idx === 2) {
+            return `${startPointX * 1.5 - 3.5},${startPointY} ${startPointX *
+              1.5 -
+              3.5},80 ${startPointX - 43.5},80 ${startPointX -
+              43.5},100 ${startPointX - 43.5},80 ${startPointX * 2.5 -
+              4.5},80 ${startPointX * 2.5 - 4.5},100`
           } else if (idx === 3 || idx === 4) {
             return `${startPointX + 20},${startPointY} ${startPointX + 20},100`
           }
@@ -268,49 +305,51 @@ export default {
           const isRight = item[
             idx
           ].parentElement.parentElement.classList.value.includes('isRight')
+          const isOn = item[
+            idx
+          ].parentElement.parentElement.classList.value.includes('on')
+
           if (idx === 0) {
             let points = `${startPointX},${startPointY} ${startPointX},80 `
-            if (isLeft) {
+            if (isLeft && isOn) {
               points += `${startPointX},80 ${startPointX},100`
             }
-            if (isRight) {
+            if (isRight && isOn) {
               points += `${startPointX * 2 + 10},80 ${startPointX * 2 + 10},200`
             }
             return points
           }
           if (idx === 1) {
             let points = `${startPointX},${startPointY} ${startPointX},80 `
-            if (isLeft) {
+            if (isLeft && isOn) {
               points += `${startPointX},100`
             }
-            if (isRight) {
-              points += `${startPointX},80 ${startPointX * 2.5 +
-                12.5},80 ${startPointX * 2.5 + 12.5},100`
+            if (isRight && isOn) {
+              points += `${startPointX},80 ${startPointX * 3 -
+                27.5},80 ${startPointX * 3 - 27.5},100`
             }
             return points
           }
           if (idx === 2) {
             let points = `${startPointX * 1.5 -
               3.5},${startPointY} ${startPointX * 1.5 - 3.5},80 `
-            if (isLeft) {
+            if (isLeft && isOn) {
               points += `${startPointX - 43.5},80 ${startPointX - 43.5},100`
             }
-            if (isRight) {
+            if (isRight && isOn) {
               points += `${startPointX * 2.5 - 4.5},80 ${startPointX * 2.5 -
                 4.5},100`
             }
             return points
           }
           if (idx === 3 || idx === 4) {
-            return `${startPointX + 20.5},${startPointY} ${startPointX +
-              20.5},100`
+            return `${startPointX + 20},${startPointY} ${startPointX + 20},100`
           }
         })
         .attr('stroke', (d, idx, item) => {
           const isOn = item[
             idx
           ].parentElement.parentElement.classList.value.includes('on')
-          console.warn(isOn)
           return isOn ? '#ff6446' : '#ddd'
         })
         .attr('stroke-width', 3)
@@ -349,19 +388,21 @@ export default {
           const isRight = item[
             idx
           ].parentElement.parentElement.classList.value.includes('isRight')
+          const isOn = item[
+            idx
+          ].parentElement.parentElement.classList.value.includes('on')
           if (idx === 0 || idx === 1) {
             return `${startPointX},${startPointY} ${startPointX},100`
           }
           if (idx === 2) {
             let points = `${startPointX - 30},${startPointY} ${startPointX -
               30},80 `
-            if (isLeft) {
+            if (isLeft && isOn) {
               points += `${startPointX - 30},100`
               return points
             }
-            if (isRight) {
-              points += `${startPointX * 1.5 + 19.5},80 ${startPointX * 1.5 +
-                19.5},100`
+            if (isRight && isOn) {
+              points += `${startPointX * 2 - 20},80 ${startPointX * 2 - 20},100`
               return points
             }
           }
@@ -371,22 +412,21 @@ export default {
           if (idx === 4) {
             let points = `${startPointX - 40},${startPointY} ${startPointX -
               40},80 `
-            if (isLeft) {
+            if (isLeft && isOn) {
               points += `${startPointX * 2},80 ${startPointX * 2},100`
               return points
             }
-            if (isRight) {
+            if (isRight && isOn) {
               points += `${startPointX * 3},80 ${startPointX * 3},100`
               return points
             }
-            if (!isLeft && !isRight) {
+            if (!isLeft && !isRight && isOn) {
               points += `${startPointX - 40},100`
               return points
             }
           }
           if (idx === 5) {
-            return `${startPointX - 2.5},${startPointY} ${startPointX -
-              2.5},100`
+            return `${startPointX - 4},${startPointY} ${startPointX - 4},100`
           }
         })
         .attr('stroke', (d, idx, item) => {

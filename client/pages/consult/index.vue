@@ -12,6 +12,7 @@
           <li>
             <select
               id=""
+              v-model="searchParam.orgmId"
               name=""
               class="w-120 text-center border rounded-md float-left"
             >
@@ -83,7 +84,7 @@
         </ul>
         <ul
           v-for="item in tBody"
-          :key="item.cnslDttm"
+          :key="item.rowNo"
           class="tbody flex"
           @click="rowClick(item)"
         >

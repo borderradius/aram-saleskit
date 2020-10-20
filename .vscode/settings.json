@@ -29,6 +29,8 @@
   },
   // "eslint.autoFixOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  }
+    "source.fixAll": true
+    // "source.fixAll.eslint": true
+  },
+  "vetur.languageFeatures.codeActions": false
 }

@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul
-      v-if="searchType !== 'brosure'"
+      v-if="searchType === 'allbook'"
       class="flex flex-row flex-wrap justify-between product-list"
     >
       <li v-for="item in searchList" :key="item.prodId">
@@ -14,16 +14,19 @@
           </div>
           <div class="text-wrap pt-4">
             <h4 class="font-bold text-lg mb-2">{{ item.prodNm }}</h4>
-            <ul class="pl-2">
+            <!-- <ul class="pl-2">
               <li>{{ item.prodCmptCtt }}</li>
               <li>{{ item.lrngAraNm }}</li>
               <li>{{ item.prodAplyPric }}원</li>
-            </ul>
+            </ul> -->
           </div>
         </a>
       </li>
     </ul>
-    <ul v-else class="flex flex-row flex-wrap product-list-brosure">
+    <ul
+      v-if="searchType === 'brosure'"
+      class="flex flex-row flex-wrap product-list-brosure"
+    >
       <li v-for="item in searchList" :key="item.brchSeqno" class="flex">
         <a href="javascript:;" @click="popImage(item.brchFilePathNm)">
           <img :src="item.brchFilePathNm" :alt="item.brchNm" />

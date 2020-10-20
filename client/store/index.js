@@ -2,7 +2,9 @@ export const state = () => {
   return {
     searchType: 'allbook',
     searchList: [],
-    recommendList: [],
+    // recommendList: [],
+    prfdRcmdList: [],
+    notPrfdRcmdList: [],
     isFull: false
   }
 }
@@ -15,7 +17,9 @@ export const mutations = {
     state.searchList = payload
   },
   SET_RECOMMEND_LIST(state, payload) {
-    state.recommendList = payload
+    // state.recommendList = payload
+    state.notPrfdRcmdList = payload.rcmdProdList.notPrfdRcmdList
+    state.prfdRcmdList = payload.rcmdProdList.prfdRcmdList
   },
   SET_FULLSCREEN(state, payload) {
     // console.log('뮤테이션 : ', payload)
@@ -50,6 +54,7 @@ export const actions = {
     }
   },
   async setRecommendList({ commit }, params = {}) {
+    console.warn('상세 -> 추천 파라미터 : ', params)
     if (params.type === 'allbook') {
       try {
         const { result } = await this.$axios.$get('/counsel/rcmdProdList', {

@@ -28,7 +28,7 @@
                 :key="index"
                 :class="[index === 0 ? 'highlight' : '']"
               >
-                <th>{{ item.pfrcEduNm }}</th>
+                <th>{{ item.pfrcTpNm }}</th>
                 <td>{{ item.asctEduCoursNm }}</td>
               </tr>
             </tbody>
@@ -51,6 +51,11 @@
             &middot; 예술경험 영역에는 아름다움 찾기, 아름다운 표현하기, 예술
             감상하기가 있습니다.
           </li>
+          <li>
+            &middot; 기본생활, 신체운동 영역으로는 건강하게 생활하기, 안전하게
+            생활하기, 신체조절 및 기본운동하기 그리고 신체활동 참여하기가
+            있습니다.
+          </li>
         </ul>
         <!-- 이하 기존 박스로 나오던 부분 -->
         <ul v-if="false" class="flex flex-row flex-wrap justify-between">
@@ -71,10 +76,6 @@
       </div>
       <div class="report-content2 mt-4 pb-2">
         <h2 class="mb-4 font-extrabold">2. 학습 계통도</h2>
-        <!-- <SystemChartComp
-          :data="[systemChart1, systemChart2, systemChart3, systemChart4]"
-          :priority-data="detail.cnslChoicedInfo"
-        /> -->
         <SystemChartComp
           :data="[standardList, nuriList, lowerGradeList, seniorList]"
           :priority-data="detail.cnslChoicedInfo"
@@ -224,6 +225,7 @@
 
 <script>
 import SystemChartComp from '@/components/systemChart'
+
 export default {
   components: {
     SystemChartComp
@@ -253,22 +255,10 @@ export default {
           show: false
         },
         xaxis: {
-          categories: [
-            ['의사소통', '국어,영어'],
-            '자연탐구',
-            '사회관계',
-            '예술경험',
-            '기본생활',
-            '신체운동'
-          ]
+          categories: []
         }
       },
-      series: [
-        {
-          name: '선호영역',
-          data: [3, 5, 4, 1, 3, 2]
-        }
-      ],
+      series: [],
       detail: {
         rcmdProdList: {
           rglrSrsRcmdProdList: [],
@@ -277,146 +267,6 @@ export default {
         cnslResult: []
       },
       cnslResult: [],
-      systemChart1: [
-        {
-          label: '의사소통',
-          isOn: true,
-          isPriority: false
-        },
-        {
-          label: '자연탐구',
-          isOn: false,
-          isPriority: false
-        },
-        {
-          label: '사회관계',
-          isOn: false,
-          isPriority: true
-        },
-        {
-          label: '예술경험',
-          isOn: false,
-          isPriority: false
-        },
-        {
-          label: '기본 생활',
-          isOn: false,
-          isPriority: false
-        },
-        {
-          label: '신체 운동',
-          isOn: false,
-          isPriority: false
-        }
-      ],
-      systemChart2: [
-        {
-          label: '의사소통',
-          isOn: true,
-          isLeft: false,
-          isRight: true
-        },
-        {
-          label: '자연탐구',
-          isOn: false,
-          isLeft: false,
-          isRight: true
-        },
-        {
-          label: '사회관계',
-          isOn: false,
-          isLeft: false,
-          isRight: true
-        },
-        {
-          label: '예술경험',
-          isOn: false,
-          isLeft: false,
-          isRight: false
-        },
-        {
-          label: '신체운동 및 건강',
-          isOn: false,
-          isLeft: false,
-          isRight: false
-        }
-      ],
-      systemChart3: [
-        {
-          label: '국어',
-          isOn: true,
-          isLeft: false,
-          isRight: false
-        },
-        {
-          label: '수학',
-          isOn: true,
-          isLeft: false,
-          isRight: false
-        },
-        {
-          label: '슬기로운생활',
-          isOn: true,
-          isLeft: false,
-          isRight: true
-        },
-        {
-          label: '바른생활',
-          isOn: true,
-          isLeft: false,
-          isRight: false
-        },
-        {
-          label: '즐거운생활',
-          isOn: true,
-          isLeft: false,
-          isRight: false
-        },
-        {
-          label: '안전',
-          isOn: true,
-          isLeft: false,
-          isRight: false
-        }
-      ],
-      systemChart4: [
-        {
-          label: '국어',
-          isOn: true
-        },
-        {
-          label: '영어',
-          isOn: false
-        },
-        {
-          label: '수학',
-          isOn: false
-        },
-        {
-          label: '과학',
-          isOn: false
-        },
-        {
-          label: '사회',
-          isOn: false
-        },
-        {
-          label: '도덕',
-          isOn: false
-        },
-        {
-          label: '미술',
-          isOn: false
-        },
-        {
-          label: '음악',
-          isOn: false
-        },
-        {
-          label: '체육',
-          isOn: false
-        }
-      ],
       standardList: [],
       nuriList: [],
       lowerGradeList: [],
@@ -428,222 +278,40 @@ export default {
       mblTelNum,
       cnslPtclSeqno,
       rectChldId,
-      cstpMngrSeqno
+      cstpMngrSeqno,
+      hgrkAsctEduCoursCd
     } = this.$route.params
-    // console.warn(
-    //   `${cnslPtclSeqno}, ${rectChldId}, ${cstpMngrSeqno}, ${mblTelNum}`
-    // )
     try {
       const { result } = await this.$axios.$get(
         `/recipient/${mblTelNum}/counsel/${cnslPtclSeqno}`,
         {
           params: {
             rectChldId,
-            cstpMngrSeqno
+            cstpMngrSeqno,
+            hgrkAsctEduCoursCd
           }
         }
       )
-      // console.warn(result)
       this.$nextTick(() => {
         this.detail = result
         this.standardList = result.standardList
         this.nuriList = result.nuriList
         this.lowerGradeList = result.lowerGradeList
         this.seniorList = result.seniorList
+
+        this.cnslChoicedInfo = result.cnslChoicedInfo
+        this.prfdRcmdList = result.rcmdProdList.prfdRcmdList
+        this.chldNm = result.chldNm
+        this.chldBthYmd = result.chldBthYmd
+        this.series.push({
+          name: '선호영역',
+          data: result.cnslChoicedCnt
+        })
+        this.chartOptions.xaxis.categories.push(...result.cnslRsltLabel)
       })
     } catch (e) {
       console.log(e)
     }
-    // -------------------------------------------------------
-    //   const { result } = await this.$axios.$get(
-    //     `/recipient/${mblTelNum}/counsel/${cnslPtclSeqno}`
-    //   )
-    //   this.detail = this._.cloneDeep(result)
-    //   this.detail.cnslResult = this.getCnslResult(result.cnslResult)
-    //   console.warn(this.detail)
-    // } catch (e) {
-    //   console.log(e)
-    // }
-    // -------------------------------------------------------
-    // this.getCnslResult()
-    // const items3 = document.getElementsByClassName('item3')
-    // console.log(items)
-    // for (const [index, a] of items.entries()) {
-    //   console.log(a, index)
-    // }
-    // for (let i = 0; i < items3.length; i++) {
-    //   console.log(items3[i])
-    // }
-
-    // -------------------------------------------------------- d3를 이용한 그리기
-
-    // const firstBox = document.querySelector('.first-row li')
-    // const startPointX = firstBox.clientWidth / 2
-    // const startPointY = firstBox.clientHeight
-    // const firstRow = d3.select('.first-row')
-    // const secondRow = d3.select('.second-row')
-    // const thirdRow = d3.select('.third-row')
-    // const fourthRow = d3.select('.fourth-row')
-
-    // const firstRow2 = firstRow
-    //   .selectAll('li')
-    //   .append('svg')
-    //   .style('overflow', 'inherit')
-    //   .style('position', 'absolute')
-    //   .style('top', 0)
-    //   .style('left', 0)
-    //   .attr('width', '100%')
-    //   .attr('height', '100%')
-    // const secondRow2 = secondRow
-    //   .selectAll('li')
-    //   .append('svg')
-    //   .style('overflow', 'inherit')
-    //   .style('position', 'absolute')
-    //   .style('top', 0)
-    //   .style('left', 0)
-    //   .attr('width', '100%')
-    //   .attr('height', '100%')
-    // const thirdRow2 = thirdRow
-    //   .selectAll('li')
-    //   .append('svg')
-    //   .style('overflow', 'inherit')
-    //   .style('position', 'absolute')
-    //   .style('top', 0)
-    //   .style('left', 0)
-    //   .attr('width', '100%')
-    //   .attr('height', '100%')
-    // const fourthRow2 = fourthRow
-    //   .selectAll('li')
-    //   .append('svg')
-    //   .style('overflow', 'inherit')
-    //   .style('position', 'absolute')
-    //   .style('top', 0)
-    //   .style('left', 0)
-    //   .attr('width', '100%')
-    //   .attr('height', '100%')
-
-    // firstRow2
-    //   .append('rect')
-    //   .style('position', 'absolute')
-    //   .style('top', 0)
-    //   .style('left', 0)
-    //   .attr('stroke', (d, idx, item) => {
-    //     const hasOn =
-    //       item[idx].parentElement.parentElement.classList.value === 'on'
-    //     return hasOn ? '#ff6446' : ''
-    //   })
-    //   .attr('stroke-width', 4)
-    //   .attr('width', '100%')
-    //   .attr('height', '97.5%')
-    //   .attr('fill-opacity', 0)
-    // secondRow2
-    //   .append('rect')
-    //   .style('position', 'absolute')
-    //   .style('top', 0)
-    //   .style('left', 0)
-    //   .attr('stroke', (d, idx, item) => {
-    //     const hasOn =
-    //       item[idx].parentElement.parentElement.classList.value === 'on'
-    //     return hasOn ? '#ff6446' : ''
-    //   })
-    //   .attr('stroke-width', 4)
-    //   .attr('width', '100%')
-    //   .attr('height', '97.5%')
-    //   .attr('fill-opacity', 0)
-    // thirdRow2
-    //   .append('rect')
-    //   .style('position', 'absolute')
-    //   .style('top', 0)
-    //   .style('left', 0)
-    //   .attr('stroke', (d, idx, item) => {
-    //     const hasOn =
-    //       item[idx].parentElement.parentElement.classList.value === 'on'
-    //     return hasOn ? '#ff6446' : ''
-    //   })
-    //   .attr('stroke-width', 4)
-    //   .attr('width', '100%')
-    //   .attr('height', '97.5%')
-    //   .attr('fill-opacity', 0)
-    // fourthRow2
-    //   .append('rect')
-    //   .style('position', 'absolute')
-    //   .style('top', 0)
-    //   .style('left', 0)
-    //   .attr('stroke', (d, idx, item) => {
-    //     const hasOn =
-    //       item[idx].parentElement.parentElement.classList.value === 'on'
-    //     return hasOn ? '#ff6446' : ''
-    //   })
-    //   .attr('stroke-width', 4)
-    //   .attr('width', '100%')
-    //   .attr('height', '97.5%')
-    //   .attr('fill-opacity', 0)
-
-    // firstRow2
-    //   .append('polyline')
-    //   .attr('points', (d, idx, item) => {
-    //     if (idx === 1) {
-    //       return `${startPointX + 30},${startPointY} ${startPointX + 30},100`
-    //     } else if (idx === 2) {
-    //       return `${startPointX + 20},${startPointY} ${startPointX + 20},100`
-    //     } else if (idx === 3) {
-    //       return `${startPointX},${startPointY} ${startPointX},80 ${startPointX *
-    //         2.5}, 80 ${startPointX * 2.5}, 100 ${startPointX *
-    //         2.5}, 80 ${startPointX * 5 + 20}, 80 ${startPointX *
-    //         5}, 80 ${startPointX * 5}, 100`
-    //     } else if (idx === 4) {
-    //       return `${startPointX},${startPointY} ${startPointX},80`
-    //     } else if (idx === 5) {
-    //       return `${startPointX},${startPointY} ${startPointX},80`
-    //     } else {
-    //       return `${startPointX},${startPointY} ${startPointX},100`
-    //     }
-    //   })
-    //   .attr('stroke', '#ddd')
-    //   .attr('stroke-width', 3)
-    //   .attr('fill', 'none')
-
-    // secondRow2
-    //   .append('polyline')
-    //   .attr('points', (d, idx, item) => {
-    //     if (idx === 0) {
-    //       return `${startPointX},${startPointY} ${startPointX},100 ${startPointX},80 ${startPointX *
-    //         2 +
-    //         10},80 ${startPointX * 2 + 10}, 200`
-    //     } else if (idx === 1) {
-    //       return `${startPointX},${startPointY} ${startPointX},100 ${startPointX},80 ${startPointX *
-    //         3},80 ${startPointX * 3},100 ${startPointX * 3},100 ${startPointX *
-    //         3},80 ${startPointX * 4},80 ${startPointX * 4},60 ${startPointX *
-    //         4},80 ${startPointX * 5},80 ${startPointX * 5},100`
-    //     } else if (idx === 3 || idx === 4) {
-    //       return `${startPointX + 20},${startPointY} ${startPointX + 20},100`
-    //     }
-    //   })
-    //   .attr('stroke', '#ddd')
-    //   .attr('stroke-width', 3)
-    //   .attr('fill', 'none')
-
-    // thirdRow2
-    //   .append('polyline')
-    //   .attr('points', (d, idx, item) => {
-    //     if (idx === 0 || idx === 1) {
-    //       return `${startPointX},${startPointY} ${startPointX},100`
-    //     } else if (idx === 2) {
-    //       return `${startPointX - 30},${startPointY} ${startPointX -
-    //         30},100 ${startPointX - 30},80 ${startPointX * 2 -
-    //         20},80 ${startPointX * 2 - 20},100`
-    //     } else if (idx === 3) {
-    //       return `${startPointX},${startPointY} ${startPointX},100`
-    //     } else if (idx === 4) {
-    //       return `${startPointX - 40},${startPointY} ${startPointX -
-    //         40},100 ${startPointX - 40},80 ${startPointX * 2},80 ${startPointX *
-    //         2},100 ${startPointX * 2},80 ${startPointX * 3},80 ${startPointX *
-    //         3},100 ${startPointX * 3},60`
-    //     }
-    //   })
-    //   .attr('stroke', '#ddd')
-    //   .attr('stroke-width', 3)
-    //   .attr('fill', 'none')
   },
   methods: {
     /**
@@ -747,6 +415,12 @@ export default {
     padding-top: 0.5rem;
     font-size: 1rem;
     margin: 0;
+    line-height: 1.5;
   }
 }
+/* .apexcharts-text tspan {
+  font-weight: bold;
+} */
+/* #SvgjsTspan1041 {
+} */
 </style>

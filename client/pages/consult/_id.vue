@@ -4,21 +4,17 @@
       <h2>1. 고객정보</h2>
       <div class="table w-full">
         <ul class="thead flex">
-          <li class="flex-auto">#</li>
           <li class="flex-auto">자녀이름</li>
           <li class="flex">전화번호</li>
           <li class="flex">생년월일</li>
           <li class="flex">나이</li>
-          <!-- <li class="flex">구매</li> -->
           <li class="flex">상담일자</li>
         </ul>
         <ul class="tbody flex">
-          <li class="flex-auto">{{ detail.cnslPtclSeqno }}</li>
           <li class="flex-auto">{{ detail.chldNm }}</li>
           <li class="flex">{{ detail.mblTelNum }}</li>
           <li class="flex">{{ detail.chldBthYmd }}</li>
           <li class="flex">{{ detail.chldAgeNm }}</li>
-          <!-- <li class="flex">???</li> -->
           <li class="flex">{{ detail.cnslDate }}</li>
         </ul>
       </div>
@@ -27,75 +23,53 @@
       <h2>
         2. 앙케이트 결과 <small>(참여일 : {{ detail.cnslDate }})</small>
       </h2>
-      <ul class="flex flex-row flex-wrap justify-between">
-        <li
-          v-for="item in detail.cnslResult"
-          :key="item.asctEduCoursNm"
-          :class="[item.isBest ? 'best' : '']"
-        >
-          <div class="img-wrap">
-            <img :src="item.ansrImgUrl" :alt="item.asctEduCoursNm" />
-          </div>
-          <div class="text-wrap flex justify-between items-center mt-2">
-            <span>{{ item.asctEduCoursNm }}</span>
-            <span class="score">{{ item.asctEduCoursChoNcnt }}점</span>
-          </div>
-        </li>
-        <!-- <li class="best">
-          <div class="img-wrap">
-            <img src="/sk_a_1.png" alt="앙케이트이미지" />
-          </div>
-          <div class="text-wrap flex justify-between items-center mt-2">
-            <span>I. 기본 생활 영역</span>
-            <span class="score">1점</span>
-          </div>
+      <!-- <h2 class="mb-4 text-sm">1. 우리아이 선호 영역</h2> -->
+      <div id="chart">
+        <ApexCharts
+          :options="chartOptions"
+          :series="series"
+          height="500"
+          type="bar"
+        />
+      </div>
+      <div>
+        <table class="detail-table">
+          <tbody>
+            <tr
+              v-for="(item, index) in detail.cnslChoicedInfo"
+              :key="index"
+              :class="[index === 0 ? 'highlight' : '']"
+            >
+              <th>{{ item.pfrcTpNm }}</th>
+              <td>{{ item.asctEduCoursNm }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <ul class="detail-explain">
+        <li>
+          &middot; 의사소통 영역으로는 듣기와 말하기, 일기와 쓰기 그리고 책과
+          이야기 즐기기가 해당됩니다.
         </li>
         <li>
-          <div class="img-wrap">
-            <img src="/sk_b_4.png" alt="앙케이트이미지" />
-          </div>
-          <div class="text-wrap flex justify-between items-center mt-2">
-            <span>II. 신체 운동 영역</span>
-            <span class="score">1점</span>
-          </div>
+          &middot; 자연탐구 영역에는 탐구하는 태도 기르기, 수학적 탐구 그리고
+          과학적 탐구가 있습니다.
         </li>
         <li>
-          <div class="img-wrap">
-            <img src="/sk_f_3.png" alt="앙케이트이미지" />
-          </div>
-          <div class="text-wrap flex justify-between items-center mt-2">
-            <span>III. 의사 소통 영역</span>
-            <span class="score">1점</span>
-          </div>
+          &middot; 사회관계 영역으로는 나를 알고 존중하기, 감정알기 그리고
+          더불어 생활하기가 해당됩니다.
         </li>
         <li>
-          <div class="img-wrap">
-            <img src="/sk_c_3.png" alt="앙케이트이미지" />
-          </div>
-          <div class="text-wrap flex justify-between items-center mt-2">
-            <span>IV. 사회 관계 영역</span>
-            <span class="score">1점</span>
-          </div>
+          &middot; 예술경험 영역에는 아름다움 찾기, 아름다운 표현하기, 예술
+          감상하기가 있습니다.
         </li>
-        <li>
-          <div class="img-wrap">
-            <img src="/sk_d_1.png" alt="앙케이트이미지" />
-          </div>
-          <div class="text-wrap flex justify-between items-center mt-2">
-            <span>V. 예술 경험 영역</span>
-            <span class="score">1점</span>
-          </div>
-        </li>
-        <li>
-          <div class="img-wrap">
-            <img src="/sk_e_3.png" alt="앙케이트이미지" />
-          </div>
-          <div class="text-wrap flex justify-between items-center mt-2">
-            <span>VI. 자연 탐구 영역</span>
-            <span class="score">1점</span>
-          </div>
-        </li> -->
       </ul>
+      <!-- <h2 class="mb-4 mt-8 text-sm">2. 학습 계통도</h2> -->
+      <div v-if="false" class="report-content2 mt-4 pb-2">
+        <SystemChartComp
+          :data="[systemChart1, systemChart2, systemChart3, systemChart4]"
+        />
+      </div>
     </div>
     <div class="recommend-result">
       <h2>3. 추천 결과</h2>
@@ -122,7 +96,7 @@
         </div>
         <ul class="flex p-4">
           <li
-            v-for="(item, index) in detail.rcmdProdList.rglrSrsRcmdProdList"
+            v-for="(item, index) in detail.rcmdProdList.prfdRcmdList"
             :key="item.prodId"
             :class="[index === '1' ? 'mx-4' : '']"
             class="w-1/3 px-2 relative"
@@ -304,9 +278,14 @@
 </template>
 
 <script>
+import SystemChartComp from '@/components/systemChart'
+
 export default {
   name: 'ConsultId',
   layout: 'searchHistory',
+  components: {
+    SystemChartComp
+  },
   data() {
     return {
       detail: {
@@ -315,23 +294,76 @@ export default {
         },
         cnslResult: [],
         purchaseList: []
-      }
+      },
+      chartOptions: {
+        colors: [
+          '#26a0fc',
+          '#26e7a6',
+          '#419a91',
+          '#8b75d7',
+          '#feee3b',
+          '#26dfec'
+        ],
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: '50%',
+            distributed: true
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        legend: {
+          show: false
+        },
+        xaxis: {
+          categories: []
+        }
+      },
+      series: [],
+      systemChart1: [],
+      systemChart2: [],
+      systemChart3: [],
+      systemChart4: []
     }
   },
   async mounted() {
     /**
      * * 상세정보 가져오기.
      */
-    const { mblTelNum, cnslPtclSeqno } = this.$route.params.id
-    console.warn(mblTelNum)
+    const {
+      mblTelNum,
+      cnslPtclSeqno,
+      rectChldId,
+      cstpMngrSeqno,
+      hgrkAsctEduCoursCd
+    } = this.$route.params.id
+    // console.warn(this.$route.params.id)
     const telNum = mblTelNum.replace(/-/g, '')
     try {
       const { result } = await this.$axios.$get(
-        `/recipient/${telNum}/counsel/${cnslPtclSeqno}`
+        `/recipient/${telNum}/counsel/${cnslPtclSeqno}`,
+        {
+          params: {
+            rectChldId,
+            hgrkAsctEduCoursCd,
+            cstpMngrSeqno
+          }
+        }
       )
       // console.warn(result)
       this.detail = this._.cloneDeep(result)
-      this.detail.cnslResult = this.getCnslResult(result.cnslResult)
+      // this.detail.cnslResult = this.getCnslResult(result.cnslResult)
+      this.series.push({
+        name: '선호영역',
+        data: result.cnslChoicedCnt
+      })
+      this.chartOptions.xaxis.categories.push(...result.cnslRsltLabel)
+      this.systemChart1 = result.standardList
+      this.systemChart2 = result.nuriList
+      this.systemChart3 = result.lowerGradeList
+      this.systemChart4 = result.seniorList
     } catch (e) {
       console.log(e)
     }
@@ -366,4 +398,39 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.detail-table {
+  width: 100%;
+  margin-top: 2rem;
+  th,
+  td {
+    width: 50%;
+    text-align: center;
+    padding: 1rem 0;
+    border-top: 1px solid #444;
+  }
+  th {
+    color: #999;
+    font-weight: normal;
+  }
+  .highlight {
+    background: #ff7c72;
+    color: #333 !important;
+    th {
+      color: #333 !important;
+    }
+  }
+}
+.detail-explain {
+  width: 100%;
+  background: #f1f1f1;
+  padding: 2rem 0;
+  margin-top: 2rem;
+  li {
+    width: 100%;
+    padding-top: 0.5rem;
+    font-size: 1rem;
+    margin: 0;
+  }
+}
+</style>

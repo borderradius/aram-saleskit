@@ -20,10 +20,13 @@
             </a>
           </li>
         </ul>
-        <n-link to="/" class="go-signup">디지털콘텐츠 체험</n-link>
+        <a href="javascript:;" class="go-signup" @click="goTrial"
+          >디지털콘텐츠 체험</a
+        >
+        <!-- <n-link to="/" class="go-signup">디지털콘텐츠 체험</n-link> -->
       </div>
       <div class="right-content">
-        <div class="search-area">
+        <div v-if="type !== 'trial'" class="search-area">
           <div v-if="isSearch" class="search-form">
             <div class="search-form-input flex items-center">
               <span class="text-gray-700 font-bold mr-4">상품명</span>
@@ -99,7 +102,14 @@
             </button>
           </div>
         </div>
-        <div :class="[!isSearch ? 'brosure-content' : '']" class="content">
+        <div
+          v-if="type !== 'trial'"
+          :class="[!isSearch ? 'brosure-content' : '']"
+          class="content"
+        >
+          <nuxt />
+        </div>
+        <div v-if="type === 'trial'" class="trial-area">
           <nuxt />
         </div>
       </div>
@@ -198,6 +208,11 @@ export default {
           alt: '소전집 브로슈어',
           class: 'second'
         }
+        // {
+        //   src: '/brosure-off-ico.png',
+        //   alt: '스마트북 체험',
+        //   class: 'third'
+        // }
       ],
       isSearch: true,
       type: 'allbook'
@@ -226,15 +241,40 @@ export default {
         case 0:
           this.type = 'allbook'
           break
-        // case 1:
-        //   this.type = 'smallbook'
+        // case 2:
+        //   this.type = 'trial'
         //   break
         default:
           this.type = 'brosure'
           break
       }
       this.setSearchList({ type: this.type, search: this.searchParam })
-      index === 1 ? (this.isSearch = false) : (this.isSearch = true)
+      // index === 1 ? (this.isSearch = false) : (this.isSearch = true)
+      if (index === 0) {
+        this.isSearch = true
+        this.$router.push({
+          name: 'product-search'
+        })
+      }
+      if (index === 1) {
+        this.isSearch = false
+        this.$router.push({
+          name: 'product-search'
+        })
+      }
+      // if (index === 2) {
+      //   this.isSearch = true
+      //   this.$router.push({
+      //     name: 'product-search-trial'
+      //   })
+      // }
+    },
+    goTrial() {
+      this.isSearch = false
+      this.type = 'trial'
+      this.$router.push({
+        name: 'product-search-trial'
+      })
     },
     checkNowMenu(index) {
       // leftMenu 클래스, off이미지로 초기화
@@ -254,6 +294,11 @@ export default {
           alt: '소전집 브로슈어',
           class: 'second'
         }
+        // {
+        //   src: '/brosure-off-ico.png',
+        //   alt: '스마트북 체험',
+        //   class: 'third'
+        // }
       ]
       const li = document.getElementsByClassName('leftMenu')
       for (let i = 0; i < li.length; i++) {

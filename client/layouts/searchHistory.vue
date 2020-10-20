@@ -54,6 +54,11 @@ export default {
           src: '/logout-off-ico.png',
           alt: '로그아웃',
           class: 'second'
+        },
+        {
+          src: '/logout-off-ico.png',
+          alt: 'ERP 바로가기',
+          class: 'third'
         }
       ]
     }
@@ -87,6 +92,10 @@ export default {
         await this.$store.dispatch('user/logout')
         this.$router.push('/user/login')
       }
+      // ERP 바로가기 새탭 띄우기
+      if (index === 2) {
+        window.open('about:blank').location.href = 'http://google.com'
+      }
     },
     checkNowMenu(index) {
       // leftMenu 클래스, off이미지로 초기화
@@ -100,6 +109,11 @@ export default {
           src: '/logout-off-ico.png',
           alt: '로그아웃',
           class: 'second'
+        },
+        {
+          src: '/logout-off-ico.png',
+          alt: 'ERP 바로가기',
+          class: 'third'
         }
       ]
       const li = document.getElementsByClassName('leftMenu')

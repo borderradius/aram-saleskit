@@ -12,7 +12,7 @@ module.exports = {
       },
       watch: true,
       exec_mode: 'cluster',
-      instances: 4,
+      instances: 1,
       merge_logs: true,
       log_date_format: 'YYYY-MM-DD HH:mm:ss'
     }

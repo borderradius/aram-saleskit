@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
   mode: 'spa',
   srcDir: 'client',
@@ -105,8 +107,10 @@ module.exports = {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    // baseURL: process.env.API_URL || 'http://192.168.4.107:9092'
-    baseURL: process.env.API_URL || 'https://sales-api.arambookclub.com'
+    baseURL:
+      process.env.SERVER_TYPE === 'staging'
+        ? 'https://dev-sales-api.arambookclub.com'
+        : 'https://sales-api.arambookclub.com'
   },
   auth: {
     // scopeKey: 'roles',
@@ -146,7 +150,7 @@ module.exports = {
      ** You can extend webpack config here
      */
     extend(config, ctx) {
-      // Run ESLint on save
+      // Run ESLint on saves
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push(
           {

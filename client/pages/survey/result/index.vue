@@ -28,7 +28,7 @@
                 :key="index"
                 :class="[index === 0 ? 'highlight' : '']"
               >
-                <th>{{ item.pfrcEduNm }}</th>
+                <th>{{ item.pfrcTpNm }}</th>
                 <td>{{ item.asctEduCoursNm }}</td>
               </tr>
             </tbody>
@@ -50,6 +50,11 @@
           <li>
             &middot; 예술경험 영역에는 아름다움 찾기, 아름다운 표현하기, 예술
             감상하기가 있습니다.
+          </li>
+          <li>
+            &middot; 기본생활, 신체운동 영역으로는 건강하게 생활하기, 안전하게
+            생활하기, 신체조절 및 기본운동하기 그리고 신체활동 참여하기가
+            있습니다.
           </li>
         </ul>
         <ul v-if="false" class="flex flex-row flex-wrap justify-between">
@@ -73,163 +78,6 @@
         <SystemChartComp
           :data="[systemChart1, systemChart2, systemChart3, systemChart4]"
         />
-        <div v-if="false" class="system-chart2 flex justify-between gtd">
-          <ul class="system-chart-menu">
-            <li>
-              <div>표준보육과정 <small>(0세 ~ 2세)</small></div>
-            </li>
-            <li>누리과정<small>(3세 ~ 5세)</small></li>
-            <li>초등교과<small>(저학년)</small></li>
-            <li>초등교과<small>(고학년)</small></li>
-          </ul>
-          <div class="w-full">
-            <ul class="w-full flex justify-between list-box first-row">
-              <li
-                v-for="(item, index) in systemChart1"
-                :key="index"
-                :class="[item.isOn ? 'on' : '']"
-              >
-                {{ item.label }}
-              </li>
-            </ul>
-            <ul class="w-full flex justify-between list-box second-row">
-              <li
-                v-for="(item, index) in systemChart2"
-                :key="index"
-                :class="[item.isOn ? 'on' : '']"
-              >
-                {{ item.label }}
-              </li>
-            </ul>
-            <ul class="w-full flex justify-between list-box third-row">
-              <li
-                v-for="(item, index) in systemChart3"
-                :key="index"
-                :class="[item.isOn ? 'on' : '']"
-              >
-                {{ item.label }}
-              </li>
-            </ul>
-            <ul class="w-full flex justify-between list-box fourth-row">
-              <li
-                v-for="(item, index) in systemChart4"
-                :key="index"
-                :class="[item.isOn ? 'on' : '']"
-              >
-                {{ item.label }}
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div v-if="false" class="system-chart2 flex justify-between">
-          <ul class="system-chart-title">
-            <li class="flex items-center text-center">
-              <div class="w-full text-center">
-                표준보육과정<br />(0세 ~ 2세)
-              </div>
-            </li>
-            <li class="flex items-center text-center">
-              <div class="w-full text-center">누리과정<br />(3세 ~ 5세)</div>
-            </li>
-            <li class="flex items-center text-center">
-              <div class="w-full text-center">초등교과<br />(저학년)</div>
-            </li>
-            <li class="flex items-center text-center">
-              <div class="w-full text-center">초등교과<br />(고학년)</div>
-            </li>
-          </ul>
-          <ul class="system-chart-list row1">
-            <li
-              v-for="(item, index) in systemChart1"
-              :key="index"
-              :class="[
-                item.size === 'half' ? 'half' : '',
-                item.isOn ? 'on' : '',
-                item.isLeft ? 'go-left' : '',
-                item.isRight ? 'go-right' : '',
-                item.isStraight ? 'go-straight' : ''
-              ]"
-              class="flex items-center"
-            >
-              <div class="text-center w-full">
-                {{ item.label }}
-              </div>
-            </li>
-          </ul>
-          <ul class="system-chart-list row1">
-            <li
-              v-for="(item, index) in systemChart2"
-              :key="index"
-              :class="[
-                item.size === 'half' ? 'half' : '',
-                item.isOn ? 'on' : '',
-                item.isLeft ? 'go-left' : '',
-                item.isRight ? 'go-right' : '',
-                item.isStraight ? 'go-straight' : ''
-              ]"
-              class="flex items-center"
-            >
-              <div class="text-center w-full">
-                {{ item.label }}
-              </div>
-            </li>
-          </ul>
-          <ul class="system-chart-list row3">
-            <li
-              v-for="(item, index) in systemChart3"
-              :key="index"
-              :class="[
-                item.size === 'half' ? 'half' : '',
-                item.isOn ? 'on' : '',
-                item.isLeft ? 'go-left' : '',
-                item.isRight ? 'go-right' : '',
-                item.isStraight ? 'go-straight' : ''
-              ]"
-              class="flex items-center"
-            >
-              <div class="text-center w-full">
-                {{ item.label }}
-              </div>
-            </li>
-          </ul>
-          <ul class="system-chart-list row1">
-            <li
-              v-for="(item, index) in systemChart4"
-              :key="index"
-              :class="[
-                item.size === 'half' ? 'half' : '',
-                item.isOn ? 'on' : '',
-                item.isLeft ? 'go-left' : '',
-                item.isRight ? 'go-right' : '',
-                item.isStraight ? 'go-straight' : ''
-              ]"
-              class="flex items-center"
-            >
-              <div class="text-center w-full">
-                {{ item.label }}
-              </div>
-            </li>
-          </ul>
-          <ul class="system-chart-list row5">
-            <li
-              v-for="(item, index) in systemChart5"
-              :key="index"
-              :class="[
-                item.size === 'half' ? 'half' : '',
-                item.isOn ? 'on' : '',
-                item.isLeft ? 'go-left' : '',
-                item.isRight ? 'go-right' : '',
-                item.isStraight ? 'go-straight' : ''
-              ]"
-              class="flex items-center"
-            >
-              <div class="text-center w-full">
-                {{ item.label }}
-              </div>
-            </li>
-          </ul>
-        </div>
       </div>
       <div class="report-content3 mt-4">
         <h2 class="mb-6 font-extrabold">3. 추천 결과</h2>
@@ -417,14 +265,7 @@ export default {
           show: false
         },
         xaxis: {
-          categories: [
-            '의사소통',
-            '자연탐구',
-            '사회관계',
-            '예술경험',
-            '기본생활',
-            '신체운동'
-          ]
+          categories: []
         }
       },
       series: [],
@@ -438,7 +279,6 @@ export default {
       systemChart2: [],
       systemChart3: [],
       systemChart4: [],
-      systemChart5: [],
       cnslChoicedInfo: [],
       prfdRcmdList: [],
       chldNm: '',
@@ -451,13 +291,19 @@ export default {
     })
   },
   async mounted() {
-    const { chldId, cstpMngrSeqno, cnslPtclSeqno } = this.childInfo
+    const {
+      chldId,
+      cstpMngrSeqno,
+      cnslPtclSeqno,
+      hgrkAsctEduCoursCd
+    } = this.childInfo
     try {
       const { result } = await this.$axios.$get('/counsel/cnslResult', {
         params: {
           chldId,
           cstpMngrSeqno,
-          cnslPtclSeqno
+          cnslPtclSeqno,
+          hgrkAsctEduCoursCd
         }
       })
       console.warn('상세 결과값:', result)
@@ -474,6 +320,7 @@ export default {
         name: '선호영역',
         data: result.cnslChoicedCnt
       })
+      this.chartOptions.xaxis.categories.push(...result.cnslRsltLabel)
     } catch (e) {
       console.log(e)
     }
@@ -503,8 +350,12 @@ export default {
         name: 'product-recommend',
         params: {
           type,
-          surveyResult: this.$route.params
+          surveyResult: this.childInfo
         }
+        // params: {
+        //   type,
+        //   surveyResult: this.$route.params
+        // }
       })
     },
     goBack() {
@@ -547,6 +398,10 @@ export default {
     padding-top: 0.5rem;
     font-size: 1rem;
     margin: 0;
+    list-style: 1.5;
   }
 }
+/* #SvgjsTspan1041 {
+  font-weight: bold;
+} */
 </style>

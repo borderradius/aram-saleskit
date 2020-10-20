@@ -208,6 +208,7 @@
 import { mapState, mapActions } from 'vuex'
 
 export default {
+  name: 'SurveyIndex',
   filters: {
     dateformat(value) {
       return value.substring(0, 10)
@@ -238,7 +239,8 @@ export default {
   },
   methods: {
     ...mapActions({
-      setOrgmList: 'common/setOrgmList'
+      setOrgmList: 'common/setOrgmList',
+      setSurveyDetail: 'survey/setSurveyDetail'
     }),
     /**
      * 앙케이트 전 자식이름, 생년월일 입력페이지 이동
@@ -270,6 +272,12 @@ export default {
     },
 
     rowClick(params) {
+      console.warn(params)
+      // try {
+      //   await this.setSurveyDetail()
+      // } catch (e) {
+      //   console.log(e);
+      // }
       const item = {
         orgmId: this.orgmId,
         ...params

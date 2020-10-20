@@ -87,25 +87,37 @@ export default {
       ]
     }
   },
-  mounted() {
+  async mounted() {
     let cnslPtclSeqno, chldId, cstpMngrSeqno
+
+    console.warn('상세 -> 추천 넘어온 파라미터 :', this.$route.params)
 
     if (this.$route.params.surveyDetail) {
       cnslPtclSeqno = this.$route.params.surveyDetail.cnslPtclSeqno
+      chldId = this.$route.params.surveyDetail.rectChldId
+      cstpMngrSeqno = this.$route.params.surveyDetail.cstpMngrSeqno
     }
     if (this.$route.params.surveyResult) {
-      cnslPtclSeqno = this.$route.params.surveyResult.apiResult.cnslPtclSeqno
-      chldId = this.$route.params.surveyResult.apiParams.chldId
-      cstpMngrSeqno = this.$route.params.surveyResult.apiParams.cstpMngrSeqno
+      cnslPtclSeqno = this.$route.params.surveyResult.cnslPtclSeqno
+      chldId = this.$route.params.surveyResult.chldId
+      cstpMngrSeqno = this.$route.params.surveyResult.cstpMngrSeqno
     }
-    // console.warn('cnslPtclSeqno', cnslPtclSeqno)
     const type = this.$route.params.type || 'allbook'
     if (type === 'allbook') {
       this.checkNowMenu(0)
     } else if (type === 'smallbook') {
       this.checkNowMenu(1)
     }
-    this.setRecommendList({ type, cnslPtclSeqno, chldId, cstpMngrSeqno })
+    try {
+      await this.setRecommendList({
+        type,
+        cnslPtclSeqno,
+        chldId,
+        cstpMngrSeqno
+      })
+    } catch (e) {
+      console.log(e)
+    }
   },
   methods: {
     ...mapActions({
@@ -130,16 +142,22 @@ export default {
       }
     },
     toggleMenuActive(index) {
-      let cnslPtclSeqno
+      let surveyParams
       if (this.$route.params.surveyDetail) {
-        cnslPtclSeqno = this.$route.params.surveyDetail.cnslPtclSeqno
+        surveyParams = this.$route.params.surveyDetail
       }
       if (this.$route.params.surveyResult) {
-        cnslPtclSeqno = this.$route.params.surveyResult.cnslPtclSeqno
+        surveyParams = this.$route.params.surveyResult
       }
+      // if (this.$route.params.surveyDetail) {
+      //   cnslPtclSeqno = this.$route.params.surveyDetail.cnslPtclSeqno
+      // }
+      // if (this.$route.params.surveyResult) {
+      //   cnslPtclSeqno = this.$route.params.surveyResult.cnslPtclSeqno
+      // }
       const type = index ? 'smallbook' : 'allbook'
       this.checkNowMenu(index)
-      this.setRecommendList({ type, cnslPtclSeqno })
+      this.setRecommendList({ type, surveyParams })
     },
     checkNowMenu(index) {
       // leftMenu 클래스, off이미지로 초기화

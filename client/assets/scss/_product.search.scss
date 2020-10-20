@@ -83,6 +83,10 @@
         }
       }
     }
+    .trial-area {
+      @apply rounded-tl-lg overflow-hidden;
+      // background: rgba(102, 102, 102, 0.6);
+    }
     .content {
       @apply p-8;
       border-top: 8px solid #d4f3ad;

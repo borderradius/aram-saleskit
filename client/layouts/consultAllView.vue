@@ -55,6 +55,11 @@ export default {
           alt: '로그아웃',
           class: 'second'
         }
+        // {
+        //   src: '/logout-off-ico.png',
+        //   alt: 'ERP 바로가기',
+        //   class: 'third'
+        // }
       ]
     }
   },

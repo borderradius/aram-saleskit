@@ -1,11 +1,10 @@
 <template>
   <div>
     <h2 class="text-xl mb-10 font-bold">선호 분야 추천</h2>
-    <!-- {{ recommendList }} -->
     <ul class="flex flex-row justify-between product-list">
       <li
-        v-for="item in recommendList.rcmdProdList.prfdRcmdList"
-        :key="item.prodId"
+        v-for="(item, index) in prfdRcmdList"
+        :key="`${item.pfrcTpCd}-${index}`"
       >
         <a href="javascript:;">
           <span class="rank font-bold text-center">{{ item.rcmdRank }}</span>
@@ -26,8 +25,8 @@
     <h2 class="text-xl mb-10 font-bold mt-10">비선호 분야 추천</h2>
     <ul class="flex flex-row justify-between product-list">
       <li
-        v-for="item in recommendList.rcmdProdList.notPrfdRcmdList"
-        :key="item.prodId"
+        v-for="(item, index) in notPrfdRcmdList"
+        :key="`${item.pfrcTpCd}-${index}`"
       >
         <a href="javascript:;">
           <span class="rank font-bold text-center">{{ item.rcmdRank }}</span>
@@ -55,7 +54,8 @@ export default {
   layout: 'productRecommend',
   computed: {
     ...mapState({
-      recommendList: (state) => state.recommendList
+      prfdRcmdList: (state) => state.prfdRcmdList,
+      notPrfdRcmdList: (state) => state.notPrfdRcmdList
     })
   }
 }
