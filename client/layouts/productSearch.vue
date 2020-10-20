@@ -21,7 +21,7 @@
           </li>
         </ul>
         <a href="javascript:;" class="go-signup" @click="goTrial"
-          >디지털콘텐츠 체험</a
+          >스마트북 체험</a
         >
         <!-- <n-link to="/" class="go-signup">디지털콘텐츠 체험</n-link> -->
       </div>
@@ -221,7 +221,12 @@ export default {
   async mounted() {
     const li = document.getElementsByClassName('leftMenu')
     li[0].classList.add('active')
-    await this.setSearchList({ type: 'allbook', search: this.searchParam })
+    if (this.$route.fullPath.includes('trial')) {
+      this.type = 'trial'
+    } else {
+      this.type = 'allbook'
+      await this.setSearchList({ type: 'allbook', search: this.searchParam })
+    }
   },
   methods: {
     ...mapActions({

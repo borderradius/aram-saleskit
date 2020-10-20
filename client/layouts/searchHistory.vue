@@ -51,13 +51,13 @@ export default {
           class: 'first'
         },
         {
-          src: '/logout-off-ico.png',
-          alt: '로그아웃',
+          src: '/consult-off-ico.png',
+          alt: 'ERP 바로가기',
           class: 'second'
         },
         {
           src: '/logout-off-ico.png',
-          alt: 'ERP 바로가기',
+          alt: '로그아웃',
           class: 'third'
         }
       ]
@@ -88,13 +88,14 @@ export default {
       this.checkNowMenu(index)
       // TODO: 메뉴 클릭 시 해당 추천도서 셋팅
       // this.setRecommendList({ kine: index })
-      if (index === 1) {
+      if (index === 2) {
         await this.$store.dispatch('user/logout')
         this.$router.push('/user/login')
       }
       // ERP 바로가기 새탭 띄우기
-      if (index === 2) {
-        window.open('about:blank').location.href = 'http://google.com'
+      if (index === 1) {
+        window.open('about:blank').location.href =
+          'http://aramerp.aramedu.net:8081/auth/erplogin'
       }
     },
     checkNowMenu(index) {
@@ -107,12 +108,12 @@ export default {
         },
         {
           src: '/logout-off-ico.png',
-          alt: '로그아웃',
+          alt: 'ERP 바로가기',
           class: 'second'
         },
         {
           src: '/logout-off-ico.png',
-          alt: 'ERP 바로가기',
+          alt: '로그아웃',
           class: 'third'
         }
       ]
@@ -123,7 +124,8 @@ export default {
 
       li[index].classList.add('active')
       if (index === 0) this.menuList[index].src = '/consult-on-ico.png'
-      if (index === 1) this.menuList[index].src = '/logout-on-ico.png'
+      if (index === 1) this.menuList[index].src = '/consult-on-ico.png'
+      if (index === 2) this.menuList[index].src = '/logout-on-ico.png'
     }
   }
 }
