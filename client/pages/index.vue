@@ -43,9 +43,10 @@
 <script>
 export default {
   mounted() {
+    // --------------- 원복시켜야함
     // 공통 데이터 초기화
     this.$store.dispatch('common/setOrgmList')
-
+    // -------------
     // 셋타임, 넥스트틱, app.vue
     // this.$nextTick(() => {
     //   this.fullScreen()

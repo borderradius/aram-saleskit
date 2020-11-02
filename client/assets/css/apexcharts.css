@@ -1,0 +1,9 @@
+/* purgecss start ignore */
+.apexcharts-text tspan:nth-child(1) {
+  font-weight: bold;
+}
+.apexcharts-text tspan:nth-child(2) {
+  fill: #aaa;
+  font-size: 0.65rem;
+}
+/* purgecss end ignore */

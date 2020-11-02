@@ -1,17 +1,19 @@
 export default (context) => {
   const { store, route, redirect } = context
-
+  // const { redirect, route } = context
+  // if (route.path === '/' || route.path !== '/pause') {
+  //   console.log(route.path)
+  //   redirect('/pause')
+  // }
   const isLoggedIn = store.state.auth.loggedIn
   // console.warn('미들웨어다!!!! - 여기에서 토큰체크해서 상했으면 새로 받아올 것')
-
   /**
    * * 가로모드 체크
    */
-  // const isLandscape = window.matchMedia('(orientation: landscape)').matches
-  // if (!isLandscape) {
-  //   alert('해당 웹사이트는 가로모드에 최적화 되어있습니다.')
-  // }
-
+  const isLandscape = window.matchMedia('(orientation: landscape)').matches
+  if (!isLandscape) {
+    alert('해당 웹사이트는 가로모드에 최적화 되어있습니다.')
+  }
   /**
    * * 로그인 안되어있을때 로그인페이지로 이동
    */

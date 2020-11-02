@@ -255,7 +255,15 @@ export default {
           show: false
         },
         xaxis: {
-          categories: []
+          // type: 'category',
+          categories: [],
+          labels: {
+            // show: true,
+            // rotate: -45,
+            style: {
+              cssClass: 'chart-label'
+            }
+          }
         }
       },
       series: [],
@@ -311,6 +319,7 @@ export default {
       })
     } catch (e) {
       console.log(e)
+      // this.$router.push('/')
     }
   },
   methods: {
@@ -418,9 +427,4 @@ export default {
     line-height: 1.5;
   }
 }
-/* .apexcharts-text tspan {
-  font-weight: bold;
-} */
-/* #SvgjsTspan1041 {
-} */
 </style>

@@ -19,6 +19,9 @@ module.exports = {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon/favicon.ico' }]
   },
+  env: {
+    SERVER_TYPE: process.env.SERVER_TYPE
+  },
   /*
    ** Customize the progress-bar color
    */
@@ -37,7 +40,8 @@ module.exports = {
    */
   css: [
     { src: '~assets/scss/index.scss', lang: 'scss' },
-    { src: '~assets/css/swiper-bundle.css', lang: 'css' }
+    { src: '~assets/css/swiper-bundle.css', lang: 'css' },
+    { src: '~assets/css/apexcharts.css', lang: 'css' }
   ],
   /*
    ** Plugins to load before mounting the App
@@ -108,9 +112,11 @@ module.exports = {
    */
   axios: {
     baseURL:
-      process.env.SERVER_TYPE === 'staging'
-        ? 'https://dev-sales-api.arambookclub.com'
-        : 'https://sales-api.arambookclub.com'
+    process.env.SERVER_TYPE === 'dev'
+    ? process.env.API_DEV
+    : process.env.SERVER_TYPE === 'staging'
+    ? process.env.API_QA
+    : process.env.API_PROD
   },
   auth: {
     // scopeKey: 'roles',

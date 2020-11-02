@@ -51,7 +51,7 @@ export default {
           class: 'first'
         },
         {
-          src: '/consult-off-ico.png',
+          src: '/logout-off-ico.png',
           alt: 'ERP 바로가기',
           class: 'second'
         },
@@ -124,7 +124,7 @@ export default {
 
       li[index].classList.add('active')
       if (index === 0) this.menuList[index].src = '/consult-on-ico.png'
-      if (index === 1) this.menuList[index].src = '/consult-on-ico.png'
+      if (index === 1) this.menuList[index].src = '/logout-on-ico.png'
       if (index === 2) this.menuList[index].src = '/logout-on-ico.png'
     }
   }

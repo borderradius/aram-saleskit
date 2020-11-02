@@ -1,31 +1,43 @@
 <template>
-  <div
-    v-if="false"
-    class="fullScreen w-screen h-screen bg-gray-700 fixed top-0 left-0 flex items-center justify-center"
-  >
-    <button class="btn" @click="fullScreen">풀스크린 고!</button>
+  <div>
+    <!-- <div
+      v-if="isShow"
+      class="fullScreen w-screen h-screen bg-gray-700 fixed top-0 left-0 flex items-center justify-center"
+    >
+      <button class="btn" @click="fullScreen">풀스크린 고!</button>
+    </div> -->
+    <!-- 풀스크린 사용할 때는 아래것 사용하고 위는 주석 -->
+    <div v-if="!isShow">
+      <div
+        v-if="!isFull"
+        class="fullScreen w-screen h-screen bg-gray-700 fixed top-0 left-0 flex items-center justify-center"
+      >
+        <button class="btn full-btn shadow-xl" @click="fullScreen">
+          풀스크린으로 보기
+        </button>
+      </div>
+    </div>
   </div>
-  <!-- 풀스크린 사용할 때는 아래것 사용하고 위는 주석 -->
-  <!-- <div
-    v-if="!isFull"
-    class="fullScreen w-screen h-screen bg-gray-700 fixed top-0 left-0 flex items-center justify-center"
-  >
-    <button class="btn full-btn shadow-xl" @click="fullScreen">
-      풀스크린으로 보기
-    </button>
-  </div> -->
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
 export default {
+  data() {
+    return {
+      isShow: false
+    }
+  },
   computed: {
     ...mapState({
       isFull: (state) => state.isFull
     })
   },
   mounted() {
-    console.log('풀스크린 진입화면 생성')
+    this.isShow = process.env.SERVER_TYPE === 'staging'
+    window.addEventListener('popstate', () => {
+      console.warn('history 바꼈다.')
+    })
     // this.fullmode = document.fullscreenElement
     // console.warn(this.fullmode)
     // console.warn(document.fullscreenElement)

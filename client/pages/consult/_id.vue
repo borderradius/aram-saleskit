@@ -64,8 +64,8 @@
           감상하기가 있습니다.
         </li>
       </ul>
-      <!-- <h2 class="mb-4 mt-8 text-sm">2. 학습 계통도</h2> -->
-      <div v-if="false" class="report-content2 mt-4 pb-2">
+      <h2 class="mb-4 mt-8">2. 학습 계통도</h2>
+      <div class="report-content2 mt-4 pb-2">
         <SystemChartComp
           :data="[systemChart1, systemChart2, systemChart3, systemChart4]"
         />
