@@ -37,7 +37,8 @@
               />
             </div>
           </div>
-          <div v-if="!isSearch" class="search-form-checkbox">
+          <!-- <div v-if="!isSearch" class="search-form-checkbox"> -->
+          <div v-if="false" class="search-form-checkbox">
             <h4 class="text-gray-700 font-bold mb-4">구매가격</h4>
             <div class="checkbox-wrap flex flex-row flex-wrap justify-between">
               <label
@@ -205,7 +206,7 @@ export default {
         // },
         {
           src: '/brosure-off-ico.png',
-          alt: '소전집 브로슈어',
+          alt: '브로슈어',
           class: 'second'
         }
         // {
@@ -296,7 +297,7 @@ export default {
         // },
         {
           src: '/brosure-off-ico.png',
-          alt: '소전집 브로슈어',
+          alt: '브로슈어',
           class: 'second'
         }
         // {
