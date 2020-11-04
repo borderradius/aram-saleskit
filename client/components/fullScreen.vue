@@ -34,7 +34,7 @@ export default {
     })
   },
   mounted() {
-    this.isShow = process.env.SERVER_TYPE === 'staging'
+    this.isShow = process.env.SERVER_TYPE === 'dev'
     window.addEventListener('popstate', () => {
       console.warn('history 바꼈다.')
     })

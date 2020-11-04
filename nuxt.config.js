@@ -112,11 +112,11 @@ module.exports = {
    */
   axios: {
     baseURL:
-    process.env.SERVER_TYPE === 'dev'
-    ? process.env.API_DEV
-    : process.env.SERVER_TYPE === 'staging'
-    ? process.env.API_QA
-    : process.env.API_PROD
+      process.env.SERVER_TYPE === 'dev'
+        ? process.env.API_DEV
+        : process.env.SERVER_TYPE === 'staging'
+        ? process.env.API_QA
+        : process.env.API_PROD
   },
   auth: {
     // scopeKey: 'roles',
