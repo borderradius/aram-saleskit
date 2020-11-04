@@ -61,7 +61,15 @@ export default {
       }
       window.removeEventListener('fullscreenchange', this.eventHandler)
       window.addEventListener('fullscreenchange', this.eventHandler)
-      if (elem.requestFullscreen) elem.requestFullscreen(options)
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen(options)
+      } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen(options)
+      } else if (elem.mozRequestFullscreen) {
+        elem.mozRequestFullscreen(options)
+      } else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen(options)
+      }
     },
     eventHandler(event) {
       if (document.fullscreenElement) {

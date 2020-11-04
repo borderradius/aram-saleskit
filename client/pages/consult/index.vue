@@ -74,7 +74,7 @@
       <div class="table w-full">
         <ul class="thead flex">
           <li class="">#</li>
-          <li class="flex-auto">조직원</li>
+          <!-- <li class="flex-auto">조직원</li> -->
           <li class="flex-auto">자녀이름</li>
           <li class="">전화번호</li>
           <!-- <li class="">생년월일</li> -->
@@ -91,7 +91,7 @@
           <li class="">{{ item.rowNo }}</li>
           <li class="flex-auto">{{ item.chldNm }}</li>
           <li class="">{{ item.mblTelNum }}</li>
-          <li class="">{{ item.chldBthYmd }}</li>
+          <!-- <li class="">{{ item.chldBthYmd }}</li> -->
           <li class="">{{ item.ageNm }}</li>
           <!-- <li class="">O</li> -->
           <li class="">{{ dateFormatter(item.cnslDttm) }}</li>

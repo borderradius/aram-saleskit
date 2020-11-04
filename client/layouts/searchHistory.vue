@@ -50,11 +50,11 @@ export default {
           alt: '상담이력',
           class: 'first'
         },
-        {
-          src: '/logout-off-ico.png',
-          alt: 'ERP 바로가기',
-          class: 'second'
-        },
+        // {
+        //   src: '/logout-off-ico.png',
+        //   alt: 'ERP 바로가기',
+        //   class: 'second'
+        // },
         {
           src: '/logout-off-ico.png',
           alt: '로그아웃',
@@ -88,15 +88,16 @@ export default {
       this.checkNowMenu(index)
       // TODO: 메뉴 클릭 시 해당 추천도서 셋팅
       // this.setRecommendList({ kine: index })
-      if (index === 2) {
+      // 로그아웃 , erp 바로가기 넣을때 인덱스 바꿔줘야함
+      if (index === 1) {
         await this.$store.dispatch('user/logout')
         this.$router.push('/user/login')
       }
       // ERP 바로가기 새탭 띄우기
-      if (index === 1) {
-        window.open('about:blank').location.href =
-          'http://aramerp.aramedu.net:8081/auth/erplogin'
-      }
+      // if (index === 1) {
+      //   window.open('about:blank').location.href =
+      //     'http://aramerp.aramedu.net:8081/auth/erplogin'
+      // }
     },
     checkNowMenu(index) {
       // leftMenu 클래스, off이미지로 초기화
@@ -106,11 +107,11 @@ export default {
           alt: '상담이력',
           class: 'first'
         },
-        {
-          src: '/logout-off-ico.png',
-          alt: 'ERP 바로가기',
-          class: 'second'
-        },
+        // {
+        //   src: '/logout-off-ico.png',
+        //   alt: 'ERP 바로가기',
+        //   class: 'second'
+        // },
         {
           src: '/logout-off-ico.png',
           alt: '로그아웃',

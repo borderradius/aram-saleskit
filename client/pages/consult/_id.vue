@@ -339,7 +339,7 @@ export default {
       cstpMngrSeqno,
       hgrkAsctEduCoursCd
     } = this.$route.params.id
-    // console.warn(this.$route.params.id)
+    console.warn(mblTelNum)
     const telNum = mblTelNum.replace(/-/g, '')
     try {
       const { result } = await this.$axios.$get(
@@ -370,11 +370,16 @@ export default {
   },
   methods: {
     goAllView() {
+      // console.warn('넘어오는 파라미터 뭐야? === ', this.$route.params)
+      const { cnslPtclSeqno, rectChldId, cstpMngrSeqno } = this.$route.params.id
+
       this.$router.push({
         name: 'consult-allView',
         params: {
           from: 'consultDetail',
-          ...this.$route.params.id
+          cnslPtclSeqno,
+          rectChldId,
+          cstpMngrSeqno
         }
       })
     },

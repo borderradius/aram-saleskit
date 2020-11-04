@@ -4,6 +4,7 @@
       >상담이력 바로가기</n-link
     > -->
     <!-- <keep-alive></keep-alive> -->
+    <!-- <a href="javascript:;" @click="btnClick">button</a> -->
     <div class="flex item-centers justify-between card-wrapper">
       <n-link to="/survey" class="card flex-1 relative">
         <img
@@ -62,6 +63,20 @@ export default {
     // console.log(isFull)
   },
   methods: {
+    btnClick() {
+      // console.log(this._.debounce)
+      this._.throttle(function() {
+        console.log('click')
+      }, 3000)
+      // this._.debounce(
+      //   () => {
+      //     console.log('click!!!')
+      //   },
+      //   3000,
+      //   { leading: true, trailing: false }
+      // )
+      // console.log('btn click', this._.debounce())
+    }
     // fullScreen() {
     //   const elem = document.documentElement
     //   // alert(elem.)

@@ -83,10 +83,10 @@ export default {
      * ? pages[]에 담는다.
      */
     setPages() {
-      console.log(
-        `%c총 몇개의 페이진데? ${this.limitPageCount}`,
-        'color:yellow'
-      )
+      // console.log(
+      //   `%c총 몇개의 페이진데? ${this.limitPageCount}`,
+      //   'color:yellow'
+      // )
       let arr = []
       for (let i = 1; i <= this.limitPageCount; ++i) {
         arr.push(i)
