@@ -35,9 +35,7 @@ export default {
   },
   mounted() {
     this.isShow = process.env.SERVER_TYPE === 'dev'
-    const isIOS = /iphone|ipad|ipod|android/i.test(
-      navigator.userAgent.toLowerCase()
-    )
+    const isIOS = /iphone|ipad|ipod|/i.test(navigator.userAgent.toLowerCase())
     if (isIOS) {
       this.isShow = true
     }
