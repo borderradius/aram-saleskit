@@ -139,7 +139,7 @@ export default {
         this.slideData.pop()
       }, 500)
       console.warn('삭제후 전송할 데이터 : ', this.postListData)
-      console.warn('슬라이드 1데이터 :', this.slideData)
+      console.warn('슬라이드 데이터 :', this.slideData)
     },
 
     async goNext(index1, index2, selectedCode) {
