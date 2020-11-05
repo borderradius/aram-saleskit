@@ -8,6 +8,7 @@
         <p class="sub-title">
           교과 선호 문항
         </p>
+        <div v-if="isGlassOn" class="glass" />
         <Swiper ref="mySwiper" :options="swiperOptions">
           <SwiperSlide
             v-for="(item, index) in allSlideData.length"
@@ -119,7 +120,8 @@ export default {
         }
       ],
       seqCode: [],
-      exceptCode: []
+      exceptCode: [],
+      isGlassOn: false
     }
   },
   computed: {
@@ -170,6 +172,7 @@ export default {
       console.warn('슬라이드 데이터 :', this.slideData)
     },
     async goNext(index1, index2, selectedIndex) {
+      this.isGlassOn = true
       this.clickSound()
       // postListData에 데이터 넣기
       // 클릭된거는 값 true로 바꿔주고 postListData에 넣기.
@@ -217,6 +220,9 @@ export default {
             this.swiper.slideTo(this.nowSlidePage - 1)
         }, 500)
       }
+      window.setTimeout(() => {
+        this.isGlassOn = false
+      }, 3000)
     },
     getRandomDataForCurri(index = 0, selectedIndex) {
       if (index === 0) {

@@ -8,6 +8,7 @@
         <p class="sub-title">
           두 그림 중 좋아하는 것을 고르세요.
         </p>
+        <div v-if="isGlassOn" class="glass" />
         <Swiper ref="mySwiper" :options="swiperOptions">
           <SwiperSlide v-for="(item, index) in 5" :key="index">
             <div class="img-select-wrap flex items-center justify-between">
@@ -92,7 +93,8 @@ export default {
       // chldId: '',
       // cnslPtclSeqno: '',
       allSlideData: [],
-      exceptCode: []
+      exceptCode: [],
+      isGlassOn: false
     }
   },
   computed: {
@@ -151,6 +153,7 @@ export default {
       console.warn('슬라이드 데이터 :', this.slideData)
     },
     async goNext(index1, index2, selectedCode) {
+      this.isGlassOn = true
       this.clickSound()
       // 클릭된거는 값 true로 바꿔주고 postListData에 넣기.
       const postListParam = this.makePostData(index1, index2)
@@ -210,6 +213,9 @@ export default {
           if (this.nowSlidePage < 6) this.swiper.slideTo(this.nowSlidePage - 1)
         }, 500)
       }
+      window.setTimeout(() => {
+        this.isGlassOn = false
+      }, 3000)
     }
   }
 }

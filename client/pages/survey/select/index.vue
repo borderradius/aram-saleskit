@@ -8,6 +8,7 @@
         <p class="sub-title">
           두 그림 중 좋아하는 것을 고르세요.
         </p>
+        <div v-if="isGlassOn" class="glass" />
         <Swiper ref="mySwiper" :options="swiperOptions">
           <SwiperSlide v-for="(item, index) in 5" :key="index">
             <div class="img-select-wrap flex items-center justify-between">
@@ -88,7 +89,8 @@ export default {
       counselTestPaper: [],
       slideData: [],
       postListData: [],
-      exceptCode: []
+      exceptCode: [],
+      isGlassOn: false
     }
   },
   computed: {
@@ -101,7 +103,7 @@ export default {
   },
   mounted() {
     this.getRandomData()
-    console.warn(this.$route.params)
+    // console.warn(this.$route.params)
   },
   methods: {
     ...mapActions({
@@ -115,7 +117,6 @@ export default {
      * ? 리턴값을 라우팅하면서 넘김
      * ? 그러면 넘어가는 페이지에서 상세정보api 호출할 필요 없음.
      */
-    // goResult(params, apiResult, apiParams) {
     goResult() {
       setTimeout(() => {
         this.isComplete = false
@@ -142,6 +143,7 @@ export default {
     },
 
     async goNext(index1, index2, selectedCode) {
+      this.isGlassOn = true
       this.clickSound()
       // 클릭된거는 값 true로 바꿔주고 postListData에 넣기.
       const postListParam = this.makePostData(index1, index2)
@@ -189,12 +191,27 @@ export default {
         this.getRandomData(index1, selectedCode)
         // }
         window.setTimeout(() => {
+          // this.isGlassOn = false
           if (this.nowSlidePage < 6) this.swiper.slideTo(this.nowSlidePage - 1)
         }, 500)
+        window.setTimeout(() => {
+          this.isGlassOn = false
+        }, 3000)
       }
     }
   }
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.glass {
+  width: 100%;
+  height: 70vh;
+  /* background: red; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+</style>

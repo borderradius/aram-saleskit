@@ -62,21 +62,17 @@ export default {
     // window.isFull = false
     // console.log(isFull)
   },
+  created() {
+    // console.warn(_.throttle)
+  },
   methods: {
-    btnClick() {
-      // console.log(this._.debounce)
-      this._.throttle(function() {
-        console.log('click')
-      }, 3000)
-      // this._.debounce(
-      //   () => {
-      //     console.log('click!!!')
-      //   },
-      //   3000,
-      //   { leading: true, trailing: false }
-      // )
-      // console.log('btn click', this._.debounce())
-    }
+    // btnClick: _.throttle(
+    //   function() {
+    //     console.log('aaaa')
+    //   },
+    //   3000,
+    //   { leading: false, tailing: false }
+    // )
     // fullScreen() {
     //   const elem = document.documentElement
     //   // alert(elem.)
