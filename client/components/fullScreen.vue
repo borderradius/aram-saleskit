@@ -35,6 +35,12 @@ export default {
   },
   mounted() {
     this.isShow = process.env.SERVER_TYPE === 'dev'
+    const isIOS = /iphone|ipad|ipod|android/i.test(
+      navigator.userAgent.toLowerCase()
+    )
+    if (isIOS) {
+      this.isShow = true
+    }
     window.addEventListener('popstate', () => {
       console.warn('history 바꼈다.')
     })
@@ -72,6 +78,15 @@ export default {
       }
     },
     eventHandler(event) {
+      // const isIOS = /iphone|ipad|ipod|android/i.test(
+      //   navigator.userAgent.toLowerCase()
+      // )
+      // console.log(isIOS)
+      // if (isIOS) {
+      //   this.isShow = true
+      //   return false
+      // }
+
       if (document.fullscreenElement) {
         console.log(
           `Element: ${document.fullscreenElement.id} entered fullscreen mode.`
