@@ -126,7 +126,7 @@ export default {
             lists: this.slideData
           }
         })
-      }, 2000)
+      }, 750)
     },
     goPrev() {
       this.nowSlidePage--
@@ -181,7 +181,7 @@ export default {
         setTimeout(() => {
           this.isComplete = true
           this.goResult()
-        }, 2000)
+        }, 750)
       }
       if (this.nowSlidePage < 5) {
         // 다음 슬라이드로 이동 : 시작
@@ -196,7 +196,7 @@ export default {
         }, 500)
         window.setTimeout(() => {
           this.isGlassOn = false
-        }, 3000)
+        }, 2000)
       }
     }
   }

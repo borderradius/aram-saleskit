@@ -34,7 +34,7 @@ export default {
     })
   },
   mounted() {
-    // this.isShow = process.env.SERVER_TYPE === 'dev'
+    this.isShow = process.env.SERVER_TYPE === 'dev'
     const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent.toLowerCase())
     // alert(isIOS)
     // console.warn('is ios ? ', navigator.userAgent)
