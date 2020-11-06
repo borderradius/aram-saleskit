@@ -157,7 +157,7 @@ export default {
         this.$router.push({
           name: 'survey-result'
         })
-      }, 2000)
+      }, 750)
     },
     goPrev() {
       this.nowSlidePage--
@@ -208,7 +208,7 @@ export default {
         setTimeout(() => {
           this.isComplete = true
           this.goResult()
-        }, 1000)
+        }, 750)
       }
 
       if (this.allSlideData.length === 3 && this.slideData.length === 1) {
@@ -222,7 +222,7 @@ export default {
       }
       window.setTimeout(() => {
         this.isGlassOn = false
-      }, 3000)
+      }, 2000)
     },
     getRandomDataForCurri(index = 0, selectedIndex) {
       if (index === 0) {

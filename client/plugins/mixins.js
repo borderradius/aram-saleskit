@@ -49,7 +49,7 @@ Vue.mixin({
     imageRandomNumber(imgCount) {
       return Math.floor(Math.random() * imgCount)
     },
-    getRandomData(index = 0, selectedCode) {
+    getRandomData(index = 0, selectedCode, noSelectedCode = '') {
       // 최초 1번 랜덤2개 뽑기.
       if (index === 0) {
         // 0. 셔플할 데이터 복사하기
@@ -87,9 +87,15 @@ Vue.mixin({
           (item) => item.code === selectedCode
         )
         // 0-3. 선택된 애 제외한 나머지
-        const extraData = tempData.filter(
+        let extraData = tempData.filter(
           (item) => !this.exceptCode.includes(item.code)
         )
+        // 0-4. 선택안된 애는 다음 리스트에서 제외
+        if (noSelectedCode) {
+          console.warn('noSelectedCode === ', noSelectedCode)
+          extraData = extraData.filter((item) => item.code !== noSelectedCode)
+        }
+
         console.warn('선택된 애 :::', selectedItem)
         console.warn('나머지 애 :::', extraData)
         // 1. 0번 배열 셔플

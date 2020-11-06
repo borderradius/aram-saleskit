@@ -90,6 +90,7 @@ export default {
       slideData: [],
       postListData: [],
       exceptCode: [],
+      exceptCode2: '',
       isGlassOn: false
     }
   },
@@ -188,7 +189,11 @@ export default {
         this.nowSlidePage++
         // 첫 슬라이드에 사용할 랜덤데이터 뽑기
         index1++
-        this.getRandomData(index1, selectedCode)
+        this.getRandomData(
+          index1,
+          selectedCode,
+          this.postListData[this.nowSlidePage - 2].nchoAsctEduCoursCd
+        )
         // }
         window.setTimeout(() => {
           // this.isGlassOn = false

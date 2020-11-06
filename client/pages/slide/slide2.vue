@@ -269,7 +269,7 @@ export default {
             lists: params
           }
         })
-      }, 2000)
+      }, 750)
     },
     // async doClick(cnslPoolSeqno, choicedAnswerEduCd, slideIndex) {
     //   this.clickSound()
@@ -338,7 +338,7 @@ export default {
         setTimeout(() => {
           this.isComplete = true
           this.goResult(this.slideData1)
-        }, 1000)
+        }, 750)
       }
       if (this.nowSlidePage < 4) {
         // 다음 슬라이드로 이동 : 시작

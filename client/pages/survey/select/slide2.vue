@@ -138,7 +138,7 @@ export default {
             // apiParams: this.$route.params.apiParams
           }
         })
-      }, 2000)
+      }, 750)
     },
     goPrev() {
       this.nowSlidePage--
@@ -190,7 +190,7 @@ export default {
             this.slideData[this.nowSlidePage - 1][index2]
             // apiResult
           )
-        }, 2000)
+        }, 750)
       }
       if (this.nowSlidePage < 5) {
         this.nowSlidePage++
@@ -207,7 +207,11 @@ export default {
           this.slideData.push(param)
         } else {
           // 첫 슬라이드에 사용할 랜덤데이터 뽑기
-          this.getRandomData(index1 + 1, selectedCode)
+          this.getRandomData(
+            index1 + 1,
+            selectedCode,
+            this.postListData[this.nowSlidePage - 2].nchoAsctEduCoursCd
+          )
         }
         window.setTimeout(() => {
           if (this.nowSlidePage < 6) this.swiper.slideTo(this.nowSlidePage - 1)
@@ -215,7 +219,7 @@ export default {
       }
       window.setTimeout(() => {
         this.isGlassOn = false
-      }, 3000)
+      }, 2000)
     }
   }
 }
