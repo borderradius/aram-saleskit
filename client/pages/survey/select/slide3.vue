@@ -222,7 +222,7 @@ export default {
       }
       window.setTimeout(() => {
         this.isGlassOn = false
-      }, 2000)
+      }, 1000)
     },
     getRandomDataForCurri(index = 0, selectedIndex) {
       if (index === 0) {
@@ -270,4 +270,15 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.glass {
+  width: 100%;
+  height: 70vh;
+  /* background: red; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+</style>
