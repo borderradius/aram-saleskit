@@ -222,7 +222,7 @@ export default {
       }
       window.setTimeout(() => {
         this.isGlassOn = false
-      }, 1000)
+      }, 1500)
     },
     getRandomDataForCurri(index = 0, selectedIndex) {
       if (index === 0) {

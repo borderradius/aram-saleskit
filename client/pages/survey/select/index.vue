@@ -201,7 +201,7 @@ export default {
         }, 500)
         window.setTimeout(() => {
           this.isGlassOn = false
-        }, 1000)
+        }, 1500)
       }
     }
   }
