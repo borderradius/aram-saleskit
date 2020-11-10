@@ -80,16 +80,17 @@ Vue.mixin({
         // 최초 아닐경우
         // 0. 선택한 애는 제외된 배열 만들기
         // 0-1. exceptCode에 넣기
-        this.exceptCode.push(selectedCode)
+        // this.exceptCode.push(selectedCode)
         const tempData = this._.cloneDeep(this.allSlideData)
         // 0-2. 선택된 애
         const selectedItem = tempData.filter(
           (item) => item.code === selectedCode
         )
         // 0-3. 선택된 애 제외한 나머지
-        let extraData = tempData.filter(
-          (item) => !this.exceptCode.includes(item.code)
-        )
+        // let extraData = tempData.filter(
+        //   (item) => !this.exceptCode.includes(item.code)
+        // )
+        let extraData = tempData.filter((item) => item.code !== selectedCode)
         // 0-4. 선택안된 애는 다음 리스트에서 제외
         if (noSelectedCode) {
           console.warn('noSelectedCode === ', noSelectedCode)
