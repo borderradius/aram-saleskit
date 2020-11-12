@@ -55,7 +55,8 @@ module.exports = {
     { src: '~/plugins/lodash', ssr: false },
     { src: '~/plugins/animate', ssr: false },
     { src: '~/plugins/apexcharts', ssr: false },
-    { src: '~/plugins/localStorage', ssr: false }
+    // { src: '~/plugins/localStorage', ssr: false }
+    { src: '~/plugins/axios', ssr: false }
   ],
   /*
    ** Nuxt.js dev-modules
@@ -121,9 +122,9 @@ module.exports = {
   auth: {
     // scopeKey: 'roles',
     redirect: {
-      login: false,
+      login: '/user/login',
       logout: false,
-      home: false
+      home: '/'
     },
     strategies: {
       local: {

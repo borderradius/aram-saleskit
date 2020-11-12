@@ -19,7 +19,7 @@ export default (context) => {
    */
   if (!isLoggedIn && route.path === '/') {
     alert('로그인이 필요합니다.')
-    redirect('/login')
+    redirect('/user/login')
   }
   /**
    * * LNB 메뉴 데이터 가져오기
