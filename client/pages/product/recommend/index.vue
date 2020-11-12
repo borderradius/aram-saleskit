@@ -35,11 +35,11 @@
           </div>
           <div class="text-wrap pt-4">
             <h4 class="font-bold text-lg mb-2">{{ item.prodNm }}</h4>
-            <ul class="pl-2">
+            <!-- <ul class="pl-2">
               <li>{{ item.prodCmptCtt }}</li>
               <li>{{ item.lrngAraNm }}</li>
               <li>{{ item.prodAplyPric }}원</li>
-            </ul>
+            </ul> -->
           </div>
         </a>
       </li>

@@ -19,7 +19,7 @@ export default (context) => {
    */
   if (!isLoggedIn && route.path === '/') {
     alert('로그인이 필요합니다.')
-    redirect('/user/login')
+    redirect('/login')
   }
   /**
    * * LNB 메뉴 데이터 가져오기
@@ -29,4 +29,9 @@ export default (context) => {
   //     sysAuthCd: store.state.auth.user.sysAuthCd
   //   })
   // }
+
+  /**
+   * * 로컬스토리지에서 토큰정보 가져오기
+   */
+  // console.warn('router - info ::: ', localStorage)
 }
