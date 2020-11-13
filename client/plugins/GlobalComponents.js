@@ -11,6 +11,7 @@ import Btn from '@/components/btn'
 import Pagination from '@/components/pagination'
 import FullScreen from '@/components/fullScreen'
 import Portrait from '@/components/portrait'
+import NoBrowser from '@/components/noBrowser'
 // import D3VBar from '@/components/D3VBar'
 // import Notification from '@/components/notification'
 
@@ -25,6 +26,7 @@ Vue.component('Btn', Btn)
 Vue.component('Pagination', Pagination)
 Vue.component('FullScreen', FullScreen)
 Vue.component('Portrait', Portrait)
+Vue.component('NoBrowser', NoBrowser)
 // Vue.component('D3HBar', D3HBar)
 // Vue.component('D3VBar', D3VBar)
 // Vue.component('D3VChart', D3VChart)

@@ -1,6 +1,7 @@
 <template>
   <div>
     <nuxt />
+    <NoBrowser />
     <FullScreen />
     <Portrait />
   </div>
