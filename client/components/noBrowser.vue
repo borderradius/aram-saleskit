@@ -24,11 +24,11 @@
 export default {
   data() {
     return {
-      isIE: true
+      isIE: false
     }
   },
   mounted() {
-    // this.isIE = /trident/i.test(navigator.userAgent.toLowerCase())
+    this.isIE = /trident/i.test(navigator.userAgent.toLowerCase())
   }
 }
 </script>
