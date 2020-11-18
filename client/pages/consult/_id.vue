@@ -97,7 +97,7 @@
         <ul class="flex p-4">
           <li
             v-for="(item, index) in detail.rcmdProdList.prfdRcmdList"
-            :key="item.prodId"
+            :key="`${item.prodId}-${index}`"
             :class="[index === '1' ? 'mx-4' : '']"
             class="w-1/3 px-2 relative"
           >

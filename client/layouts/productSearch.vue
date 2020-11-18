@@ -62,25 +62,25 @@
             </button>
           </div>
           <div v-if="isSearch" class="search-form-checkbox">
-            <h4 class="text-gray-700 font-bold mb-4">학습연령</h4>
+            <h4 class="text-gray-700 font-bold mb-4">전집 상품 분류</h4>
             <div class="checkbox-wrap flex flex-row flex-wrap justify-between">
               <label
-                v-for="item in searchAgeList"
-                :key="item.value"
-                :for="item.value"
+                v-for="item in seriesCode"
+                :key="item.cd"
+                :for="item.cd"
                 class="checkbox-label my-2 text-left"
               >
                 <input
-                  :id="item.value"
-                  v-model="tempStudyAge"
-                  :value="item.value"
+                  :id="item.cd"
+                  v-model="seriesCdList"
+                  :value="item.cd"
                   type="checkbox"
                   class="form-checkbox h-5 w-5 text-main-green -mt-1"
                 />
-                <span class="ml-2 text-gray-700">{{ item.label }}</span>
+                <span class="ml-2 text-gray-700">{{ item.cdNm }}</span>
               </label>
             </div>
-            <h4 class="text-gray-700 font-bold my-4">학습영역</h4>
+            <!-- <h4 class="text-gray-700 font-bold my-4">학습영역</h4>
             <div class="checkbox-wrap flex flex-row flex-wrap justify-between">
               <label
                 v-for="item in searchLrngAraList"
@@ -97,7 +97,7 @@
                 />
                 <span class="ml-2 text-gray-700">{{ item.label }}</span>
               </label>
-            </div>
+            </div> -->
             <button class="search-btn focus:outline-none" @click="goSearch">
               검색
             </button>
@@ -131,6 +131,7 @@ export default {
     return {
       searchParam: {
         searchLrngAraList: []
+        // seriesCdList: []
       },
       tempStudyArea: [],
       tempStudyAge: [],
@@ -153,6 +154,8 @@ export default {
           value: '2025'
         }
       ],
+      seriesCode: [],
+      seriesCdList: [],
       searchAgeList: [
         {
           label: '표준보육(0세~2세)',
@@ -220,6 +223,10 @@ export default {
     }
   },
   async mounted() {
+    const { result } = await this.$axios.$get('prod/series-code')
+    // console.warn('시리즈 코드 === ', result)
+    this.seriesCode = result
+
     const li = document.getElementsByClassName('leftMenu')
     li[0].classList.add('active')
     if (this.$route.fullPath.includes('trial')) {
@@ -234,7 +241,8 @@ export default {
       setSearchList: 'setSearchList'
     }),
     async goSearch() {
-      this.searchParam.searchLrngAraList = this.tempStudyArea.join(',')
+      // this.searchParam.searchLrngAraList = this.tempStudyArea.join(',')
+      this.searchParam.seriesCdList = this.seriesCdList.join(',')
       try {
         await this.setSearchList({ type: this.type, search: this.searchParam })
       } catch (e) {
