@@ -224,7 +224,6 @@ export default {
   },
   async mounted() {
     const { result } = await this.$axios.$get('prod/series-code')
-    // console.warn('시리즈 코드 === ', result)
     this.seriesCode = result
 
     const li = document.getElementsByClassName('leftMenu')
