@@ -90,7 +90,7 @@
                   alt="전집아이콘"
                   class="inline-block mr-2"
                 />
-                전집 &amp; 디지털콘텐츠</span
+                아람 전집</span
               >
               <a
                 href="javascript:;"

@@ -92,7 +92,7 @@
                   alt="전집아이콘"
                   class="inline-block mr-2"
                 />
-                전집 &amp; 디지털콘텐츠</span
+                아람 전집</span
               >
               <a
                 href="javascript:;"
@@ -370,7 +370,7 @@ export default {
       })
     },
     /**
-     * * 전집 & 디지털 콘텐츠 모두보기로 이동
+     * * 아람 전집 콘텐츠 모두보기로 이동
      */
     goAllView(type) {
       this.$router.push({

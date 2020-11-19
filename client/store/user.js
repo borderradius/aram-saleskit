@@ -4,6 +4,9 @@ export const actions = {
   //   return data.success
   // },
   login(context, user) {
+    // this.$auth.login({ data: user }).then(({ data }) => {
+    //   this.$auth.setToken('local11', data.orgmToken)
+    // })
     return this.$auth.loginWith('local', {
       data: user
     })

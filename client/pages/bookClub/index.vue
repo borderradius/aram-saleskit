@@ -3,9 +3,7 @@
     아람 북클럽 상품소개
     <ul>
       <li>
-        <n-link class="btn" to="/bookClub/digital"
-          >전집 &amp; 디지털콘텐츠</n-link
-        >
+        <n-link class="btn" to="/bookClub/digital">아람 전집</n-link>
       </li>
       <li>
         <n-link class="btn" to="/bookClub/smallCollectionProduct"

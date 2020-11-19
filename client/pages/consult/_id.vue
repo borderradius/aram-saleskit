@@ -81,7 +81,7 @@
               alt="전집아이콘"
               class="inline-block mr-2"
             />
-            전집 &amp; 디지털콘텐츠</span
+            아람 전집</span
           >
           <button
             class="all-view-btn text-white rounded-full px-4 py-2 text-sm"

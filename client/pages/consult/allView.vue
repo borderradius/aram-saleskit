@@ -48,7 +48,7 @@
       class="tab flex items-center justify-between text-center"
       @click="tabClick"
     >
-      <li class="flex-1 tab-child active">전집 &amp; 디지털콘텐츠</li>
+      <li class="flex-1 tab-child active">아람 전집</li>
       <li class="flex-1 tab-child">소전집</li>
       <li class="flex-1 tab-child">도서</li>
     </ul>

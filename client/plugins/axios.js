@@ -15,9 +15,9 @@ export default (ctx, inject) => {
   ctx.$axios.onError((e) => {
     const { response } = e
     if (!response.data.ok && response.data.errorState.code === 401) {
-      alert('토큰 기간이 만료되었습니다. 다시 로그인해주세요.')
-      ctx.store.dispatch('user/logout')
-      ctx.redirect({ name: 'user-login' })
+      // alert('로그인 정보가 만료되었습니다. 다시 로그인 해주세요.')
+      // ctx.store.dispatch('user/logout')
+      // ctx.redirect({ name: 'user-login' })
     }
   })
   // $axios.onResponse(({ status, data }) => ({

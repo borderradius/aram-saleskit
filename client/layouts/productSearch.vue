@@ -199,7 +199,7 @@ export default {
       menuList: [
         {
           src: '/allbook-on-ico.png',
-          alt: '전집 & 디지털콘텐츠',
+          alt: '아람 전집',
           class: 'first'
         },
         // {
@@ -224,6 +224,7 @@ export default {
   },
   async mounted() {
     const { result } = await this.$axios.$get('prod/series-code')
+    result.length = 3
     this.seriesCode = result
 
     const li = document.getElementsByClassName('leftMenu')
@@ -294,7 +295,7 @@ export default {
       this.menuList = [
         {
           src: '/allbook-off-ico.png',
-          alt: '전집 & 디지털콘텐츠',
+          alt: '아람 전집',
           class: 'first'
         },
         // {

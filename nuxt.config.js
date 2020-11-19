@@ -126,6 +126,9 @@ module.exports = {
       logout: false,
       home: '/'
     },
+    token: {
+      prefix: '_token.saleskit.'
+    },
     strategies: {
       local: {
         tokenType: 'Bearer',
