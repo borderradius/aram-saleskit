@@ -5,7 +5,8 @@ export const state = () => {
     // recommendList: [],
     prfdRcmdList: [],
     notPrfdRcmdList: [],
-    isFull: false
+    isFull: false,
+    searchPagination: {}
   }
 }
 
@@ -15,6 +16,9 @@ export const mutations = {
   },
   SET_SEARCH_LIST(state, payload) {
     state.searchList = payload
+  },
+  SET_SEARCH_PAGINATION(state, payload) {
+    state.searchPagination = payload
   },
   SET_RECOMMEND_LIST(state, payload) {
     // state.recommendList = payload
@@ -46,8 +50,11 @@ export const actions = {
     if (type === 'smallbook') apiUrl = '/prod/miniseries'
     if (type === 'brosure') apiUrl = '/prod/brochure'
     try {
-      const { result } = await this.$axios.$get(apiUrl, { params: search })
+      const { result, page } = await this.$axios.$get(apiUrl, {
+        params: search
+      })
       commit('SET_SEARCH_LIST', result)
+      commit('SET_SEARCH_PAGINATION', page)
       commit('SET_SEARCH_TYPE', type)
     } catch (e) {
       console.log(e)
